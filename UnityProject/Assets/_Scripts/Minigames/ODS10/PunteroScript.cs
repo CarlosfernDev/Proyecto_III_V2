@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
 
 [DefaultExecutionOrder(1)]
@@ -18,7 +17,6 @@ public class PunteroScript : MonoBehaviour
     [SerializeField] public GameObject interactZone;
     public GameObject refObjetoInteract;
     private bool isInteractable = false;
-    [SerializeField] private Image CursorImage;
 
     public Vector2 MaxPosition;
 
@@ -82,11 +80,8 @@ public class PunteroScript : MonoBehaviour
                 {
                     inter.Interact();
 
-                    if (hit.transform.gameObject.TryGetComponent<InteraccionObjetoPuntero>(out InteraccionObjetoPuntero Movable))
-                    {
-                        hit.transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
-                        CursorImage.enabled = false;
-                    }
+                    if(hit.transform.gameObject.TryGetComponent<InteraccionObjetoPuntero>(out InteraccionObjetoPuntero Movable))
+                        hit.transform.position = new Vector3(transform.position.x,1f,transform.position.z);
                 }
             }
         }
@@ -96,7 +91,7 @@ public class PunteroScript : MonoBehaviour
             refObjetoInteract.transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
             refObjetoInteract.transform.rotation = Quaternion.Euler(90f, 0, 0);
             refObjetoInteract = null;
-            CursorImage.enabled = true;
+            
 
         }
        

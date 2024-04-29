@@ -25,14 +25,10 @@ public class MinigameParent : MonoBehaviour
 
     [Header("StartGameMinigame")]
     [SerializeField] private bool isCountdown;
-    [SerializeField] private TimerScriptableObject TimerData;
-    //[SerializeField] private TMP_Text _TextCanvas;
-    [SerializeField] private Image CountRender;
-    [SerializeField] private Animator NumberAnimation;
+    [SerializeField] private TMP_Text _TextCanvas;
     private Coroutine _Coroutine;
 
     [Header("ScoreStats")]
-    [SerializeField] private Animator ResoultAnimator;
     [SerializeField] private GameObject ResultCanvas;
     [SerializeField] protected ScoreText _ScoreText;
     [SerializeField] protected TMP_Text _txHighScore;
@@ -45,7 +41,7 @@ public class MinigameParent : MonoBehaviour
 
     private void Awake()
     {
-        //if(_TextCanvas != null) _TextCanvas.gameObject.transform.parent.gameObject.SetActive(false);
+        if(_TextCanvas != null) _TextCanvas.gameObject.transform.parent.gameObject.SetActive(false);
         if (!IsDeveloping)
         {
             MySceneManager.Instance.OnLoadFinish += StartCountdown;
@@ -88,7 +84,7 @@ public class MinigameParent : MonoBehaviour
 
     private void StartCountdown()
     {
-        //if (_TextCanvas == null) return;
+        if (_TextCanvas == null) return;
 
         if (isCountdown)
         {
@@ -107,7 +103,7 @@ public class MinigameParent : MonoBehaviour
 
     private void Timer(int value)
     {
-        //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
+        _TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
         if (_Coroutine != null)
         {
             StopCoroutine(_Coroutine);
@@ -116,33 +112,29 @@ public class MinigameParent : MonoBehaviour
     }
     private IEnumerator TimerCorutine(int value)
     {
-        //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
+        _TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
         if (value != 0)
         {
             string text = "Time trial!";
-            SetImage(4, TimerData);
-            //_TextCanvas.text = text;
+            _TextCanvas.text = text;
 
-            yield return new WaitForSeconds(1.3f);
+
+            yield return new WaitForSeconds(1);
             while (true)
             {
                 if (value == 0)
                 {
-                    SetImage(value, TimerData);
-                    //if (_TextCanvas != null) text = "Go!";
-                    OnGameStart();
+                    if(_TextCanvas != null) text = "Go!";
                 }
                 else
                 {
                     text = value.ToString();
                 }
 
-                //_TextCanvas.text = text;
+                _TextCanvas.text = text;
                 // Hacer animacion
-                SetImage(value, TimerData);
 
-
-                yield return new WaitForSeconds(1.3f);
+                yield return new WaitForSeconds(1);
 
                 value--;
                 if (value == -1)
@@ -151,28 +143,18 @@ public class MinigameParent : MonoBehaviour
         }
         else
         {
-            SetImage(value, TimerData);
             string text = "Go!";
-            OnGameStart();
-            //_TextCanvas.text = text;
+            _TextCanvas.text = text;
 
 
             yield return new WaitForSeconds(1);
         }
-        //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(false);
+        _TextCanvas.gameObject.transform.parent.gameObject.SetActive(false);
         gameIsActive = true;
+        OnGameStart();
 
         if (OnGameStartEvent != null)
             OnGameStartEvent();
-    }
-
-    protected void SetImage(int value, TimerScriptableObject timerData)
-    {
-        int valueData = Mathf.Clamp(value, 0, timerData.timerImageArray.Length - 1);
-        CountRender.sprite = timerData.timerImageArray[valueData].sprite;
-        //CountRender.SetNativeSize();
-        CountRender.transform.localScale = timerData.timerImageArray[valueData].scale;
-        NumberAnimation.SetTrigger(timerData.timerImageArray[valueData].AnimationInvoke);
     }
 
     protected virtual void personalAwake()
@@ -214,15 +196,14 @@ public class MinigameParent : MonoBehaviour
 
     IEnumerator CoroutineOnGameFinish()
     {
-        //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
-        SetImage(5, TimerData);
+        _TextCanvas.text = "Times Over";
+        _TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1f);
 
         InputManager.Instance.anyKeyEvent.AddListener(SetPressedButton);
 
         ResultCanvas.SetActive(true);
-        ResoultAnimator.SetTrigger("EnterAnimation");
         SetResoult();
 
         while (true)
