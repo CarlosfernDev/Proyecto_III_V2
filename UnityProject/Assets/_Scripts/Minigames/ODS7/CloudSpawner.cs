@@ -45,7 +45,7 @@ public class CloudSpawner : LInteractableParent
 
     private void Update()
     {
-        if (!ODS7Singleton.Instance.gameIsActive)
+        if (!ODS7Singleton.Instance.gameIsActive)   
             return;
 
         // Chequear si puede spawnear
