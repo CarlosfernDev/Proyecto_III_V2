@@ -34,6 +34,8 @@ public class MinigameParent : MonoBehaviour
     [Header("ScoreStats")]
     [SerializeField] private Animator ResoultAnimator;
     [SerializeField] private GameObject ResultCanvas;
+    [SerializeField] protected RankResoultScriptable RankData;
+    [SerializeField] protected Image RankImage;
     [SerializeField] protected ScoreText _ScoreText;
     [SerializeField] protected TMP_Text _txHighScore;
 
@@ -222,7 +224,7 @@ public class MinigameParent : MonoBehaviour
         InputManager.Instance.anyKeyEvent.AddListener(SetPressedButton);
 
         ResultCanvas.SetActive(true);
-        ResoultAnimator.SetTrigger("EnterAnimation");
+        //ResoultAnimator.SetTrigger("EnterAnimation");
         SetResoult();
 
         while (true)
@@ -241,10 +243,13 @@ public class MinigameParent : MonoBehaviour
 
     public virtual void SetResoult()
     {
+        Debug.Log("Se hace tranquilo");
         Debug.Log(Score);
-        _ScoreText.ChangeText(Score);
 
-        _txHighScore.text = "Highscore: " + MinigameData.maxPoints.ToString("000000");
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText(Score);
+        _txHighScore.text = "High: " + MinigameData.maxPoints.ToString("000000");
     }
 
     public void SetPressedButton()
@@ -256,6 +261,7 @@ public class MinigameParent : MonoBehaviour
 
     public void AddScore(int value)
     {
+        Debug.Log(Score);
         Score = Score + value;
         UpdateScore();
     }
