@@ -6,6 +6,8 @@ public class ODS14Manager : MinigameParent
 {
     public static ODS14Manager Instance;
     public TimerMinigame timer;
+    public LivesManager playerLives;
+    
     protected override void personalAwake()
     {
         Instance = this;
@@ -22,5 +24,10 @@ public class ODS14Manager : MinigameParent
     {
         base.OnGameStart();
         timer.SetTimer();
+    }
+
+    public void AnimalHit()
+    {
+        playerLives.UpdateLives.Invoke();
     }
 }
