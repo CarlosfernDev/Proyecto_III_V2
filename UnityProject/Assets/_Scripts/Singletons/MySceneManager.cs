@@ -16,6 +16,8 @@ public class MySceneManager : MonoBehaviour
 
     [Header("Panel Tutorial")]
     [SerializeField] private GameObject ingameCanvas;
+    [SerializeField] private List<Vector2> PunteroVector;
+    [SerializeField] private RectTransform Puntero;
     [SerializeField] private RectTransform panelReference;
     [SerializeField] private Animator _panelAnimator;
 
@@ -59,6 +61,7 @@ public class MySceneManager : MonoBehaviour
         if (Value >= 10 && Value < 100)
         {
             ingameCanvas.SetActive(true);
+            Puntero.anchoredPosition = PunteroVector[Mathf.FloorToInt(Value / 10) - 1];
         }
         else
         {
