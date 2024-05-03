@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1257399070574500047
+--- !u!114 &-1302611701031890744
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Selector
-  m_Shader: {fileID: -6465566751694194690, guid: 75907d5f7edd33b4295a7ebd91a56436,
+  m_Name: Portal_Material
+  m_Shader: {fileID: -6465566751694194690, guid: 612d13e587e49fa4b9825950a250480a,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -51,12 +51,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
-    - _AlphaClipping: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Sine_Speed: 1
+    - _Twirl_Speed: 0.3
+    - _Voronoi_Power: 2.35
     m_Colors:
-    - _Color: {r: 37.079926, g: 5.6299353, b: 0, a: 0.5176471}
-    - _MaskOffset: {r: 0, g: 0.66, b: 0, a: 0}
-    - _Speed_Dir: {r: -0.2, g: -1, b: 0, a: 0}
+    - _Portal_Color: {r: 0.8207547, g: 0.06581525, b: 0.1928155, a: 0}
   m_BuildTextureStacks: []
