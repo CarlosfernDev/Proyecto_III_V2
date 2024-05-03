@@ -1235,7 +1235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 295.6631, y: 166.3105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1084477154025028638
 CanvasRenderer:
@@ -5402,6 +5402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1843266543098873869}
+  - component: {fileID: 4323654611987203401}
   m_Layer: 5
   m_Name: SizingPanel
   m_TagString: Untagged
@@ -5427,11 +5428,25 @@ RectTransform:
   - {fileID: 1723273638261714103}
   m_Father: {fileID: 5195034311155616277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.01001, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4323654611987203401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861931600864178731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AspectMode: 3
+  m_AspectRatio: 1.7777778
 --- !u!1 &4899271510622079301
 GameObject:
   m_ObjectHideFlags: 0
