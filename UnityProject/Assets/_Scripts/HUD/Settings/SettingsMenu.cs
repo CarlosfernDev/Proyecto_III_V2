@@ -26,6 +26,7 @@ public class SettingsMenu : MonoBehaviour
     SettingMenuState MenuState = SettingMenuState.None;
     [SerializeField] private GameObject Menu;
     [SerializeField] private SettingBack[] Menus;
+    //[SerializeField] private AspectUtility AspectUtility;
     Dictionary<SettingMenuState, SettingBack> DictionaryMenu;
 
     private void Awake()
@@ -99,7 +100,10 @@ public class SettingsMenu : MonoBehaviour
     public void UpdateMenu(SettingMenuState value)
     {
         if (DictionaryMenu.ContainsKey(MenuState))
+        {
             DictionaryMenu[MenuState].Menu.SetActive(false);
+            AspectUtility.SetCamera();
+        }
 
         if (DictionaryMenu.ContainsKey(value))
             DictionaryMenu[value].Menu.SetActive(true);

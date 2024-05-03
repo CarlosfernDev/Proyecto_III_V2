@@ -10,11 +10,20 @@ public class MinigamesScriptableObjectScript : ScriptableObject
 
     public int sceneID;
 
+    public List<int> PointsValue;
+
     [HideInInspector] public bool isDone = false;
 
     // Implementacion por cosmeticos falta
 
     #region WinneableState
+    
+    public int CheckPointsState(int Score)
+    {
+        if (Score < PointsValue[0]) return 0;
+        if (Score < PointsValue[1]) return 1;
+        return 2;
+    }
 
     public void FinishCheckScore(int Score)
     {

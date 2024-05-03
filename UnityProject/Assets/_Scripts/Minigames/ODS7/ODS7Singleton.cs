@@ -96,9 +96,13 @@ public class ODS7Singleton : MinigameParent
 
     public override void SetResoult()
     {
-        _txTime.ChangeText(timer.GetTimeInSeconds());
-        _ScoreText.ChangeText(Score + (int)timer.TimerValue);
-        _txHighScore.text = "Highscore: " + MinigameData.maxPoints.ToString("000000");
+        Debug.Log("Se hace tranquilo");
+        Debug.Log(Score);
+
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText(Score + timer.GetRealTime());
+        _txHighScore.text = "High: " + MinigameData.maxPoints.ToString("000000");
     }
 
     public override void SaveValue()
