@@ -26,6 +26,7 @@ public class Granjas : LInteractableParent
 
     private void Start()
     {
+        ActualRender = GranjasRender[0];
         ChangeRender(0);
 
         SliderMain.gameObject.SetActive(false);
@@ -127,7 +128,7 @@ public class Granjas : LInteractableParent
 
     void SetSeed()
     {
-        ChangeRender(4);
+        ChangeRender(3);
 
         if (_farmState == FarmState.WaitPlayerInteraction)
         {
@@ -193,7 +194,7 @@ public class Granjas : LInteractableParent
 
     void MainSliderComplete()
     {
-        ChangeRender(3);
+        ChangeRender(2);
 
         TimeReferenceSecondary = Time.time;
         SliderSecondary.maxValue = ODS2Singleton.Instance.CollectingTimer;
@@ -248,7 +249,7 @@ public class Granjas : LInteractableParent
     public void ChangeRender(int value)
     {
         ActualRender.SetActive(false);
-        GranjasRender[value].SetActive(false);
+        GranjasRender[value].SetActive(true);
         ActualRender = GranjasRender[value];
     }
 
