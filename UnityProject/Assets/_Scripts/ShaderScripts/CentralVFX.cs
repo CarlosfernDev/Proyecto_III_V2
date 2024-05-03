@@ -30,7 +30,7 @@ public class CentralVFX : MonoBehaviour
         float lerp = 0;
         while (lerp < 1)
         {
-            _material.SetVector("_MaskPos", Vector3.Lerp( new Vector3 (0, 12, 0), new Vector3 (0, 2, 0), lerp ));
+            _material.SetVector("_MaskPos", Vector3.Lerp( new Vector3 (0, 0, 0), new Vector3 (0, 0, .25f), lerp ));
             lerp += Time.deltaTime * _transitionDuration;
             yield return null;
         }
@@ -58,7 +58,7 @@ public class CentralVFX : MonoBehaviour
     }
     private void Start()
     {
-        _material.SetVector("_MaskPos", new Vector3(0, 12, 0));
+        _material.SetVector("_MaskPos", new Vector3(0, 0, 0));
         _eolicCentral.SetActive(false);
         _nuclearCentral.SetActive(true);
         _smoke1.Play();
