@@ -8,6 +8,9 @@ public class Granjas : LInteractableParent
 {
     public enum FarmState {Disable, Wait, WaitPlayerInteraction, LoadSeed, WaitingWater, Recolect }
 
+    public List<GameObject> GranjasRender;
+    private GameObject ActualRender;
+
     public GameObject VegetalPrefab;
 
     public FarmState _farmState = FarmState.Disable;
@@ -23,6 +26,9 @@ public class Granjas : LInteractableParent
 
     private void Start()
     {
+        ActualRender = GranjasRender[0];
+        ChangeRender(0);
+
         SliderMain.gameObject.SetActive(false);
         SliderSecondary.gameObject.SetActive(false);
         SliderMain.maxValue = ODS2Singleton.Instance.SeedTimer;
@@ -32,6 +38,7 @@ public class Granjas : LInteractableParent
 
     public void StarFarm()
     {
+        ChangeRender(0);
         ResetFarm();
         SetSeed();
     }
@@ -121,6 +128,8 @@ public class Granjas : LInteractableParent
 
     void SetSeed()
     {
+        ChangeRender(3);
+
         if (_farmState == FarmState.WaitPlayerInteraction)
         {
             waterindex = 0;
@@ -173,6 +182,8 @@ public class Granjas : LInteractableParent
 
     void FarmDestroyed()
     {
+        ChangeRender(1);
+
         IsInteractable = true;
 
         ODS2Singleton.Instance.timer.RestTime(ODS2Singleton.Instance.ReduceTime);
@@ -183,6 +194,8 @@ public class Granjas : LInteractableParent
 
     void MainSliderComplete()
     {
+        ChangeRender(2);
+
         TimeReferenceSecondary = Time.time;
         SliderSecondary.maxValue = ODS2Singleton.Instance.CollectingTimer;
         SliderSecondary.value = 0;
@@ -231,6 +244,13 @@ public class Granjas : LInteractableParent
         TimeReferenceSecondary = Time.time;
         TimeExtraWater = value;
         return true;
+    }
+
+    public void ChangeRender(int value)
+    {
+        ActualRender.SetActive(false);
+        GranjasRender[value].SetActive(true);
+        ActualRender = GranjasRender[value];
     }
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -997,7 +997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDurationLerp: 3
-  waitDuration: 2
+  waitDuration: 5
   endDurationLerp: 0.7
   endFade: {fileID: 2130143015}
 --- !u!114 &1324154622
@@ -1420,16 +1420,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5624390598025101135, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292062274208398142, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7638133069787850437, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
       propertyPath: m_Name
