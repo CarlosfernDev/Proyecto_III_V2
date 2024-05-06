@@ -101,7 +101,7 @@ public class ODS7Singleton : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        _ScoreText.ChangeText(Score + timer.GetRealTime());
+        _ScoreText.ChangeText(Score + timer.GetRealTime()*10);
         _txHighScore.text = "High: " + MinigameData.maxPoints.ToString("000000");
     }
 

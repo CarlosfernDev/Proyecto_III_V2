@@ -191,7 +191,7 @@ public class MinigameParent : MonoBehaviour
 
     protected virtual void OnGameStart()
     {
-        GameManager.Instance.playerScript.sloopyMovement = true;
+        if(GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
     }
 
     public virtual void OnGameFinish()
