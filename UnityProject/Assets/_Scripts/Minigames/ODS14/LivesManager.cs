@@ -9,17 +9,17 @@ using UnityEngine.UI;
 
 public class LivesManager : MonoBehaviour
 {
-    [FormerlySerializedAs("playerLives")] public Image[] playerLivesSprites;
+    public Image[] playerLivesSprites;
     public Sprite fullLife;
     public Sprite emptyLife;
 
-    public UnityEvent UpdateLives;
+    public UnityEvent updateLives;
 
     public int playerLives = 3;
     
     private void Awake()
     {
-        UpdateLives.AddListener(RemoveLives);
+        updateLives.AddListener(RemoveLives);
     }
 
     public void RemoveLives()
@@ -30,6 +30,7 @@ public class LivesManager : MonoBehaviour
             {
                 playerLivesSprites[i].sprite = emptyLife;
                 playerLives--;
+                ODS14Manager.Instance.reduceLife.Invoke();
                 break;
             }
         }
