@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckPause()
     {
+        Debug.Log("Pausaste");
+
         PauseUI.SetActive(isPaused);
         if (isPaused)
         {
