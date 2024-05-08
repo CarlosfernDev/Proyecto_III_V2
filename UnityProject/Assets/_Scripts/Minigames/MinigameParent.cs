@@ -92,6 +92,8 @@ public class MinigameParent : MonoBehaviour
     {
         //if (_TextCanvas == null) return;
 
+        GameManager.Instance.playerScript.sloopyMovement = false;
+
         if (isCountdown)
         {
             Timer(3);
@@ -189,7 +191,7 @@ public class MinigameParent : MonoBehaviour
 
     protected virtual void OnGameStart()
     {
-        
+        if(GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
     }
 
     public virtual void OnGameFinish()

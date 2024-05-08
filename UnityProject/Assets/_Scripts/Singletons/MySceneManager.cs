@@ -1,8 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+[Serializable]
+public class MinigameUIData
+{
+    public Vector2 _PunteroVector;
+    public Sprite _TutorialSprite;
+    public string _Name;
+}
+
 
 public class MySceneManager : MonoBehaviour
 {
@@ -16,9 +27,11 @@ public class MySceneManager : MonoBehaviour
 
     [Header("Panel Tutorial")]
     [SerializeField] private GameObject ingameCanvas;
-    [SerializeField] private List<Vector2> PunteroVector;
+    [SerializeField] private List<MinigameUIData> PunteroVector;
     [SerializeField] private RectTransform Puntero;
+    [SerializeField] private TMP_Text TravelingText;
     [SerializeField] private RectTransform panelReference;
+    [SerializeField] private Image _PanelImage;
     [SerializeField] private Animator _panelAnimator;
 
     private bool anyKeyIsPressed = false;
@@ -60,8 +73,11 @@ public class MySceneManager : MonoBehaviour
 
         if (Value >= 10 && Value < 100)
         {
+            int listvalue = Mathf.FloorToInt(Value / 10) - 1;
             ingameCanvas.SetActive(true);
-            Puntero.anchoredPosition = PunteroVector[Mathf.FloorToInt(Value / 10) - 1];
+            Puntero.anchoredPosition = PunteroVector[listvalue]._PunteroVector;
+            _PanelImage.sprite = PunteroVector?[listvalue]._TutorialSprite;
+            TravelingText.text = "Traveling to " + PunteroVector?[listvalue]._Name;
         }
         else
         {
@@ -76,7 +92,7 @@ public class MySceneManager : MonoBehaviour
         while (true)
         {
             if (_myanimator.GetCurrentAnimatorStateInfo(0).IsName("1"))
-            break;
+                break;
 
             yield return null;
         }
@@ -85,7 +101,7 @@ public class MySceneManager : MonoBehaviour
 
         if (SceneDictionary.ContainsKey(Value))
         {
-            if(GameManager.Instance != null)
+            if (GameManager.Instance != null)
             {
                 if (Value <= 9)
                     GameManager.Instance.programState = GameManager.ProgramState.Menu;
@@ -115,7 +131,7 @@ public class MySceneManager : MonoBehaviour
             yield return null;
         }
 
-        if(Value >= 10 && Value < 100)
+        if (Value >= 10 && Value < 100)
         {
             _panelAnimator.gameObject.SetActive(true);
 
@@ -162,13 +178,13 @@ public class MySceneManager : MonoBehaviour
         while (true)
         {
             if (_myanimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
-            break;
+                break;
 
 
             yield return null;
         }
 
-        if(OnLoadFinish != null)
+        if (OnLoadFinish != null)
         {
             OnLoadFinish();
         }
@@ -199,7 +215,7 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(1, "MainMenu");
         SceneDictionary.Add(2, "TestMainMenu");
 
-        SceneDictionary.Add(10, "ODS2_Scene");
+        SceneDictionary.Add(10, "ODS2_FINAL");
         SceneDictionary.Add(20, "SceneManager2");
         SceneDictionary.Add(30, "ODS7_FRAN");
         SceneDictionary.Add(40, "InputManagerTest");
