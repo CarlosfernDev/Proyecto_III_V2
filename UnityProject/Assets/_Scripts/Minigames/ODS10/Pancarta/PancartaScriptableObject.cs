@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
+[Serializable]
 [CreateAssetMenu(fileName = "PancartaData", menuName = "ScriptableObjects/ODS10/Pancarta", order = 1)]
 public class PancartaScriptableObject : ScriptableObject
 {

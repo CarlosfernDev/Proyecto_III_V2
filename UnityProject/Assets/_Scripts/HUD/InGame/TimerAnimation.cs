@@ -16,7 +16,8 @@ public class TimerAnimation : MonoBehaviour
 
     public void RotateAnimation()
     {
-        if (Rotate) { 
+        if (Rotate)
+        {
             transform.localEulerAngles = Vector3.forward * -RotationValue;
             Rotate = false;
         }
