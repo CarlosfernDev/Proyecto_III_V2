@@ -5,12 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using TMPro;
 
 public class GUIAreUSure : MonoBehaviour
 {
     [SerializeField] private Image _button;
     [SerializeField] private GameObject _Canvas;
 
+    [SerializeField] private TMP_Text _Text;
     [SerializeField] private Sprite _EnableSprite;
     [SerializeField] private Sprite _DisableSprite;
 
@@ -73,5 +75,10 @@ public class GUIAreUSure : MonoBehaviour
     public void No()
     {
         DisableMenu();
+    }
+
+    public void ChangeText(string value)
+    {
+        _Text.text = value;
     }
 }

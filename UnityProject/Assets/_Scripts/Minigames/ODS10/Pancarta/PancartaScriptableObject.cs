@@ -14,6 +14,8 @@ public class PancartaScriptableObject : ScriptableObject
     public RenderTexture _PacartaRenderTexture;
     public string _PancartaName;
 
+    public int Score;
+
     public void LoadTexture()
     {
         if (!File.Exists(SaveManager.SAVE_FOLDER + _PancartaName + ".png")) return;
