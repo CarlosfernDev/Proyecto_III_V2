@@ -40,6 +40,8 @@ public class MySceneManager : MonoBehaviour
     public Action OnLoadFinish;
     private Dictionary<int, string> SceneDictionary;
 
+    static public int ActualScene;
+
     private void Awake()
     {
         if (Instance == null)
@@ -115,6 +117,7 @@ public class MySceneManager : MonoBehaviour
                 Debug.LogWarning("No hay GameManager");
             }
 
+            ActualScene = Value;
             loadLevel = SceneManager.LoadSceneAsync(SceneDictionary[Value]);
         }
         else
@@ -188,7 +191,6 @@ public class MySceneManager : MonoBehaviour
         {
             OnLoadFinish();
         }
-
         isLoading = false;
     }
 
@@ -219,8 +221,19 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(20, "SceneManager2");
         SceneDictionary.Add(30, "ODS7_FRAN");
         SceneDictionary.Add(40, "InputManagerTest");
-        SceneDictionary.Add(50, "Minijuego5");
 
+        SceneDictionary.Add(50, "ODS10_FINAL");
+        SceneDictionary.Add(51, "ODS10_FINAL");
+        SceneDictionary.Add(52, "ODS10_FINAL");
+        SceneDictionary.Add(53, "ODS10_FINAL");
+        SceneDictionary.Add(54, "ODS10_FINAL");
+        SceneDictionary.Add(55, "ODS10_FINAL");
+        SceneDictionary.Add(56, "ODS10_FINAL");
+        SceneDictionary.Add(57, "ODS10_FINAL");
+        SceneDictionary.Add(58, "ODS10_FINAL");
+        SceneDictionary.Add(59, "ODS10_FINAL");
+
+        SceneDictionary.Add(100, "HUBTESTEO");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }

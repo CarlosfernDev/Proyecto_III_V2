@@ -35,5 +35,6 @@ public class PantallaFinalODS10 : MonoBehaviour
     public void FinishGame()
     {
         InputManager.Instance.interactEvent.RemoveListener(FinishGame);
+        MySceneManager.Instance.NextScene(100, 1, 1, 4);
     }
 }
