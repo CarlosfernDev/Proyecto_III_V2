@@ -131,61 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 743631665817634023, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 743631665817634023, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 743631665817634023, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 743631665817634023, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 940730167141255150, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 940730167141255150, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 940730167141255150, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404336666610787636, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404336666610787636, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404336666610787636, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4404336666610787636, guid: 27611c8b11bbdfd4690e1682e71d76ca,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7638133069787850437, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
       propertyPath: m_Name
@@ -194,17 +139,17 @@ PrefabInstance:
     - target: {fileID: 8884140795856587094, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 911.07733
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8884140795856587094, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 86.869995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8884140795856587094, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1250.9358
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8884140795856587094, guid: 27611c8b11bbdfd4690e1682e71d76ca,
         type: 3}
@@ -2036,8 +1981,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Gui: {fileID: 1420975557}
   SceneID: 10
-  FadeInID: 1
-  FadeOutID: 1
+  FadeInID: 2
+  FadeOutID: 2
   LoadTime: 7
   PortalText: Do you want get into the farm's portal?
   PlayerPositionOnReturn: {fileID: 2100046909}
@@ -2196,6 +2141,21 @@ PrefabInstance:
       propertyPath: _Gui
       value: 
       objectReference: {fileID: 1420975557}
+    - target: {fileID: 4461665940443881889, guid: 934ad14eee150d746adcd0991ba3029b,
+        type: 3}
+      propertyPath: FadeInID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461665940443881889, guid: 934ad14eee150d746adcd0991ba3029b,
+        type: 3}
+      propertyPath: LoadTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461665940443881889, guid: 934ad14eee150d746adcd0991ba3029b,
+        type: 3}
+      propertyPath: FadeOutID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5091039709868175739, guid: 934ad14eee150d746adcd0991ba3029b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2269,6 +2229,21 @@ PrefabInstance:
       propertyPath: _Gui
       value: 
       objectReference: {fileID: 1420975557}
+    - target: {fileID: 2873821175847634360, guid: fc6142bcf526037498bd80d459f07dc3,
+        type: 3}
+      propertyPath: FadeInID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873821175847634360, guid: fc6142bcf526037498bd80d459f07dc3,
+        type: 3}
+      propertyPath: LoadTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873821175847634360, guid: fc6142bcf526037498bd80d459f07dc3,
+        type: 3}
+      propertyPath: FadeOutID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3016803641344662940, guid: fc6142bcf526037498bd80d459f07dc3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2465,6 +2440,21 @@ PrefabInstance:
       propertyPath: _Gui
       value: 
       objectReference: {fileID: 1420975557}
+    - target: {fileID: 8477366598586749882, guid: b3970f1f7c5f9154db5781db16763773,
+        type: 3}
+      propertyPath: FadeInID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477366598586749882, guid: b3970f1f7c5f9154db5781db16763773,
+        type: 3}
+      propertyPath: LoadTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8477366598586749882, guid: b3970f1f7c5f9154db5781db16763773,
+        type: 3}
+      propertyPath: FadeOutID
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2556,6 +2546,21 @@ PrefabInstance:
       propertyPath: _Gui
       value: 
       objectReference: {fileID: 1420975557}
+    - target: {fileID: 1976951611425622732, guid: bdcfb4849bc4f8e4684e2c307d54966c,
+        type: 3}
+      propertyPath: FadeInID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976951611425622732, guid: bdcfb4849bc4f8e4684e2c307d54966c,
+        type: 3}
+      propertyPath: LoadTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976951611425622732, guid: bdcfb4849bc4f8e4684e2c307d54966c,
+        type: 3}
+      propertyPath: FadeOutID
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2449262342789465460, guid: bdcfb4849bc4f8e4684e2c307d54966c,
         type: 3}
       propertyPath: m_LocalPosition.x

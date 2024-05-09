@@ -152,9 +152,15 @@ public class GameManager : MonoBehaviour
         PauseUI.SetActive(isPaused);
         if (isPaused)
         {
+            Time.timeScale = 0;
+
             RestartButton.gameObject.SetActive(programState == ProgramState.Minigame);
 
             eventSystem.SetSelectedGameObject(FirstButton.gameObject);
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 
