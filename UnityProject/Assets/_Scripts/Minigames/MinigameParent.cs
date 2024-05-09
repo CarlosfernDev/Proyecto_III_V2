@@ -200,6 +200,7 @@ public class MinigameParent : MonoBehaviour
         gameIsActive = false;
 
         SaveValue();
+        GameManager.Instance.isPlaying = false;
 
         _Coroutine = StartCoroutine(CoroutineOnGameFinish());
     }
