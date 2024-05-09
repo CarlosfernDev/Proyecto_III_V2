@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 [Serializable]
 public class InGameComponentCartel
@@ -39,6 +40,8 @@ public class ODS10Singleton : MinigameParent
     public PantallaFinalODS10 pantallafinal;
 
     [SerializeField] PancartaScriptableObject pancartaScriptableObject;
+
+    [SerializeField] private VisualEffect _cambioColorVFX;
 
     protected override void personalAwake()
     {
@@ -126,6 +129,7 @@ public class ODS10Singleton : MinigameParent
 
     public void ChangeBackground(int value)
     {
+        _cambioColorVFX.Play();
         value = Mathf.Clamp(value, 0, ColorBackground.Count - 1);
         CartelImage.color = ColorBackground[value].color;
         ColorValue = value;
