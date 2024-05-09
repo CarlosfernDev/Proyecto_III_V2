@@ -32,6 +32,7 @@ public class MinigameParent : MonoBehaviour
     private Coroutine _Coroutine;
 
     [Header("ScoreStats")]
+    [SerializeField] private StatsButtons _statsButtons;
     [SerializeField] private Animator ResoultAnimator;
     [SerializeField] private GameObject ResultCanvas;
     [SerializeField] protected RankResoultScriptable RankData;
@@ -191,7 +192,7 @@ public class MinigameParent : MonoBehaviour
 
     protected virtual void OnGameStart()
     {
-        if(GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
+        if (GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
     }
 
     public virtual void OnGameFinish()
@@ -242,17 +243,27 @@ public class MinigameParent : MonoBehaviour
         SetResult();
         ResoultAnimator.SetTrigger("EnterAnimation");
 
-        while (true)
+        while (ResoultAnimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
         {
             if (anyKeyIsPressed)
+            {
+                ResoultAnimator.speed = 3;
                 break;
-
+            }
             yield return null;
         }
+
+        while (ResoultAnimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
+        {
+            yield return null;
+        }
+
+        ResoultAnimator.speed = 1;
         InputManager.Instance.anyKeyEvent.RemoveListener(SetPressedButton);
         anyKeyIsPressed = false;
 
-        MySceneManager.Instance.NextScene(100, 1, 1, 0);
+        _statsButtons.EnableButtons();
+
         // SceneManager hara cosas
     }
 
