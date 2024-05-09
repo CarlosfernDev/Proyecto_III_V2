@@ -216,6 +216,19 @@ public class MinigameParent : MonoBehaviour
         }
     }
 
+    public void SaveValue(int value)
+    {
+        Debug.Log("Finished");
+        try
+        {
+            MinigameData.FinishCheckScore(value);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("No se ha podido guardar, probablemente te falta el SaveManager");
+        }
+    }
+
     IEnumerator CoroutineOnGameFinish()
     {
         //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
@@ -226,8 +239,8 @@ public class MinigameParent : MonoBehaviour
         InputManager.Instance.anyKeyEvent.AddListener(SetPressedButton);
 
         ResultCanvas.SetActive(true);
-        //ResoultAnimator.SetTrigger("EnterAnimation");
-        SetResoult();
+        SetResult();
+        ResoultAnimator.SetTrigger("EnterAnimation");
 
         while (true)
         {
@@ -239,11 +252,11 @@ public class MinigameParent : MonoBehaviour
         InputManager.Instance.anyKeyEvent.RemoveListener(SetPressedButton);
         anyKeyIsPressed = false;
 
-        MySceneManager.Instance.NextScene(2, 1, 1, 0);
+        MySceneManager.Instance.NextScene(100, 1, 1, 0);
         // SceneManager hara cosas
     }
 
-    public virtual void SetResoult()
+    public virtual void SetResult()
     {
         Debug.Log("Se hace tranquilo");
         Debug.Log(Score);

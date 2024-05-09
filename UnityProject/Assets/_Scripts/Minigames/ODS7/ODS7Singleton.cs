@@ -94,28 +94,24 @@ public class ODS7Singleton : MinigameParent
         TimeTryReference = Time.time;
     }
 
-    public override void SetResoult()
+    public override void SetResult()
     {
         Debug.Log("Se hace tranquilo");
         Debug.Log(Score);
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        _ScoreText.ChangeText(Score + timer.GetRealTime()*10);
-        _txHighScore.text = "High: " + MinigameData.maxPoints.ToString("000000");
+        _ScoreText.ChangeText(timer.GetTimeInSeconds());
+
+        int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
+        int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
+
+        _txHighScore.text = "High: " + string.Format("{0:00}:{1:00}", minutos, segundos/*, milisegundos*/);
     }
 
     public override void SaveValue()
     {
-        Debug.Log("Finished");
-        try
-        {
-            MinigameData.FinishCheckScore(Score + (int)timer.TimerValue);
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning("No se ha podido guardar, probablemente te falta el SaveManager");
-        }
+        SaveValue(timer.GetRealTime());
     }
 
 }
