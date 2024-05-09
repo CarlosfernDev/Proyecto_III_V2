@@ -166,9 +166,23 @@ public class GameManager : MonoBehaviour
         PauseUI.SetActive(false);
     }
 
+    public void RestartGame()
+    {
+        SetPause(false);
+        MySceneManager.Instance.RestartScene();
+    }
+
     public void CloseGame()
     {
-        Application.Quit();
+        if (MySceneManager.ActualScene >= 10 && MySceneManager.ActualScene < 100)
+        {
+            SetPause(false);
+            MySceneManager.Instance.NextScene(100,1,1,1);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
     #endregion

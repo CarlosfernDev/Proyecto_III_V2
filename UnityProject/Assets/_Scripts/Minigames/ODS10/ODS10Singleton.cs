@@ -91,7 +91,6 @@ public class ODS10Singleton : MinigameParent
     protected override void personalStart()
     {
         base.personalStart();
-        StartCoroutine(CoroutineScreenshot());
     }
 
     public void SavePhoto()

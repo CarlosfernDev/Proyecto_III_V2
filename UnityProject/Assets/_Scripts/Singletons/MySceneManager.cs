@@ -69,6 +69,11 @@ public class MySceneManager : MonoBehaviour
         LoadCorutine = StartCoroutine(LoadCorutineFunction(Value, fadein, fadeout, MinimalTime));
     }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneDictionary[ActualScene]);
+    }
+
     IEnumerator LoadCorutineFunction(int Value, int fadein, int fadeout, float LoadTime)
     {
         isLoading = true;

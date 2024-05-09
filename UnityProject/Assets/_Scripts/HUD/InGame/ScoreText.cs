@@ -17,4 +17,9 @@ public class ScoreText : MonoBehaviour
     {
         Text.text = Pretext + Value.ToString("000000");
     }
+
+    public void ChangeText(string Value)
+    {
+        Text.text = Pretext + Value;
+    }
 }
