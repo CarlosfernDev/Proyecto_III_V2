@@ -7,6 +7,7 @@ public class PantallaFinalODS10 : MonoBehaviour
     public Animator _animator;
     public GameObject ObjetosFinales;
     public string StarAnimation;
+    public PancartaArea _area;
 
     public MeshRenderer Pancarta; 
 
@@ -35,5 +36,11 @@ public class PantallaFinalODS10 : MonoBehaviour
     public void FinishGame()
     {
         InputManager.Instance.interactEvent.RemoveListener(FinishGame);
+
+        int value = MySceneManager.ActualScene - 50;
+        GameManager.Instance.PancartaData[value].Score = _area.Score;
+        SaveManager.SavePancarta(value);
+
+        MySceneManager.Instance.NextScene(100, 1, 1, 4);
     }
 }

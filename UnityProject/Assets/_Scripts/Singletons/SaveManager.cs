@@ -39,7 +39,6 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveMinigameData(int value)
     {
-        SaveItemsEquiped saveItemsEquiped = new SaveItemsEquiped();
 
         saveState.SaveMinigame[value] = GameManager.Instance.MinigameScripts[value].GetSavePuzzle(); 
         saveState.Work = true;
@@ -56,6 +55,22 @@ public class SaveManager : MonoBehaviour
             saveState.SaveMinigame[i] = GameManager.Instance.MinigameScripts[i].GetSavePuzzle();
             Debug.Log(saveState.SaveMinigame[i].ID);
         }
+        saveState.Work = true;
+
+        string Json = JsonUtility.ToJson(saveState);
+        SaveSaveString(Json);
+    }
+
+    public static void SavePancarta(int value)
+    {
+        if (GameManager.Instance.PancartaData.Length - 1 >= value) return;
+
+        PancartasData PancartaSaved = new PancartasData();
+
+        PancartaSaved.ID = value;
+        PancartaSaved.MaxPoints = GameManager.Instance.PancartaData[value].Score;
+
+        saveState.SavePancarta[value] = PancartaSaved;
         saveState.Work = true;
 
         string Json = JsonUtility.ToJson(saveState);
@@ -111,6 +126,11 @@ public class SaveManager : MonoBehaviour
         }
 
         // Foreach cargando coleccionables desbloqueados
+
+        for (int i = 0; i < GameManager.Instance.PancartaData.Length; i++)
+        {
+            GameManager.Instance.PancartaData[i].Score = saveState.SavePancarta[i].MaxPoints;
+        }
     }
 
     #endregion
@@ -217,6 +237,14 @@ public class SaveData
     public SavePlayerData SavePlayerData = new SavePlayerData();
     public SaveMinigame[] SaveMinigame = new SaveMinigame[8];
     public SaveUnlockable[] SaveUnlockable;
+    public PancartasData[] SavePancarta = new PancartasData[8];
+}
+
+[Serializable]
+public class PancartasData
+{
+    public int ID;
+    public int MaxPoints;
 }
 
 #endregion

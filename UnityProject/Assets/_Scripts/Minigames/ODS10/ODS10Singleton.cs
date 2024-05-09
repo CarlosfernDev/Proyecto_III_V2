@@ -45,7 +45,15 @@ public class ODS10Singleton : MinigameParent
         Instance = this;
         CartelDictionary = new Dictionary<GameObject, ScriptableObjectComponente>();
         base.personalAwake();
-        ExecuteGame();
+
+        if(MySceneManager.ActualScene >= 50 && MySceneManager.ActualScene < 60)
+        {
+            ExecuteGame(MySceneManager.ActualScene - 50);
+        }
+        else
+        {
+            ExecuteGame();
+        }
     }
 
     public void ExecuteGame(int Value)

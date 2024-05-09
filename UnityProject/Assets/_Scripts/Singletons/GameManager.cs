@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     // Variables condicionales
     public bool isDialogueActive = false;
     [SerializeField] public MinigamesScriptableObjectScript[] MinigameScripts;
+    [SerializeField] public PancartaScriptableObject[] PancartaData;
 
     [Header("PauseUI")]
     [SerializeField] public Canvas PauseCanvas;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 

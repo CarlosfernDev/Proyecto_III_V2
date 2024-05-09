@@ -26,7 +26,7 @@ public class TestInputs : MonoBehaviour
     [SerializeField] public PhysicMaterial materialDrag;
     [SerializeField] public PhysicMaterial materialNormal;
     [SerializeField] public PhysicMaterial materialRampa;
-    private Rigidbody rb;
+    public Rigidbody rb;
     private float grav;
     public float actualAcceSpeed;
     public float actualMaxSpeed;
@@ -97,8 +97,8 @@ public class TestInputs : MonoBehaviour
 
     public void Interactuo()
     {
-       
-        
+        if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+
         if (isInteractable)
         {
             refObjetoInteract.GetComponent<Iinteractable>().Interact();
