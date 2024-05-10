@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause(bool value)
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = value;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause()
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = !isPaused;
@@ -152,9 +152,15 @@ public class GameManager : MonoBehaviour
         PauseUI.SetActive(isPaused);
         if (isPaused)
         {
+            Time.timeScale = 0;
+
             RestartButton.gameObject.SetActive(programState == ProgramState.Minigame);
 
             eventSystem.SetSelectedGameObject(FirstButton.gameObject);
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 

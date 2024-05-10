@@ -224,7 +224,7 @@ public class MySceneManager : MonoBehaviour
 
         SceneDictionary.Add(10, "ODS2_FINAL");
         SceneDictionary.Add(20, "SceneManager2");
-        SceneDictionary.Add(30, "ODS7_FRAN");
+        SceneDictionary.Add(30, "ODS7_FINAL");
         SceneDictionary.Add(40, "InputManagerTest");
 
         SceneDictionary.Add(50, "ODS10_FINAL");

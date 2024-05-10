@@ -8,6 +8,8 @@ public class HubManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.isPlaying = true;
+
         Debug.Log("Se intento tpear " + TeleportToThisPosition);
         if(!Vector3.Equals( TeleportToThisPosition, Vector3.zero))
         {
