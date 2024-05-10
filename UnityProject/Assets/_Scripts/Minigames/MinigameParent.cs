@@ -76,7 +76,7 @@ public class MinigameParent : MonoBehaviour
 
         // Quitar ANTES DEL BUILD
         UpdateScore();
-        if (IsDeveloping)
+        if (IsDeveloping || !MySceneManager.Instance.isLoading)
         {
             StartCountdown();
         }
