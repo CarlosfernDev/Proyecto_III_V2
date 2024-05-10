@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using static CloudSpawner;
 
 public class Granjas : LInteractableParent
@@ -23,6 +24,17 @@ public class Granjas : LInteractableParent
     private float TimeExtraWater;
 
     public int waterindex = 0;
+
+    [Header("Visual")]
+    public Animator animatorBocadillo;
+    public Animator animatorSlider;
+    public List<BocadillosGranjasScriptables> List;
+    public string TriggerAnimatorEnabled;
+    public string TriggerAnimatorDisabled;
+
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem _RegarVFX;
+    [SerializeField] private VisualEffect _PlantarVFX;
 
     private void Start()
     {
