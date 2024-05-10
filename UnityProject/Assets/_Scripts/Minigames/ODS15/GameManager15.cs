@@ -77,6 +77,7 @@ public class GameManager15 : MonoBehaviour
 
     private void Start()
     {
+        UpdateScore();
         loadNewAnimal();
     }
 
@@ -84,12 +85,14 @@ public class GameManager15 : MonoBehaviour
 
     private void Update()
     {
-        checkConditionsmet(animalActivo);
 
         
     }
 
-
+    public void CheckConditionsButtonCall()
+    {
+        checkConditionsmet(animalActivo);
+    }
 
 
     public void MenusSwap(int i)
