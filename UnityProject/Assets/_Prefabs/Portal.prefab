@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8831702357635888408}
   - component: {fileID: 5116493726181563643}
   - component: {fileID: 8821155751583896843}
+  - component: {fileID: 9169078212520130031}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.65125674, y: 7.400784, z: -11.34}
-  m_LocalScale: {x: 2.6794, y: 2.6794, z: 2.6794}
+  m_LocalScale: {x: 2.6794002, y: 2.6793997, z: 2.6793997}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc6b22291fbf04046b0f46c6982824a3, type: 2}
+  - {fileID: 2100000, guid: 3072709aff29fad4f901aead504b592e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,5 +104,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.0000001, z: 1.4272087e-14}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.0000001, z: 1.392416}
+  m_Center: {x: 0, y: -3.9801875e-15, z: -0.69620806}
+--- !u!114 &9169078212520130031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7411286280561027945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4e45412438e6041bf0ddc23cdf9607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Gui: {fileID: 0}
+  SceneID: 80
+  FadeInID: 1
+  FadeOutID: 1
+  LoadTime: 7
+  PortalText: Pulsa E para Interactuar
+  PlayerPositionOnReturn: {fileID: 0}
