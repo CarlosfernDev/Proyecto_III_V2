@@ -97,6 +97,7 @@ public class TestInputs : MonoBehaviour
 
     public void Interactuo()
     {
+        
         if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
 
         if (isInteractable)
@@ -111,7 +112,7 @@ public class TestInputs : MonoBehaviour
     }
     public void MeMuevo(Vector2 vec)
     {
-        //  Comento la linea por que si no el char controller no va en la escena de inputtest
+        
         if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
         if (sloopyMovement)
         {
@@ -224,6 +225,7 @@ public class TestInputs : MonoBehaviour
                 refObjetoInteract = other.gameObject;
                 isInteractable = true;
                 TextoInteractChange.Invoke(other.GetComponent<Iinteractable>().TextoInteraccion);
+                Debug.Log("inrangeofobject");
             }
            
         }

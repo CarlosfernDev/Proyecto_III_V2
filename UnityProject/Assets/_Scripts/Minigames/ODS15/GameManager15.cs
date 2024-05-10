@@ -9,6 +9,7 @@ public class GameManager15 : MonoBehaviour
     public static GameManager15 Instance { get; private set; }
 
     //
+    public Jurado scoreUI;
     private int puntuacion = 0;
     public GameObject puntuacionUI;
     //PosObjetosHabitat
@@ -187,6 +188,7 @@ public class GameManager15 : MonoBehaviour
         if (animal.Comida == ComidaActiva && animal.Habitat == HabitatActivo && animal.Decoracion == DecoracionActiva)
         {
             Debug.Log("win");
+            UpdateScore();
             puntuacion += 1;
             puntuacionUI.GetComponent<TMP_Text>().text = puntuacion.ToString();
             Destroy(comidaActivaVisual);
@@ -246,6 +248,11 @@ public class GameManager15 : MonoBehaviour
         
 
     
+    }
+
+    public void UpdateScore()
+    {
+        scoreUI.ShowScore(puntuacion);
     }
 }
 
