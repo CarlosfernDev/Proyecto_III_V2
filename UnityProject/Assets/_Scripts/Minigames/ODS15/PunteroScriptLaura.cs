@@ -27,7 +27,7 @@ public class PunteroScriptLaura: MonoBehaviour
     [SerializeField] private UnityEvent<string> TextoInteractChange;
     //Modificacion de la clase event para poder pasar en las llamadas strings
 
-    [SerializeField] MeshRenderer imVisible;
+    [SerializeField] public SpriteRenderer imVisible;
     private Vector3 poInicial;
     [System.Serializable]
     public class MyStringEvent : UnityEvent<string>
@@ -63,7 +63,6 @@ public class PunteroScriptLaura: MonoBehaviour
     {
         RaycastHit hit;
         bool ThisFrameIsPoiting = RaycastGenerator(out hit);
-        Debug.Log(ThisFrameIsPoiting);
         ISelectionInteractable interactable;
 
         if (ThisFrameIsPoiting && ((!IsPointingSomething) || PointedGameobject != hit.transform.gameObject))

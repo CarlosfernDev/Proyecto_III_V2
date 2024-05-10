@@ -204,12 +204,8 @@ public class GameManager15 : MonoBehaviour
         }
         else
         {
-         //   printAnimal(animal);
-         //   Debug.Log("ACTUAL PARAMETERS");
-         //   Debug.Log("HAB " +HabitatActivo);
-         //   Debug.Log("COM " + ComidaActiva);
-         //   Debug.Log("DEC " + DecoracionActiva);
-
+            puntuacion -= 1;
+            UpdateScore();
 
         }
     }
@@ -255,6 +251,11 @@ public class GameManager15 : MonoBehaviour
 
     public void UpdateScore()
     {
+        Debug.Log(puntuacion);
+        if (puntuacion<0)
+        {
+            puntuacion = 0;
+        }
         scoreUI.ShowScore(puntuacion);
     }
 }
