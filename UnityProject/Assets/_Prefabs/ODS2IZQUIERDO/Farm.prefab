@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -4914,14 +4914,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291907727061105979}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: -0.02}
   m_LocalScale: {x: 0.003465857, y: 0.0034658574, z: 0.0034658564}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2143571946937044770}
   m_Father: {fileID: 507303551599567320}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.03, y: 1.14}
@@ -5389,7 +5389,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10411,19 +10411,19 @@ MonoBehaviour:
     type: 3}
   _farmState: 0
   SliderMain: {fileID: 8800783773284663533}
-  SliderSecondary: {fileID: 0}
   waterindex: 0
   animatorBocadillo: {fileID: 4651470445573742528}
   animatorSlider: {fileID: 3262267984412741100}
-  List:
+  AnimatorList:
   - {fileID: 11400000, guid: 1231a4dbbfcd6c3489a7baeca1bcfcf9, type: 2}
   - {fileID: 11400000, guid: 1231a4dbbfcd6c3489a7baeca1bcfcf9, type: 2}
   - {fileID: 11400000, guid: 1231a4dbbfcd6c3489a7baeca1bcfcf9, type: 2}
   - {fileID: 11400000, guid: c035838ee3f8e6e40b0c7dc9272034e7, type: 2}
   - {fileID: 11400000, guid: c035838ee3f8e6e40b0c7dc9272034e7, type: 2}
   - {fileID: 11400000, guid: 0a4a533a50fec034b851a6c11939b47a, type: 2}
-  TriggerAnimatorEnabled: 
-  TriggerAnimatorDisabled: 
+  - {fileID: 11400000, guid: 0a4a533a50fec034b851a6c11939b47a, type: 2}
+  TriggerAnimatorEnabled: On
+  TriggerAnimatorDisabled: Off
   _RegarVFX: {fileID: 7318632929180681852}
   _PlantarVFX: {fileID: 1473141328787000852}
 --- !u!65 &8701549188086298118
@@ -10841,6 +10841,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8926484042661614526, guid: 470db38286036434ead89af97faf60dc,
         type: 3}
+    - target: {fileID: 4584408394304958459, guid: 9be2e67d3e7e91b4482985f3333afda4,
+        type: 3}
+      propertyPath: m_AllowInstancing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584408394304958459, guid: 9be2e67d3e7e91b4482985f3333afda4,
+        type: 3}
+      propertyPath: m_ResetSeedOnPlay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584408394304958459, guid: 9be2e67d3e7e91b4482985f3333afda4,
+        type: 3}
+      propertyPath: m_InitialEventName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4584408394304958459, guid: 9be2e67d3e7e91b4482985f3333afda4,
+        type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7458198430895322584, guid: 9be2e67d3e7e91b4482985f3333afda4,
         type: 3}
       propertyPath: m_Name

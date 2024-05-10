@@ -17,7 +17,6 @@ public class Granjas : LInteractableParent
     public FarmState _farmState = FarmState.Disable;
 
     [SerializeField] private Slider SliderMain;
-    [SerializeField] private Slider SliderSecondary;
 
     private float TimeReferenceSeed;
     private float TimeReferenceSecondary;
@@ -28,7 +27,7 @@ public class Granjas : LInteractableParent
     [Header("Visual")]
     public Animator animatorBocadillo;
     public Animator animatorSlider;
-    public List<BocadillosGranjasScriptables> List;
+    public List<BocadillosGranjasScriptables> AnimatorList;
     public string TriggerAnimatorEnabled;
     public string TriggerAnimatorDisabled;
 
@@ -38,11 +37,13 @@ public class Granjas : LInteractableParent
 
     private void Start()
     {
+        animatorBocadillo.SetTrigger(TriggerAnimatorDisabled);
+        animatorSlider.SetTrigger(TriggerAnimatorDisabled);
+
         ActualRender = GranjasRender[0];
         ChangeRender(0);
 
         SliderMain.gameObject.SetActive(false);
-        SliderSecondary.gameObject.SetActive(false);
         SliderMain.maxValue = ODS2Singleton.Instance.SeedTimer;
         SliderMain.value = 0;
         IsInteractable = false;
@@ -109,7 +110,7 @@ public class Granjas : LInteractableParent
             return;
         }
 
-        SliderSecondary.gameObject.SetActive(false);
+        animatorBocadillo.SetTrigger(TriggerAnimatorDisabled);
 
         switch (_farmState)
         {
@@ -127,14 +128,13 @@ public class Granjas : LInteractableParent
             }
             case FarmState.WaitingWater:
                 {
+                    _RegarVFX.Play();
                     ODS2Singleton.Instance.AddScore(ODS2Singleton.Instance.ScoreWatering);
                     break;
                 }
         }
 
         SetSeed();
-
-
         base.Interact();
     }
 
@@ -147,6 +147,7 @@ public class Granjas : LInteractableParent
             waterindex = 0;
             TimeExtraWater = 0;
         }
+        _PlantarVFX.Play();
         SliderMain.gameObject.SetActive(true);
         TimeReferenceSeed = Time.time;
 
@@ -182,10 +183,6 @@ public class Granjas : LInteractableParent
     bool UpdateSecondarySlider()
     {
         float TimeLoad = Time.time - TimeReferenceSecondary;
-        SliderSecondary.value = TimeLoad;
-
-        if (SliderSecondary.value == SliderSecondary.maxValue)
-            return true;
 
         return false; 
     }
@@ -195,24 +192,23 @@ public class Granjas : LInteractableParent
     void FarmDestroyed()
     {
         ChangeRender(1);
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.WaitPlayerInteraction]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
 
         IsInteractable = true;
 
         ODS2Singleton.Instance.timer.RestTime(ODS2Singleton.Instance.ReduceTime);
 
-        SliderSecondary.gameObject.SetActive(false);
         _farmState = FarmState.WaitPlayerInteraction;
     }
 
     void MainSliderComplete()
     {
         ChangeRender(2);
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.Recolect]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
 
         TimeReferenceSecondary = Time.time;
-        SliderSecondary.maxValue = ODS2Singleton.Instance.CollectingTimer;
-        SliderSecondary.value = 0;
-
-        SliderSecondary.gameObject.SetActive(true);
 
         IsInteractable = true;
         _farmState = FarmState.Recolect;
@@ -245,13 +241,12 @@ public class Granjas : LInteractableParent
 
         if (ODS2Singleton.Instance.WaterTime[waterindex] > value) return false;
 
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.WaitingWater]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
+
         _farmState = FarmState.WaitingWater;
         IsInteractable = true;
         waterindex += 1;
-
-        SliderSecondary.gameObject.SetActive(true);
-        SliderSecondary.value = 0;
-        SliderSecondary.maxValue = ODS2Singleton.Instance.WaterMaxTimer;
 
         TimeReferenceSecondary = Time.time;
         TimeExtraWater = value;
