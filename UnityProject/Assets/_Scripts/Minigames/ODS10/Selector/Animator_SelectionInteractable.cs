@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Animator_SelectionInteractable : SelectionInteractableParent
 {
-    Animator _animator;
+    public Animator _animator;
 
     [Header("Hover")]
-    public string HoverTrigger = Highlighted;
+    public string HoverTrigger = "Highlighted";
 
     [Header("Unhover")]
     public string UnhoverTrigger = "Normal";
