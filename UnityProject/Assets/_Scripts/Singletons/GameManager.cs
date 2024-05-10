@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause(bool value)
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = value;
@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause()
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = !isPaused;

@@ -88,9 +88,19 @@ public class ODS10Singleton : MinigameParent
         pantallafinal.ChangeMaterialPancarta(pancartaScriptableObject._PancartaMaterial);
     }
 
+    protected override void OnGameStart()
+    {
+        base.OnGameStart();
+        GameManager.Instance.isPlaying = true;
+    }
+
     protected override void personalStart()
     {
         base.personalStart();
+        if (IsDeveloping || !MySceneManager.Instance.isLoading)
+        {
+            GameManager.Instance.isPlaying = true;
+        }
     }
 
     public void SavePhoto()
@@ -98,6 +108,7 @@ public class ODS10Singleton : MinigameParent
         pancartaScriptableObject.SaveTexture();
         pancartaScriptableObject.LoadTexture();
         puntero.enabled = false;
+        GameManager.Instance.isPlaying = false;
         pantallafinal.StartEnd();
     }
 
