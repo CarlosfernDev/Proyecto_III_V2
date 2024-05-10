@@ -2601,8 +2601,13 @@ MonoBehaviour:
   MinigameData: {fileID: 11400000, guid: 3583f2cae9df04d4d9d2c3f59c6f4d7a, type: 2}
   _uiAnimator: {fileID: 151304233}
   isCountdown: 0
-  _TextCanvas: {fileID: 1517048018}
+  TimerData: {fileID: 0}
+  CountRender: {fileID: 0}
+  NumberAnimation: {fileID: 0}
+  ResoultAnimator: {fileID: 0}
   ResultCanvas: {fileID: 0}
+  RankData: {fileID: 0}
+  RankImage: {fileID: 0}
   _ScoreText: {fileID: 0}
   _txHighScore: {fileID: 0}
   Score: 0
@@ -22296,6 +22301,21 @@ PrefabInstance:
     - target: {fileID: 921907486667905275, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843266543098873869, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843266543098873869, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843266543098873869, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4899271510622079301, guid: 81650adbd4436f34aa22a2de95e8a2e3,

@@ -32,6 +32,7 @@ public class MinigameParent : MonoBehaviour
     private Coroutine _Coroutine;
 
     [Header("ScoreStats")]
+    [SerializeField] private StatsButtons _statsButtons;
     [SerializeField] private Animator ResoultAnimator;
     [SerializeField] private GameObject ResultCanvas;
     [SerializeField] protected RankResoultScriptable RankData;
@@ -75,7 +76,7 @@ public class MinigameParent : MonoBehaviour
 
         // Quitar ANTES DEL BUILD
         UpdateScore();
-        if (IsDeveloping)
+        if (IsDeveloping || !MySceneManager.Instance.isLoading)
         {
             StartCountdown();
         }
@@ -90,7 +91,9 @@ public class MinigameParent : MonoBehaviour
 
     private void StartCountdown()
     {
-        //if (_TextCanvas == null) return;
+        if (CountRender == null) return;
+
+        GameManager.Instance.playerScript.sloopyMovement = false;
 
         if (isCountdown)
         {
@@ -189,7 +192,7 @@ public class MinigameParent : MonoBehaviour
 
     protected virtual void OnGameStart()
     {
-        
+        if (GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
     }
 
     public virtual void OnGameFinish()
@@ -197,6 +200,7 @@ public class MinigameParent : MonoBehaviour
         gameIsActive = false;
 
         SaveValue();
+        GameManager.Instance.isPlaying = false;
 
         _Coroutine = StartCoroutine(CoroutineOnGameFinish());
     }
@@ -214,6 +218,19 @@ public class MinigameParent : MonoBehaviour
         }
     }
 
+    public void SaveValue(int value)
+    {
+        Debug.Log("Finished");
+        try
+        {
+            MinigameData.FinishCheckScore(value);
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("No se ha podido guardar, probablemente te falta el SaveManager");
+        }
+    }
+
     IEnumerator CoroutineOnGameFinish()
     {
         //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
@@ -224,24 +241,34 @@ public class MinigameParent : MonoBehaviour
         InputManager.Instance.anyKeyEvent.AddListener(SetPressedButton);
 
         ResultCanvas.SetActive(true);
-        //ResoultAnimator.SetTrigger("EnterAnimation");
-        SetResoult();
+        SetResult();
+        ResoultAnimator.SetTrigger("EnterAnimation");
 
-        while (true)
+        while (ResoultAnimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
         {
             if (anyKeyIsPressed)
+            {
+                ResoultAnimator.speed = 3;
                 break;
-
+            }
             yield return null;
         }
+
+        while (ResoultAnimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
+        {
+            yield return null;
+        }
+
+        ResoultAnimator.speed = 1;
         InputManager.Instance.anyKeyEvent.RemoveListener(SetPressedButton);
         anyKeyIsPressed = false;
 
-        MySceneManager.Instance.NextScene(2, 1, 1, 0);
+        _statsButtons.EnableButtons();
+
         // SceneManager hara cosas
     }
 
-    public virtual void SetResoult()
+    public virtual void SetResult()
     {
         Debug.Log("Se hace tranquilo");
         Debug.Log(Score);

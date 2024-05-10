@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     // Variables condicionales
     public bool isDialogueActive = false;
     [SerializeField] public MinigamesScriptableObjectScript[] MinigameScripts;
+    [SerializeField] public PancartaScriptableObject[] PancartaData;
 
     [Header("PauseUI")]
     [SerializeField] public Canvas PauseCanvas;
@@ -45,6 +46,10 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause(bool value)
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = value;
@@ -132,7 +137,7 @@ public class GameManager : MonoBehaviour
 
     public void SetPause()
     {
-        if (!isPlaying)
+        if (!isPlaying || MySceneManager.Instance.isLoading)
             return;
 
         isPaused = !isPaused;
@@ -142,12 +147,20 @@ public class GameManager : MonoBehaviour
 
     public void CheckPause()
     {
+        Debug.Log("Pausaste");
+
         PauseUI.SetActive(isPaused);
         if (isPaused)
         {
+            Time.timeScale = 0;
+
             RestartButton.gameObject.SetActive(programState == ProgramState.Minigame);
 
             eventSystem.SetSelectedGameObject(FirstButton.gameObject);
+        }
+        else
+        {
+            Time.timeScale = 1;
         }
     }
 
@@ -159,9 +172,23 @@ public class GameManager : MonoBehaviour
         PauseUI.SetActive(false);
     }
 
+    public void RestartGame()
+    {
+        SetPause(false);
+        MySceneManager.Instance.RestartScene();
+    }
+
     public void CloseGame()
     {
-        Application.Quit();
+        if (MySceneManager.ActualScene >= 10 && MySceneManager.ActualScene < 100)
+        {
+            SetPause(false);
+            MySceneManager.Instance.NextScene(100,1,1,1);
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
     #endregion

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(-5)]
 public class InputManager : MonoBehaviour
 {
-    Inputs playerInputs;
+    public Inputs playerInputs;
     public static InputManager Instance;
 
     [SerializeField] public UnityEvent pauseEvent;

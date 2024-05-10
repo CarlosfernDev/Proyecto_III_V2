@@ -1,8 +1,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+[Serializable]
+public class MinigameUIData
+{
+    public Vector2 _PunteroVector;
+    public Sprite _TutorialSprite;
+    public string _Name;
+}
+
 
 public class MySceneManager : MonoBehaviour
 {
@@ -16,7 +27,11 @@ public class MySceneManager : MonoBehaviour
 
     [Header("Panel Tutorial")]
     [SerializeField] private GameObject ingameCanvas;
+    [SerializeField] private List<MinigameUIData> PunteroVector;
+    [SerializeField] private RectTransform Puntero;
+    [SerializeField] private TMP_Text TravelingText;
     [SerializeField] private RectTransform panelReference;
+    [SerializeField] private Image _PanelImage;
     [SerializeField] private Animator _panelAnimator;
 
     private bool anyKeyIsPressed = false;
@@ -24,6 +39,8 @@ public class MySceneManager : MonoBehaviour
     public bool isLoading;
     public Action OnLoadFinish;
     private Dictionary<int, string> SceneDictionary;
+
+    static public int ActualScene;
 
     private void Awake()
     {
@@ -52,13 +69,22 @@ public class MySceneManager : MonoBehaviour
         LoadCorutine = StartCoroutine(LoadCorutineFunction(Value, fadein, fadeout, MinimalTime));
     }
 
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneDictionary[ActualScene]);
+    }
+
     IEnumerator LoadCorutineFunction(int Value, int fadein, int fadeout, float LoadTime)
     {
         isLoading = true;
 
         if (Value >= 10 && Value < 100)
         {
+            int listvalue = Mathf.FloorToInt(Value / 10) - 1;
             ingameCanvas.SetActive(true);
+            Puntero.anchoredPosition = PunteroVector[listvalue]._PunteroVector;
+            _PanelImage.sprite = PunteroVector?[listvalue]._TutorialSprite;
+            TravelingText.text = "Traveling to " + PunteroVector?[listvalue]._Name;
         }
         else
         {
@@ -73,7 +99,7 @@ public class MySceneManager : MonoBehaviour
         while (true)
         {
             if (_myanimator.GetCurrentAnimatorStateInfo(0).IsName("1"))
-            break;
+                break;
 
             yield return null;
         }
@@ -82,7 +108,7 @@ public class MySceneManager : MonoBehaviour
 
         if (SceneDictionary.ContainsKey(Value))
         {
-            if(GameManager.Instance != null)
+            if (GameManager.Instance != null)
             {
                 if (Value <= 9)
                     GameManager.Instance.programState = GameManager.ProgramState.Menu;
@@ -96,6 +122,7 @@ public class MySceneManager : MonoBehaviour
                 Debug.LogWarning("No hay GameManager");
             }
 
+            ActualScene = Value;
             loadLevel = SceneManager.LoadSceneAsync(SceneDictionary[Value]);
         }
         else
@@ -112,7 +139,7 @@ public class MySceneManager : MonoBehaviour
             yield return null;
         }
 
-        if(Value >= 10 && Value < 100)
+        if (Value >= 10 && Value < 100)
         {
             _panelAnimator.gameObject.SetActive(true);
 
@@ -159,17 +186,16 @@ public class MySceneManager : MonoBehaviour
         while (true)
         {
             if (_myanimator.GetCurrentAnimatorStateInfo(0).IsName("0"))
-            break;
+                break;
 
 
             yield return null;
         }
 
-        if(OnLoadFinish != null)
+        if (OnLoadFinish != null)
         {
             OnLoadFinish();
         }
-
         isLoading = false;
     }
 
@@ -196,12 +222,23 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(1, "MainMenu");
         SceneDictionary.Add(2, "TestMainMenu");
 
-        SceneDictionary.Add(10, "ODS2_Scene");
+        SceneDictionary.Add(10, "ODS2_FINAL");
         SceneDictionary.Add(20, "SceneManager2");
-        SceneDictionary.Add(30, "ODS7_FRAN");
+        SceneDictionary.Add(30, "ODS7_FINAL");
         SceneDictionary.Add(40, "InputManagerTest");
-        SceneDictionary.Add(50, "Minijuego5");
 
+        SceneDictionary.Add(50, "ODS10_FINAL");
+        SceneDictionary.Add(51, "ODS10_FINAL");
+        SceneDictionary.Add(52, "ODS10_FINAL");
+        SceneDictionary.Add(53, "ODS10_FINAL");
+        SceneDictionary.Add(54, "ODS10_FINAL");
+        SceneDictionary.Add(55, "ODS10_FINAL");
+        SceneDictionary.Add(56, "ODS10_FINAL");
+        SceneDictionary.Add(57, "ODS10_FINAL");
+        SceneDictionary.Add(58, "ODS10_FINAL");
+        SceneDictionary.Add(59, "ODS10_FINAL");
+
+        SceneDictionary.Add(100, "HUBTESTEO");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }
