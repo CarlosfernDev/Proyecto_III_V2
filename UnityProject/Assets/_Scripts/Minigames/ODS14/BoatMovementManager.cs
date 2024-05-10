@@ -36,6 +36,8 @@ public class BoatMovementManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if ((MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+        if (!ODS14Manager.Instance.canMove) return;
         _rb.AddRelativeTorque(_inputManager.TurnInput * turnSpd, ForceMode.Acceleration);
         SpeedUp();
         _rb.AddRelativeForce(_inputManager.MovementInput * accel, ForceMode.Acceleration);

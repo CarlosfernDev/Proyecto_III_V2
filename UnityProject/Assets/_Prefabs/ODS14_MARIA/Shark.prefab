@@ -95,6 +95,7 @@ Transform:
   m_Children:
   - {fileID: 74137757106807974}
   - {fileID: 5842888433989862489}
+  - {fileID: 7005387125192685338}
   - {fileID: 556809522366435866}
   m_Father: {fileID: 5779214540096820250}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -206,7 +207,7 @@ GameObject:
   - component: {fileID: 7405654688954299694}
   m_Layer: 0
   m_Name: SharkComponents
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,6 +386,80 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &140216895121114124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8258345118934743563}
+    m_Modifications:
+    - target: {fileID: 6271509953190060760, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_Name
+      value: tiburon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000030908623
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a4453b22589640e42abbb6c49f555c81, type: 3}
+--- !u!4 &7005387125192685338 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6974392455831991062, guid: a4453b22589640e42abbb6c49f555c81,
+    type: 3}
+  m_PrefabInstance: {fileID: 140216895121114124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &472273885710435149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -447,6 +522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tiburon
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3958a468293134748afe4e88d43bf3f4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
