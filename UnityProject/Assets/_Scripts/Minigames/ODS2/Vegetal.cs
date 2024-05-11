@@ -25,5 +25,7 @@ public class Vegetal : MonoBehaviour, Iequipable
         transform.rotation = GameManager.Instance.playerScript.positionEquipable.rotation;
         transform.localScale = GameManager.Instance.playerScript.positionEquipable.localScale;
         transform.parent = GameManager.Instance.playerScript.positionEquipable.transform;
+
+        ODS2Singleton.Instance.EnableAllGps();
     }
 }

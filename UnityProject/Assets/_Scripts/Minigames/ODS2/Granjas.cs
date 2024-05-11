@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using static CloudSpawner;
 
 public class Granjas : LInteractableParent
@@ -16,7 +17,6 @@ public class Granjas : LInteractableParent
     public FarmState _farmState = FarmState.Disable;
 
     [SerializeField] private Slider SliderMain;
-    [SerializeField] private Slider SliderSecondary;
 
     private float TimeReferenceSeed;
     private float TimeReferenceSecondary;
@@ -24,13 +24,28 @@ public class Granjas : LInteractableParent
 
     public int waterindex = 0;
 
+    [Header("Visual")]
+    public Animator animatorBocadillo;
+    public Animator animatorSlider;
+    public List<BocadillosGranjasScriptables> AnimatorList;
+    public string TriggerAnimatorEnabled;
+    public string TriggerAnimatorDisabled;
+    public string BoolAnimatorBright;
+    public string TriggerAnimatorBright;
+    private bool isBrightEnable;
+
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem _RegarVFX;
+    [SerializeField] private VisualEffect _PlantarVFX;
+
     private void Start()
     {
+        animatorBocadillo.SetTrigger(TriggerAnimatorDisabled);
+        animatorSlider.SetTrigger(TriggerAnimatorDisabled);
+
         ActualRender = GranjasRender[0];
         ChangeRender(0);
 
-        SliderMain.gameObject.SetActive(false);
-        SliderSecondary.gameObject.SetActive(false);
         SliderMain.maxValue = ODS2Singleton.Instance.SeedTimer;
         SliderMain.value = 0;
         IsInteractable = false;
@@ -97,7 +112,7 @@ public class Granjas : LInteractableParent
             return;
         }
 
-        SliderSecondary.gameObject.SetActive(false);
+        animatorBocadillo.SetTrigger(TriggerAnimatorDisabled);
 
         switch (_farmState)
         {
@@ -115,28 +130,36 @@ public class Granjas : LInteractableParent
             }
             case FarmState.WaitingWater:
                 {
+                    Vector3 VectorPlayer = GameManager.Instance.playerScript.transform.position;
+                    Vector3 targetPoint = new Vector3(VectorPlayer.x, transform.position.y, VectorPlayer.z) - transform.position;
+                    Quaternion targetRotation = Quaternion.LookRotation(targetPoint, Vector3.up);
+
+                    _RegarVFX.transform.parent.transform.rotation = targetRotation;
+                    _RegarVFX.transform.parent.transform.eulerAngles = _RegarVFX.transform.parent.transform.eulerAngles + 180 * Vector3.up;
+
+                    _RegarVFX.Play();
                     ODS2Singleton.Instance.AddScore(ODS2Singleton.Instance.ScoreWatering);
                     break;
                 }
         }
 
         SetSeed();
-
-
         base.Interact();
     }
 
     void SetSeed()
     {
         ChangeRender(3);
+        SliderMain.gameObject.SetActive(true);
+        TimeReferenceSeed = Time.time;
 
         if (_farmState == FarmState.WaitPlayerInteraction)
         {
             waterindex = 0;
             TimeExtraWater = 0;
+            animatorSlider.SetTrigger(TriggerAnimatorEnabled);
+            _PlantarVFX.Play();
         }
-        SliderMain.gameObject.SetActive(true);
-        TimeReferenceSeed = Time.time;
 
         IsInteractable = false;
         _farmState = FarmState.LoadSeed;
@@ -170,10 +193,18 @@ public class Granjas : LInteractableParent
     bool UpdateSecondarySlider()
     {
         float TimeLoad = Time.time - TimeReferenceSecondary;
-        SliderSecondary.value = TimeLoad;
 
-        if (SliderSecondary.value == SliderSecondary.maxValue)
+        if (!isBrightEnable && (ODS2Singleton.Instance.WaterMaxTimer - ODS2Singleton.Instance.BirghtTimeLeft) < TimeLoad)
+        {
+            animatorBocadillo.SetBool(BoolAnimatorBright, true);
+            animatorBocadillo.SetTrigger(TriggerAnimatorBright);
+            isBrightEnable = true;
+        }
+
+        if(TimeLoad >= ODS2Singleton.Instance.WaterMaxTimer)
+        {
             return true;
+        }
 
         return false; 
     }
@@ -183,24 +214,32 @@ public class Granjas : LInteractableParent
     void FarmDestroyed()
     {
         ChangeRender(1);
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.WaitPlayerInteraction]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
+        animatorSlider.SetTrigger(TriggerAnimatorDisabled);
+
+        if (isBrightEnable)
+        {
+            animatorBocadillo.SetBool(BoolAnimatorBright, false);
+            animatorBocadillo.SetTrigger(TriggerAnimatorBright);
+            isBrightEnable = false;
+        }
 
         IsInteractable = true;
 
         ODS2Singleton.Instance.timer.RestTime(ODS2Singleton.Instance.ReduceTime);
 
-        SliderSecondary.gameObject.SetActive(false);
         _farmState = FarmState.WaitPlayerInteraction;
     }
 
     void MainSliderComplete()
     {
         ChangeRender(2);
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.Recolect]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
+        animatorSlider.SetTrigger(TriggerAnimatorDisabled);
 
         TimeReferenceSecondary = Time.time;
-        SliderSecondary.maxValue = ODS2Singleton.Instance.CollectingTimer;
-        SliderSecondary.value = 0;
-
-        SliderSecondary.gameObject.SetActive(true);
 
         IsInteractable = true;
         _farmState = FarmState.Recolect;
@@ -220,7 +259,6 @@ public class Granjas : LInteractableParent
 
     void ResetFarm()
     {
-        SliderMain.gameObject.SetActive(false);
         _farmState = FarmState.WaitPlayerInteraction;
         IsInteractable = true;
         waterindex = 0;
@@ -233,13 +271,12 @@ public class Granjas : LInteractableParent
 
         if (ODS2Singleton.Instance.WaterTime[waterindex] > value) return false;
 
+        animatorBocadillo.runtimeAnimatorController = AnimatorList[(int)FarmState.WaitingWater]._animator;
+        animatorBocadillo.SetTrigger(TriggerAnimatorEnabled);
+
         _farmState = FarmState.WaitingWater;
         IsInteractable = true;
         waterindex += 1;
-
-        SliderSecondary.gameObject.SetActive(true);
-        SliderSecondary.value = 0;
-        SliderSecondary.maxValue = ODS2Singleton.Instance.WaterMaxTimer;
 
         TimeReferenceSecondary = Time.time;
         TimeExtraWater = value;

@@ -93,7 +93,7 @@ public class MinigameParent : MonoBehaviour
     {
         if (CountRender == null) return;
 
-        GameManager.Instance.playerScript.sloopyMovement = false;
+        if(GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = false;
 
         if (isCountdown)
         {
@@ -165,7 +165,7 @@ public class MinigameParent : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
         //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(false);
-        gameIsActive = true;
+
 
         if (OnGameStartEvent != null)
             OnGameStartEvent();
@@ -193,6 +193,7 @@ public class MinigameParent : MonoBehaviour
     protected virtual void OnGameStart()
     {
         if (GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = true;
+        gameIsActive = true;
     }
 
     public virtual void OnGameFinish()

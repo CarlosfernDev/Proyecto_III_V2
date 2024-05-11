@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class VegetalCollector : LInteractableParent
 {
+    public Animator _animatorGps;
+
     public override void Interact()
     {
         if (!GameManager.Instance.playerScript.isEquipado) return;
@@ -15,8 +17,19 @@ public class VegetalCollector : LInteractableParent
         ODS2Singleton.Instance.AddScore(ODS2Singleton.Instance.ScoreCollectingDone);
         ODS2Singleton.Instance.OnVegetalDone();
 
+        ODS2Singleton.Instance.DisableAllGps();
         
         Destroy(script.gameObject);
         GameManager.Instance.playerScript.isEquipado = false;
+    }
+
+    public void EnableGps()
+    {
+        _animatorGps.SetTrigger("On");
+    }
+
+    public void DisableGps()
+    {
+        _animatorGps.SetTrigger("Off");
     }
 }
