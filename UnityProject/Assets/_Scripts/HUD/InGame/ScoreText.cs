@@ -6,6 +6,7 @@ using TMPro;
 public class ScoreText : MonoBehaviour
 {
     [SerializeField] private string Pretext;
+    [SerializeField] private string Preset;
     [SerializeField] private TMP_Text Text;
 
     private void Awake()
@@ -15,7 +16,7 @@ public class ScoreText : MonoBehaviour
 
     public void ChangeText(int Value)
     {
-        Text.text = Pretext + Value.ToString("000000");
+        Text.text = Pretext + Value.ToString(Preset);
     }
 
     public void ChangeText(string Value)

@@ -17,7 +17,7 @@ public class TestInputs : MonoBehaviour
     [SerializeField] public GameObject interactZone;
     private GameObject refObjetoInteract;
     private bool isInteractable = false;
-    
+
 
 
     //Movement
@@ -39,7 +39,7 @@ public class TestInputs : MonoBehaviour
 
     private IEnumerator coroutineBoostVelocidad;
 
-    
+
 
     //Actualizador de UI? maybe hay que moverlo a los scripts interactuables y hacer que los objetos busquen la ui en la escena
     [SerializeField] private UnityEvent hideText;
@@ -57,11 +57,11 @@ public class TestInputs : MonoBehaviour
         baseMaxSpeed = actualMaxSpeed;
         baseDesAccSpeed = actualDesSpeed;
 
-}
+    }
 
     private void Start()
     {
-        if(GameManager.Instance != null)
+        if (GameManager.Instance != null)
         {
             GameManager.Instance.playerScript = this;
         }
@@ -74,7 +74,8 @@ public class TestInputs : MonoBehaviour
             InputManager.Instance.movementEvent.AddListener(MeMuevo);
             InputManager.Instance.equipableEvent.AddListener(UsarObjetoEquipable);
             InputManager.Instance.interactEvent.AddListener(Interactuo);
-        }catch(System.Exception e)
+        }
+        catch (System.Exception e)
         {
             Debug.Log(e.ToString());
             Debug.LogWarning("No se pudo asignar los eventos, probablemente te faltara un InputManager");
@@ -117,7 +118,7 @@ public class TestInputs : MonoBehaviour
         {
             if (vec.magnitude == 0)
             {
-                if (rb.velocity.magnitude<0.1f)
+                if (rb.velocity.magnitude < 0.1f)
                 {
                     transform.GetComponent<Collider>().material = materialStop;
                 }
@@ -129,7 +130,7 @@ public class TestInputs : MonoBehaviour
                 }
 
                 rb.AddForce(Vector3.down * 9.8f, ForceMode.Acceleration);
-               // Debug.Log(rb.velocity.magnitude);
+                // Debug.Log(rb.velocity.magnitude);
 
             }
             else
@@ -138,7 +139,7 @@ public class TestInputs : MonoBehaviour
                 RaycastHit[] hit;
                 grav = 0f;
                 hit = Physics.RaycastAll(transform.position, Vector3.down, 1.1F);
-                
+
                 foreach (var obj in hit)
                 {
                     if (obj.transform.tag == "Rampa")
@@ -155,17 +156,17 @@ public class TestInputs : MonoBehaviour
                     transform.GetComponent<Collider>().material = materialNormal;
                     grav = 9.8f;
                 }
-                        
-                        
-                  
-                
-                
-                
+
+
+
+
+
+
 
 
 
                 Quaternion toRotation = Quaternion.LookRotation(new Vector3(vec.x + transform.position.x, 0f, vec.y + transform.position.z) - new Vector3(transform.position.x, 0f, transform.position.z));
-                if (Mathf.Rad2Deg * Mathf.Abs(rb.rotation.y - toRotation.y)>45f)
+                if (Mathf.Rad2Deg * Mathf.Abs(rb.rotation.y - toRotation.y) > 45f)
                 {
                     transform.rotation = Quaternion.LookRotation(new Vector3(vec.x + transform.position.x, 0f, vec.y + transform.position.z) - new Vector3(transform.position.x, 0f, transform.position.z));
                 }
@@ -181,42 +182,59 @@ public class TestInputs : MonoBehaviour
                 //Movement con gravedad
                 rb.AddForce(new Vector3(vec.x * actualAcceSpeed, -1 * grav, vec.y * actualAcceSpeed), ForceMode.Acceleration);
             }
-            
-            
+
+
         }
-       
-        
+
+
 
     }
 
-    public void BoostVelocidad(float velocidadMaximaNueva,float velocidadAceleracionNueva, float velocidadDesacNueva, float Tiempo)
+    public void BoostVelocidad(float velocidadMaximaNueva, float velocidadAceleracionNueva, float velocidadDesacNueva, float Tiempo)
     {
         if (coroutineBoostVelocidad != null)
         {
             StopCoroutine(coroutineBoostVelocidad);
         }
-        
+
         coroutineBoostVelocidad = BoostVelocidadCoroutine(velocidadMaximaNueva, velocidadAceleracionNueva, velocidadDesacNueva, Tiempo);
         StartCoroutine(coroutineBoostVelocidad);
     }
 
-    public IEnumerator BoostVelocidadCoroutine(float velocidadMaximaNueva, float velocidadAceleracionNueva,float velocidadDesacNueva, float Tiempo)
+    public IEnumerator BoostVelocidadCoroutine(float velocidadMaximaNueva, float velocidadAceleracionNueva, float velocidadDesacNueva, float Tiempo)
+    {
+        //actualAcceSpeed = velocidadAceleracionNueva;
+        //actualMaxSpeed = velocidadMaximaNueva;
+        //actualDesSpeed = velocidadDesacNueva;
+        BoostVelocidadPermanente(velocidadAceleracionNueva, velocidadAceleracionNueva, velocidadDesacNueva);
+
+        yield return new WaitForSeconds(Tiempo);
+
+        //actualAcceSpeed = baseAcceSpeed;
+        //actualMaxSpeed = baseMaxSpeed;
+        //actualDesSpeed = baseDesAccSpeed;
+        BoostVelocidadRestaurar();
+    }
+
+    public void BoostVelocidadPermanente(float velocidadMaximaNueva, float velocidadAceleracionNueva, float velocidadDesacNueva)
     {
         actualAcceSpeed = velocidadAceleracionNueva;
         actualMaxSpeed = velocidadMaximaNueva;
         actualDesSpeed = velocidadDesacNueva;
-        yield return new WaitForSeconds(Tiempo);
+    }
 
+    public void BoostVelocidadRestaurar()
+    {
         actualAcceSpeed = baseAcceSpeed;
         actualMaxSpeed = baseMaxSpeed;
         actualDesSpeed = baseDesAccSpeed;
     }
 
 
-  
+
     private void OnTriggerStay(Collider other)
     {
-        
+
         if (other.gameObject.TryGetComponent<Iinteractable>(out Iinteractable interactable))
         {
             if (interactable.IsInteractable)
@@ -225,32 +243,32 @@ public class TestInputs : MonoBehaviour
                 isInteractable = true;
                 TextoInteractChange.Invoke(other.GetComponent<Iinteractable>().TextoInteraccion);
             }
-           
+
         }
-       
+
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.TryGetComponent<Iinteractable>(out Iinteractable interactable) && refObjetoInteract == other.gameObject)
         {
             refObjetoInteract = null;
             isInteractable = false;
-            hideTextFunction();           
+            hideTextFunction();
 
         }
     }
-    
+
 
     public void UsarObjetoEquipable()
     {
-        
+
         if (isEquipado)
         {
             //Llamo a la funcion que deben implementar todos los objetos equipables.
             refObjetoEquipado.GetComponent<Iequipable>().UseEquipment();
-            
-            Debug.Log("Uso objeto"+ refObjetoEquipado.name);
+
+            Debug.Log("Uso objeto" + refObjetoEquipado.name);
         }
         else
         {

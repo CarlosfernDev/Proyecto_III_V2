@@ -16,14 +16,18 @@ public class ODS2Singleton : MinigameParent
     public float SeedTimer;
     public float WaterMaxTimer;
     public float CollectingTimer;
+    public float BirghtTimeLeft;
 
     public int ScoreWatering;
     public int ScoreCollecting;
     public int ScoreCollectingDone;
 
+    public List<VegetalCollector> CollectorList;
     public List<Granjas> FarmOrderList;
-    public int[] WhenActiveOne;
+    public int[] WhenActiveFarm;
+    public Vector3[] SpeedBost;
     private int IndexFarm = 0;
+
     private int TotalVegetal = 0;
 
     private void OnEnable()
@@ -63,21 +67,48 @@ public class ODS2Singleton : MinigameParent
 
     public void FarmCheck()
     {
-        if (IndexFarm >= WhenActiveOne.Length)
+        if (IndexFarm >= WhenActiveFarm.Length)
             return;
 
         Debug.Log("Pasas1");
 
-        if (WhenActiveOne[IndexFarm] > TotalVegetal)
+        if (WhenActiveFarm[IndexFarm] > TotalVegetal)
             return;
 
         Debug.Log("Pasas2");
 
-        FarmOrderList[IndexFarm].StarFarm();
+        if(!Vector3.Equals(SpeedBost[IndexFarm], Vector3.zero)) 
+            GameManager.Instance.playerScript.BoostVelocidadPermanente(SpeedBost[IndexFarm].x, SpeedBost[IndexFarm].y, SpeedBost[IndexFarm].z);
 
+        FarmOrderList[IndexFarm].StarFarm();
         IndexFarm++;
 
         FarmCheck();
+    }
+
+    public void EnableAllGps()
+    {
+        foreach(VegetalCollector collector in CollectorList)
+        {
+            collector.EnableGps();
+        }
+    }
+
+    public void DisableAllGps()
+    {
+        foreach (VegetalCollector collector in CollectorList)
+        {
+            collector.DisableGps();
+        }
+    }
+
+    public override void SetResult()
+    {
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText("Score: " + Score.ToString());
+
+        _txHighScore.text = "High: " + MinigameData.maxPoints;
     }
 
 }
