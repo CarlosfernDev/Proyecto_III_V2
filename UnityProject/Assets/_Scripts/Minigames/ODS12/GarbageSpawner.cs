@@ -46,6 +46,7 @@ public class GarbageSpawner : MonoBehaviour
     {
         _timeToSpawnReference = Time.time;
         _canSpawn = true;
+        SpawnGarbage();
         ODS12Singleton.Instance.OnGameStartEvent -= OnGameStart;
     }
 

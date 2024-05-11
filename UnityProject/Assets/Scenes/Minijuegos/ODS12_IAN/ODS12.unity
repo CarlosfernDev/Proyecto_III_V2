@@ -558,13 +558,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 1
+  IsDeveloping: 0
   MinigameData: {fileID: 11400000, guid: 0af5b41839f941242b01ef67073400dd, type: 2}
   _uiAnimator: {fileID: 146217258}
   isCountdown: 0
   TimerData: {fileID: 0}
   CountRender: {fileID: 0}
   NumberAnimation: {fileID: 0}
+  _statsButtons: {fileID: 0}
   ResoultAnimator: {fileID: 0}
   ResultCanvas: {fileID: 0}
   RankData: {fileID: 0}
@@ -615,6 +616,9 @@ MonoBehaviour:
   - 150
   - 50
   _currentGameTime: 0
+  FinalSpeedBoost: {x: 0, y: 0, z: 0}
+  _anim: {fileID: 0}
+  AnimatorsBocadillo: []
 --- !u!114 &146217257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3381,6 +3385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pretext: 'Score: '
+  Preset: 
   Text: {fileID: 998967739}
 --- !u!114 &998967739
 MonoBehaviour:
