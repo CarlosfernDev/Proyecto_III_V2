@@ -34,6 +34,9 @@ public class GameManager15 : MonoBehaviour
     public GameObject Decoracion1;
     public GameObject Decoracion2;
     public GameObject Decoracion3;
+    public GameObject Decoracion4;
+    public GameObject Decoracion5;
+    public GameObject Decoracion6;
 
 
     //CosasActivas
@@ -77,6 +80,7 @@ public class GameManager15 : MonoBehaviour
 
     private void Start()
     {
+        puntuacion = 0;
         UpdateScore();
         loadNewAnimal();
     }
@@ -128,7 +132,6 @@ public class GameManager15 : MonoBehaviour
         {
             case 0:
                 comidaActivaVisual = Instantiate(Comida1, posComida.transform.position,Quaternion.identity);
-                
                 break;
             case 1:
                 comidaActivaVisual = Instantiate(Comida2, posComida.transform.position, Quaternion.identity);
@@ -164,7 +167,7 @@ public class GameManager15 : MonoBehaviour
 
     public void SetDecoracionActiva(int i)
     {
-        Debug.Log("DECORACIONCAMBIO");
+        Debug.Log("DECORACIONCAMBIO"+i);
         DecoracionActiva = i;
         Destroy(decoracionActivaVisual);
         switch (DecoracionActiva)
@@ -176,6 +179,15 @@ public class GameManager15 : MonoBehaviour
                 decoracionActivaVisual = Instantiate(Decoracion2, posDecoracion.transform.position, Quaternion.identity);
                 break;
             case 2:
+                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
+                break;
+            case 3:
+                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
+                break;
+            case 4:
+                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
+                break;
+            case 5:
                 decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
                 break;
             default:
@@ -190,9 +202,10 @@ public class GameManager15 : MonoBehaviour
     {
         if (animal.Comida == ComidaActiva && animal.Habitat == HabitatActivo && animal.Decoracion == DecoracionActiva)
         {
-            Debug.Log("win");
-            UpdateScore();
+            Debug.Log("RespuestaAceptada");
             puntuacion += 1;
+            UpdateScore();
+            
             puntuacionUI.GetComponent<TMP_Text>().text = puntuacion.ToString();
             Destroy(comidaActivaVisual);
             Destroy(habitatActivoVisual);
@@ -204,6 +217,8 @@ public class GameManager15 : MonoBehaviour
         }
         else
         {
+            Debug.Log("RespuestaErronea");
+
             puntuacion -= 1;
             UpdateScore();
 
@@ -214,9 +229,9 @@ public class GameManager15 : MonoBehaviour
 
     void printAnimal(Animal animal)
     {
-        Debug.Log("Comida: "+ animal.Comida);
-        Debug.Log("Habitat: " + animal.Habitat);
-        Debug.Log("Decoracion: " + animal.Decoracion);
+        Debug.Log("Habitat: " + animal.Habitat + 1);
+        Debug.Log("Comida: "+ animal.Comida+1);
+        Debug.Log("Decoracion: " + animal.Decoracion+1);
     }
 
     public void CanvasSwap()
@@ -251,12 +266,12 @@ public class GameManager15 : MonoBehaviour
 
     public void UpdateScore()
     {
-        Debug.Log(puntuacion);
         if (puntuacion<0)
         {
             puntuacion = 0;
         }
         scoreUI.ShowScore(puntuacion);
+        Debug.Log(puntuacion);
     }
 }
 
