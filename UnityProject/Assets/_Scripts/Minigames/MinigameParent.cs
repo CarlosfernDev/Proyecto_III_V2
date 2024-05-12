@@ -173,6 +173,8 @@ public class MinigameParent : MonoBehaviour
 
     protected void SetImage(int value, TimerScriptableObject timerData)
     {
+        if (CountRender == null) return;
+
         int valueData = Mathf.Clamp(value, 0, timerData.timerImageArray.Length - 1);
         CountRender.sprite = timerData.timerImageArray[valueData].sprite;
         //CountRender.SetNativeSize();
