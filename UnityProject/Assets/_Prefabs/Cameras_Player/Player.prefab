@@ -62,6 +62,7 @@ MonoBehaviour:
   materialDrag: {fileID: 13400000, guid: f426d13a9b14ffb428490391173c0b71, type: 2}
   materialNormal: {fileID: 13400000, guid: 3aff51da40a170c4fab4375ff31ad792, type: 2}
   materialRampa: {fileID: 13400000, guid: da82c553347a1804ea1796619075d7b1, type: 2}
+  rb: {fileID: 0}
   actualAcceSpeed: 10
   actualMaxSpeed: 5
   actualDesSpeed: 0.8
@@ -273,6 +274,7 @@ GameObject:
   - component: {fileID: 8406344341758129696}
   - component: {fileID: 2608240295920928698}
   - component: {fileID: 6413216801796740357}
+  - component: {fileID: 5233304480265229476}
   m_Layer: 14
   m_Name: InteractZone
   m_TagString: Untagged
@@ -362,10 +364,33 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &5233304480265229476
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225492134499970531}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5000001
+  m_Height: 1.59
+  m_Direction: 1
+  m_Center: {x: 0.00000008940697, y: -0.19, z: 0.00000011920929}
 --- !u!1 &5500635284844842742
 GameObject:
   m_ObjectHideFlags: 0

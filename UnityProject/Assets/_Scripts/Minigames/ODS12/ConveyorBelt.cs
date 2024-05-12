@@ -21,9 +21,17 @@ public class ConveyorBelt : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (ODS12Singleton.Instance.gameIsActive == false) return;
+
         if (_rbOnBelt == null) return;
         foreach (Rigidbody beltRb in _rbOnBelt)
         {
+            if(beltRb.isKinematic == true)
+            {
+                _rbOnBelt.Remove(beltRb);
+                return;
+            }
+
             if (beltRb == null)
             {
                 _rbOnBelt.Remove(beltRb);

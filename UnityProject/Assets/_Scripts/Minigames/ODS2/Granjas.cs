@@ -27,6 +27,7 @@ public class Granjas : LInteractableParent
     [Header("Visual")]
     public Animator animatorBocadillo;
     public Animator animatorSlider;
+    public Animator animatorRegadera;
     public List<BocadillosGranjasScriptables> AnimatorList;
     public string TriggerAnimatorEnabled;
     public string TriggerAnimatorDisabled;
@@ -35,7 +36,6 @@ public class Granjas : LInteractableParent
     private bool isBrightEnable;
 
     [Header("VFX")]
-    [SerializeField] private ParticleSystem _RegarVFX;
     [SerializeField] private VisualEffect _PlantarVFX;
 
     private void Start()
@@ -112,6 +112,14 @@ public class Granjas : LInteractableParent
             return;
         }
 
+        if (isBrightEnable)
+        {
+            animatorBocadillo.SetBool(BoolAnimatorBright, false);
+            animatorBocadillo.SetTrigger(TriggerAnimatorBright);
+            isBrightEnable = false;
+        }
+
+
         animatorBocadillo.SetTrigger(TriggerAnimatorDisabled);
 
         switch (_farmState)
@@ -134,10 +142,10 @@ public class Granjas : LInteractableParent
                     Vector3 targetPoint = new Vector3(VectorPlayer.x, transform.position.y, VectorPlayer.z) - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(targetPoint, Vector3.up);
 
-                    _RegarVFX.transform.parent.transform.rotation = targetRotation;
-                    _RegarVFX.transform.parent.transform.eulerAngles = _RegarVFX.transform.parent.transform.eulerAngles + 180 * Vector3.up;
+                    animatorRegadera.transform.parent.transform.rotation = targetRotation;
+                    animatorRegadera.transform.parent.transform.eulerAngles = animatorRegadera.transform.parent.transform.eulerAngles + -45 * Vector3.up;
 
-                    _RegarVFX.Play();
+                    animatorRegadera.SetTrigger("Reset");
                     ODS2Singleton.Instance.AddScore(ODS2Singleton.Instance.ScoreWatering);
                     break;
                 }

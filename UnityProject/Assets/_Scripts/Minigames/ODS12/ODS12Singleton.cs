@@ -42,6 +42,14 @@ public class ODS12Singleton : MinigameParent
     private float _gameTimeThird;
     [SerializeField] private float _currentGameTime;
 
+    public Action PickItemEvent;
+    public Action DropItemEvent;
+
+    public Vector3 FinalSpeedBoost;
+
+    public Animator _anim;
+    public List<AnimatorOverrideController> AnimatorsBocadillo;
+
     protected override void personalAwake()
     {
         Instance = this;
@@ -102,6 +110,9 @@ public class ODS12Singleton : MinigameParent
 
             case (gameStage.Stage2):
                 currentGarbSpawnTime = stage2GarbSpawnTime;
+
+                // Cambiar fue una implementacion rapida :p
+                GameManager.Instance.playerScript.BoostVelocidadPermanente(FinalSpeedBoost.x, FinalSpeedBoost.y, FinalSpeedBoost.z);
                 break;
 
             case (gameStage.Stage3):
@@ -120,5 +131,30 @@ public class ODS12Singleton : MinigameParent
         _timeStamps[0] = (stage1Percentage / 100) * gameTimer.TimerValue;
         _timeStamps[1] = (stage2Percentage / 100) * gameTimer.TimerValue;
         _timeStamps[2] = (stage3Percentage / 100) * gameTimer.TimerValue;
+    }
+
+    public void PickItems()
+    {
+        if (!GameManager.Instance.playerScript.refObjetoEquipado.TryGetComponent<GarbageScript>(out GarbageScript thisGarbage)) return;
+
+        _anim.runtimeAnimatorController = AnimatorsBocadillo[(int)thisGarbage.thisGarbageType];
+        _anim.SetTrigger("On");
+
+        PickItemEvent?.Invoke();
+    }
+
+    public void DropItem()
+    {
+        _anim.SetTrigger("Off");
+        DropItemEvent?.Invoke();
+    }
+
+    public override void SetResult()
+    {
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText("Score: " + Score.ToString());
+
+        _txHighScore.text = "High: " + MinigameData.maxPoints;
     }
 }

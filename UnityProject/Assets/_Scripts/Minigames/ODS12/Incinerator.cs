@@ -15,7 +15,7 @@ public class Incinerator : MonoBehaviour
             ODS12Singleton.Instance.RemoveScore(ODS12Singleton.Instance.scoreRemove);
             ODS12Singleton.Instance.gameTimer.RestTime(ODS12Singleton.Instance.timePenalty);
             ODS12Singleton.Instance.OnGarbageDelivered.Invoke();
-            Destroy(thisGarbage.gameObject);
+            Destroy(thisGarbage.transform.parent.gameObject);
             _timer = 0;
         }
     }
