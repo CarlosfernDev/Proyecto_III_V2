@@ -5348,17 +5348,17 @@ PrefabInstance:
     - target: {fileID: 2554388294717790284, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -65.27313
+      value: -47.8
       objectReference: {fileID: 0}
     - target: {fileID: 2554388294717790284, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.970117
+      value: -3.803
       objectReference: {fileID: 0}
     - target: {fileID: 2554388294717790284, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.863
+      value: 5.06
       objectReference: {fileID: 0}
     - target: {fileID: 2554388294717790284, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
@@ -5412,9 +5412,19 @@ PrefabInstance:
       objectReference: {fileID: 1396070534}
     - target: {fileID: 9169078212520130031, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
+      propertyPath: SceneID
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169078212520130031, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
       propertyPath: PortalText
       value: Press E to open the portal.
       objectReference: {fileID: 0}
+    - target: {fileID: 9169078212520130031, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: PlayerPositionOnReturn
+      value: 
+      objectReference: {fileID: 1558591311}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -119,7 +119,11 @@ public class GameManager15 : MonoBehaviour
                 DecoracionMenu.SetActive(true);
                 break;
             default:
-                Debug.LogError("Valor No considerado en FuncionMenuSwap");
+                //Desactiva todos los menus
+                Debug.Log("MenuReset");
+                HabitatMenu.SetActive(false);
+                AlimentacionMenu.SetActive(false);
+                DecoracionMenu.SetActive(false);
                 break;
         }
     }
@@ -207,6 +211,8 @@ public class GameManager15 : MonoBehaviour
             UpdateScore();
             
             puntuacionUI.GetComponent<TMP_Text>().text = puntuacion.ToString();
+
+            
             Destroy(comidaActivaVisual);
             Destroy(habitatActivoVisual);
             Destroy(decoracionActivaVisual);
@@ -214,6 +220,12 @@ public class GameManager15 : MonoBehaviour
             ComidaActiva = -1;
             HabitatActivo = -1;
             loadNewAnimal();
+            //Cuando gano, cambio ui a dialogo y reseteo la seleccion de menu
+            CanvasSwap();
+            MenusSwap(3);
+
+            //BORRAR
+            Gano();
         }
         else
         {
@@ -229,9 +241,9 @@ public class GameManager15 : MonoBehaviour
 
     void printAnimal(Animal animal)
     {
-        Debug.Log("Habitat: " + animal.Habitat + 1);
-        Debug.Log("Comida: "+ animal.Comida+1);
-        Debug.Log("Decoracion: " + animal.Decoracion+1);
+        Debug.Log("Habitat: " + ((int)animal.Habitat + 1));
+        Debug.Log("Comida: "+ ((int)animal.Comida+1));
+        Debug.Log("Decoracion: " + ((int)animal.Decoracion+1));
     }
 
     public void CanvasSwap()
@@ -271,7 +283,18 @@ public class GameManager15 : MonoBehaviour
             puntuacion = 0;
         }
         scoreUI.ShowScore(puntuacion);
+        if (puntuacion >=5)
+        {
+            Gano();
+        }
         Debug.Log(puntuacion);
+    }
+
+    public void Gano()
+    {
+        //Llamar funcion enseñar score? o ganar directamente idk man
+        Debug.Log("YOU WON");
+        ODS15MinigameManager.instance.EnseñarPantallaFinal();
     }
 }
 
