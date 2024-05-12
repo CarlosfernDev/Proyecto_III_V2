@@ -78,10 +78,32 @@ public class SaveManager : MonoBehaviour
         SaveSaveString(Json);
     }
 
+    public static void SaveAllPancarta()
+    {
+        Debug.Log(GameManager.Instance.PancartaData.Length);
+        for (int i = 0; i < GameManager.Instance.PancartaData.Length; i++)
+        {
+            PancartasData PancartaSaved = new PancartasData();
+
+            PancartaSaved.ID = i;
+            PancartaSaved.MaxPoints = GameManager.Instance.PancartaData[i].Score;
+
+            saveState.SavePancarta[i] = PancartaSaved;
+            saveState.Work = true;
+
+            Debug.Log(i);
+        }
+        saveState.Work = true;
+
+        string Json = JsonUtility.ToJson(saveState);
+        SaveSaveString(Json);
+    }
+
     public static void ResetGame()
     {
         CreateDirectory();
         SaveAllMinigameData();
+        SaveAllPancarta();
         LoadSaveFileSetUp();
     }
 
@@ -102,6 +124,12 @@ public class SaveManager : MonoBehaviour
 
         if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);
         if (InputManager.Instance != null) Destroy(InputManager.Instance.gameObject);
+
+        if (IsDirectoryExist())
+        {
+            Directory.Delete(SAVE_FOLDER, true);
+            File.Delete(SAVE_FOLDER);
+        }
 
         SceneManager.LoadScene("Preload");
         Time.timeScale = 1;
