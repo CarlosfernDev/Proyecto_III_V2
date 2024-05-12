@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(1)]
 public class PunteroScriptLaura: MonoBehaviour
 {
+    [SerializeField] private bool IsPointingSomething = false;
+    [SerializeField] private GameObject PointedGameobject;
 
     //Equipment (Red nubes fran)
     [SerializeField] public Transform positionEquipable;
@@ -25,7 +27,7 @@ public class PunteroScriptLaura: MonoBehaviour
     [SerializeField] private UnityEvent<string> TextoInteractChange;
     //Modificacion de la clase event para poder pasar en las llamadas strings
 
-    [SerializeField] MeshRenderer imVisible;
+    [SerializeField] public SpriteRenderer imVisible;
     private Vector3 poInicial;
     [System.Serializable]
     public class MyStringEvent : UnityEvent<string>
@@ -57,6 +59,34 @@ public class PunteroScriptLaura: MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        RaycastHit hit;
+        bool ThisFrameIsPoiting = RaycastGenerator(out hit);
+        ISelectionInteractable interactable;
+
+        if (ThisFrameIsPoiting && ((!IsPointingSomething) || PointedGameobject != hit.transform.gameObject))
+        {
+            if (PointedGameobject != null)
+            {
+                PointedGameobject.GetComponent<ISelectionInteractable>().UnHover();
+            }
+            if (!hit.transform.gameObject.TryGetComponent<ISelectionInteractable>(out interactable)) return;
+            interactable.Hover();
+            IsPointingSomething = true;
+            PointedGameobject = hit.transform.gameObject;
+        }
+        else if (!ThisFrameIsPoiting && IsPointingSomething)
+        {
+            if (PointedGameobject != null)
+            {
+                PointedGameobject.GetComponent<ISelectionInteractable>().UnHover();
+            }
+            IsPointingSomething = false;
+            PointedGameobject = null;
+        }
+    }
+
     private void OnDisable()
     {
         InputManager.Instance.movementEvent.RemoveListener(MeMuevo);
@@ -66,7 +96,7 @@ public class PunteroScriptLaura: MonoBehaviour
     public void Interactuo()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 200f))
+        if (RaycastGenerator(out hit))
         {
             if (hit.transform.gameObject.TryGetComponent<Iinteractable>(out Iinteractable inter))
             {
@@ -89,7 +119,11 @@ public class PunteroScriptLaura: MonoBehaviour
         }
     }
 
-
+    public bool RaycastGenerator(out RaycastHit hit)
+    {
+        Debug.DrawRay(transform.position, Vector3.down*200f, Color.green);
+        return Physics.Raycast(transform.position, Vector3.down, out hit, 200f);
+    }
 
 
 
@@ -97,4 +131,6 @@ public class PunteroScriptLaura: MonoBehaviour
     {
         hideText.Invoke();
     }
+
+    
 }

@@ -55,6 +55,7 @@ MonoBehaviour:
   TimerData: {fileID: 11400000, guid: 924e3ed11d33a5a4395d3f0837f05abe, type: 2}
   CountRender: {fileID: 217146033752892834}
   NumberAnimation: {fileID: 3074111603067544193}
+  _statsButtons: {fileID: 0}
   ResoultAnimator: {fileID: 0}
   ResultCanvas: {fileID: 5521153367345342691}
   RankData: {fileID: 0}
@@ -78,7 +79,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   gameIsActive: 0
-  _txTime: {fileID: 2525448876532882976}
+  _txTime: {fileID: 0}
   timer: {fileID: 8361696597395301549}
   spawnersDisablingList: []
   timeFabricaDestroy: 0
@@ -187,6 +188,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1064943732062406930}
     m_Modifications:
+    - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7065743560653665815, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
       propertyPath: m_Name
@@ -319,18 +330,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2525448876532882976 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4185628167050270218, guid: 1cc09513ae24cfc40bbfcf634c14b373,
-    type: 3}
-  m_PrefabInstance: {fileID: 1808869230796359722}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a05d40115101bf46b77218cbf3a7661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!95 &3074111603067544193 stripped

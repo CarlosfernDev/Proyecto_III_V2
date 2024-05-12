@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class VegetalCollector : LInteractableParent
 {
     public Animator _animatorGps;
+
+    public VisualEffect _pickeablevfx;
 
     public override void Interact()
     {
@@ -26,10 +29,12 @@ public class VegetalCollector : LInteractableParent
     public void EnableGps()
     {
         _animatorGps.SetTrigger("On");
+        _pickeablevfx.Play();
     }
 
     public void DisableGps()
     {
         _animatorGps.SetTrigger("Off");
+        _pickeablevfx.Stop();
     }
 }
