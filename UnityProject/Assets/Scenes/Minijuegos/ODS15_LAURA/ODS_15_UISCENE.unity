@@ -784,18 +784,6 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1583260885}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &202764482 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9213789824538075953, guid: 81a79fba70fb44345b3e402a26f71523,
-    type: 3}
-  m_PrefabInstance: {fileID: 1583260885}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &231503198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,6 +3134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa75d5644163ab459e76e7de39c0fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableMovement: 0
   IsPointingSomething: 0
   PointedGameobject: {fileID: 0}
   positionEquipable: {fileID: 0}
@@ -3191,6 +3180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cc011b9c5a2ad4b902d560841ef0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puntero: {fileID: 617683366}
   scoreUI: {fileID: 952537713}
   puntuacionUI: {fileID: 1877128038}
   posComida: {fileID: 106220995}
@@ -5357,6 +5347,11 @@ PrefabInstance:
     - target: {fileID: 1843266543098873869, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843266543098873869, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4899271510622079301, guid: 81650adbd4436f34aa22a2de95e8a2e3,
@@ -7817,74 +7812,6 @@ Transform:
   - {fileID: 395989749}
   m_Father: {fileID: 1410661428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1559269163
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1559269166}
-  - component: {fileID: 1559269165}
-  - component: {fileID: 1559269164}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1559269164
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559269163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1559269165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559269163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1559269166
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1559269163}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562386070
 GameObject:
   m_ObjectHideFlags: 0
@@ -8025,6 +7952,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5670024847002983532, guid: 81a79fba70fb44345b3e402a26f71523,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6328677033107028209, guid: 81a79fba70fb44345b3e402a26f71523,
         type: 3}
       propertyPath: RankData
@@ -8051,7 +7983,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CountRender
       value: 
-      objectReference: {fileID: 202764482}
+      objectReference: {fileID: 0}
     - target: {fileID: 6328677033107028209, guid: 81a79fba70fb44345b3e402a26f71523,
         type: 3}
       propertyPath: _uiAnimator
@@ -10175,7 +10107,6 @@ SceneRoots:
   - {fileID: 153430820}
   - {fileID: 887570131}
   - {fileID: 172261809}
-  - {fileID: 1559269166}
   - {fileID: 620063783}
   - {fileID: 1885965520}
   - {fileID: 940310524}

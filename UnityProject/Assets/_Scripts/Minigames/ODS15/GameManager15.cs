@@ -8,7 +8,8 @@ public class GameManager15 : MonoBehaviour
 {
     public static GameManager15 Instance { get; private set; }
 
-    //
+    public PunteroScriptLaura puntero;
+    
     public Jurado scoreUI;
     private int puntuacion = 0;
     public GameObject puntuacionUI;
@@ -219,13 +220,18 @@ public class GameManager15 : MonoBehaviour
             DecoracionActiva = -1;
             ComidaActiva = -1;
             HabitatActivo = -1;
-            loadNewAnimal();
-            //Cuando gano, cambio ui a dialogo y reseteo la seleccion de menu
-            CanvasSwap();
-            MenusSwap(3);
+            if (puntuacion >= 5)
+            {
+                Gano();
+            }
+            else
+            {
+                loadNewAnimal();
+                CanvasSwap();
+                MenusSwap(3);
+            }
+            
 
-            //BORRAR
-            Gano();
         }
         else
         {
@@ -282,11 +288,15 @@ public class GameManager15 : MonoBehaviour
         {
             puntuacion = 0;
         }
-        scoreUI.ShowScore(puntuacion);
-        if (puntuacion >=5)
+        if (puntuacion<5)
         {
-            Gano();
+            scoreUI.ShowScore(puntuacion);
         }
+        else
+        {
+            Debug.Log("No new image");
+        }
+        
         Debug.Log(puntuacion);
     }
 
@@ -294,6 +304,7 @@ public class GameManager15 : MonoBehaviour
     {
         //Llamar funcion enseñar score? o ganar directamente idk man
         Debug.Log("YOU WON");
+        puntero.disableMovement = true;
         ODS15MinigameManager.instance.EnseñarPantallaFinal();
     }
 }
