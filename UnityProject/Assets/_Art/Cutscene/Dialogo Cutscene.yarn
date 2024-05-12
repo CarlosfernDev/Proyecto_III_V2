@@ -2,96 +2,131 @@
 tags:
 position: 682,18
 ---
-<<Cutscene0>>
-La leyenda de la puchaina Kosmos 
+<<CutsceneChange CutscenCanvas 1>>
+La leyenda de la puchaina Kosmos
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.3>> 
 <<jump Galaxia>>
 ===
 title: Galaxia
 tags:
 position: 777,-483
 ---
-<<Cutscene1>>
-En un mundo que no es nuestro, habitado por pequeños seres elementales y mantenido estable por un cristal de energía gigante situado en el centro de su mundo. 
+<<CutsceneChange CutscenCanvas 2>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+En un mundo que no es nuestro, habitado por pequeños seres elementales y mantenido estable por un cristal de energía gigante situado en el centro de su mundo.
+Aparte de su mundo principal, los elementales dependían del mundo de los humanos para abastecerse de energía elemental, incluso mucho antes de que estos comenzaran a poblarla.  
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.75>> 
 <<jump ElementalesCristal>>
 ===
 title: ElementalesCristal
 tags:
 position: 465,-728
 ---
-<<Cutscene2>>
-Aparte de su mundo principal, los elementales dependían del mundo de los humanos para abastecerse de energía elemental, incluso mucho antes de que estos comenzaran a poblarla. 
+<<CutsceneChange CutscenCanvas 3>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+los humanos llevaron su mundo hasta el punto en el que apenas era habitable para ellos y tuvieron que realizar un éxodo para poder sobrevivir sin realmente tratar de arreglar los problemas que ellos causaron.
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.75>> 
 <<jump DestruccionHumanos>>
 ===
 title: DestruccionHumanos
 tags:
 position: -12,-770
 ---
-<<Cutscene3>>
- los humanos llevaron su mundo hasta el punto en el que apenas era habitable para ellos y tuvieron que realizar un éxodo para poder sobrevivir sin realmente tratar de arreglar los problemas que ellos causaron.
+<<CutsceneChange CutscenCanvas 4>>
+<<CutSceneJoin CutscenCanvas true>>
+ Este nivel de descuido empezó a repercutir negativamente en el mundo de los elementales, dado que el cristal que lo mantenía estable se alimentaba de la energía de este mundo.
+ <<CutSceneJoin CutscenCanvas false>>
+<<wait 0.9>> 
  <<jump DescuidoCristal>>
 ===
 title: DescuidoCristal
 tags:
 position: -441,-699
 ---
-<<Cutscene4>>
-Este nivel de descuido empezó a repercutir negativamente en el mundo de los elementales, dado que el cristal que lo mantenía estable se alimentaba de la energía de este mundo.
+<<wait 0.05>> 
+<<CutsceneChange CutscenCanvas 5>>
+<<CutSceneJoin CutscenCanvas true>>
+A consecuencia de la acción humana, el cristal comenzó a romperse y los entornos del mundo elemental comenzaron a deteriorarse y los habitantes comenzaron a enfermar. 
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.2>> 
 <<jump ElementalesEnferman>>
 ===
 title: ElementalesEnferman
 tags:
 position: -346,-378
 ---
-<<Cutscene5>>
-A consecuencia de la acción humana, el cristal comenzó a romperse y los entornos del mundo elemental comenzaron a deteriorarse y los habitantes comenzaron a enfermar. 
+<<CutsceneChange CutscenCanvas 6>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.2>> 
+No se xd
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 1.1>> 
 <<jump CharlaCircular>>
 
 ===
 title: CharlaCircular
 tags:
-position: -360,-144
+position: -246,-176
 ---
-<<Cutscene6>>
-Para poder salvar al cristal y a su mundo, los elementales juntaron fuerzas y crearon un ser elemental neutro, capaz de obtener y manipular las diferentes energías elementales.
+<<CutsceneChange CutscenCanvas 7>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+oh no
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.3>> 
 <<jump CristalRomperiaMundoAcaba>>
 ===
 title: CristalRomperiaMundoAcaba
 tags:
-position: -306,62
+position: -309,51
 ---
-<<Cutscene7>>
-oh no
+<<CutsceneChange CutscenCanvas 8>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+pium1
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 0.3>> 
 <<jump Destellos>>
 ===
 title: Destellos
 tags:
 position: 41,-290
 ---
-<<Cutscene8>>
-pium1
+<<CutsceneChange CutscenCanvas 9>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+pium2
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 1.1>> 
 <<jump Explosion>>
 ===
 title: Explosion
 tags:
 position: 336,-88
 ---
-<<Cutscene9>>
-pium2
+<<CutsceneChange CutscenCanvas 10>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
+Para poder salvar al cristal y a su mundo, los elementales juntaron fuerzas y crearon un ser elemental neutro, capaz de obtener y manipular las diferentes energías elementales.
+ El objetivo que tendría era simple, viajar a los entornos de los diferentes elementales y resolver los problemas ocasionados por la actividad humana para restaurar el cristal a su estado original y devolver la estabilidad a su mundo.
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 1.1>> 
 <<jump SaleKosmos>>
 ===
 title: SaleKosmos
 tags:
 position: 289,293
 ---
-<<Cutscene10>>
- El objetivo que tendría era simple, viajar a los entornos de los diferentes elementales y resolver los problemas ocasionados por la actividad humana para restaurar el cristal a su estado original y devolver la estabilidad a su mundo.
- <<jump ViajaGalaxiaArreglar>>
-===
-title: ViajaGalaxiaArreglar
-tags:
-position: -194,318
----
-<<Cutscene11>>
+<<CutsceneChange CutscenCanvas 11>>
+<<CutSceneJoin CutscenCanvas true>>
+<<wait 1.3>> 
  Las consecuencias del fracaso, sin embargo, suponen la destrucción del cristal y el consiguiente desmoronamiento de su mundo.  ¿Conseguirá Kósmos su objetivo?
-
+<<CutSceneJoin CutscenCanvas false>>
+<<wait 1.1>> 
+<<FinishCutscene CutscenCanvas>>
 ===
