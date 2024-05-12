@@ -220,7 +220,7 @@ public class MySceneManager : MonoBehaviour
     {
         SceneDictionary = new Dictionary<int, string>();
         SceneDictionary.Add(1, "MainMenu");
-        SceneDictionary.Add(2, "TestMainMenu");
+        SceneDictionary.Add(2, "CUTSCENE");
 
         SceneDictionary.Add(10, "ODS2_FINAL");
 

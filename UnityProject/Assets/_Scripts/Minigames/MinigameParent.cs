@@ -93,7 +93,7 @@ public class MinigameParent : MonoBehaviour
     {
         if (CountRender == null) return;
 
-        GameManager.Instance.playerScript.sloopyMovement = false;
+        if(GameManager.Instance.playerScript != null) GameManager.Instance.playerScript.sloopyMovement = false;
 
         if (isCountdown)
         {

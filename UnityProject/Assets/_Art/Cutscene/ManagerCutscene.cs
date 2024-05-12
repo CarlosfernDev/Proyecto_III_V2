@@ -6,198 +6,53 @@ using Yarn.Unity;
 public class ManagerCutscene : MonoBehaviour
 {
     public DialogueRunner DialogueRunner;
-    public GameObject cutscene1;
-    public GameObject cutscene2;
-    public GameObject cutscene3;
-    public GameObject cutscene4;
-    public GameObject cutscene5;
-    public GameObject cutscene6;
-    public GameObject cutscene7;
-    public GameObject cutscene8;
-    public GameObject cutscene9;
-    public GameObject cutscene10;
-    public GameObject cutscene11;
+    public GameObject _button;
 
-    
+    public Animator _anim;
+    public List<AnimatorOverrideController> AnimatorScene;
+    public AudioSource Music;
 
-    [YarnCommand("Cutscene0")]
-    public void Cutscene0()
+    public void EnableGame()
     {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
+        Music.Play();
+        DialogueRunner.StartDialogue("Start");
+
+        if (GameManager.Instance != null) GameManager.Instance.eventSystem.SetSelectedGameObject(_button);
+        if(InputManager.Instance != null) InputManager.Instance.pauseEvent.AddListener(FinishScene);
+        if (MySceneManager.Instance != null) MySceneManager.Instance.OnLoadFinish -= EnableGame;
     }
-    [YarnCommand("Cutscene1")]
-    public void Cutscene1()
+
+    public void Start()
     {
-        cutscene1.SetActive(true);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
+        if (MySceneManager.Instance != null) MySceneManager.Instance.OnLoadFinish += EnableGame;
+        else EnableGame();
+
     }
-    [YarnCommand("Cutscene2")]
-    public void Cutscene2()
+
+    [YarnCommand("CutsceneChange")]
+    public void CutsceneChange(int value)
     {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(true);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
+        _anim.runtimeAnimatorController = AnimatorScene[value-1];
     }
-    [YarnCommand("Cutscene3")]
-    public void Cutscene3()
+
+    [YarnCommand("CutsceneStop")]
+    public void StopIddle(bool value)
     {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(true);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
+        _anim.SetBool("IsMoving", value);
+        _anim.SetTrigger("UpdateIddle");
     }
-    [YarnCommand("Cutscene4")]
-    public void Cutscene4()
+
+    [YarnCommand("CutSceneJoin")]
+    public void MoveAnim(bool value)
     {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(true);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
+        _anim.SetBool("IamJoining", value);
+        _anim.SetTrigger("Move");
     }
-    [YarnCommand("Cutscene5")]
-    public void Cutscene5()
+
+    [YarnCommand("FinishCutscene")]
+    public void FinishScene()
     {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(true);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene6")]
-    public void Cutscene6()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(true);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene7")]
-    public void Cutscene7()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(true);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene8")]
-    public void Cutscene8()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(true);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene9")]
-    public void Cutscene9()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(true);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene10")]
-    public void Cutscene10()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(true);
-        cutscene11.SetActive(false);
-    }
-    [YarnCommand("Cutscene11")]
-    public void Cutscene11()
-    {
-        cutscene1.SetActive(false);
-        cutscene2.SetActive(false);
-        cutscene3.SetActive(false);
-        cutscene4.SetActive(false);
-        cutscene5.SetActive(false);
-        cutscene6.SetActive(false);
-        cutscene7.SetActive(false);
-        cutscene8.SetActive(false);
-        cutscene9.SetActive(false);
-        cutscene10.SetActive(false);
-        cutscene11.SetActive(true);
+        Music.Stop();
+        MySceneManager.Instance.NextScene(1, 1, 1, 1);
     }
 }
