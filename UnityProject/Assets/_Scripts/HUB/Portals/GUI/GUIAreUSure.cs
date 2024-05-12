@@ -79,6 +79,9 @@ public class GUIAreUSure : MonoBehaviour
     {
         DisableMenu();
         _FunctionOnNo?.Invoke();
+
+        _FunctionOnYes = null;
+        _FunctionOnNo = null;
     }
 
     public void ChangeText(string value)

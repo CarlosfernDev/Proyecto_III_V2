@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
         if (MySceneManager.Instance.isLoading)
             return;
 
-        MySceneManager.Instance.NextScene(30, 1, 1, 0);
+        MySceneManager.Instance.NextScene(100, 1, 1, 0);
         this.enabled = false;
     }
 

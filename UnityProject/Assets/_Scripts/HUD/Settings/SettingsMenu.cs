@@ -29,6 +29,8 @@ public class SettingsMenu : MonoBehaviour
     //[SerializeField] private AspectUtility AspectUtility;
     Dictionary<SettingMenuState, SettingBack> DictionaryMenu;
 
+    public GUIAreUSure sure;
+
     private void Awake()
     {
         LearnDictionary();
@@ -206,5 +208,28 @@ public class SettingsMenu : MonoBehaviour
         _generalMixer.SetFloat("VolumeMusic", volume);
         PlayerPrefs.SetFloat("VolumeMusic", volume);
     }
+    #endregion
+
+    #region Accesibility
+
+    public void ResetData()
+    {
+        sure._FunctionOnYes += resetYes;
+        sure._FunctionOnNo += resetNo;
+        InputManager.Instance.pauseEvent.RemoveListener(OnCancelState);
+        sure.EnableMenu();
+    }
+
+    public void resetYes()
+    {
+        SaveManager.ResetAllGameInGame();
+    }
+
+    public void resetNo()
+    {
+        InputManager.Instance.pauseEvent.AddListener(OnCancelState);
+        GameManager.Instance.eventSystem.SetSelectedGameObject(DictionaryMenu[MenuState].FirstSelected);
+    }
+
     #endregion
 }
