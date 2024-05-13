@@ -60,10 +60,12 @@ public class GarbageScript : LInteractableParent
         // Solo puedes agarrar una cosa
         if (GameManager.Instance.playerScript.refObjetoEquipado != null)
         {
+            Unhover();
             return;
         }
 
         base.Interact();
+        GameManager.Instance.playerScript.isEquipado = true;
 
         // Se soluciona el bug donde la icnta da momento al jugador cuando agarras el objeto  
         Collider.enabled = false;
@@ -91,7 +93,8 @@ public class GarbageScript : LInteractableParent
 
         //Necesario para saber que objeto tiene el usuario
         GameManager.Instance.playerScript.refObjetoEquipado = gameObject;
-
+        GameManager.Instance.playerScript.refObjetoInteract = null;
+        Unhover();
         ODS12Singleton.Instance.PickItems();
     }
 
@@ -105,6 +108,12 @@ public class GarbageScript : LInteractableParent
     public void disableVFX()
     {
         PickableVFX.Stop();
+    }
+
+    public override void Hover()
+    {
+        if (GameManager.Instance.playerScript.isEquipado) return;
+        base.Hover();
     }
 
 }
