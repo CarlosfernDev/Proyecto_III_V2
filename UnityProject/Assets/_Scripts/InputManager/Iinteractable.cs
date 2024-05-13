@@ -9,5 +9,6 @@ public interface Iinteractable
     public void Interact();
     public void SetInteractFalse();
     public void SetInteractTrue();
-    
+    public void Hover();
+    public void Unhover();
 }

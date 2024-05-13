@@ -112,6 +112,8 @@ public class Granjas : LInteractableParent
             return;
         }
 
+        Unhover();
+
         if (isBrightEnable)
         {
             animatorBocadillo.SetBool(BoolAnimatorBright, false);
@@ -296,6 +298,18 @@ public class Granjas : LInteractableParent
         ActualRender.SetActive(false);
         GranjasRender[value].SetActive(true);
         ActualRender = GranjasRender[value];
+    }
+
+
+    public override void Hover()
+    {
+        if (GameManager.Instance.playerScript.isEquipado && _farmState == FarmState.Recolect) return;
+        base.Hover();
+    }
+
+    public override void Unhover()
+    {
+        base.Unhover();
     }
 
 }

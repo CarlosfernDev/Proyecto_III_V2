@@ -11,7 +11,7 @@ public class VegetalCollector : LInteractableParent
 
     public override void Interact()
     {
-        if (!GameManager.Instance.playerScript.isEquipado) return;
+        if (!GameManager.Instance.playerScript.isEquipado) { return; }
 
         if (!GameManager.Instance.playerScript.refObjetoEquipado.TryGetComponent<Vegetal>(out Vegetal script)) return;
 
@@ -36,5 +36,11 @@ public class VegetalCollector : LInteractableParent
     {
         _animatorGps.SetTrigger("Off");
         _pickeablevfx.Stop();
+    }
+
+    public override void Hover()
+    {
+        if (!GameManager.Instance.playerScript.isEquipado) return;
+        base.Hover();
     }
 }
