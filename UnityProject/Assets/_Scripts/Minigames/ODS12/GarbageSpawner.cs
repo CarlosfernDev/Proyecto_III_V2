@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 using static CloudSpawner;
 
 public class GarbageSpawner : MonoBehaviour
@@ -15,6 +16,8 @@ public class GarbageSpawner : MonoBehaviour
     [SerializeField] private Transform garbageSpawnTransform;
 
     [SerializeField] private Slider spawnTimerSlider;
+
+    [SerializeField] private VisualEffect _spawnVFX;
 
     private float _timeToSpawnReference;
 
@@ -80,7 +83,8 @@ public class GarbageSpawner : MonoBehaviour
     {
         int garbageType = UnityEngine.Random.Range(0, 3);
         Vector3 spawnPosition = garbageSpawnTransform.position;
-        
+        _spawnVFX.Play();
+
         switch (garbageType)
         {
             case 0:

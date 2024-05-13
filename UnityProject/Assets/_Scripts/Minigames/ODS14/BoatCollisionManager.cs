@@ -17,8 +17,12 @@ public class BoatCollisionManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("hit");
-        if (other.gameObject.CompareTag("fish"))
+        if (other.collider.transform.parent.TryGetComponent(out FloatingGarbage garbage))
+        {
+            ODS14Manager.Instance.garbageHit.Invoke();
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("fish"))
         {
             ODS14Manager.Instance.AnimalHit();
             Destroy(other.gameObject);
