@@ -17,8 +17,6 @@ public class RecolectorBasuraRework : LInteractableParent
 
     public override void Interact()
     {
-        base.Interact();
-
         if (GameManager.Instance.playerScript.refObjetoEquipado == null)
         {
             return;
@@ -39,8 +37,15 @@ public class RecolectorBasuraRework : LInteractableParent
             ODS12Singleton.Instance.OnGarbageDelivered.Invoke();
             Destroy(thisGarbage.gameObject);
         }
-
+        GameManager.Instance.playerScript.isEquipado = false;
+        Unhover();
         ODS12Singleton.Instance.DropItem();
+    }
+
+    public override void Hover()
+    {
+        if (!GameManager.Instance.playerScript.isEquipado) return;
+        base.Hover();
     }
 
     //private void OnTriggerEnter(Collider other)
