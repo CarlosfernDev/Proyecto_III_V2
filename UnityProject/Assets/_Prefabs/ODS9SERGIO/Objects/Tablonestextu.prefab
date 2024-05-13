@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b833fb1496170944db166e8be5d21d09,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: b833fb1496170944db166e8be5d21d09,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -199,8 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a7fbaedf2d5834498ac612ef7e5529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInteractable: 1
   _TextoInteraccion: Pulse E para coger materiales
+  _isInteractable: 1
+  Selector: {fileID: 1925644322099683788, guid: c3a861d0a42143a49aedaae1a581f3a1,
+    type: 3}
 --- !u!4 &1817082040198643492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b833fb1496170944db166e8be5d21d09,
