@@ -245,7 +245,8 @@ public class MySceneManager : MonoBehaviour
 
         SceneDictionary.Add(70, "ODS14_FINAL");
 
-        SceneDictionary.Add(80, "ODS15_FINAL");
+        SceneDictionary.Add(80, "ODS_15");
+        SceneDictionary.Add(81, "ODS_15_UISCENE");
 
         SceneDictionary.Add(100, "MAINCITY_FINAL");
 
