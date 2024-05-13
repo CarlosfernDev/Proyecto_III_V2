@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity;
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public GUIAreUSure areusure;
 
     // Variables condicionales
     public bool isDialogueActive = false;
@@ -152,16 +156,28 @@ public class GameManager : MonoBehaviour
         PauseUI.SetActive(isPaused);
         if (isPaused)
         {
+            if (Time.timeScale != 0) StartCoroutine(WaitInputStop());
+            else eventSystem.SetSelectedGameObject(FirstButton.gameObject);
+
             Time.timeScale = 0;
-
             RestartButton.gameObject.SetActive(programState == ProgramState.Minigame);
-
-            eventSystem.SetSelectedGameObject(FirstButton.gameObject);
         }
         else
         {
             Time.timeScale = 1;
+            eventSystem.SetSelectedGameObject(null);
         }
+    }
+
+    IEnumerator WaitInputStop()
+    {
+        while (InputManager.Instance.playerInputs.ActionMap1.Movement.ReadValue<Vector2>().y != 0f)
+        {
+            yield return new WaitForNextFrameUnit();
+        }
+        yield return new WaitForNextFrameUnit();
+
+        if (isPaused) eventSystem.SetSelectedGameObject(FirstButton.gameObject);
     }
 
     public void OpenSettings()
@@ -187,8 +203,25 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Application.Quit();
+            areusure.ChangeText("Do you want close the game?");
+            InputManager.Instance.pauseEvent.RemoveListener(SetPause);
+            areusure._FunctionOnYes += QuitGame;
+            areusure._FunctionOnNo += restorePause;
+            areusure.EnableMenu();
         }
+    }
+
+    public void restorePause()
+    {
+        InputManager.Instance.pauseEvent.AddListener(SetPause);
+        CheckPause();
+        areusure._FunctionOnNo -= restorePause;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        areusure._FunctionOnYes -= QuitGame;
     }
 
     #endregion
