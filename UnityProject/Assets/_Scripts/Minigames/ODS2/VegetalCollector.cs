@@ -37,4 +37,10 @@ public class VegetalCollector : LInteractableParent
         _animatorGps.SetTrigger("Off");
         _pickeablevfx.Stop();
     }
+
+    public override void Hover()
+    {
+        if (!GameManager.Instance.playerScript.isEquipado) return;
+        base.Hover();
+    }
 }
