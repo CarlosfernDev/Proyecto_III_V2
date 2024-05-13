@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-381503497341312412
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SylizedRiver_Material
-  m_Shader: {fileID: -6465566751694194690, guid: 14fb741551251df4fadd83255d35ddfd,
+  m_Name: MS_ScrollingTexture 2
+  m_Shader: {fileID: -6465566751694194690, guid: cb4e5c13f1d0eeb47ac59a5a2404e199,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +24,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _FoamTexture:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 0887d3d304e96794591a37822d8e6db8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_88acdc02647742eaa12b7a419fcab365_Texture_1_Texture2D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -55,20 +46,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Depth: 50
-    - _DepthFaloff: 1
-    - _FoamShoreWidth: 1.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _StepStrength: 0.88
-    - _VoronoiDensity: 47.22
-    - _VoronoiSpeed: 10.93
-    - _WaterAlpha: 1
-    - _WaveIntensity: 0.03
-    - _WaveSpeed: 1
     m_Colors:
-    - _FoamColor: {r: 1, g: 1, b: 1, a: 0}
-    - _FoamTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _MainColor: {r: 0.47267708, g: 0.80223566, b: 0.8867924, a: 0}
-    - _ShoreColor: {r: 0.15659487, g: 0.23102225, b: 0.4811321, a: 0}
+    - _Scroll_Speed: {r: 0, g: -10, b: 0, a: 0}
+    - _Tiling: {r: 18, g: 11.93, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &7669367087231457501
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7
