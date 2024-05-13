@@ -11,7 +11,7 @@ public class VegetalCollector : LInteractableParent
 
     public override void Interact()
     {
-        if (!GameManager.Instance.playerScript.isEquipado) return;
+        if (!GameManager.Instance.playerScript.isEquipado) { return; }
 
         if (!GameManager.Instance.playerScript.refObjetoEquipado.TryGetComponent<Vegetal>(out Vegetal script)) return;
 

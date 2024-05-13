@@ -15,7 +15,7 @@ public class TestInputs : MonoBehaviour
 
     //Interaction
     [SerializeField] public GameObject interactZone;
-    private GameObject refObjetoInteract;
+    public GameObject refObjetoInteract;
     private bool isInteractable = false;
 
 
