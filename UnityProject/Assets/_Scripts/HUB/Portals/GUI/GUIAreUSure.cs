@@ -17,6 +17,9 @@ public class GUIAreUSure : MonoBehaviour
     [SerializeField] private Sprite _DisableSprite;
 
     public Action _FunctionOnYes;
+    public Action _FunctionOnNo;
+
+    public bool PauseGame = true;
 
     public void EnableMenu()
     {
@@ -24,7 +27,7 @@ public class GUIAreUSure : MonoBehaviour
 
         GameManager.Instance.playerScript.DisablePlayer();
         GameManager.Instance.playerScript.sloopyMovement = true;
-        GameManager.Instance.isPaused = true;
+        if(PauseGame) GameManager.Instance.isPaused = true;
         _Canvas.SetActive(true);
 
         StartCoroutine(Wait1SecondEnable());
@@ -63,18 +66,22 @@ public class GUIAreUSure : MonoBehaviour
             yield return new WaitForNextFrameUnit();
         }
         yield return new WaitForNextFrameUnit();
-        GameManager.Instance.isPaused = false;
+        if (PauseGame) GameManager.Instance.isPaused = false;
     }
 
     public void Yes()
     {
-        GameManager.Instance.isPaused = false;
+        if (PauseGame) GameManager.Instance.isPaused = false;
         _FunctionOnYes?.Invoke();
     }
 
     public void No()
     {
         DisableMenu();
+        _FunctionOnNo?.Invoke();
+
+        _FunctionOnYes = null;
+        _FunctionOnNo = null;
     }
 
     public void ChangeText(string value)

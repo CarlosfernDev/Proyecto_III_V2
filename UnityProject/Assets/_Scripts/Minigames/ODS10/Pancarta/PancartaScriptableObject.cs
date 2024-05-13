@@ -41,4 +41,11 @@ public class PancartaScriptableObject : ScriptableObject
         RenderTexture.active = null;
         Debug.Log("Foto realizada");
     }
+
+    public void RemoveTexture()
+    {
+        if (!File.Exists(SaveManager.SAVE_FOLDER + _PancartaName + ".png")) return;
+        System.IO.File.Delete(SaveManager.SAVE_FOLDER + _PancartaName + ".png");
+        _PancartaMaterial.mainTexture = null;
+    }
 }

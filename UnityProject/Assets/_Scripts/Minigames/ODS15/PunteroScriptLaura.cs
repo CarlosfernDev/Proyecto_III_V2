@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [DefaultExecutionOrder(1)]
 public class PunteroScriptLaura: MonoBehaviour
 {
+    [SerializeField] public bool disableMovement = false;
     [SerializeField] private bool IsPointingSomething = false;
     [SerializeField] private GameObject PointedGameobject;
 
@@ -95,6 +96,10 @@ public class PunteroScriptLaura: MonoBehaviour
 
     public void Interactuo()
     {
+        if (disableMovement)
+        {
+            return;
+        }
         RaycastHit hit;
         if (RaycastGenerator(out hit))
         {
@@ -108,6 +113,10 @@ public class PunteroScriptLaura: MonoBehaviour
     }
     public void MeMuevo(Vector2 vec)
     {
+        if (disableMovement)
+        {
+            return;
+        }
         var Matrix = Matrix4x4.Rotate(Quaternion.Euler(0, -45f, 0));
         var inputChueca = Matrix.MultiplyPoint3x4(new Vector3(vec.x, 0f, vec.y));
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -53,7 +54,7 @@ public class SaveManager : MonoBehaviour
         for(int i = 0; i < GameManager.Instance.MinigameScripts.Length; i++)
         {
             saveState.SaveMinigame[i] = GameManager.Instance.MinigameScripts[i].GetSavePuzzle();
-            Debug.Log(saveState.SaveMinigame[i].ID);
+            Debug.Log(i);
         }
         saveState.Work = true;
 
@@ -77,11 +78,61 @@ public class SaveManager : MonoBehaviour
         SaveSaveString(Json);
     }
 
+    public static void SaveAllPancarta()
+    {
+        Debug.Log(GameManager.Instance.PancartaData.Length);
+        for (int i = 0; i < GameManager.Instance.PancartaData.Length; i++)
+        {
+            PancartasData PancartaSaved = new PancartasData();
+
+            PancartaSaved.ID = i;
+            PancartaSaved.MaxPoints = GameManager.Instance.PancartaData[i].Score;
+
+            saveState.SavePancarta[i] = PancartaSaved;
+            saveState.Work = true;
+
+            Debug.Log(i);
+        }
+        saveState.Work = true;
+
+        string Json = JsonUtility.ToJson(saveState);
+        SaveSaveString(Json);
+    }
+
     public static void ResetGame()
     {
         CreateDirectory();
         SaveAllMinigameData();
+        SaveAllPancarta();
         LoadSaveFileSetUp();
+    }
+
+    public static void ResetAllGameInGame()
+    {
+        if (!Application.isEditor) CreateDirectory();
+
+        foreach (PancartaScriptableObject pancarta in GameManager.Instance.PancartaData)
+        {
+            pancarta.Score = 0;
+            pancarta.RemoveTexture();
+        }
+
+        foreach (MinigamesScriptableObjectScript minigame in GameManager.Instance.MinigameScripts)
+        {
+            minigame.maxPoints = 0;
+        }
+
+        if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);
+        if (InputManager.Instance != null) Destroy(InputManager.Instance.gameObject);
+
+        if (IsDirectoryExist())
+        {
+            Directory.Delete(SAVE_FOLDER, true);
+            File.Delete(SAVE_FOLDER);
+        }
+
+        SceneManager.LoadScene("Preload");
+        Time.timeScale = 1;
     }
 
     #endregion
