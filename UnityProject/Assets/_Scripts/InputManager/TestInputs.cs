@@ -236,14 +236,14 @@ public class TestInputs : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
-        if (other.gameObject.TryGetComponent<Iinteractable>(out Iinteractable interactable))
+        if (other.gameObject.TryGetComponent<Iinteractable>(out Iinteractable interactable) && refObjetoInteract == null)
         {
             if (interactable.IsInteractable)
             {
                 refObjetoInteract = other.gameObject;
                 isInteractable = true;
                 TextoInteractChange.Invoke(other.GetComponent<Iinteractable>().TextoInteraccion);
-                Debug.Log("inrangeofobject");
+                other.GetComponent<Iinteractable>().Hover();
             }
 
         }
@@ -257,7 +257,7 @@ public class TestInputs : MonoBehaviour
             refObjetoInteract = null;
             isInteractable = false;
             hideTextFunction();
-
+            other.GetComponent<Iinteractable>().Unhover();
         }
     }
 

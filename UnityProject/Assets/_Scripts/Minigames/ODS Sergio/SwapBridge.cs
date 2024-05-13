@@ -4,10 +4,8 @@ using System.Drawing.Text;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SwapBridge : MonoBehaviour, Iinteractable
+public class SwapBridge : LInteractableParent
 {
-    [SerializeField] public bool _isInteractable;
-    [SerializeField] private string _TextoInteraccion;
     [SerializeField] private int costMaterial;
     [SerializeField] private float _transitionDuration;
 
@@ -21,18 +19,7 @@ public class SwapBridge : MonoBehaviour, Iinteractable
     [SerializeField] private Renderer _rendererWoodMat2;
     [SerializeField] private Renderer _rendererGold;
 
-    private List<Renderer> _bridgeRenderer = new List<Renderer>();
-    public string TextoInteraccion
-    {
-        get { return _TextoInteraccion; }
-        set { _TextoInteraccion = value; }
-    }
-    public bool IsInteractable
-    {
-        get { return _isInteractable; }
-        set { _isInteractable = value; }
-    }
-    
+    private List<Renderer> _bridgeRenderer = new List<Renderer>();    
     public void Start()
     {
         _GhostMat.SetFloat("_RectangleHeight", 0);
@@ -48,7 +35,7 @@ public class SwapBridge : MonoBehaviour, Iinteractable
             r.material = _GhostMat;
         }
     }
-    public void Interact()
+    public override void Interact()
     {
         if (GameManagerSergio.Instance.checkMaterial() >= costMaterial)
         {
@@ -63,16 +50,6 @@ public class SwapBridge : MonoBehaviour, Iinteractable
         
     }
 
-    public void SetInteractFalse()
-    {
-        IsInteractable = false;
-    }
-
-    public void SetInteractTrue()
-    {
-        IsInteractable = true;
-
-    }
 
     public void Swap()
     {
