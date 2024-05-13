@@ -8,39 +8,18 @@ using UnityEngine.VFX;
 /// La solucion mas rapida es asignarlo todo a un padre llamado "PlayerUpgrade" y donde tienes el "TestInput" cambiar la logica de "refObjetoEquipado" que ya seria de esa clase en vez de ser un gameobject.
 /// A su vez la logica de TestInputs seria agarrar la clase UseEquipment del padre. 
 
-public class EquipableRedTest : MonoBehaviour,Iinteractable,Iequipable
+public class EquipableRedTest : LInteractableParent, Iequipable
 {
     [SerializeField] private GameObject player;
     [SerializeField] private TestInputs script;
     [SerializeField] private Transform insideRed;
-    [SerializeField] private bool _isInteractable;
     [SerializeField] public bool _isCloudCaptured = false;
     [SerializeField] public GameObject cloudCaptured;
     [SerializeField] private VisualEffect _AuraVFX;
-    public string _TextoInteraccion;
 
-    //Por como se implementan las interfaces se debe poner el set y get de las variables.
-    //Ni idea de si hay otra manera de implementar variables de una interfaz sin poner esto.
-    public string TextoInteraccion
+
+    public override void Interact()
     {
-        get { return _TextoInteraccion; }
-        set { _TextoInteraccion = value; }
-    }
-    public bool IsInteractable
-    {
-        get { return _isInteractable; }
-        set { _isInteractable = value; }
-    }
-
-
-    public void Interact()
-    {
-        //Si el objeto ya a sido interactuado no hacemos nada
-        if (!_isInteractable)
-        {
-            return;
-        }
-
 
         player = GameObject.Find("Player");
         _AuraVFX.Stop();
@@ -118,15 +97,6 @@ public class EquipableRedTest : MonoBehaviour,Iinteractable,Iequipable
         script.isEquipableInCooldown = false;
     }
 
-    public void SetInteractFalse()
-    {
-        IsInteractable = false;
-    }
-
-    public void SetInteractTrue()
-    {
-        IsInteractable = true;
-    }
 
     void OnDrawGizmos()
     {
