@@ -19,6 +19,8 @@ public class SwapBridge : LInteractableParent
     [SerializeField] private Renderer _rendererWoodMat2;
     [SerializeField] private Renderer _rendererGold;
 
+    [SerializeField] private bool AcabarJuegoAlinteract = false;
+
     private List<Renderer> _bridgeRenderer = new List<Renderer>();    
     public void Start()
     {
@@ -42,6 +44,12 @@ public class SwapBridge : LInteractableParent
             Debug.Log("Pago para construir puente");
             GameManagerSergio.Instance.minusMaterial(costMaterial);
             Swap();
+
+            if (AcabarJuegoAlinteract)
+            {
+                GameManagerSergio.Instance.youWin = true;
+                GameManagerSergio.Instance.EnseñarPantallaFinal();
+            }
         }
         else
         {

@@ -14,16 +14,22 @@ public class GameManagerSergio : MinigameParent
 
     [SerializeField] public Vector3 actualSpawnPoint;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField] public int ScoreToSave;
+    [SerializeField] public int ScoreUIFinger;
 
-    protected override void personalAwake()
+    [SerializeField] public TimerMinigame timer;
+    [SerializeField] public TestInputs playerInputs;
+
+
+    [SerializeField] public bool youWin = false;
+
+    void Awake()
     {
         Instance = this;
-        base.personalAwake();
     }
+
+
+   
 
     // Update is called once per frame
     void Update()
@@ -51,5 +57,44 @@ public class GameManagerSergio : MinigameParent
     public int checkMaterial()
     {
         return numMateriales;
+    }
+
+    public void EnseñarPantallaFinal()
+    {
+        playerInputs.DisablePlayer();
+        OnGameFinish();
+    }
+
+    public override void SetResult()
+    {
+        Debug.Log("Se hace tranquilo");
+        Debug.Log(Score);
+
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText(timer.GetTimeInSeconds());
+
+        int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
+        int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
+
+        _txHighScore.text = "High: " + string.Format("{0:00}:{1:00}", minutos, segundos/*, milisegundos*/);
+    }
+
+    public override void SaveValue()
+    {
+        if (youWin)
+        {
+            SaveValue(timer.GetRealTime());
+        }
+        else
+        {
+            SaveValue(-1);
+        }
+        
+    }
+    protected override void OnGameStart()
+    {
+        base.OnGameStart();
+        timer.SetTimer();
     }
 }
