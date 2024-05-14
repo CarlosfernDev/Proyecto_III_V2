@@ -98,12 +98,12 @@ public class TestInputs : MonoBehaviour
 
     public void Interactuo()
     {
-        
         if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
 
         if (isInteractable)
         {
             refObjetoInteract.GetComponent<Iinteractable>().Interact();
+            refObjetoInteract = null;
             Debug.Log("INTERACTUO");
         }
         else
@@ -245,9 +245,7 @@ public class TestInputs : MonoBehaviour
                 TextoInteractChange.Invoke(other.GetComponent<Iinteractable>().TextoInteraccion);
                 other.GetComponent<Iinteractable>().Hover();
             }
-
         }
-
     }
 
     private void OnTriggerExit(Collider other)
