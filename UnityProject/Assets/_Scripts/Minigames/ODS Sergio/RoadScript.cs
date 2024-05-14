@@ -25,6 +25,7 @@ public class RoadScript : MonoBehaviour
     {
         goList = new List<GameObject>();
         index = new List<int>();
+        SpawnCar();
     }
 
     // Update is called once per frame
@@ -33,18 +34,7 @@ public class RoadScript : MonoBehaviour
         MoveCars();
         if (timeBeetweenSpawns<timer)
         {
-            
-            go = Instantiate(car,spawnPoint.position,Quaternion.identity);
-            
-            script  = go.GetComponentInChildren<TroncoParent>(true);
-            if (script != null)
-            {
-               
-                script.speed = carSpeed;
-                script.dir = carDir;
-
-            }
-            goList.Add(go);
+            SpawnCar();
             timer = 0;
         }
         else
@@ -54,6 +44,20 @@ public class RoadScript : MonoBehaviour
         
     }
 
+    void SpawnCar()
+    {
+        go = Instantiate(car, spawnPoint.position, Quaternion.identity);
+
+        script = go.GetComponentInChildren<TroncoParent>(true);
+        if (script != null)
+        {
+
+            script.speed = carSpeed;
+            script.dir = carDir;
+
+        }
+        goList.Add(go);
+    }
 
     void MoveCars()
     {
