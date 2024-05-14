@@ -61,6 +61,8 @@ public class MySceneManager : MonoBehaviour
 
     public void NextScene(int Value, int fadein, int fadeout, float MinimalTime)
     {
+        if (isLoading) return;
+
         if (LoadCorutine != null)
         {
             StopCoroutine(LoadCorutine);
