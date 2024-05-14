@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 3197652864660202858}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3
@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 3197652864660202858}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3
@@ -3469,7 +3469,7 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
           m_MethodName: SetVolumeMaster
           m_Mode: 4
@@ -3485,7 +3485,7 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
           m_MethodName: SetVolumeMaster
           m_Mode: 4
@@ -3501,7 +3501,7 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
           m_MethodName: SetVolumeMaster
           m_Mode: 4
@@ -3517,7 +3517,7 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
           m_MethodName: SetVolumeMaster
           m_Mode: 4
@@ -3533,7 +3533,7 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
           m_MethodName: SetVolumeMaster
           m_Mode: 4
@@ -4127,7 +4127,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master Volume
+  m_text: Music Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9988a46891ae7f34199fe1ddeaf2e61d, type: 2}
   m_sharedMaterial: {fileID: -307589296167458542, guid: 9988a46891ae7f34199fe1ddeaf2e61d,
@@ -6159,7 +6159,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 2915170519561686566}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3
@@ -7112,7 +7112,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Master Volume
+  m_text: 'SFX
+
+    Volume'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9988a46891ae7f34199fe1ddeaf2e61d, type: 2}
   m_sharedMaterial: {fileID: -307589296167458542, guid: 9988a46891ae7f34199fe1ddeaf2e61d,
@@ -8794,9 +8796,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeMusic
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8810,9 +8812,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeMusic
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8826,9 +8828,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeMusic
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8842,9 +8844,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeMusic
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8858,9 +8860,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeMusic
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8871,11 +8873,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   m_text: {fileID: 6198941565327476025}
-  IndexState: 2
+  IndexState: 1
   LButton: {fileID: 2344875682622335770}
   RButton: {fileID: 3502550312653644462}
   _slider: {fileID: 2951965837008147844}
-  loadValue: VolumeMaster
+  loadValue: VolumeMusic
 --- !u!1 &5203037249281909290
 GameObject:
   m_ObjectHideFlags: 0
@@ -12241,7 +12243,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 7620507850915363791}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3
@@ -12824,7 +12826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 2915170519561686566}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3
@@ -14144,9 +14146,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 5027738014442707825}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: 
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14160,9 +14162,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeEffect
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14176,9 +14178,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeEffect
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14192,9 +14194,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeEffect
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14208,9 +14210,9 @@ MonoBehaviour:
     ValueAction:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1017940826995483333}
           m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-          m_MethodName: SetVolumeMaster
+          m_MethodName: SetVolumeEffect
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14221,11 +14223,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   m_text: {fileID: 6218062766629177233}
-  IndexState: 2
+  IndexState: 3
   LButton: {fileID: 2569302265579651305}
   RButton: {fileID: 1730744368508463164}
   _slider: {fileID: 8557516180574021177}
-  loadValue: VolumeMaster
+  loadValue: VolumeEffect
 --- !u!1 &8174297530476932075
 GameObject:
   m_ObjectHideFlags: 0
@@ -15154,7 +15156,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7457673535776637327}
+      - m_Target: {fileID: 7620507850915363791}
         m_TargetAssemblyTypeName: LateralSlider, Assembly-CSharp
         m_MethodName: NextAction
         m_Mode: 3

@@ -97,6 +97,7 @@ public class MySceneManager : MonoBehaviour
         }
 
         // Ejecuta la animacion de la transicion
+        AudioManager.Instance.StartFade(1.2f, 0);
         _myanimator.runtimeAnimatorController = fadeTransition[fadein];
         _myanimator.SetTrigger("NextIn");
 
@@ -184,6 +185,8 @@ public class MySceneManager : MonoBehaviour
 
 
         // Ejecuta la siguiente transicion
+        AudioManager.Instance.SetMusic(Value);
+        AudioManager.Instance.StartFade(1.2f, 1);
         _myanimator.runtimeAnimatorController = fadeTransition[fadeout];
         _myanimator.SetTrigger("NextOut");
 

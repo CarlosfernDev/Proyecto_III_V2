@@ -9,7 +9,7 @@ public class PreloadSettings : MonoBehaviour
     Resolution[] resolutions;
     [SerializeField] private AudioMixer _generalMixer;
 
-    private void Awake()
+    private void Start()
     {
         QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("qualityIndex", 3));
 

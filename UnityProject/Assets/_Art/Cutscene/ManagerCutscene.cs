@@ -10,11 +10,9 @@ public class ManagerCutscene : MonoBehaviour
 
     public Animator _anim;
     public List<AnimatorOverrideController> AnimatorScene;
-    public AudioSource Music;
 
     public void EnableGame()
     {
-        Music.Play();
         DialogueRunner.StartDialogue("Start");
 
         if (GameManager.Instance != null) GameManager.Instance.eventSystem.SetSelectedGameObject(_button);
@@ -52,7 +50,6 @@ public class ManagerCutscene : MonoBehaviour
     [YarnCommand("FinishCutscene")]
     public void FinishScene()
     {
-        Music.Stop();
         MySceneManager.Instance.NextScene(1, 1, 1, 1);
     }
 }

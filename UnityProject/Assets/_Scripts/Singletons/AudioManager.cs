@@ -10,6 +10,11 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer _audioMixer;
     Dictionary<Sound.SoundLayer, AudioMixerGroup> _dictionaryAudioGroup;
     public Sound[] sounds;
+    private Coroutine FadeRoutine;
+
+    public List<AudioClip> Music;
+    private Dictionary<int, AudioClip> MusicDictionary;
+    public AudioSource MusicSource;
 
     void Awake()
     {
@@ -24,6 +29,7 @@ public class AudioManager : MonoBehaviour
         }
 
         LearnDictionary();
+        LearnMusicDictionary();
 
         foreach  (Sound s in sounds)
         {
@@ -74,6 +80,59 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
+    public void StartFade( float duration, float targetVolume)
+    {
+        if (FadeRoutine != null) StopCoroutine(FadeRoutine); 
+        FadeRoutine = StartCoroutine(StartFadeRoutine( duration, targetVolume));
+    }
+
+    public IEnumerator StartFadeRoutine( float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float currentVol;
+        _audioMixer.GetFloat("Fade", out currentVol);
+        currentVol = Mathf.Pow(10, currentVol / 20);
+        float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            _audioMixer.SetFloat("Fade", Mathf.Log10(newVol) * 20);
+            yield return null;
+        }
+        yield break;
+    }
+
+    public void SetMusic(int Scene)
+    {
+        if (!MusicDictionary.ContainsKey(Scene))
+        {
+            MusicSource.clip = null;
+            return;
+        }
+
+        if (MusicDictionary[Scene] == MusicSource.clip) return;
+
+        MusicSource.clip = MusicDictionary[Scene];
+        MusicSource.Stop();
+        MusicSource.Play();
+    }
+
+    private void LearnMusicDictionary()
+    {
+        MusicDictionary = new Dictionary<int, AudioClip>();
+        MusicDictionary.Add( 1, Music[0]);
+        MusicDictionary.Add( 2, Music[0]);
+
+        for(int i = 10; i < 90; i++)
+        {
+            MusicDictionary.Add(i, Music[2]);
+        }
+
+        MusicDictionary.Add(100, Music[1]);
+    }
+
 }
 
 [System.Serializable]
