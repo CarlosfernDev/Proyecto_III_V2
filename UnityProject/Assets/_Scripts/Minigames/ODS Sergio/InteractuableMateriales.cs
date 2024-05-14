@@ -8,6 +8,8 @@ public class InteractuableMateriales : LInteractableParent
     {
         
         GameManagerSergio.Instance.addMaterial(10);
-        //Destroy(this.gameObject);
+        GameObject.Find("Player").GetComponent<TestInputs>().refObjetoInteract = null;
+
+        Destroy(this.gameObject);
     }
 }
