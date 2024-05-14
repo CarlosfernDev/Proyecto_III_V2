@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 457921899631312518}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Plastico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3540507102476555077}
   - component: {fileID: 5425168403326155128}
   - component: {fileID: 4961037273174979059}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 7400690403321816204}
   - component: {fileID: 7172929033635130300}
   - component: {fileID: 782424770839312700}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,6 +239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Selection
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925644322099683788, guid: c3a861d0a42143a49aedaae1a581f3a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1925644322099683788, guid: c3a861d0a42143a49aedaae1a581f3a1,
         type: 3}
@@ -462,6 +467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674443045876379520, guid: 2492fdab7e733b2429d6b5084714da70,
         type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5674443045876379520, guid: 2492fdab7e733b2429d6b5084714da70,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -469,6 +479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interactable01_VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7023140035939881885, guid: 2492fdab7e733b2429d6b5084714da70,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
