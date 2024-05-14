@@ -15975,8 +15975,8 @@ Transform:
   m_GameObject: {fileID: 996480691}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 2.3080938}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1662139930}
@@ -24412,6 +24412,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4899271510622079301, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}
       propertyPath: m_Name
@@ -31768,7 +31783,7 @@ PrefabInstance:
     - target: {fileID: 1817082040198643492, guid: bc31e5ec8317a0142a026f939010ab95,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.91
+      value: 89.49
       objectReference: {fileID: 0}
     - target: {fileID: 1817082040198643492, guid: bc31e5ec8317a0142a026f939010ab95,
         type: 3}
@@ -31778,7 +31793,7 @@ PrefabInstance:
     - target: {fileID: 1817082040198643492, guid: bc31e5ec8317a0142a026f939010ab95,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.74
+      value: 2.88
       objectReference: {fileID: 0}
     - target: {fileID: 1817082040198643492, guid: bc31e5ec8317a0142a026f939010ab95,
         type: 3}
@@ -39445,7 +39460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 1
+  IsDeveloping: 0
   MinigameData: {fileID: 11400000, guid: e9491cd80b1cf8d44acafc528271b843, type: 2}
   _uiAnimator: {fileID: 4622218531766639675}
   isCountdown: 1
@@ -39484,7 +39499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ff8ab0f454ab94e86827b07fee9006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerValue: 150
+  TimerValue: 100
   UpdateText:
     m_PersistentCalls:
       m_Calls: []
