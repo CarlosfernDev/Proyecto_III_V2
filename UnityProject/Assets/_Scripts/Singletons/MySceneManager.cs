@@ -79,6 +79,9 @@ public class MySceneManager : MonoBehaviour
     IEnumerator LoadCorutineFunction(int Value, int fadein, int fadeout, float LoadTime)
     {
         isLoading = true;
+        if (InputManager.Instance != null) InputManager.Instance.interactEvent.RemoveAllListeners();
+        if (InputManager.Instance != null) InputManager.Instance.movementEvent.RemoveAllListeners();
+        if (InputManager.Instance != null) InputManager.Instance.equipableEvent.RemoveAllListeners();
 
         if (Value >= 10 && Value < 100)
         {

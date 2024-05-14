@@ -6,7 +6,7 @@ using UnityEngine;
 public class MinigamesScriptableObjectScript : ScriptableObject
 {
     public int ID;
-    public int maxPoints;
+    public int maxPoints = -1;
 
     public int sceneID;
 
@@ -17,7 +17,7 @@ public class MinigamesScriptableObjectScript : ScriptableObject
     // Implementacion por cosmeticos falta
 
     #region WinneableState
-    
+
     public int CheckPointsState(int Score)
     {
         if (Score < PointsValue[0]) return 0;
@@ -27,9 +27,10 @@ public class MinigamesScriptableObjectScript : ScriptableObject
 
     public void FinishCheckScore(int Score)
     {
-
         if (Score < maxPoints)
             return;
+
+        if (GameManager.Instance != null) GameManager.Instance.UpdateStars();
 
         maxPoints = Score;
         SaveManager.SaveMinigameData(ID - 1);
