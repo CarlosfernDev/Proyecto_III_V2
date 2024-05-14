@@ -23,13 +23,14 @@ public class GameManagerSergio : MinigameParent
 
     [SerializeField] public bool youWin = false;
 
-    void Awake()
+
+
+    protected override void personalAwake()
     {
+        base.personalAwake();
         Instance = this;
     }
 
-
-   
 
     // Update is called once per frame
     void Update()
