@@ -61,6 +61,8 @@ public class MySceneManager : MonoBehaviour
 
     public void NextScene(int Value, int fadein, int fadeout, float MinimalTime)
     {
+        if (isLoading) return;
+
         if (LoadCorutine != null)
         {
             StopCoroutine(LoadCorutine);
@@ -77,6 +79,9 @@ public class MySceneManager : MonoBehaviour
     IEnumerator LoadCorutineFunction(int Value, int fadein, int fadeout, float LoadTime)
     {
         isLoading = true;
+        if (InputManager.Instance != null) InputManager.Instance.interactEvent.RemoveAllListeners();
+        if (InputManager.Instance != null) InputManager.Instance.movementEvent.RemoveAllListeners();
+        if (InputManager.Instance != null) InputManager.Instance.equipableEvent.RemoveAllListeners();
 
         if (Value >= 10 && Value < 100)
         {
@@ -92,6 +97,7 @@ public class MySceneManager : MonoBehaviour
         }
 
         // Ejecuta la animacion de la transicion
+        AudioManager.Instance.StartFade(1.2f, 0);
         _myanimator.runtimeAnimatorController = fadeTransition[fadein];
         _myanimator.SetTrigger("NextIn");
 
@@ -179,6 +185,8 @@ public class MySceneManager : MonoBehaviour
 
 
         // Ejecuta la siguiente transicion
+        AudioManager.Instance.SetMusic(Value);
+        AudioManager.Instance.StartFade(1.2f, 1);
         _myanimator.runtimeAnimatorController = fadeTransition[fadeout];
         _myanimator.SetTrigger("NextOut");
 
