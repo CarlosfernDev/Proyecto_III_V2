@@ -41,7 +41,7 @@ public class GameManagerSergio : MinigameParent
 
     public void updateMaterial()
     {
-        uiMaterial.text = numMateriales.ToString();
+        uiMaterial.text = numMateriales.ToString("00");
     }
     public void addMaterial(int _Material)
     {
@@ -66,11 +66,14 @@ public class GameManagerSergio : MinigameParent
         OnGameFinish();
     }
 
+    public override void OnGameFinish()
+    {
+        timer.PauseTimer();
+        base.OnGameFinish();
+    }
+
     public override void SetResult()
     {
-        Debug.Log("Se hace tranquilo");
-        Debug.Log(Score);
-
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
         _ScoreText.ChangeText(timer.GetTimeInSeconds());
@@ -85,11 +88,13 @@ public class GameManagerSergio : MinigameParent
     {
         if (youWin)
         {
-            SaveValue(timer.GetRealTime());
+            Score = timer.GetRealTime();
+            SaveValue(Score);
         }
         else
         {
-            SaveValue(-1);
+            Score = -1;
+            SaveValue(Score);
         }
         
     }
