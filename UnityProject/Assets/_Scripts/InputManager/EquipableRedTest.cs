@@ -14,9 +14,10 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
 {
     [SerializeField] private TestInputs _playerScript;
     [SerializeField] private Transform insideRed;
-    [SerializeField] public bool _isCloudCaptured = false;
-    [SerializeField] public GameObject cloudCaptured;
     [SerializeField] private VisualEffect _AuraVFX;
+    
+    public GameObject cloudCaptured;
+    public bool isCloudCaptured = false;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
         {
             yield break;
         }
-        if (_isCloudCaptured)
+        if (isCloudCaptured)
         {
             yield break;
         }
@@ -56,11 +57,12 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
             ademas de no abusar de las tags que se usa para postprocesado tambien y no son ilimitadas.*/
             if (item.TryGetComponent(out CloudAI cloudScript))
             {
-                if (_isCloudCaptured == false)
+                if (isCloudCaptured == false)
                 {
-                    _isCloudCaptured = true;
+                    isCloudCaptured = true;
                     cloudScript.CloudCaptured();
                     cloudCaptured = cloudScript.transform.root.gameObject;
+                    ODS7Singleton.Instance.DisableCloud(cloudScript);
                     cloudScript.transform.root.gameObject.SetActive(false);
                 }
             }
