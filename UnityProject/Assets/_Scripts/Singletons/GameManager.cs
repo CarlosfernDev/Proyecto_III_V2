@@ -78,12 +78,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying) 
+        if (!isPlaying || Time.timeScale != 1) 
         {
             if (afkHudIsEnable) {
                 afkHudIsEnable = false;
                 StarsAnimator.SetTrigger("Reset");
             }
+            AfkTimeReference = Time.time;
             return;
         }
 
