@@ -9,7 +9,9 @@ public class GameManager15 : MonoBehaviour
     public static GameManager15 Instance { get; private set; }
 
     public PunteroScriptLaura puntero;
-    
+
+    public int contAnimal = 0;
+
     public Jurado scoreUI;
     private int puntuacion = 0;
     public GameObject puntuacionUI;
@@ -187,13 +189,7 @@ public class GameManager15 : MonoBehaviour
                 decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
                 break;
             case 3:
-                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
-                break;
-            case 4:
-                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
-                break;
-            case 5:
-                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
+                decoracionActivaVisual = Instantiate(Decoracion4, posDecoracion.transform.position, Quaternion.identity);
                 break;
             default:
                 break;
@@ -269,13 +265,13 @@ public class GameManager15 : MonoBehaviour
 
     void loadNewAnimal()
     {
-        
-        int randomNumber = Random.Range(0, animales.Length);
-        animalActivo.Comida = animales[randomNumber].Comida;
-        animalActivo.Habitat = animales[randomNumber].Habitat;
-        animalActivo.Decoracion = animales[randomNumber].Decoracion;
-        imagenUI.GetComponent<Image>().sprite = animales[randomNumber].imagenAnimal;
-        textUI.GetComponent<TMP_Text>().text = animales[randomNumber].AnimalDescription;
+
+        animalActivo.Comida = animales[contAnimal].Comida;
+        animalActivo.Habitat = animales[contAnimal].Habitat;
+        animalActivo.Decoracion = animales[contAnimal].Decoracion;
+        imagenUI.GetComponent<Image>().sprite = animales[contAnimal].imagenAnimal;
+        textUI.GetComponent<TMP_Text>().text = animales[contAnimal].AnimalDescription;
+        contAnimal += 1;
         printAnimal(animalActivo);
         
 
