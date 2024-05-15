@@ -26,10 +26,17 @@ public class MinigamePortal : MonoBehaviour
         if (Time.time - timeReference < 10f) return;
         if (collision.tag != "Player") return;
 
-        _Gui.ChangeText(PortalText);
-        _Gui._FunctionOnYes += teleport;
-        _Gui._FunctionOnNo += SetColdown;
-        _Gui.EnableMenu();
+        if (_Gui != null)
+        {
+            _Gui.ChangeText(PortalText);
+            _Gui._FunctionOnYes += teleport;
+            _Gui._FunctionOnNo += SetColdown;
+            _Gui.EnableMenu();
+        }
+        else
+        {
+            teleport();
+        }
     }
 
     private void OnTriggerExit(Collider collision)
@@ -50,8 +57,11 @@ public class MinigamePortal : MonoBehaviour
         HubManager.TeleportToThisPosition =  PlayerPositionOnReturn.position;
 
         MySceneManager.Instance.NextScene(SceneID, FadeInID, FadeOutID, LoadTime);
-        _Gui._FunctionOnYes -= teleport;
-        _Gui._FunctionOnNo -= SetColdown;
+        if (_Gui != null)
+        {
+            _Gui._FunctionOnYes -= teleport;
+            _Gui._FunctionOnNo -= SetColdown;
+        }
     }
 
     public void SetColdown()

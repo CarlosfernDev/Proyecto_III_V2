@@ -121,7 +121,10 @@ public class MySceneManager : MonoBehaviour
                 else if (Value >= 10 && Value <= 79)
                     GameManager.Instance.programState = GameManager.ProgramState.Minigame;
                 else if (Value >= 100)
+                {
                     GameManager.Instance.programState = GameManager.ProgramState.Hub;
+                    if(!GameManager.Instance.PostGameEnabled)
+                }
             }
             else
             {
@@ -257,6 +260,7 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(81, "ODS_15_UISCENE");
 
         SceneDictionary.Add(100, "MAINCITY_FINAL");
+        SceneDictionary.Add(101, "TUTORIAL_INTERACCION");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }
