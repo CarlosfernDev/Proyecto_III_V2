@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
     {
         state = (GameState)Mathf.Clamp(value, 0, 8);
         SaveManager.SavePlayerData();
+        Debug.Log(state);
     }
 
     public void UpdateState()
