@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameStateDisable : MonoBehaviour
 {
     public GameManager.GameState EnableState;
-    public bool WantToDisable = false;
+    public bool WantToDisable;
     public GameObject GameObjectAffected;
 
     private void Start()
@@ -17,11 +17,17 @@ public class GameStateDisable : MonoBehaviour
 
         if (GameManager.Instance.state >= EnableState)
         {
-            GameObjectAffected.SetActive(!WantToDisable);
+            if(!GameObjectAffected)
+             GameObjectAffected.SetActive(true);
+            else
+                GameObjectAffected.SetActive(false);
         }
         else
         {
-            GameObjectAffected.SetActive(WantToDisable);
+            if (!GameObjectAffected)
+                GameObjectAffected.SetActive(false);
+            else
+                GameObjectAffected.SetActive(true);
         }
 
     }

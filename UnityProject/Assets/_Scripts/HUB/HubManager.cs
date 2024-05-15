@@ -13,7 +13,7 @@ public class HubManager : MonoBehaviour
 
         // GameManager.Instance.state = GameManager.GameState.PostGame;
         // GameManager.Instance.UpdateState();
-        GameManager.Instance.state = CustomState;
+        GameManager.Instance.NextState((int)CustomState);
 
 
 
