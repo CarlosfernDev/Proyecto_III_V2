@@ -39,8 +39,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public enum ProgramState { Menu, Hub, Minigame }
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
-    [HideInInspector] public enum GameState { Aire, Puentes, Reciclaje, Mar, AguaLimpia, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
-    [HideInInspector] public GameState state = GameState.Aire;
+    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
+    [HideInInspector] public GameState state = GameState.Puentes;
 
     public ScoreText StarsText;
     public Animator StarsAnimator;
