@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class IAnube : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class IAnube : MonoBehaviour
 
     private Vector3 factoryDirection;
 
-    [HideInInspector] public CloudSpawner objectiveCloudSpawner;
+    [HideInInspector] public CloudSpawner targetCloudSpawner;
 
     private void Awake()
     {
@@ -37,7 +38,6 @@ public class IAnube : MonoBehaviour
         }
 
         rb.velocity = transform.forward * speed;
-
     }
 
     void getRandomDir()
@@ -64,8 +64,7 @@ public class IAnube : MonoBehaviour
         Debug.Log(collision.gameObject.layer + "////" + ToLayer(layer));
         if (collision.gameObject.layer == ToLayer(layer) && !isReturningToFactory)
         {
-           
-           moveNewDirection();
+            moveNewDirection();
         }
 
         if (collision.gameObject.TryGetComponent<CloudSpawner>(out CloudSpawner cloud))
@@ -73,7 +72,6 @@ public class IAnube : MonoBehaviour
             Debug.Log("FACTORY DETECTED");
             if (isReturningToFactory)
             {
-
                 // Aqui metere cosas yo AT: Stamp
                 cloud.RestoreFactory();
                 isReturningToFactory = false;

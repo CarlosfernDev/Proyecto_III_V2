@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -9,6 +10,7 @@ public class ODS14Manager : MinigameParent
     public static ODS14Manager Instance;
     public TimerMinigame timer;
     public LivesManager playerLives;
+    public TMP_Text scoreText;
 
     public UnityEvent reduceLife;
     public UnityEvent garbageHit;
@@ -63,8 +65,10 @@ public class ODS14Manager : MinigameParent
         if (_garbageLeft <= 0)
         {
             _garbageLeft = 0;
+            scoreText.text = _garbageLeft.ToString();
             OnGameFinish();
         }
+        scoreText.text = _garbageLeft.ToString();
     }
 
     public void DisableMovement()
@@ -79,6 +83,7 @@ public class ODS14Manager : MinigameParent
     private void InitializeGarbageLeft()
     {
         _garbageLeft = FindObjectsOfType<FloatingGarbage>().Length;
+        scoreText.text = _garbageLeft.ToString();
     }
 
     private void DecreaseLives()

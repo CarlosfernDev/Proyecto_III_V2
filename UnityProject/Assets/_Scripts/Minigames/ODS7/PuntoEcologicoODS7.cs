@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,30 +8,39 @@ public class PuntoEcologicoODS7 : LInteractableParent
     [SerializeField] private TestInputs script;
     [SerializeField] private EquipableRedTest redScript;
 
+    private void Start()
+    {
+        script = GameObject.Find("Player").GetComponent<TestInputs>();
+        redScript = FindObjectOfType<EquipableRedTest>();
+    }
+
     public override void Interact()
     {
         base.Interact();
-
-        script = GameObject.Find("Player").GetComponent<TestInputs>();
+        
+        Debug.Log("interacting with eco point");
         if (!script.isEquipado)
         {
+            Debug.Log("not equipped");
             return;
         }
-        redScript = script.refObjetoEquipado.GetComponent<EquipableRedTest>();
-        if (redScript.cloudCaptured !=null)
+        //redScript = script.refObjetoEquipado.GetComponent<EquipableRedTest>();
+        if (redScript.cloudCaptured != null)
         {
+            Debug.Log("Trying to deposit cloud");
             //Llamar funcion de puntuacion?
             redScript.cloudCaptured.transform.parent = null;
 
-            IAnube ia = redScript.cloudCaptured.gameObject.GetComponent<IAnube>();
+            CloudAI ai = redScript.cloudCaptured.gameObject.GetComponent<CloudAI>();
 
-            if (ia.objectiveCloudSpawner)
+            if (ai.targetCloudSpawner)
             {
-                ia.objectiveCloudSpawner.IAObjective = null;
+                ai.targetCloudSpawner.TargetAI = null;
             }
 
-            if (ODS7Singleton.Instance.cloudList.Contains(ia)) {
-                ODS7Singleton.Instance.cloudList.Remove(ia);
+            if (ODS7Singleton.Instance.cloudList.Contains(ai)) 
+            {
+                ODS7Singleton.Instance.cloudList.Remove(ai);
             }
             Destroy(redScript.cloudCaptured.gameObject);
 

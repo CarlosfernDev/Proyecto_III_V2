@@ -5,10 +5,17 @@ using UnityEngine;
 public class HubManager : MonoBehaviour
 {
     public static Vector3 TeleportToThisPosition;
+    public GameManager.GameState CustomState;
 
     private void Start()
     {
         GameManager.Instance.isPlaying = true;
+
+        // GameManager.Instance.state = GameManager.GameState.PostGame;
+        // GameManager.Instance.UpdateState();
+        GameManager.Instance.NextState((int)CustomState);
+
+
 
         Debug.Log("Se intento tpear " + TeleportToThisPosition);
         if(!Vector3.Equals( TeleportToThisPosition, Vector3.zero))

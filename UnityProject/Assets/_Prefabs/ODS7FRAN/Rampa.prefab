@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 404394047646934137}
   - component: {fileID: 7478610595295372844}
   - component: {fileID: 7701428115588414936}
-  - component: {fileID: 1863288591157838536}
   m_Layer: 0
   m_Name: Rampa
   m_TagString: Rampa
@@ -31,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 1.5399971, y: 2.1971607, z: -27.830742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6979620041295144278}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7478610595295372844
@@ -84,13 +84,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1863288591157838536
-MeshCollider:
+--- !u!1 &5725961299543092736
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4618462159554494396}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6979620041295144278}
+  - component: {fileID: 4877785780856059367}
+  m_Layer: 0
+  m_Name: collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6979620041295144278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725961299543092736}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.22900502, w: 0.97342527}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 404394047646934137}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26.477}
+--- !u!65 &4877785780856059367
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725961299543092736}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -102,7 +134,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1141262437986954323, guid: 9e4cc27a45e049e44b618beeb1e37690, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 4.437191, y: 1.7442763, z: 3.9933228}
+  m_Center: {x: -0.50011015, y: -0.26647258, z: 0}

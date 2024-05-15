@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public GUIAreUSure areusure;
 
+    public bool PostGameEnabled = false;
+
     // Variables condicionales
     public bool isDialogueActive = false;
     [SerializeField] public MinigamesScriptableObjectScript[] MinigameScripts;
@@ -39,8 +41,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public enum ProgramState { Menu, Hub, Minigame }
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
-    [HideInInspector] public enum GameState { Aire, Puentes, Reciclaje, Mar, AguaLimpia, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
-    [HideInInspector] public GameState state = GameState.Aire;
+    public int[] RelationGameStateMinigame;
+    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
+    [HideInInspector] public GameState state = GameState.Puentes;
 
     public ScoreText StarsText;
     public Animator StarsAnimator;
@@ -77,12 +80,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying) 
+        if (!isPlaying || Time.timeScale != 1) 
         {
             if (afkHudIsEnable) {
                 afkHudIsEnable = false;
                 StarsAnimator.SetTrigger("Reset");
             }
+            AfkTimeReference = Time.time;
             return;
         }
 
@@ -90,7 +94,6 @@ public class GameManager : MonoBehaviour
         {
             if (afkHudIsEnable) DisableAFKHUD();
             AfkTimeReference = Time.time;
-            Debug.Log(AfkTimeReference);
         }
         else
             CheckAfk();
@@ -119,6 +122,23 @@ public class GameManager : MonoBehaviour
     {
         state = (GameState)Mathf.Clamp(value, 0, 8);
         SaveManager.SavePlayerData();
+        Debug.Log(state);
+    }
+
+    public void UpdateState()
+    {
+        int nextState = 0;
+        foreach(int value in RelationGameStateMinigame)
+        {
+            if (MinigameScripts[value].maxPoints == -1)
+            {
+                break;
+            }
+            nextState++;
+        }
+
+        NextState(nextState);
+        Debug.Log(state);
     }
 
     public void SetCamera(Camera Component)
@@ -255,6 +275,10 @@ public class GameManager : MonoBehaviour
     public void SetisDialogueActive(bool value)
     {
         Instance.isDialogueActive = value;
+        if (Instance.playerScript != null) {
+            Instance.playerScript.rb.velocity = Vector3.zero;
+            Debug.Log("Hay script");
+        }
         Debug.Log("Dialogue Set To " + isDialogueActive);
     }
     #endregion

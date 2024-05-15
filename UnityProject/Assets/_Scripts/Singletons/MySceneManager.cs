@@ -97,7 +97,7 @@ public class MySceneManager : MonoBehaviour
         }
 
         // Ejecuta la animacion de la transicion
-        AudioManager.Instance.StartFade(1.2f, 0);
+        if(AudioManager.Instance != null) AudioManager.Instance.StartFade(1.2f, 0);
         _myanimator.runtimeAnimatorController = fadeTransition[fadein];
         _myanimator.SetTrigger("NextIn");
 
@@ -121,7 +121,11 @@ public class MySceneManager : MonoBehaviour
                 else if (Value >= 10 && Value <= 79)
                     GameManager.Instance.programState = GameManager.ProgramState.Minigame;
                 else if (Value >= 100)
+                {
                     GameManager.Instance.programState = GameManager.ProgramState.Hub;
+                    if (!GameManager.Instance.PostGameEnabled)
+                        Value = 102;
+                }
             }
             else
             {
@@ -185,8 +189,8 @@ public class MySceneManager : MonoBehaviour
 
 
         // Ejecuta la siguiente transicion
-        AudioManager.Instance.SetMusic(Value);
-        AudioManager.Instance.StartFade(1.2f, 1);
+        if (AudioManager.Instance != null) AudioManager.Instance.SetMusic(Value);
+        if (AudioManager.Instance != null) AudioManager.Instance.StartFade(1.2f, 1);
         _myanimator.runtimeAnimatorController = fadeTransition[fadeout];
         _myanimator.SetTrigger("NextOut");
 
@@ -257,6 +261,8 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(81, "ODS_15_UISCENE");
 
         SceneDictionary.Add(100, "MAINCITY_FINAL");
+        SceneDictionary.Add(101, "TUTORIAL_INTERACCION");
+        SceneDictionary.Add(102, "TUTORIAL_INTERACCION");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }
