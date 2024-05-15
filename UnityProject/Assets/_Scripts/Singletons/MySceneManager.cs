@@ -123,7 +123,8 @@ public class MySceneManager : MonoBehaviour
                 else if (Value >= 100)
                 {
                     GameManager.Instance.programState = GameManager.ProgramState.Hub;
-                    if(!GameManager.Instance.PostGameEnabled)
+                    if (!GameManager.Instance.PostGameEnabled)
+                        Value = 102;
                 }
             }
             else
@@ -261,6 +262,7 @@ public class MySceneManager : MonoBehaviour
 
         SceneDictionary.Add(100, "MAINCITY_FINAL");
         SceneDictionary.Add(101, "TUTORIAL_INTERACCION");
+        SceneDictionary.Add(102, "TUTORIAL_INTERACCION");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }
