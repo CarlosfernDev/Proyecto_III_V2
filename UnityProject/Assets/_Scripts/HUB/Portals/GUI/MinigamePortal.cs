@@ -55,6 +55,7 @@ public class MinigamePortal : MonoBehaviour
         }
 
         HubManager.TeleportToThisPosition =  PlayerPositionOnReturn.position;
+        GameManager.Instance.playerScript.DisablePlayer();
 
         MySceneManager.Instance.NextScene(SceneID, FadeInID, FadeOutID, LoadTime);
         if (_Gui != null)
