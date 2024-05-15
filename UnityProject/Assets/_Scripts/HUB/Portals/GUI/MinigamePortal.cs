@@ -14,7 +14,12 @@ public class MinigamePortal : MonoBehaviour
 
     public Transform PlayerPositionOnReturn;
 
-    public float timeReference;
+    public float timeReference = 0;
+
+    private void Start()
+    {
+        timeReference = -99;
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -31,7 +36,7 @@ public class MinigamePortal : MonoBehaviour
     {
         if (collision.tag != "Player") return;
 
-        timeReference = 0;
+        timeReference = -99;
     }
 
     public void teleport()

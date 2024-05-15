@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public enum ProgramState { Menu, Hub, Minigame }
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
+    public int[] RelationGameStateMinigame;
     [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
     [HideInInspector] public GameState state = GameState.Puentes;
 
@@ -77,12 +78,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying) 
+        if (!isPlaying || Time.timeScale != 1) 
         {
             if (afkHudIsEnable) {
                 afkHudIsEnable = false;
                 StarsAnimator.SetTrigger("Reset");
             }
+            AfkTimeReference = Time.time;
             return;
         }
 
@@ -90,7 +92,6 @@ public class GameManager : MonoBehaviour
         {
             if (afkHudIsEnable) DisableAFKHUD();
             AfkTimeReference = Time.time;
-            Debug.Log(AfkTimeReference);
         }
         else
             CheckAfk();
@@ -119,6 +120,22 @@ public class GameManager : MonoBehaviour
     {
         state = (GameState)Mathf.Clamp(value, 0, 8);
         SaveManager.SavePlayerData();
+    }
+
+    public void UpdateState()
+    {
+        int nextState = 0;
+        foreach(int value in RelationGameStateMinigame)
+        {
+            if (MinigameScripts[value].maxPoints == -1)
+            {
+                break;
+            }
+            nextState++;
+        }
+
+        NextState(nextState);
+        Debug.Log(state);
     }
 
     public void SetCamera(Camera Component)
