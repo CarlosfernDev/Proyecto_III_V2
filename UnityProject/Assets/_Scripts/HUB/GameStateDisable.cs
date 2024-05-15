@@ -13,5 +13,6 @@ public class GameStateDisable : MonoBehaviour
         if(GameManager.Instance.state >= EnableState)
             gameObject.SetActive(true);
         else gameObject.SetActive(false);
+
     }
 }
