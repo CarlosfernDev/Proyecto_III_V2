@@ -255,6 +255,10 @@ public class GameManager : MonoBehaviour
     public void SetisDialogueActive(bool value)
     {
         Instance.isDialogueActive = value;
+        if (Instance.playerScript != null) {
+            Instance.playerScript.rb.velocity = Vector3.zero;
+            Debug.Log("Hay script");
+        }
         Debug.Log("Dialogue Set To " + isDialogueActive);
     }
     #endregion

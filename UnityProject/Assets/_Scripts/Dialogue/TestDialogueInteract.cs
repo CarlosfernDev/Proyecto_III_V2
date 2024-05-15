@@ -8,16 +8,12 @@ public class TestDialogueInteract : LInteractableParent
 {
     [SerializeField] private string _targetDialogueNode;
 
-
-    private void Awake()
-    {
-        DialogueRunnerSingleton.Instance.onDialogueComplete.AddListener(SetInteractTrue);
-    }
-
     public override void Interact()
     {
-        if (!IsInteractable) return; 
-        IsInteractable = false;
-        DialogueRunnerSingleton.Instance.StartDialogue(_targetDialogueNode);
+        if (GameManager.Instance.isDialogueActive) return;
+
+        if (!IsInteractable) return;
+        DialogueRunnerSingleton.Instance._LineView.ResetTimer();
+        DialogueRunnerSingleton.Instance._dialogueRunner.StartDialogue(_targetDialogueNode);
     }
 }

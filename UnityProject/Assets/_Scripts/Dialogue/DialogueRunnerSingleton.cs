@@ -6,14 +6,16 @@ using Yarn.Unity;
 [RequireComponent(typeof(DialogueRunner))]
 public class DialogueRunnerSingleton : MonoBehaviour
 {
-    public static DialogueRunner Instance;
+    public static DialogueRunnerSingleton Instance;
+    public DialogueRunner _dialogueRunner;
+    public LineViewCustome _LineView;
 
     // Start is called before the first frame update
     void Awake()
     {
         if(Instance == null)
         {
-            Instance = GetComponent<DialogueRunner>();
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -21,4 +23,5 @@ public class DialogueRunnerSingleton : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
