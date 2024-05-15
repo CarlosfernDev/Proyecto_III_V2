@@ -18,16 +18,13 @@ public class PuntoEcologicoODS7 : LInteractableParent
     {
         base.Interact();
         
-        Debug.Log("interacting with eco point");
         if (!script.isEquipado)
         {
-            Debug.Log("not equipped");
             return;
         }
         //redScript = script.refObjetoEquipado.GetComponent<EquipableRedTest>();
         if (redScript.cloudCaptured != null)
         {
-            Debug.Log("Trying to deposit cloud");
             //Llamar funcion de puntuacion?
             redScript.cloudCaptured.transform.parent = null;
 
@@ -38,9 +35,9 @@ public class PuntoEcologicoODS7 : LInteractableParent
                 ai.targetCloudSpawner.TargetAI = null;
             }
 
-            if (ODS7Singleton.Instance.cloudList.Contains(ai)) 
+            if (ODS7Singleton.Instance.disabledCloudList.Contains(ai)) 
             {
-                ODS7Singleton.Instance.cloudList.Remove(ai);
+                ODS7Singleton.Instance.disabledCloudList.Remove(ai);
             }
             Destroy(redScript.cloudCaptured.gameObject);
 

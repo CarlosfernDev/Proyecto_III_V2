@@ -10,7 +10,7 @@ public class CloudSpawner : LInteractableParent
 {
     public enum factoryState {Wait, Spawning, Loading, Disable}
     public factoryState myFactoryState = factoryState.Wait;
-    [SerializeField] private Transform spawnTransform;
+    [SerializeField] private Transform _spawnTransform;
     [SerializeField] private Slider SpawnSlider;
     [SerializeField] private Slider FixSlider;
     [SerializeField] private float minSpawnRadius = 1f;
@@ -97,7 +97,7 @@ public class CloudSpawner : LInteractableParent
         if (myFactoryState != factoryState.Spawning)
             return false;
 
-        if (ODS7Singleton.Instance.maxClouds <= ODS7Singleton.Instance.cloudList.Count)
+        if (ODS7Singleton.Instance.maxClouds <= ODS7Singleton.Instance.enabledCloudList.Count)
         {
             _TimeReferenceSpawn = Time.time;
             return false;
@@ -121,7 +121,7 @@ public class CloudSpawner : LInteractableParent
 
         Cloud.transform.parent = ODS7Singleton.Instance.SpawnParent;
 
-        ODS7Singleton.Instance.cloudList.Add(Cloud.GetComponent<CloudAI>());
+        ODS7Singleton.Instance.enabledCloudList.Add(Cloud.GetComponent<CloudAI>());
         _TimeReferenceSpawn = Time.time;
         _SpawnTimeOffset = 0;
         _isSpawnPointSet = false;
@@ -172,10 +172,10 @@ public class CloudSpawner : LInteractableParent
     private void SetSpawnLocation()
     {
         if (_isSpawnPointSet) return;
-        Vector3 _calculatedSpawnPoint = RandomPointInRing(spawnTransform, new Vector2(transform.position.x, transform.position.z), minSpawnRadius, maxSpawnRadius);
-        if (CanSpawnHere(_calculatedSpawnPoint))
+        Vector3 calculatedSpawnPoint = RandomPointInRing(_spawnTransform, new Vector2(transform.position.x, transform.position.z), minSpawnRadius, maxSpawnRadius);
+        if (CanSpawnHere(calculatedSpawnPoint))
         {
-            _randomSpawnPoint = _calculatedSpawnPoint;
+            _randomSpawnPoint = calculatedSpawnPoint;
             _isSpawnPointSet = true;
         }
         else
@@ -184,9 +184,9 @@ public class CloudSpawner : LInteractableParent
         }
     }
 
-    private bool CanSpawnHere(Vector3 _spawnPoint)
+    private bool CanSpawnHere(Vector3 spawnPoint)
     {
-        Physics.Raycast(_spawnPoint, Vector3.down, out RaycastHit rayHit, 10f);
+        Physics.Raycast(spawnPoint, Vector3.down, out RaycastHit rayHit, 10f);
 
         if (rayHit.collider.CompareTag("Ground"))
             return true;
@@ -194,7 +194,7 @@ public class CloudSpawner : LInteractableParent
             return false;
     }
 
-    private Vector3 RandomPointInRing(Transform _spawnTransform, Vector2 origin, float minRadius, float maxRadius) 
+    private Vector3 RandomPointInRing(Transform spawnTransform, Vector2 origin, float minRadius, float maxRadius) 
     {
         Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
         float minRadius2 = minRadius * minRadius;
@@ -203,13 +203,15 @@ public class CloudSpawner : LInteractableParent
 
         Vector2 randomPoint2D = (origin + randomDirection * randomDistance);
         
-        return new Vector3(randomPoint2D.x, _spawnTransform.position.y, randomPoint2D.y);
+        return new Vector3(randomPoint2D.x, spawnTransform.position.y, randomPoint2D.y);
     }
-
-    /*private void OnDrawGizmos()
+    
+#if (UNITY_EDITOR) 
+    private void OnDrawGizmos()
     {
-        Handles.DrawWireDisc(transform.position, Vector3.up, maxSpawnRadius);
-        Handles.DrawWireDisc(transform.position, Vector3.up,minSpawnRadius);
-    }*/
-
+        var position = _spawnTransform.position;
+        Handles.DrawWireDisc(position, Vector3.up, maxSpawnRadius);
+        Handles.DrawWireDisc(position, Vector3.up,minSpawnRadius);
+    }
+#endif
 }

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.VFX;
 
 /// Revision: Esta god, pero deberiamos buscar una manera de que no sea en el pickup, setea como singleton el testinputs y haz que siempre en el awake sea machada por uno nuevo.
@@ -8,40 +10,22 @@ using UnityEngine.VFX;
 /// La solucion mas rapida es asignarlo todo a un padre llamado "PlayerUpgrade" y donde tienes el "TestInput" cambiar la logica de "refObjetoEquipado" que ya seria de esa clase en vez de ser un gameobject.
 /// A su vez la logica de TestInputs seria agarrar la clase UseEquipment del padre. 
 
-public class EquipableRedTest : LInteractableParent, Iequipable
+public class EquipableRedTest : MonoBehaviour, Iequipable
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] private TestInputs script;
+    [SerializeField] private TestInputs _playerScript;
     [SerializeField] private Transform insideRed;
     [SerializeField] public bool _isCloudCaptured = false;
     [SerializeField] public GameObject cloudCaptured;
     [SerializeField] private VisualEffect _AuraVFX;
 
-
-    public override void Interact()
+    private void Awake()
     {
-
-        Debug.Log("grabbedNet");
-        player = GameObject.Find("Player");
-        _AuraVFX.Stop();
-        SetInteractFalse();
-        script = player.GetComponent<TestInputs>();
-        transform.GetComponent<Collider>().enabled = false;
-        
-        //Refs en char controller
-        script.isEquipado = true;
-        script.refObjetoEquipado = transform.gameObject;
-
-        //pos y rot seteadas 
-        transform.position = script.positionEquipable.transform.position;
-        transform.parent = script.positionEquipable.transform;
-        transform.rotation = script.positionEquipable.rotation;
-
-        
-        SetInteractFalse();
-        //Maybe hacer la ui estatica o un singleton que la maneje, es un co�azo tener que llamar asi
-        script.hideTextFunction();
-
+        _playerScript = FindObjectOfType<TestInputs>();
+        _playerScript.isEquipado = true;
+        _playerScript.refObjetoEquipado = transform.gameObject;
+        transform.position = _playerScript.positionEquipable.transform.position;
+        transform.parent = _playerScript.positionEquipable.transform;
+        transform.rotation = _playerScript.positionEquipable.rotation;
     }
 
     public void UseEquipment()
@@ -52,64 +36,56 @@ public class EquipableRedTest : LInteractableParent, Iequipable
 
     IEnumerator AccionUsarRed()
     {
-        if (script.isEquipableInCooldown == true)
+        if (_playerScript.isEquipableInCooldown == true)
         {
-            Debug.Log("Estoy en cooldown PLAP PLAP PLAP");
             yield break;
         }
         if (_isCloudCaptured)
         {
-            Debug.Log("Red Llena");
             yield break;
         }
-        Debug.Log("HE SIDO USADO");
-        script.isEquipableInCooldown = true;
-        //Do shit
+        _playerScript.isEquipableInCooldown = true;
+        
         transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-        Collider[] hitColliders = Physics.OverlapSphere(script.interactZone.transform.position, 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(_playerScript.interactZone.transform.position, 1f);
         
         foreach (var item in hitColliders)
         {
-            /// Revision: Usa FindObjectsOfType, ademas de restringir colisiones con una layer. Esto nos permitira en un futuro reutilizar codigo y tenerlo todo mas centralizado,
-            /// ademas de no abusar de las tags que se usa para postprocesado tambien y no son ilimitadas.
-            if (item.gameObject.tag == "Nube")
+            /*Revision: Usa FindObjectsOfType, ademas de restringir colisiones con una layer. Esto nos permitira en un futuro reutilizar codigo y tenerlo todo mas centralizado,
+            ademas de no abusar de las tags que se usa para postprocesado tambien y no son ilimitadas.*/
+            if (item.TryGetComponent(out CloudAI cloudScript))
             {
                 if (_isCloudCaptured == false)
                 {
                     _isCloudCaptured = true;
-                    item.gameObject.GetComponent<CloudAI>().CloudCaptured();
-                    item.gameObject.GetComponent<Collider>().enabled = false;
-                    item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                    item.gameObject.transform.parent = insideRed.transform;
-                    item.gameObject.transform.localPosition = new Vector3(0, 0, 0);
-                    //item.gameObject.transform.position = insideRed.position;
-                   // item.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                    cloudCaptured = item.gameObject;
+                    cloudScript.CloudCaptured();
+                    cloudCaptured = cloudScript.transform.root.gameObject;
+                    cloudScript.transform.root.gameObject.SetActive(false);
                 }
-                
             }
         }
-        /// Revision: Si la animacion es esto, mejor separa el codigo principal fuera de la corutina y una vez realizado que ejecute una corutina u otra
+        // Revision: Si la animacion es esto, mejor separa el codigo principal fuera de la corutina y una vez realizado que ejecute una corutina u otra
         yield return new WaitForSeconds(0.5f);
 
         transform.localRotation = Quaternion.Euler(0, 0, 0);
-        script.isEquipableInCooldown = false;
+        _playerScript.isEquipableInCooldown = false;
     }
 
-
+#if (UNITY_EDITOR)
     void OnDrawGizmos()
     {
-        if(script == null) 
+        if(_playerScript == null) 
         {
             return; 
         }
         else 
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(script.interactZone.transform.position, 1f);
+            Gizmos.DrawSphere(_playerScript.interactZone.transform.position, 1f);
         }
     }
+#endif
 }
 
 

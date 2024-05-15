@@ -119,7 +119,7 @@ public class SaveManager : MonoBehaviour
 
         foreach (MinigamesScriptableObjectScript minigame in GameManager.Instance.MinigameScripts)
         {
-            minigame.maxPoints = 0;
+            minigame.maxPoints = -1;
         }
 
         if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);

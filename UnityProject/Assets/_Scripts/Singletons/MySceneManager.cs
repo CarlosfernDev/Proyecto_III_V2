@@ -38,7 +38,7 @@ public class MySceneManager : MonoBehaviour
 
     public bool isLoading;
     public Action OnLoadFinish;
-    private Dictionary<int, string> SceneDictionary;
+    public Dictionary<int, string> SceneDictionary;
 
     static public int ActualScene;
 
@@ -120,11 +120,28 @@ public class MySceneManager : MonoBehaviour
                     GameManager.Instance.programState = GameManager.ProgramState.Menu;
                 else if (Value >= 10 && Value <= 79)
                     GameManager.Instance.programState = GameManager.ProgramState.Minigame;
-                else if (Value >= 100)
+                else if (Value == 100)
                 {
                     GameManager.Instance.programState = GameManager.ProgramState.Hub;
-                    if (!GameManager.Instance.PostGameEnabled)
+                    Debug.Log((int)GameManager.Instance.state);
+
+                    MinigamesScriptableObjectScript script = GameManager.Instance.MinigameScripts[GameManager.Instance.RelationGameStateMinigame[5]];
+
+                    if (!GameManager.Instance.PostGameEnabled && GameManager.Instance.state == GameManager.GameState.GranjaZoo && script.maxPoints != -1)
+                    {
+                        GameManager.Instance.PostGameEnabled = true;
+                        GameManager.Instance.isPlaying = false;
+                        GameManager.Instance.programState = GameManager.ProgramState.Menu;
                         Value = 102;
+                        LoadTime = 0;
+                    }
+                }
+                else if (Value == 101)
+                    GameManager.Instance.programState = GameManager.ProgramState.Hub;
+                else if (Value >= 102)
+                {
+                    GameManager.Instance.isPlaying = false;
+                    GameManager.Instance.programState = GameManager.ProgramState.Menu;
                 }
             }
             else
@@ -260,9 +277,10 @@ public class MySceneManager : MonoBehaviour
         SceneDictionary.Add(80, "ODS_15");
         SceneDictionary.Add(81, "ODS_15_UISCENE");
 
-        SceneDictionary.Add(100, "MAINCITY_FINAL");
+        SceneDictionary.Add(100, "HUBTESTEO");
         SceneDictionary.Add(101, "TUTORIAL_INTERACCION");
-        SceneDictionary.Add(102, "TUTORIAL_INTERACCION");
+        SceneDictionary.Add(102, "ESCENA FINAL");
+        SceneDictionary.Add(103, "Credits");
 
         //SceneDictionary.Add(20, "LevelSelector");
     }
