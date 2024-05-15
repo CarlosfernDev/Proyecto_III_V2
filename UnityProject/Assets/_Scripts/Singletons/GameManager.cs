@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public GUIAreUSure areusure;
 
+    public bool PostGameEnabled = false;
+
     // Variables condicionales
     public bool isDialogueActive = false;
     [SerializeField] public MinigamesScriptableObjectScript[] MinigameScripts;
