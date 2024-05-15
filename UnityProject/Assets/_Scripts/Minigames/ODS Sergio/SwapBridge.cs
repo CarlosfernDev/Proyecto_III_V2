@@ -25,7 +25,7 @@ public class SwapBridge : LInteractableParent
     private List<Renderer> _bridgeRenderer = new List<Renderer>();    
     public void Start()
     {
-        _GhostMat.SetFloat("_RectangleHeight", 0);
+        _GhostMat.SetFloat("_RectangleHeight", -0.88f);
         _TextoInteraccion = "Coste de construccion: " + costMaterial;
 
         _bridgeRenderer.Add(_rendererWood1);
