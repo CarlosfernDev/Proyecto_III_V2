@@ -10,24 +10,32 @@ public class GameStateDisable : MonoBehaviour
 
     private void Start()
     {
-        if(GameObjectAffected == null)
+        if (GameObjectAffected == null)
             GameObjectAffected = gameObject;
 
         if (GameManager.Instance == null) return;
 
         if (GameManager.Instance.state >= EnableState)
         {
-            if(!GameObjectAffected)
-             GameObjectAffected.SetActive(true);
+            if (!WantToDisable)
+            {
+                GameObjectAffected.SetActive(true);
+            }
             else
+            {
                 GameObjectAffected.SetActive(false);
+            }
         }
         else
         {
-            if (!GameObjectAffected)
+            if (!WantToDisable)
+            {
                 GameObjectAffected.SetActive(false);
+            }
             else
+            {
                 GameObjectAffected.SetActive(true);
+            }
         }
 
     }

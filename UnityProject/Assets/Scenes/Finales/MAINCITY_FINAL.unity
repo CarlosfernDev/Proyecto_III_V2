@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8228,12 +8228,12 @@ PrefabInstance:
     - target: {fileID: 6171866926163320654, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00000020588368
+      value: -0.00000021345237
       objectReference: {fileID: 0}
     - target: {fileID: 6171866926163320654, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.665
+      value: -0.6650001
       objectReference: {fileID: 0}
     - target: {fileID: 6175522691491495827, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
@@ -8342,7 +8342,7 @@ PrefabInstance:
     - target: {fileID: 4095659316202804668, guid: 2cd3bb7f42767ba4ebbe4ee14c01d1f0,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9066,7 +9066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7d463dcfa20cc4a870059cfebefd58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomState: 0
+  CustomState: 4
 --- !u!4 &1600284145
 Transform:
   m_ObjectHideFlags: 0
