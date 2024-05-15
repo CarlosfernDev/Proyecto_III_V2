@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(TimerMinigame))]
 public class ODS7Singleton : MinigameParent
@@ -15,14 +17,14 @@ public class ODS7Singleton : MinigameParent
 
     [Header("Fabricas Variables")]
     public List<CloudSpawner> spawnersDisablingList;
+    public List<CloudSpawner> enabledSpawners;
 
     public float timeFabricaDestroy;
     public float[] timeCloudRestoration;
     public float timeCloudSpawn;
     public int maxClouds;
-    public List<IAnube> cloudList;
+    public List<CloudAI> cloudList;
     public GameObject CloudPrefab;
-    public List<CloudSpawner> EnableFlats;
 
     [Header("Ghost Try")]
     public float tryintervalFix;
@@ -32,13 +34,18 @@ public class ODS7Singleton : MinigameParent
     [Header("Punto Ecologico")]
     public float AddTime;
 
+    [Header("UI Elements")] 
+    public Image[] powerplantStatusSprites;
+    public Sprite activatedPowerplant;
+    public Sprite deactivatedPowerplant;
+
     public Transform SpawnParent;
 
     protected override void personalAwake()
     {
-        cloudList = new List<IAnube>();
+        cloudList = new List<CloudAI>();
         spawnersDisablingList = new List<CloudSpawner>();
-        EnableFlats = new List<CloudSpawner>();
+        enabledSpawners = new List<CloudSpawner>();
         Instance = this;
         base.personalAwake();
     }
@@ -66,16 +73,16 @@ public class ODS7Singleton : MinigameParent
 
         Debug.Log("ChanceDada");
 
-        CloudSpawner objectiveFabric = spawnersDisablingList[UnityEngine.Random.Range(0, spawnersDisablingList.Count)];
-        IAnube objectiveCloud = cloudList[UnityEngine.Random.Range(0, cloudList.Count)];
+        CloudSpawner targetPowerplant = spawnersDisablingList[UnityEngine.Random.Range(0, spawnersDisablingList.Count)];
+        CloudAI objectiveCloud = cloudList[UnityEngine.Random.Range(0, cloudList.Count)];
 
-        if (objectiveFabric.IAObjective != null || objectiveCloud.objectiveCloudSpawner != null)
+        if (targetPowerplant.TargetAI != null || objectiveCloud.targetCloudSpawner != null)
             return;
 
-        objectiveFabric.IAObjective = objectiveCloud;
-        objectiveCloud.objectiveCloudSpawner = objectiveFabric;
+        targetPowerplant.TargetAI = objectiveCloud;
+        objectiveCloud.targetCloudSpawner = targetPowerplant;
 
-        objectiveCloud.WEGOINGTOFACTORYYYYYYYYBOYSSS(objectiveFabric.transform);
+        objectiveCloud.ReturnToPowerplant(targetPowerplant.transform);
     }
 
     public override void OnGameFinish()
@@ -92,6 +99,18 @@ public class ODS7Singleton : MinigameParent
         base.OnGameStart();
         timer.SetTimer();
         TimeTryReference = Time.time;
+    }
+    
+    public void FactoryDeactivatedUI()
+    {
+        for (int i = 0; i < powerplantStatusSprites.Length; i++)
+        {
+            if (powerplantStatusSprites[i].sprite == activatedPowerplant)
+            {
+                powerplantStatusSprites[i].sprite = deactivatedPowerplant;
+                break;
+            }
+        }
     }
 
     public override void SetResult()

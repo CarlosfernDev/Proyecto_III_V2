@@ -21,8 +21,10 @@ public class EquipableRedTest : LInteractableParent, Iequipable
     public override void Interact()
     {
 
+        Debug.Log("grabbedNet");
         player = GameObject.Find("Player");
         _AuraVFX.Stop();
+        SetInteractFalse();
         script = player.GetComponent<TestInputs>();
         transform.GetComponent<Collider>().enabled = false;
         
@@ -37,7 +39,7 @@ public class EquipableRedTest : LInteractableParent, Iequipable
 
         
         SetInteractFalse();
-        //Maybe hacer la ui estatica o un singleton que la maneje, es un coñazo tener que llamar asi
+        //Maybe hacer la ui estatica o un singleton que la maneje, es un coï¿½azo tener que llamar asi
         script.hideTextFunction();
 
     }
@@ -46,7 +48,6 @@ public class EquipableRedTest : LInteractableParent, Iequipable
     {
         /// Revision: Falta gestionar que la corutina no se repita guardandola en una variable Coroutine y revisando que si no es null lo pare o no ejecute el start
         StartCoroutine(AccionUsarRed());
-      
     }
 
     IEnumerator AccionUsarRed()
@@ -77,7 +78,7 @@ public class EquipableRedTest : LInteractableParent, Iequipable
                 if (_isCloudCaptured == false)
                 {
                     _isCloudCaptured = true;
-                    item.gameObject.GetComponent<IAnube>().isStandBY = true;
+                    item.gameObject.GetComponent<CloudAI>().CloudCaptured();
                     item.gameObject.GetComponent<Collider>().enabled = false;
                     item.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                     item.gameObject.transform.parent = insideRed.transform;
@@ -85,7 +86,6 @@ public class EquipableRedTest : LInteractableParent, Iequipable
                     //item.gameObject.transform.position = insideRed.position;
                    // item.gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     cloudCaptured = item.gameObject;
-
                 }
                 
             }
@@ -109,8 +109,6 @@ public class EquipableRedTest : LInteractableParent, Iequipable
             Gizmos.color = Color.green;
             Gizmos.DrawSphere(script.interactZone.transform.position, 1f);
         }
-        
-        
     }
 }
 

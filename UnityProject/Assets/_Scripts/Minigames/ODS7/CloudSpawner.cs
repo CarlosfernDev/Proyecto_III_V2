@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CloudSpawner : LInteractableParent
@@ -16,7 +17,7 @@ public class CloudSpawner : LInteractableParent
     [SerializeField] private float maxSpawnRadius = 5f;
 
     public CentralVFX CentralVFX;
-    public IAnube IAObjective;
+    public CloudAI TargetAI;
 
     private bool _IsRecalculateTime;
 
@@ -30,7 +31,7 @@ public class CloudSpawner : LInteractableParent
 
     private void Start()
     {
-        ODS7Singleton.Instance.EnableFlats.Add(this);
+        ODS7Singleton.Instance.enabledSpawners.Add(this);
 
         FixSlider.gameObject.SetActive(false);
         FixSlider.maxValue = ODS7Singleton.Instance.timeFabricaDestroy;
@@ -70,7 +71,7 @@ public class CloudSpawner : LInteractableParent
             FixSlider.gameObject.SetActive(true);
         }
 
-       float TimeLoad = ODS7Singleton.Instance.timeFabricaDestroy - (Time.time - _TimeReferenceDestroy);
+        float TimeLoad = ODS7Singleton.Instance.timeFabricaDestroy - (Time.time - _TimeReferenceDestroy);
         TimeLoad = Mathf.Clamp(TimeLoad, 0, ODS7Singleton.Instance.timeFabricaDestroy);
 
         FixSlider.value = TimeLoad;
@@ -120,7 +121,7 @@ public class CloudSpawner : LInteractableParent
 
         Cloud.transform.parent = ODS7Singleton.Instance.SpawnParent;
 
-        ODS7Singleton.Instance.cloudList.Add(Cloud.GetComponent<IAnube>());
+        ODS7Singleton.Instance.cloudList.Add(Cloud.GetComponent<CloudAI>());
         _TimeReferenceSpawn = Time.time;
         _SpawnTimeOffset = 0;
         _isSpawnPointSet = false;
@@ -139,17 +140,18 @@ public class CloudSpawner : LInteractableParent
         CentralVFX.CallCoroutine();
         _SpawnTimeOffset = Time.time - _TimeReferenceSpawn;
         myFactoryState = factoryState.Disable;
-        ODS7Singleton.Instance.EnableFlats.Remove(this);
-        if (ODS7Singleton.Instance.EnableFlats.Count <= 0) ODS7Singleton.Instance.OnGameFinish();
+        ODS7Singleton.Instance.enabledSpawners.Remove(this);
+        ODS7Singleton.Instance.FactoryDeactivatedUI();
+        if (ODS7Singleton.Instance.enabledSpawners.Count <= 0) ODS7Singleton.Instance.OnGameFinish();
     }
 
     public void RestoreFactory()
     {
         FixSlider.gameObject.SetActive(false);
         ODS7Singleton.Instance.spawnersDisablingList.Remove(this);
-        IAObjective.isReturningToFactory = false;
-        IAObjective.objectiveCloudSpawner = null;
-        IAObjective = null;
+        TargetAI.isReturningToPowerplant = false;
+        TargetAI.targetCloudSpawner = null;
+        TargetAI = null;
         _TimeReferenceSpawn = Time.time - _SpawnTimeOffset;
         myFactoryState = factoryState.Spawning;
     }
@@ -189,7 +191,6 @@ public class CloudSpawner : LInteractableParent
         if (rayHit.collider.CompareTag("Ground"))
             return true;
         else
-            Debug.LogWarning("No se pudo spawnear el enemigo");
             return false;
     }
 
