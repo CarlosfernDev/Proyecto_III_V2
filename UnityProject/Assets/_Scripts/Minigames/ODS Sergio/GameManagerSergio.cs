@@ -14,16 +14,23 @@ public class GameManagerSergio : MinigameParent
 
     [SerializeField] public Vector3 actualSpawnPoint;
 
-    void Start()
-    {
-        
-    }
+    [SerializeField] public int ScoreToSave;
+    [SerializeField] public int ScoreUIFinger;
+
+    [SerializeField] public TimerMinigame timer;
+    [SerializeField] public TestInputs playerInputs;
+
+
+    [SerializeField] public bool youWin = false;
+
+
 
     protected override void personalAwake()
     {
-        Instance = this;
         base.personalAwake();
+        Instance = this;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -34,7 +41,7 @@ public class GameManagerSergio : MinigameParent
 
     public void updateMaterial()
     {
-        uiMaterial.text = numMateriales.ToString();
+        uiMaterial.text = numMateriales.ToString("00");
     }
     public void addMaterial(int _Material)
     {
@@ -51,5 +58,49 @@ public class GameManagerSergio : MinigameParent
     public int checkMaterial()
     {
         return numMateriales;
+    }
+
+    public void EnseñarPantallaFinal()
+    {
+        playerInputs.DisablePlayer();
+        OnGameFinish();
+    }
+
+    public override void OnGameFinish()
+    {
+        timer.PauseTimer();
+        base.OnGameFinish();
+    }
+
+    public override void SetResult()
+    {
+        RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
+
+        _ScoreText.ChangeText(timer.GetTimeInSeconds());
+
+        int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
+        int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
+
+        _txHighScore.text = "High: " + string.Format("{0:00}:{1:00}", minutos, segundos/*, milisegundos*/);
+    }
+
+    public override void SaveValue()
+    {
+        if (youWin)
+        {
+            Score = timer.GetRealTime();
+            SaveValue(Score);
+        }
+        else
+        {
+            Score = -1;
+            SaveValue(Score);
+        }
+        
+    }
+    protected override void OnGameStart()
+    {
+        base.OnGameStart();
+        timer.SetTimer();
     }
 }

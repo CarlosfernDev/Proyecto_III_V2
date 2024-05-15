@@ -3,7 +3,7 @@ tags:
 position: 682,18
 ---
 <<CutsceneChange CutscenCanvas 1>>
-La leyenda de la puchaina Kosmos
+Once upon a time, in a faraway galaxy...
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.3>> 
 <<jump Galaxia>>
@@ -15,8 +15,8 @@ position: 777,-483
 <<CutsceneChange CutscenCanvas 2>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-En un mundo que no es nuestro, habitado por pequeños seres elementales y mantenido estable por un cristal de energía gigante situado en el centro de su mundo.
-Aparte de su mundo principal, los elementales dependían del mundo de los humanos para abastecerse de energía elemental, incluso mucho antes de que estos comenzaran a poblarla.  
+... in a world not our own, inhabited by small elemental beings, and kept stable by a giant energy crystal located at the center of their world.
+Apart from their main world, the elementals relied on the world of humans for their supply of elemental energy, even long before mankind began to populate it.
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.75>> 
 <<jump ElementalesCristal>>
@@ -28,7 +28,8 @@ position: 465,-728
 <<CutsceneChange CutscenCanvas 3>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-los humanos llevaron su mundo hasta el punto en el que apenas era habitable para ellos y tuvieron que realizar un éxodo para poder sobrevivir sin realmente tratar de arreglar los problemas que ellos causaron.
+Humans brought their homeworld to the point where it was barely habitable for them, and they had to make an exodus in order to survive.
+But unfortunately, without really trying to fix the problems they caused.
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.75>> 
 <<jump DestruccionHumanos>>
@@ -39,7 +40,7 @@ position: -12,-770
 ---
 <<CutsceneChange CutscenCanvas 4>>
 <<CutSceneJoin CutscenCanvas true>>
- Este nivel de descuido empezó a repercutir negativamente en el mundo de los elementales, dado que el cristal que lo mantenía estable se alimentaba de la energía de este mundo.
+This level of neglect began to have a negative impact on the elemental world, since the crystal that kept it stable was fed by the energy of this world.
  <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.9>> 
  <<jump DescuidoCristal>>
@@ -51,7 +52,7 @@ position: -441,-699
 <<wait 0.05>> 
 <<CutsceneChange CutscenCanvas 5>>
 <<CutSceneJoin CutscenCanvas true>>
-A consecuencia de la acción humana, el cristal comenzó a romperse y los entornos del mundo elemental comenzaron a deteriorarse y los habitantes comenzaron a enfermar. 
+As a consequence of human action, the crystal began to shatter, the surroundings of the elemental world began to deteriorate, and the inhabitants began to fall into disease. 
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.2>> 
 <<jump ElementalesEnferman>>
@@ -63,7 +64,7 @@ position: -346,-378
 <<CutsceneChange CutscenCanvas 6>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.2>> 
-No se xd
+The elementals began to brainstorm.... This situation had to end, otherwise the world as they knew it could be destroyed! 
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 1.1>> 
 <<jump CharlaCircular>>
@@ -76,7 +77,7 @@ position: -246,-176
 <<CutsceneChange CutscenCanvas 7>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-oh no
+The crystal would completely collapse, the world would be overrun with contamination, all living creatures would die! This situation had to be stopped!
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.3>> 
 <<jump CristalRomperiaMundoAcaba>>
@@ -88,7 +89,7 @@ position: -309,51
 <<CutsceneChange CutscenCanvas 8>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-pium1
+So the elementals worked and worked... Until they found a solution.
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 0.3>> 
 <<jump Destellos>>
@@ -100,7 +101,7 @@ position: 41,-290
 <<CutsceneChange CutscenCanvas 9>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-pium2
+It was the most powerful being who had ever lived... But not one to be feared, one who would take care of the world and bring it to the way it was before.
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 1.1>> 
 <<jump Explosion>>
@@ -112,8 +113,8 @@ position: 336,-88
 <<CutsceneChange CutscenCanvas 10>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
-Para poder salvar al cristal y a su mundo, los elementales juntaron fuerzas y crearon un ser elemental neutro, capaz de obtener y manipular las diferentes energías elementales.
- El objetivo que tendría era simple, viajar a los entornos de los diferentes elementales y resolver los problemas ocasionados por la actividad humana para restaurar el cristal a su estado original y devolver la estabilidad a su mundo.
+In order to save the crystal and their world, the elementals joined forces and created a neutral elemental being, capable of obtaining and manipulating the different elemental energies.
+ His goal was simple, to travel to the environments of the different elementals and solve the problems caused by human activity in order to restore the crystal to its original state and bring stability back to his world.
 <<CutSceneJoin CutscenCanvas false>>
 <<wait 1.1>> 
 <<jump SaleKosmos>>
@@ -125,6 +126,6 @@ position: 289,293
 <<CutsceneChange CutscenCanvas 11>>
 <<CutSceneJoin CutscenCanvas true>>
 <<wait 1.3>> 
- Las consecuencias del fracaso, sin embargo, suponen la destrucción del cristal y el consiguiente desmoronamiento de su mundo.  ¿Conseguirá Kósmos su objetivo?
+The consequences of failure, however, mean the destruction of the crystal and the consequent crumbling of his world. Will Kósmos achieve his goal?
 <<FinishCutscene CutscenCanvas>>
 ===

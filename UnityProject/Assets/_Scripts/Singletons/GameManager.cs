@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,8 +39,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public enum ProgramState { Menu, Hub, Minigame }
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
-    [HideInInspector] public enum GameState { Aire, Puentes, Reciclaje, Mar, AguaLimpia, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
-    [HideInInspector] public GameState state = GameState.Aire;
+    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
+    [HideInInspector] public GameState state = GameState.Puentes;
+
+    public ScoreText StarsText;
+    public Animator StarsAnimator;
+    public float MinimalTimeToAfk;
+    private float AfkTimeReference;
+    private bool afkHudIsEnable;
 
     // GamesUnlocked
     //public Dictionary<int, Scriptable> minigamesScriptableDictionary; 
@@ -63,13 +70,30 @@ public class GameManager : MonoBehaviour
 
         PauseUI.SetActive(false);
 
+        UpdateStars();
         FirstTime();
         NextState(8);
     }
 
     private void Update()
     {
+        if (!isPlaying) 
+        {
+            if (afkHudIsEnable) {
+                afkHudIsEnable = false;
+                StarsAnimator.SetTrigger("Reset");
+            }
+            return;
+        }
 
+        if (InputManager.Instance.playerInputs.ActionMap1.AnyKey.IsInProgress())
+        {
+            if (afkHudIsEnable) DisableAFKHUD();
+            AfkTimeReference = Time.time;
+            Debug.Log(AfkTimeReference);
+        }
+        else
+            CheckAfk();
     }
 
     #region CalleableFunctions
@@ -231,7 +255,50 @@ public class GameManager : MonoBehaviour
     public void SetisDialogueActive(bool value)
     {
         Instance.isDialogueActive = value;
+        if (Instance.playerScript != null) {
+            Instance.playerScript.rb.velocity = Vector3.zero;
+            Debug.Log("Hay script");
+        }
         Debug.Log("Dialogue Set To " + isDialogueActive);
     }
+    #endregion
+
+    #region ScoreCanvas
+
+    public void UpdateStars()
+    {
+        int StarsValue = 0;
+        foreach (MinigamesScriptableObjectScript Minigame in MinigameScripts)
+        {
+            StarsValue += Minigame.CheckPointsState(Minigame.maxPoints);
+        }
+        StarsText.ChangeText(StarsValue);
+    }
+
+    public void CheckAfk()
+    {
+        if (afkHudIsEnable) return;
+
+        if (MinimalTimeToAfk > Time.time - AfkTimeReference) return;
+
+        EnableAFKHUD();
+    }
+
+    public void EnableAFKHUD()
+    {
+        if (afkHudIsEnable) return;
+        afkHudIsEnable = true;
+        StarsAnimator.SetBool( "IsEnable", afkHudIsEnable);
+        StarsAnimator.SetTrigger("Move");
+    }
+
+    public void DisableAFKHUD()
+    {
+        if (!afkHudIsEnable) return;
+        afkHudIsEnable = false;
+        StarsAnimator.SetBool("IsEnable", afkHudIsEnable);
+        StarsAnimator.SetTrigger("Move");
+    }
+
     #endregion
 }

@@ -19,6 +19,9 @@ public class SwapBridge : LInteractableParent
     [SerializeField] private Renderer _rendererWoodMat2;
     [SerializeField] private Renderer _rendererGold;
 
+    [SerializeField] private bool AcabarJuegoAlinteract = false;
+    [SerializeField] private bool CambioPuente = false;
+
     private List<Renderer> _bridgeRenderer = new List<Renderer>();    
     public void Start()
     {
@@ -42,6 +45,12 @@ public class SwapBridge : LInteractableParent
             Debug.Log("Pago para construir puente");
             GameManagerSergio.Instance.minusMaterial(costMaterial);
             Swap();
+
+            if (AcabarJuegoAlinteract)
+            {
+                GameManagerSergio.Instance.youWin = true;
+                GameManagerSergio.Instance.EnseñarPantallaFinal();
+            }
         }
         else
         {
@@ -63,6 +72,8 @@ public class SwapBridge : LInteractableParent
 
     private IEnumerator SwapBridgeCoroutine()
     {
+        CambioPuente = true;
+        desactivarSelector();
         float lerp = 0;
         while (lerp < 1)
         {
@@ -83,5 +94,21 @@ public class SwapBridge : LInteractableParent
         _rendererWood2.material = _BridgeWoodMat;
         _rendererWoodMat2.material = _BridgeWoodMat2;
         GetComponent<BoxCollider>().isTrigger = true;
+    }
+
+
+    public override void Hover()
+    {
+        if (Selector != null && CambioPuente == false) Selector.SetActive(true);
+    }
+
+    public override void Unhover()
+    {
+        if (Selector != null && CambioPuente == false) Selector.SetActive(false);
+    }
+
+    public void desactivarSelector()
+    {
+        Selector.SetActive(false);
     }
 }

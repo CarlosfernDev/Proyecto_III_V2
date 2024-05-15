@@ -33,6 +33,9 @@ public class TestInputs : MonoBehaviour
     public float actualDesSpeed;
     public float rotationSpeed;
 
+    public bool IgnoreInput;
+    private Coroutine inputresetCoroutine;
+
     private float baseAcceSpeed;
     private float baseMaxSpeed;
     private float baseDesAccSpeed;
@@ -115,6 +118,9 @@ public class TestInputs : MonoBehaviour
     {
         
         if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+
+        if (IgnoreInput) vec = Vector2.zero;
+
         if (sloopyMovement)
         {
             if (vec.magnitude == 0)
@@ -189,6 +195,23 @@ public class TestInputs : MonoBehaviour
 
 
 
+    }
+
+    public void ResetInputs()
+    {
+       if(inputresetCoroutine == null) inputresetCoroutine = StartCoroutine(ResetInputsRoutine());
+    }
+
+    IEnumerator ResetInputsRoutine()
+    {
+        rb.velocity = Vector3.zero;
+        while (!Vector2.Equals(InputManager.Instance.playerInputs.ActionMap1.Movement.ReadValue<Vector2>(), Vector2.zero))
+        {
+            IgnoreInput = true;
+            yield return new WaitForFixedUpdate();
+        }
+        IgnoreInput = false;
+        inputresetCoroutine = null;
     }
 
     public void BoostVelocidad(float velocidadMaximaNueva, float velocidadAceleracionNueva, float velocidadDesacNueva, float Tiempo)

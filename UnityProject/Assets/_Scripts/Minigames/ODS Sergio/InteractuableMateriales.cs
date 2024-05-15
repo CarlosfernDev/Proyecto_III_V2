@@ -7,7 +7,9 @@ public class InteractuableMateriales : LInteractableParent
     public override void Interact()
     {
         
-        GameManagerSergio.Instance.addMaterial(10);
-        //Destroy(this.gameObject);
+        GameManagerSergio.Instance.addMaterial(1);
+        GameObject.Find("Player").GetComponent<TestInputs>().refObjetoInteract = null;
+
+        Destroy(this.gameObject);
     }
 }
