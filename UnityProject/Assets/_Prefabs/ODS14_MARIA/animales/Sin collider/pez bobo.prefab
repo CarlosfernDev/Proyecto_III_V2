@@ -39,8 +39,7 @@ Transform:
   - {fileID: 4176501533899927973}
   - {fileID: 8606265895552952569}
   - {fileID: 2115175452779694742}
-  - {fileID: 7174880419101876891}
-  - {fileID: 8413897549874762373}
+  - {fileID: 2591270899988815838}
   - {fileID: 944587920422154545}
   - {fileID: 4707667616251547528}
   - {fileID: 6155694690007055659}
@@ -144,12 +143,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 326710605497251786}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00019271873, y: 0.0026519764, z: 0.0042440793}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000017275818, w: 1}
+  m_LocalPosition: {x: -0.00019268146, y: 0.0026518719, z: 0.0042440807}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8141339042583772711}
+  m_Father: {fileID: 2591270899988815838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6853406548607559359
 MeshFilter:
@@ -794,7 +793,7 @@ GameObject:
   - component: {fileID: 7374188287311609549}
   - component: {fileID: 7551836377668877739}
   m_Layer: 0
-  m_Name: Cube.148
+  m_Name: aleta final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,6 +864,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7372183970627898884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2591270899988815838}
+  m_Layer: 0
+  m_Name: antena
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2591270899988815838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7372183970627898884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7174880419101876891}
+  - {fileID: 8413897549874762373}
+  m_Father: {fileID: 8141339042583772711}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8626365411644682996
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,12 +923,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626365411644682996}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00009986826, y: 0.0058215316, z: 0.0050859065}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000017275818, w: 1}
+  m_LocalPosition: {x: 0.00009984577, y: 0.0058214082, z: 0.0050859065}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8141339042583772711}
+  m_Father: {fileID: 2591270899988815838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7180203067100422583
 MeshFilter:
@@ -960,7 +992,7 @@ GameObject:
   - component: {fileID: 7789353334649068368}
   - component: {fileID: 4951384920993559456}
   m_Layer: 0
-  m_Name: Cube.153
+  m_Name: aleta a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,8 +1006,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8782354525990064815}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.003025055, y: 0.00093566923, z: -0.0011322019}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000059422668, w: 1}
+  m_LocalPosition: {x: 0.0030250745, y: 0.0009355922, z: -0.0011322043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1043,7 +1075,7 @@ GameObject:
   - component: {fileID: 6169545012399095524}
   - component: {fileID: 4825977144655679970}
   m_Layer: 0
-  m_Name: Cube.152
+  m_Name: aleta b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,8 +1089,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8793466205899258373}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.002997055, y: 0.00093566865, z: -0.0011322019}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000059422668, w: 1}
+  m_LocalPosition: {x: -0.0029970328, y: 0.00093574333, z: -0.0011322043}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

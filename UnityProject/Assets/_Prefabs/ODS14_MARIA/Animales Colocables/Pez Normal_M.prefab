@@ -80,7 +80,7 @@ MonoBehaviour:
           w: 1
     - Position:
         x: 0.0005912781
-        y: 0
+        y: 0.1
         z: 0.9972534
       TangentIn:
         x: -0
@@ -116,7 +116,7 @@ MonoBehaviour:
           w: 0
     - Position:
         x: -0.0022087097
-        y: 0
+        y: 0.1
         z: -0.9803467
       TangentIn:
         x: -0
@@ -200,8 +200,23 @@ PrefabInstance:
       objectReference: {fileID: 4296860795048395486}
     - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 176.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 176.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 176.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -2.900024
       objectReference: {fileID: 0}
     - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
         type: 3}
@@ -211,7 +226,7 @@ PrefabInstance:
     - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
         type: 3}
@@ -248,10 +263,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4270968595952926394, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6270787242052554790, guid: b9acc555f1cabf8469ea8a28f1455752,
         type: 3}
       propertyPath: m_Name
       value: pez normal collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821793732054337409, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00105
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821793732054337409, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00229
+      objectReference: {fileID: 0}
+    - target: {fileID: 8821793732054337409, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00007491589
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -261,6 +296,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5237311821910550591}
+    - targetCorrespondingSourceObject: {fileID: 6270787242052554790, guid: b9acc555f1cabf8469ea8a28f1455752,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 593993993657268658}
   m_SourcePrefab: {fileID: 100100000, guid: b9acc555f1cabf8469ea8a28f1455752, type: 3}
 --- !u!4 &1597896823682029118 stripped
 Transform:
@@ -290,10 +329,31 @@ MonoBehaviour:
   m_PlayOnAwake: 1
   m_LoopMode: 1
   m_Method: 1
-  m_Duration: 3.808849
+  m_Duration: 3.8241327
   m_MaxSpeed: 1.23
   m_EasingMode: 0
   m_AlignmentMode: 1
   m_ObjectForwardAxis: 3
   m_ObjectUpAxis: 2
   m_StartOffset: 0
+--- !u!95 &593993993657268658
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822294637756397730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf21cd9c01b2bf945b92600cb05b15bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
