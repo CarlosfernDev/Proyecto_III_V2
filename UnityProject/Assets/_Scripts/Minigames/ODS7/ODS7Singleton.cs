@@ -23,7 +23,8 @@ public class ODS7Singleton : MinigameParent
     public float[] timeCloudRestoration;
     public float timeCloudSpawn;
     public int maxClouds;
-    public List<CloudAI> cloudList;
+    public List<CloudAI> enabledCloudList;
+    public List<CloudAI> disabledCloudList;
     public GameObject CloudPrefab;
 
     [Header("Ghost Try")]
@@ -43,7 +44,7 @@ public class ODS7Singleton : MinigameParent
 
     protected override void personalAwake()
     {
-        cloudList = new List<CloudAI>();
+        enabledCloudList = new List<CloudAI>();
         spawnersDisablingList = new List<CloudSpawner>();
         enabledSpawners = new List<CloudSpawner>();
         Instance = this;
@@ -63,18 +64,14 @@ public class ODS7Singleton : MinigameParent
         if (Time.time - TimeTryReference < tryintervalFix)
             return;
 
-        Debug.Log("Intento ciclo");
-
-        if (UnityEngine.Random.Range(0, ChanceBase) != 1 || spawnersDisablingList.Count == 0 || cloudList.Count == 0)
+        if (UnityEngine.Random.Range(0, ChanceBase) != 1 || spawnersDisablingList.Count == 0 || enabledCloudList.Count == 0)
         {
             TimeTryReference = Time.time;
             return;
         }
 
-        Debug.Log("ChanceDada");
-
         CloudSpawner targetPowerplant = spawnersDisablingList[UnityEngine.Random.Range(0, spawnersDisablingList.Count)];
-        CloudAI objectiveCloud = cloudList[UnityEngine.Random.Range(0, cloudList.Count)];
+        CloudAI objectiveCloud = enabledCloudList[UnityEngine.Random.Range(0, enabledCloudList.Count)];
 
         if (targetPowerplant.TargetAI != null || objectiveCloud.targetCloudSpawner != null)
             return;
@@ -110,6 +107,15 @@ public class ODS7Singleton : MinigameParent
                 powerplantStatusSprites[i].sprite = deactivatedPowerplant;
                 break;
             }
+        }
+    }
+
+    public void DisableCloud(CloudAI cloudToDisable)
+    {
+        if (enabledCloudList.Contains(cloudToDisable))
+        {
+            enabledCloudList.Remove(cloudToDisable);
+            disabledCloudList.Add(cloudToDisable);
         }
     }
 
