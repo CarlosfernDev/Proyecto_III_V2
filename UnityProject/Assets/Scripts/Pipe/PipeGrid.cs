@@ -26,6 +26,7 @@ public class PipeGrid : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        //GenerateGrid();
        // LoadLevel(level1, 1);
        // LoadLevel(level2, 2);
        // LoadLevel(level3, 3);

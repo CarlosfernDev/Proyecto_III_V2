@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -60,14 +60,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _Ambient_Occlusion: 0
-    - _MaskHardness: 1.03
-    - _MaskRadius: 7.16
-    - _MaskRadiusInside: 6.8
-    - _QueueControl: 0
-    - _QueueOffset: 0
+    - _MaskHardness: 0.86
+    - _MaskRadius: 0.1
+    - _MaskRadiusInside: 0.05
+    - _QueueControl: 1
+    - _QueueOffset: 1
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 0, b: 0, a: 0}
-    - _MaskColor: {r: 0.5943396, g: 0.3863317, b: 0, a: 0}
-    - _MaskPos: {r: 0, g: 0, b: 0.24914482, a: 0}
+    - _MaskColor: {r: 19.018867, g: 12.362615, b: 0, a: 0}
+    - _MaskPos: {r: 0, g: 0, b: 0.24998672, a: 0}
   m_BuildTextureStacks: []

@@ -51,6 +51,7 @@ public class OD6GameManager : MonoBehaviour
         {
             Score = 0;
             LoadLevel2();
+            
         }
         if (LevelRef == Level.Level2 && Score == 2)
         {
@@ -59,9 +60,14 @@ public class OD6GameManager : MonoBehaviour
         }
         if (LevelRef == Level.Level3 && Score == 3)
         {
+            LoadLevel1();
             //LLAMAR A FINALIZAR GAME
             Debug.Log("HAS GANADO");
         }
+    }
+    public void ResetSelector()
+    {
+
     }
 }
 public enum Level
