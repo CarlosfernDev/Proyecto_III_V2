@@ -118,7 +118,7 @@ public class ODS2Singleton : MinigameParent
 
     public override void SaveValue()
     {
-        if (Score == 0) Score = -1;
+        if (0 == MinigameData.CheckPointsState(Score)) Score = -1;
         SaveValue(Score);
     }
 }
