@@ -227,6 +227,7 @@ public class MinigameParent : MonoBehaviour
         try
         {
             MinigameData.FinishCheckScore(value);
+            Score = value;
         }
         catch (Exception e)
         {
@@ -237,9 +238,11 @@ public class MinigameParent : MonoBehaviour
     IEnumerator CoroutineOnGameFinish()
     {
         //_TextCanvas.gameObject.transform.parent.gameObject.SetActive(true);
-        SetImage(5, TimerData);
+        if(MinigameData.CheckPointsState(Score) == 0 ) SetImage(6, TimerData);
+        else SetImage(5, TimerData);
 
-        yield return new WaitForSeconds(1.3f);
+
+        if (CountRender) yield return new WaitForSeconds(1.3f);
 
         InputManager.Instance.anyKeyEvent.AddListener(SetPressedButton);
 

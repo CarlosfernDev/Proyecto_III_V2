@@ -50,7 +50,7 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
         
         transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-        Collider[] hitColliders = Physics.OverlapSphere(_captureZone.transform.position, 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(_captureZone.transform.position, 1.5f);
         
         foreach (var item in hitColliders)
         {
@@ -62,9 +62,10 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
                 {
                     isCloudCaptured = true;
                     cloudScript.CloudCaptured();
-                    cloudCaptured = cloudScript.transform.root.gameObject;
+                    cloudCaptured = cloudScript.gameObject;
                     ODS7Singleton.Instance.DisableCloud(cloudScript);
-                    cloudScript.transform.root.gameObject.SetActive(false);
+                    ODS7Singleton.Instance.CaptureCloud();
+                    cloudScript.gameObject.SetActive(false);
                 }
             }
         }
@@ -85,7 +86,7 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
         else 
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(_captureZone.transform.position, 1f);
+            Gizmos.DrawSphere(_captureZone.transform.position, 1.5f);
         }
     }
 #endif
