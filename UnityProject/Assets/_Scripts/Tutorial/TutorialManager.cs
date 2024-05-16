@@ -12,5 +12,12 @@ public class TutorialManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        MySceneManager.Instance.OnLoadFinish += IsPlayingEnable;
+    }
+
+    public void IsPlayingEnable()
+    {
+        GameManager.Instance.isPlaying = true;
+        MySceneManager.Instance.OnLoadFinish -= IsPlayingEnable;
     }
 }

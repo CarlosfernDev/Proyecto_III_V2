@@ -7,15 +7,28 @@ public class HubManager : MonoBehaviour
     public static Vector3 TeleportToThisPosition;
     public GameManager.GameState CustomState;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.isPlaying = true;
 
+        if (CustomState != 0)
+        {
+            GameManager.Instance.NextState((int)CustomState);
+        }
+        else
+        {
+            GameManager.Instance.UpdateState();
+        }
+
         // GameManager.Instance.state = GameManager.GameState.PostGame;
-        // GameManager.Instance.UpdateState();
-        GameManager.Instance.NextState((int)CustomState);
 
+        //GameManager.Instance.NextState((int)CustomState);
+        GameManager.Instance.UpdateStars();
+    }
 
+    private void Start()
+    {
+        Debug.Log(GameManager.Instance.state);
 
         Debug.Log("Se intento tpear " + TeleportToThisPosition);
         if(!Vector3.Equals( TeleportToThisPosition, Vector3.zero))

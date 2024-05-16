@@ -8,6 +8,9 @@ public class TestInputs : MonoBehaviour
 {
 
     //Equipment (Red nubes fran)
+
+    public Transform _cameraTransform;
+
     [SerializeField] public Transform positionEquipable;
     public bool isEquipado = false;
     public GameObject refObjetoEquipado;

@@ -16,7 +16,7 @@ public class TimerMinigame : MonoBehaviour
     private float TimeReference;
     private bool isCountdown = false;
 
-    private float Value;
+    [HideInInspector]public float Value;
 
     private int MinuteSecondsValue;
 

@@ -78,8 +78,8 @@ public class GameManagerSergio : MinigameParent
 
         _ScoreText.ChangeText(timer.GetTimeInSeconds());
 
-        int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
-        int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
+        int minutos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) / 60);
+        int segundos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) % 60);
 
         _txHighScore.text = "High: " + string.Format("{0:00}:{1:00}", minutos, segundos/*, milisegundos*/);
     }

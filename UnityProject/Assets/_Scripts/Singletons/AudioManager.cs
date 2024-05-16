@@ -132,6 +132,7 @@ public class AudioManager : MonoBehaviour
 
         MusicDictionary.Add(100, Music[1]);
         MusicDictionary.Add(101, Music[1]);
+        MusicDictionary.Add(103, Music[1]);
     }
 
 }
