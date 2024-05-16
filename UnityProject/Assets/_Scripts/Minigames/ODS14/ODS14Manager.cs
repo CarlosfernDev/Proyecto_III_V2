@@ -106,7 +106,16 @@ public class ODS14Manager : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        _ScoreText.ChangeText(timer.GetTimeInSeconds());
+        if(_currentLives == 0)
+        {
+            _ScoreText.Pretext = null;
+            _ScoreText.ChangeText("You have destroyed the marine fauna");
+        }
+        else
+        {
+            _ScoreText.ChangeText(timer.GetTimeInSeconds());
+        }
+
 
         int minutos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) / 60);
         int segundos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) % 60);

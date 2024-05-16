@@ -45,7 +45,8 @@ public class PuntoEcologicoODS7 : LInteractableParent
             redScript.cloudCaptured = null;
             redScript.isCloudCaptured = false;
       
-            ODS7Singleton.Instance.DeliverCloud();
+            //ODS7Singleton.Instance.DeliverCloud();
+            ODS7Actions.OnCloudDelivered();
             
             // Bufos
             script.BoostVelocidad(10f, 20f, 0.9f, 5f);
