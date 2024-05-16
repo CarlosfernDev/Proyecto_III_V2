@@ -96,6 +96,8 @@ public class PunteroScriptLaura: MonoBehaviour
 
     public void Interactuo()
     {
+        if (GameManager15.Instance.CanvasDialogo.activeInHierarchy) return;
+
         if (disableMovement)
         {
             return;
@@ -113,6 +115,8 @@ public class PunteroScriptLaura: MonoBehaviour
     }
     public void MeMuevo(Vector2 vec)
     {
+        if (GameManager15.Instance.CanvasDialogo.activeInHierarchy) return;
+
         if (disableMovement)
         {
             return;

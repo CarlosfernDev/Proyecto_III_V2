@@ -122,7 +122,7 @@ public class ODS14Manager : MinigameParent
             Score = -1;
             return;
         }
-        Score = timer.GetRealTime();
+        Score = (int)timer.Value;
         SaveValue(Score);
     }
 }

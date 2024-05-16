@@ -101,6 +101,10 @@ public class GameManager15 : MonoBehaviour
 
     public void CheckConditionsButtonCall()
     {
+        if (CanvasDialogo.activeInHierarchy)
+        {
+            return;
+        }
         checkConditionsmet(animalActivo);
     }
 
@@ -259,14 +263,21 @@ public class GameManager15 : MonoBehaviour
         Debug.Log("CANVAS");
         if (CanvasDialogo.activeInHierarchy)
         {
-            CanvasDialogo.SetActive(false);
-            CanvasGameplay.SetActive(true);
+            disableCanvas();
         }
         else
         {
             CanvasDialogo.SetActive(true);
             CanvasGameplay.SetActive(false);
+            InputManager.Instance.interactEvent.AddListener(disableCanvas);
         }
+    }
+
+    public void disableCanvas()
+    {
+        CanvasDialogo.SetActive(false);
+        CanvasGameplay.SetActive(true);
+        InputManager.Instance.interactEvent.RemoveListener(disableCanvas);
     }
 
     void loadNewAnimal()

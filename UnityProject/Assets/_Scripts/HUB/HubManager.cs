@@ -11,9 +11,19 @@ public class HubManager : MonoBehaviour
     {
         GameManager.Instance.isPlaying = true;
 
+        if (CustomState != 0)
+        {
+            GameManager.Instance.NextState((int)CustomState);
+        }
+        else
+        {
+            GameManager.Instance.UpdateState();
+        }
+
         // GameManager.Instance.state = GameManager.GameState.PostGame;
-        GameManager.Instance.UpdateState();
+
         //GameManager.Instance.NextState((int)CustomState);
+        GameManager.Instance.UpdateStars();
     }
 
     private void Start()
