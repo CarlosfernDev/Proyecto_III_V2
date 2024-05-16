@@ -30,7 +30,8 @@ public class PuntoEcologicoODS7 : LInteractableParent
 
             CloudAI ai = redScript.cloudCaptured.gameObject.GetComponent<CloudAI>();
 
-            if (ai.targetCloudSpawner)
+            ODS7Singleton.Instance.DestroyCloud(ai);
+            /*if (ai.targetCloudSpawner)
             {
                 ai.targetCloudSpawner.TargetAI = null;
             }
@@ -39,16 +40,16 @@ public class PuntoEcologicoODS7 : LInteractableParent
             {
                 ODS7Singleton.Instance.disabledCloudList.Remove(ai);
             }
-            Destroy(redScript.cloudCaptured.gameObject);
+            Destroy(redScript.cloudCaptured.gameObject);*/
 
             redScript.cloudCaptured = null;
-            redScript._isCloudCaptured = false;
+            redScript.isCloudCaptured = false;
       
+            ODS7Singleton.Instance.DeliverCloud();
+            
             // Bufos
             script.BoostVelocidad(10f, 20f, 0.9f, 5f);
             ODS7Singleton.Instance.timer.AddTime(ODS7Singleton.Instance.AddTime);
-
-            Debug.Log("Nube en objeto");
         }
     }
 }
