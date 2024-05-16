@@ -27,8 +27,9 @@ public class ODS7Singleton : MinigameParent
     public float timeFabricaDestroy;
     public float[] timeCloudRestoration;
     public float timeCloudSpawn;
-    public int maxClouds;
+    public float timeToNewCloudCall;
     public float transformTimeIncrease = 1.5f;
+    public int maxClouds;
 
     private bool _allGeneratorsDisabled;
     private bool _allCloudsCaptured;
@@ -101,7 +102,7 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered += CheckWinLose;
         ODS7Actions.OnFactoryDisabled += CheckWinLose;
         ODS7Actions.OnCloudDelivered += DeliverCloud;
-        //ODS7Actions.OnRequestCloud += RequestReinforcements;
+        ODS7Actions.OnFactoryDisabled += PowerplantDeactivatedUI;
     }
 
     private void OnDisable()
@@ -109,7 +110,7 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered -= CheckWinLose;
         ODS7Actions.OnFactoryDisabled -= CheckWinLose;
         ODS7Actions.OnCloudDelivered -= DeliverCloud;
-        //ODS7Actions.OnRequestCloud -= RequestReinforcements;
+        ODS7Actions.OnFactoryDisabled -= PowerplantDeactivatedUI;
     }
 
     #endregion

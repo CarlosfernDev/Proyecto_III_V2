@@ -25,10 +25,10 @@ public class CloudSpawner : LInteractableParent
     [SerializeField] private Slider FixSlider;
     
     [Header("Transformation Stats")]
-    public CloudAI TargetAI;
     [SerializeField] private int maxRepairLevels = 3;
     [SerializeField] private int _currentRepairLevel = 0;
     public GameObject[] repairLevelImage;
+    public CloudAI TargetAI;
     public float timeMultiplier = 1.0f;
     
     [Header("VFX")]
@@ -39,13 +39,16 @@ public class CloudSpawner : LInteractableParent
 
     private float _transformTimeRef;
     private float _spawnTimeRef;
-    
+    private float _nextSummonTimeRef;
+
+    private float _maxNextSummonTime;
     private float _maxSpawnTime;
     private float _maxTransformTime;
     
     [Header("Debug")]
     [SerializeField] private float _currentSpawnTime;
     [SerializeField] private float _currentTransformTime;
+    [SerializeField] private float _currentNextSummonTime;
 
     private Vector3 _randomSpawnPoint;
     private bool _isSpawnPointSet;
@@ -69,6 +72,7 @@ public class CloudSpawner : LInteractableParent
         ODS7Singleton.Instance.OnGameStartEvent += OnGameStart;
         _maxTransformTime = ODS7Singleton.Instance.timeFabricaDestroy;
         _maxSpawnTime = ODS7Singleton.Instance.timeCloudSpawn;
+        _maxNextSummonTime = ODS7Singleton.Instance.timeToNewCloudCall;
         _currentTransformTime = 0;
     }
     
@@ -139,13 +143,22 @@ public class CloudSpawner : LInteractableParent
         {
             myFactoryState = factoryState.Resetting;
             _currentRepairLevel = 0;
-            //_transformTimeRef = Time.time;
             return; 
         } 
 
         if (TargetAI == null && ODS7Singleton.Instance.enabledCloudList.Count > 0)
         {
             ODS7Singleton.Instance.RequestReinforcements(this);
+            _nextSummonTimeRef = 0;
+        }
+
+        if (TargetAI != null && TargetAI.isCaptured)
+        {
+            if (_nextSummonTimeRef == 0)
+            {
+                _nextSummonTimeRef = Time.time;
+            }
+            CallNewCloud();
         }
         
         _currentTransformTime = timeMultiplier * (Time.time - _transformTimeRef);
@@ -218,6 +231,17 @@ public class CloudSpawner : LInteractableParent
         float offset = (float)System.Math.Round(Random.Range(0f, 0.5f), 2);
         _offsetSpawnTime = _maxSpawnTime + offset;
         return offset;
+    }
+
+    private void CallNewCloud()
+    {
+        _currentNextSummonTime = (Time.time - _nextSummonTimeRef);
+
+        if (!(_currentNextSummonTime >= _maxNextSummonTime)) return;
+        TargetAI.targetCloudSpawner = null;
+        TargetAI = null;
+        _nextSummonTimeRef = 0;
+        ODS7Singleton.Instance.RequestReinforcements(this);
     }
 
     #endregion
@@ -304,7 +328,6 @@ public class CloudSpawner : LInteractableParent
         timeMultiplier = 1f;
         VFXManager.GetComponent<CentralVFX>().CallCoroutine();
         ODS7Actions.OnFactoryDisabled();
-        ODS7Singleton.Instance.PowerplantDeactivatedUI();
     }
 
     public void RestoreFactory()
@@ -325,7 +348,7 @@ public class CloudSpawner : LInteractableParent
 
         timeMultiplier = 1f;
         SetInteractTrue();
-        _spawnOffset = Random.Range(0f, 0.5f);
+        _spawnOffset = RandomRoundOffset();
         myFactoryState = factoryState.Spawning;
     }
 
@@ -341,6 +364,7 @@ public class CloudSpawner : LInteractableParent
         if (myFactoryState != factoryState.Spawning) return;
 
         SetInteractFalse();
+        Unhover();
         myFactoryState = factoryState.Transforming;
         _transformTimeRef = Time.time;
         ODS7Singleton.Instance.spawnersDisablingList.Add(this);
