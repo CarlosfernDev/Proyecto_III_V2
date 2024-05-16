@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618fb46db89231a47bf48f17b759a38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraTransform: {fileID: 0}
   positionEquipable: {fileID: 6897730963930053343}
   isEquipado: 0
   refObjetoEquipado: {fileID: 0}
@@ -1007,6 +1008,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Kosmos
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed294797cb4f41543ac857c24e0040f7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1697098509382959737, guid: ed294797cb4f41543ac857c24e0040f7,
         type: 3}
