@@ -56,6 +56,10 @@ public class Pipe : MonoBehaviour
 
     public virtual void InstantiateVisualGO(GameObject go,int rotY)
     {
+        if (Endgame == true || WaterSource == true)
+        {
+            return;
+        }
         yRot = rotY;
         if (visualGO == null)
         {
