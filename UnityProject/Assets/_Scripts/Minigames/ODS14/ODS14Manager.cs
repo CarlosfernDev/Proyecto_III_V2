@@ -19,6 +19,8 @@ public class ODS14Manager : MinigameParent
     [SerializeField] private int _garbageLeft;
     private List<GameObject> _floatingGarbage;
 
+    public float extraTime = 5f;
+    
     public bool canMove;
     
     protected override void personalAwake()
@@ -62,6 +64,7 @@ public class ODS14Manager : MinigameParent
     private void GarbageHit()
     {
         _garbageLeft--;
+        timer.AddTime(extraTime);
         if (_garbageLeft <= 0)
         {
             _garbageLeft = 0;
