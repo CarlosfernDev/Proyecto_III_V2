@@ -9,10 +9,12 @@ public class ODS15MinigameManager : MinigameParent
     public int ScoreToSave;
 
 
-    void Awake()
+    protected override void personalAwake()
     {
+        base.personalAwake();
         instance = this;
     }
+
     void Start()
     {
 

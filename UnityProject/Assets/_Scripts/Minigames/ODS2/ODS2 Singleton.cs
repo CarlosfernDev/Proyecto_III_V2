@@ -59,6 +59,11 @@ public class ODS2Singleton : MinigameParent
         FarmCheck();
     }
 
+    public override void OnGameFinish()
+    {
+        base.OnGameFinish();
+    }
+
     public void OnVegetalDone()
     {
         TotalVegetal++;
@@ -108,7 +113,7 @@ public class ODS2Singleton : MinigameParent
 
         _ScoreText.ChangeText("Score: " + Score.ToString());
 
-        _txHighScore.text = "High: " + MinigameData.maxPoints;
+        _txHighScore.text = "High: " + Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints);
     }
 
 }

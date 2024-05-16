@@ -87,8 +87,10 @@ public class GameManager15 : MonoBehaviour
     private void Start()
     {
         puntuacion = 0;
+
         UpdateScore();
         loadNewAnimal();
+        InputManager.Instance.interactEvent.AddListener(disableCanvas);
     }
 
 
@@ -275,6 +277,7 @@ public class GameManager15 : MonoBehaviour
 
     public void disableCanvas()
     {
+        if ((MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
         CanvasDialogo.SetActive(false);
         CanvasGameplay.SetActive(true);
         InputManager.Instance.interactEvent.RemoveListener(disableCanvas);

@@ -225,7 +225,10 @@ public class ODS7Singleton : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        _ScoreText.ChangeText(Score);
+        int minutosScore = Mathf.FloorToInt(Score / 60);
+        int segundosScore = Mathf.FloorToInt(Score % 60);
+
+        _ScoreText.ChangeText(segundosScore);
 
         int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
         int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
@@ -235,7 +238,7 @@ public class ODS7Singleton : MinigameParent
 
     public override void SaveValue()
     {
-        Score = timer.GetRealTime();
+        Score = (int)timer.Value;
         SaveValue(Score);
     }
 
