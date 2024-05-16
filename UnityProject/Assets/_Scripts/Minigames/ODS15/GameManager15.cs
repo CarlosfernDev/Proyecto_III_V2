@@ -87,8 +87,10 @@ public class GameManager15 : MonoBehaviour
     private void Start()
     {
         puntuacion = 0;
+
         UpdateScore();
         loadNewAnimal();
+        InputManager.Instance.interactEvent.AddListener(disableCanvas);
     }
 
 
@@ -101,6 +103,10 @@ public class GameManager15 : MonoBehaviour
 
     public void CheckConditionsButtonCall()
     {
+        if (CanvasDialogo.activeInHierarchy)
+        {
+            return;
+        }
         checkConditionsmet(animalActivo);
     }
 
@@ -238,9 +244,10 @@ public class GameManager15 : MonoBehaviour
         {
             Debug.Log("RespuestaErronea");
             puntuacion -= 1;
+            
             UpdateScore();
             loadNewAnimal();
-
+            CanvasSwap();
 
         }
     }
@@ -259,14 +266,22 @@ public class GameManager15 : MonoBehaviour
         Debug.Log("CANVAS");
         if (CanvasDialogo.activeInHierarchy)
         {
-            CanvasDialogo.SetActive(false);
-            CanvasGameplay.SetActive(true);
+            disableCanvas();
         }
         else
         {
             CanvasDialogo.SetActive(true);
             CanvasGameplay.SetActive(false);
+            InputManager.Instance.interactEvent.AddListener(disableCanvas);
         }
+    }
+
+    public void disableCanvas()
+    {
+        if ((MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+        CanvasDialogo.SetActive(false);
+        CanvasGameplay.SetActive(true);
+        InputManager.Instance.interactEvent.RemoveListener(disableCanvas);
     }
 
     void loadNewAnimal()

@@ -9,10 +9,12 @@ public class ODS15MinigameManager : MinigameParent
     public int ScoreToSave;
 
 
-    void Awake()
+    protected override void personalAwake()
     {
+        base.personalAwake();
         instance = this;
     }
+
     void Start()
     {
 
@@ -34,14 +36,16 @@ public class ODS15MinigameManager : MinigameParent
     {
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(ScoreToSave)].sprite;
 
-        _ScoreText.ChangeText("Score: " + ScoreToSave);
+        _ScoreText.ChangeText("Score: " + Mathf.Clamp(ScoreToSave, 0, ScoreToSave));
 
-        _txHighScore.text = "High: " + MinigameData.maxPoints;
+        _txHighScore.text = "High: " + Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints);
     }
 
     public override void SaveValue()
     {
-        SaveValue(ScoreToSave);
+        Score = ScoreToSave;
+        if (Score == 0) Score = -1;
+        SaveValue(Score);
     }
 
 
