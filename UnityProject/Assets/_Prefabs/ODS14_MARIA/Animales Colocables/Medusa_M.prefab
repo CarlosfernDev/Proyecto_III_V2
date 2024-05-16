@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 2655937994864482583}
   m_Layer: 0
   m_Name: Medusa_M
-  m_TagString: Untagged
+  m_TagString: fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,10 +265,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1052040466186266415, guid: 3fb6ce569c0d95a46b0b3204eefb543f,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2966144395056713704}
-    - targetCorrespondingSourceObject: {fileID: 1052040466186266415, guid: 3fb6ce569c0d95a46b0b3204eefb543f,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8993316070011239074}
   m_SourcePrefab: {fileID: 100100000, guid: 3fb6ce569c0d95a46b0b3204eefb543f, type: 3}
 --- !u!1 &3370250875270107003 stripped
@@ -277,33 +273,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2331756756473145428}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2966144395056713704
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370250875270107003}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &8993316070011239074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3370250875270107003}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b14e469adaeaf0b4f9d9b7f854558977, type: 3}
   m_Name: 
@@ -322,7 +291,7 @@ MonoBehaviour:
   - {fileID: 3076098377020125395}
   - {fileID: 682136064659893099}
   depthBeforeSubmerged: 1
-  displacementAmount: 3
+  displacementAmount: 3.5
   waterDrag: 0.99
   waterAngularDrag: 0.5
   floaterCount: 0
