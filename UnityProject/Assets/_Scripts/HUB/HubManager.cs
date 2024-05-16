@@ -6,6 +6,8 @@ public class HubManager : MonoBehaviour
 {
     public static Vector3 TeleportToThisPosition;
     public GameManager.GameState CustomState;
+
+    public LookAtZAxis ArrowAxis;
     public List<GameObject> GPSPositions;
 
     private void Awake()
@@ -24,6 +26,11 @@ public class HubManager : MonoBehaviour
         // GameManager.Instance.state = GameManager.GameState.PostGame;
 
         //GameManager.Instance.NextState((int)CustomState);
+
+        if (GPSPositions.Count < (int)GameManager.Instance.state) ArrowAxis.gameObject.SetActive(false);
+        else if (GPSPositions[(int)GameManager.Instance.state] == null) ArrowAxis.gameObject.SetActive(false);
+        else ArrowAxis.TargetTransform = GPSPositions[(int)GameManager.Instance.state].transform;
+
         GameManager.Instance.UpdateStars();
     }
 
