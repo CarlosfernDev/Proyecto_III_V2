@@ -248,10 +248,26 @@ public class ODS7Singleton : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
-        int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
+        if (Score == -1)
+        {
+            _ScoreText.Pretext = null;
+            _ScoreText.Preset = null;
+            if (enabledSpawners.Count > 0 && enabledCloudList.Count > 0) {
+                _ScoreText.ChangeText("You missed deactivating factories and hunting the clouds.");
+            } else if (enabledSpawners.Count > 0)
+            {
+                _ScoreText.ChangeText("You missed deactivating factories.");
+            } else if (enabledCloudList.Count > 0)
+            {
+                _ScoreText.ChangeText("You missed deactivating factories.");
+            }
+        }
+        else {
+            int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
+            int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
 
-        _ScoreText.ChangeText(string.Format("{0:00}:{1:00}", minutosScore, segundosScore));
+            _ScoreText.ChangeText(string.Format("{0:00}:{1:00}", minutosScore, segundosScore));
+        }
 
         int minutos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) / 60);
         int segundos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) % 60);
@@ -261,7 +277,8 @@ public class ODS7Singleton : MinigameParent
 
     public override void SaveValue()
     {
-        if (enabledSpawners.Count > 0) Score = -1;
+        // CAMBIA ESTO SI TOCAS ALGO DE COMO CONTAR NUBES O FABRICAS
+        if (enabledSpawners.Count > 0 || enabledCloudList.Count > 0) Score = -1;
         else Score = (int)timer.Value;
 
         SaveValue(Score);
