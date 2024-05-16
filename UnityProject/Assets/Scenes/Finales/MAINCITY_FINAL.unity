@@ -2328,6 +2328,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a3fbac1d86ef71345b1d170326f9a0ca, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598695556295875604, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: MinigameData
@@ -3753,6 +3758,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c46777aa67a19504698fc6660e7de784, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5422525616008235459, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_Enabled
@@ -6444,6 +6454,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c31831e08a77dbc4684c161f317b4ed6, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598695556295875604, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: MinigameData
@@ -7014,8 +7029,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.6546736, y: 8.657871, z: 4.1638775}
-  m_Center: {x: 4.0458274, y: 4.669895, z: 4.148656}
+  m_Size: {x: 6.793783, y: 8.657871, z: 6.3262386}
+  m_Center: {x: 4.350358, y: 4.669895, z: 4.6390524}
 --- !u!1 &493273431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8643,6 +8658,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AreUSure
       objectReference: {fileID: 0}
+    - target: {fileID: 4956282916528645226, guid: 57aa8a017024b454dbd57581957aedf9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -21.999817
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9957,12 +9977,13 @@ GameObject:
   - component: {fileID: 747366812}
   - component: {fileID: 747366814}
   - component: {fileID: 747366813}
+  - component: {fileID: 747366815}
   m_Layer: 20
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &747366812
 Transform:
@@ -10028,6 +10049,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747366811}
+  m_Mesh: {fileID: 6124436484349841348, guid: 4c9b15b5b1884054a9a555f5b58828c4, type: 3}
+--- !u!64 &747366815
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747366811}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6124436484349841348, guid: 4c9b15b5b1884054a9a555f5b58828c4, type: 3}
 --- !u!1001 &750322196
 PrefabInstance:
@@ -15374,6 +15417,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a17b16eb114a8246a28c7cee9f6c723, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598695556295875604, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: MinigameData
@@ -17366,6 +17414,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6171866926163320654, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18520,6 +18573,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f0c712c83ed7bfe48af13434b82edc5f, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598695556295875604, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: MinigameData
@@ -21742,7 +21800,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -22627,6 +22685,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3072709aff29fad4f901aead504b592e, type: 2}
+    - target: {fileID: 5119501945879243045, guid: 55c44e89cf07a0b43a611805004e43e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5598695556295875604, guid: 55c44e89cf07a0b43a611805004e43e2,
         type: 3}
       propertyPath: MinigameData
@@ -27381,6 +27444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5304692024652428835, guid: 6b1b8868c7a70e04ab12abcf9d21226a,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5520383283646465206, guid: 6b1b8868c7a70e04ab12abcf9d21226a,
         type: 3}
