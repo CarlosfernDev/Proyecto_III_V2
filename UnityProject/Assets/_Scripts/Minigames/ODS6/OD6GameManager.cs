@@ -59,6 +59,7 @@ public class OD6GameManager : MonoBehaviour
         }
         if (LevelRef == Level.Level3 && Score == 3)
         {
+            LoadLevel1();
             //LLAMAR A FINALIZAR GAME
             Debug.Log("HAS GANADO");
         }
