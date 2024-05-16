@@ -19,10 +19,12 @@ public class GameManager15 : MonoBehaviour
     public Transform posComida;
     public Transform posHabitat;
     public Transform posDecoracion;
+    public Transform posAnimal;
 
     private GameObject habitatActivoVisual;
     private GameObject comidaActivaVisual;
     private GameObject decoracionActivaVisual;
+    private GameObject animalActivaVisual;
 
     [Header("BullshitAssets Settings")]
     //ReferenciasHabitat
@@ -62,6 +64,7 @@ public class GameManager15 : MonoBehaviour
     public GameObject CanvasGameplay;
 
     public GameObject imagenUI;
+    public GameObject nameUI;
     public GameObject textUI;
 
 
@@ -138,13 +141,13 @@ public class GameManager15 : MonoBehaviour
         switch (ComidaActiva)
         {
             case 0:
-                comidaActivaVisual = Instantiate(Comida1, posComida.transform.position,Quaternion.identity);
+                comidaActivaVisual = Instantiate(Comida1, posComida.transform.position, posComida.transform.rotation);
                 break;
             case 1:
-                comidaActivaVisual = Instantiate(Comida2, posComida.transform.position, Quaternion.identity);
+                comidaActivaVisual = Instantiate(Comida2, posComida.transform.position, posComida.transform.rotation);
                 break;
             case 2:
-                comidaActivaVisual = Instantiate(Comida3, posComida.transform.position, Quaternion.identity);
+                comidaActivaVisual = Instantiate(Comida3, posComida.transform.position, posComida.transform.rotation);
                 break;
             default:
                 break;
@@ -158,13 +161,13 @@ public class GameManager15 : MonoBehaviour
         switch (HabitatActivo)
         {
             case 0:
-                habitatActivoVisual = Instantiate(Habitat1, posHabitat.transform.position, Quaternion.identity);
+                habitatActivoVisual = Instantiate(Habitat1, posHabitat.transform.position,posHabitat.transform.rotation);
                 break;
             case 1:
-                habitatActivoVisual = Instantiate(Habitat2, posHabitat.transform.position, Quaternion.identity);
+                habitatActivoVisual = Instantiate(Habitat2, posHabitat.transform.position, posHabitat.transform.rotation);
                 break;
             case 2:
-                habitatActivoVisual = Instantiate(Habitat3, posHabitat.transform.position, Quaternion.identity);
+                habitatActivoVisual = Instantiate(Habitat3, posHabitat.transform.position, posHabitat.transform.rotation);
                 break;
             default:
                 break;
@@ -180,16 +183,16 @@ public class GameManager15 : MonoBehaviour
         switch (DecoracionActiva)
         {
             case 0:
-                decoracionActivaVisual = Instantiate(Decoracion1, posDecoracion.transform.position, Quaternion.identity);
+                decoracionActivaVisual = Instantiate(Decoracion1, posDecoracion.transform.position, posDecoracion.transform.rotation);
                 break;
             case 1:
-                decoracionActivaVisual = Instantiate(Decoracion2, posDecoracion.transform.position, Quaternion.identity);
+                decoracionActivaVisual = Instantiate(Decoracion2, posDecoracion.transform.position, posDecoracion.transform.rotation);
                 break;
             case 2:
-                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, Quaternion.identity);
+                decoracionActivaVisual = Instantiate(Decoracion3, posDecoracion.transform.position, posDecoracion.transform.rotation);
                 break;
             case 3:
-                decoracionActivaVisual = Instantiate(Decoracion4, posDecoracion.transform.position, Quaternion.identity);
+                decoracionActivaVisual = Instantiate(Decoracion4, posDecoracion.transform.position, posDecoracion.transform.rotation);
                 break;
             default:
                 break;
@@ -203,6 +206,7 @@ public class GameManager15 : MonoBehaviour
     {
         if (animal.Comida == ComidaActiva && animal.Habitat == HabitatActivo && animal.Decoracion == DecoracionActiva)
         {
+            Debug.Log(puntuacion + " Puntos");
             Debug.Log("RespuestaAceptada");
             puntuacion += 1;
             UpdateScore();
@@ -218,6 +222,7 @@ public class GameManager15 : MonoBehaviour
             HabitatActivo = -1;
             if (puntuacion >= 5)
             {
+                
                 Gano();
             }
             else
@@ -232,9 +237,10 @@ public class GameManager15 : MonoBehaviour
         else
         {
             Debug.Log("RespuestaErronea");
-
             puntuacion -= 1;
             UpdateScore();
+            loadNewAnimal();
+
 
         }
     }
@@ -265,12 +271,22 @@ public class GameManager15 : MonoBehaviour
 
     void loadNewAnimal()
     {
-
+        if (contAnimal >= 5)
+        {
+            Gano();
+            return;
+        }
+        if (animalActivaVisual != null)
+        {
+            Destroy(animalActivaVisual);
+        }
+        animalActivaVisual = Instantiate(animales[contAnimal].animalGO, posAnimal.transform.position,posAnimal.transform.rotation);
         animalActivo.Comida = animales[contAnimal].Comida;
         animalActivo.Habitat = animales[contAnimal].Habitat;
         animalActivo.Decoracion = animales[contAnimal].Decoracion;
         imagenUI.GetComponent<Image>().sprite = animales[contAnimal].imagenAnimal;
         textUI.GetComponent<TMP_Text>().text = animales[contAnimal].AnimalDescription;
+        nameUI.GetComponent<TMP_Text>().text = animales[contAnimal].Name;
         contAnimal += 1;
         printAnimal(animalActivo);
         
@@ -301,6 +317,7 @@ public class GameManager15 : MonoBehaviour
         //Llamar funcion enseñar score? o ganar directamente idk man
         Debug.Log("YOU WON");
         puntero.disableMovement = true;
+        ODS15MinigameManager.instance.ScoreToSave = puntuacion;
         ODS15MinigameManager.instance.EnseñarPantallaFinal();
     }
 }
@@ -312,6 +329,7 @@ public class Animal
     public int Comida;
     public int Decoracion;
 
+    public string AnimalName;
     public string AnimalDescription;
     public Sprite imagenAnimal;
 }
