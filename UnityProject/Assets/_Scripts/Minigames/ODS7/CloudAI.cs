@@ -6,22 +6,26 @@ using Unity.AI.Navigation;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 using Yarn.Unity;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class CloudAI : MonoBehaviour
 {
+    
     [SerializeField] private float _range = 10f;
-    [SerializeField] private float _speed;
+    [SerializeField] private float _speed = 3f;
+    [SerializeField] private float _returnSpeed = 6f;
+    
     private NavMeshAgent _agent;
 
     private Vector3 destination;
     
+    public CloudSpawner targetCloudSpawner;
     public bool isReturningToPowerplant;
-    public bool standBy;
+    public bool isCaptured;
 
-    [HideInInspector] public CloudSpawner targetCloudSpawner;
 
     void Start()
     {
@@ -31,7 +35,7 @@ public class CloudAI : MonoBehaviour
     void Update()
     {
         if (_agent == null) return;
-        if (standBy) return;
+        if (isCaptured) return;
         if (!isReturningToPowerplant)
         {
             Movement();
@@ -45,7 +49,7 @@ public class CloudAI : MonoBehaviour
 
     public void CloudCaptured()
     {
-        standBy = true;
+        isCaptured = true;
         _agent.isStopped = true;
         _agent.ResetPath();
     }
@@ -87,9 +91,8 @@ public class CloudAI : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (_agent == null) return;
-        if (_agent.remainingDistance > 0)
+        if (_agent.remainingDistance > 0 && !isReturningToPowerplant)
         {
-            Debug.Log("I'm stuck and resetting my path");
             _agent.isStopped = true;
             _agent.ResetPath();
             _agent.isStopped = false;
@@ -100,9 +103,8 @@ public class CloudAI : MonoBehaviour
     private void OnCollisionStay(Collision other)
     {
         if (_agent == null) return;
-        if (_agent.remainingDistance > 0 && !standBy)
+        if (_agent.remainingDistance > 0 && !isReturningToPowerplant)
         {
-            Debug.Log("I'm stuck and resetting my path");
             _agent.isStopped = true;
             _agent.ResetPath();
             _agent.isStopped = false;
@@ -110,9 +112,25 @@ public class CloudAI : MonoBehaviour
         }
     }
 
-    public void ReturnToPowerplant(Transform targetPowerplant)
+    public void ReturnToBase(Transform targetPowerplant)
     {
         isReturningToPowerplant = true;
+        _agent.speed = _returnSpeed;
         _agent.SetDestination(targetPowerplant.position);
+    }
+
+    public void CancelReturn()
+    {
+        isReturningToPowerplant = false;
+        isCaptured = false;
+        targetCloudSpawner = null;
+        _agent.speed = _speed;
+        _agent.ResetPath();
+    }
+
+    public void ResetMovement()
+    {
+        _agent.isStopped = true;
+        _agent.ResetPath();
     }
 }

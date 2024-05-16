@@ -5,7 +5,9 @@ using UnityEngine;
 public class LauraEscalarMeshOnHover : SelectionInteractableParent
 {
     private float maxSize;
-    private float originalSize;
+    private float originalSizeX;
+    private float originalSizeY;
+    private float originalSizeZ;
     public float size; 
     public float growFactor;
     public float waitTime;
@@ -13,11 +15,16 @@ public class LauraEscalarMeshOnHover : SelectionInteractableParent
     private Coroutine scaleupcor;
     private Coroutine scaledowncor;
 
+    public void Awake()
+    {
+        originalSizeX = transform.localScale.x;
+        originalSizeY = transform.localScale.y;
+        originalSizeZ = transform.localScale.z;
+    }
     public override void Hover()
     {
         hovered = true;
-        maxSize = size*originalSize;
-        Debug.Log(maxSize);
+        maxSize = size* originalSizeX;
         if (scaledowncor != null)
         {
             StopCoroutine(scaledowncor);
@@ -40,8 +47,10 @@ public class LauraEscalarMeshOnHover : SelectionInteractableParent
 
     public void OnEnable()
     {
-        originalSize = transform.localScale.x;
-        growFactor = originalSize / size * growFactor;
+        transform.localScale = new Vector3(originalSizeX, originalSizeY, originalSizeZ);
+        growFactor = originalSizeX / size;
+
+
     }
 
 
@@ -70,7 +79,7 @@ public class LauraEscalarMeshOnHover : SelectionInteractableParent
         while (!hovered) // this could also be a condition indicating "alive or dead"
         { 
             timer = 0;
-            while (originalSize < transform.localScale.x)
+            while (originalSizeX < transform.localScale.x)
             {
                 timer += Time.deltaTime;
                 transform.localScale -= new Vector3(1, 1, 1) * Time.deltaTime * growFactor;

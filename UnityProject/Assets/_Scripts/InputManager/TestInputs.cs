@@ -293,8 +293,6 @@ public class TestInputs : MonoBehaviour
         {
             //Llamo a la funcion que deben implementar todos los objetos equipables.
             refObjetoEquipado.GetComponent<Iequipable>().UseEquipment();
-
-            Debug.Log("Uso objeto" + refObjetoEquipado.name);
         }
         else
         {

@@ -1,33 +1,44 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.VersionControl;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CloudSpawner : LInteractableParent
 {
-    public enum factoryState {Wait, Spawning, Loading, Disable}
+    public enum factoryState {Wait, Spawning, Replacing, Disable}
     public factoryState myFactoryState = factoryState.Wait;
+    
     [SerializeField] private Transform _spawnTransform;
+
     [SerializeField] private Slider SpawnSlider;
     [SerializeField] private Slider FixSlider;
+    
     [SerializeField] private float minSpawnRadius = 1f;
     [SerializeField] private float maxSpawnRadius = 5f;
 
+    [SerializeField] private int maxRepairLevels = 3;
+    [SerializeField] private int _currentRepairLevel = 0;
+    
     public CentralVFX CentralVFX;
     public CloudAI TargetAI;
 
     private bool _IsRecalculateTime;
 
     private float _TimeReferenceDestroy;
-    
     private float _TimeReferenceSpawn;
     private float _SpawnTimeOffset = 0;
+    private float _maxTimeToTransform;
+    private float _currentTimeToTransform;
 
     private Vector3 _randomSpawnPoint;
     private bool _isSpawnPointSet;
+
+    public float timeMultiplier = 1.0f;
 
     private void Start()
     {
@@ -41,6 +52,8 @@ public class CloudSpawner : LInteractableParent
         SpawnSlider.value = ODS7Singleton.Instance.timeCloudSpawn;
 
         ODS7Singleton.Instance.OnGameStartEvent += OnGameStart;
+        _maxTimeToTransform = ODS7Singleton.Instance.timeFabricaDestroy;
+        _currentTimeToTransform = _maxTimeToTransform;
         _TimeReferenceSpawn = Time.time;
     }
 
@@ -58,31 +71,37 @@ public class CloudSpawner : LInteractableParent
         }
         // Si puede spawnea
 
-        if (myFactoryState != factoryState.Loading)
+        if (myFactoryState != factoryState.Replacing)
             return;
 
-        UpdateValue();
+        DisabledState();
     }
 
-    void UpdateValue()
+    void DisabledState()
     {
         if (!FixSlider.gameObject.activeSelf)
         {
+            SpawnSlider.gameObject.SetActive(false);
             FixSlider.gameObject.SetActive(true);
         }
+        
+        if (_currentRepairLevel >= maxRepairLevels)
+        {
+            RestoreFactory();
+            _currentRepairLevel = 0;
+            return; 
+        } 
 
-        float TimeLoad = ODS7Singleton.Instance.timeFabricaDestroy - (Time.time - _TimeReferenceDestroy);
+        if (TargetAI == null && ODS7Singleton.Instance.enabledCloudList.Count > 0)
+        {
+            ODS7Singleton.Instance.RequestReinforcements(this);
+        }
+        
+        _currentTimeToTransform -= timeMultiplier * Time.deltaTime;
+        float TimeLoad = _currentTimeToTransform;
         TimeLoad = Mathf.Clamp(TimeLoad, 0, ODS7Singleton.Instance.timeFabricaDestroy);
 
         FixSlider.value = TimeLoad;
-
-        // Valorar suma de fantasmas
-
-        /* if(TimeLoad == ODS7Singleton.Instance.timeFabricaDestroy)
-        {
-            RestoreFactory();
-            return; 
-        } */
 
         if (TimeLoad == 0)
         {
@@ -136,22 +155,31 @@ public class CloudSpawner : LInteractableParent
 
     void DisableFactory()
     {
-        ODS7Singleton.Instance.AddScore(100);
-        CentralVFX.CallCoroutine();
         _SpawnTimeOffset = Time.time - _TimeReferenceSpawn;
         myFactoryState = factoryState.Disable;
         ODS7Singleton.Instance.enabledSpawners.Remove(this);
-        ODS7Singleton.Instance.FactoryDeactivatedUI();
+        if (TargetAI != null)
+        {
+            TargetAI.CancelReturn();
+            TargetAI = null;
+        }
+        ODS7Singleton.Instance.AddScore(100);
+        CentralVFX.CallCoroutine();
+        ODS7Singleton.Instance.PowerplantDeactivatedUI();
         if (ODS7Singleton.Instance.enabledSpawners.Count <= 0) ODS7Singleton.Instance.OnGameFinish();
     }
 
     public void RestoreFactory()
     {
         FixSlider.gameObject.SetActive(false);
+        SpawnSlider.gameObject.SetActive(true);
         ODS7Singleton.Instance.spawnersDisablingList.Remove(this);
-        TargetAI.isReturningToPowerplant = false;
-        TargetAI.targetCloudSpawner = null;
-        TargetAI = null;
+        if (TargetAI != null)
+        {
+            TargetAI.CancelReturn();
+            TargetAI = null;
+        }
+        
         _TimeReferenceSpawn = Time.time - _SpawnTimeOffset;
         myFactoryState = factoryState.Spawning;
     }
@@ -164,15 +192,16 @@ public class CloudSpawner : LInteractableParent
         if (myFactoryState != factoryState.Spawning)
             return;
 
-        myFactoryState = factoryState.Loading;
+        myFactoryState = factoryState.Replacing;
         _TimeReferenceDestroy = Time.time;
         ODS7Singleton.Instance.spawnersDisablingList.Add(this);
+        ODS7Singleton.Instance.RequestReinforcements(this);
     }
 
     private void SetSpawnLocation()
     {
         if (_isSpawnPointSet) return;
-        Vector3 calculatedSpawnPoint = RandomPointInRing(_spawnTransform, new Vector2(transform.position.x, transform.position.z), minSpawnRadius, maxSpawnRadius);
+        Vector3 calculatedSpawnPoint = RandomPointInRing(_spawnTransform, new Vector2(_spawnTransform.position.x, _spawnTransform.position.z), minSpawnRadius, maxSpawnRadius);
         if (CanSpawnHere(calculatedSpawnPoint))
         {
             _randomSpawnPoint = calculatedSpawnPoint;
@@ -205,13 +234,22 @@ public class CloudSpawner : LInteractableParent
         
         return new Vector3(randomPoint2D.x, spawnTransform.position.y, randomPoint2D.y);
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (myFactoryState != factoryState.Replacing) return;
+        if (!other.TryGetComponent(out CloudAI cloudAI) && !cloudAI.isCaptured) return;
+        ODS7Singleton.Instance.DestroyCloud(cloudAI);
+        _currentRepairLevel++;
+        timeMultiplier = timeMultiplier - 0.25f;
+    }
+
 #if (UNITY_EDITOR) 
     private void OnDrawGizmos()
     {
         var position = _spawnTransform.position;
         Handles.DrawWireDisc(position, Vector3.up, maxSpawnRadius);
-        Handles.DrawWireDisc(position, Vector3.up,minSpawnRadius);
+        Handles.DrawWireDisc(position, Vector3.up, minSpawnRadius);
     }
 #endif
 }
