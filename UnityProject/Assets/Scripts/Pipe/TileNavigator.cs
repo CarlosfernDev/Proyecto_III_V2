@@ -201,6 +201,12 @@ public class TileNavigator : MonoBehaviour
 
     }
 
+    void ResetPosZeroZero()
+    {
+        PosSelector = new Vector2Int(0, 0);
+        PipeGrid.Instance.DesactivarSeleciones();
+        PipeGrid.Instance.GetPipeAtPosition(new Vector2(0, 0)).selectedTile();
+    }
     void UpdateTestObjectPos()
     {
         if (ShowGO == null)

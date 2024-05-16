@@ -8,6 +8,7 @@ public class OD6GameManager : MonoBehaviour
     private Level LevelRef; 
     public static OD6GameManager Instance;
     public int Score;
+    public TileNavigator TN;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,19 +29,42 @@ public class OD6GameManager : MonoBehaviour
 
     public void LoadLevel1()
     {
-        PipeGrid.Instance.LoadLevel(1);
-        LevelRef = Level.Level1;
+        StartCoroutine(WairForNextLevel1());
     }
     public void LoadLevel2()
     {
-        PipeGrid.Instance.LoadLevel(2);
-        LevelRef = Level.Level2;
+        StartCoroutine(WairForNextLevel2());
+
     }
     public void LoadLevel3()
     {
-        PipeGrid.Instance.LoadLevel(3); 
-        LevelRef = Level.Level3;
+        StartCoroutine(WairForNextLevel3());
 
+
+    }
+
+    IEnumerator WairForNextLevel1()
+    {
+        yield return new WaitForSeconds(4);
+        PipeGrid.Instance.LoadLevel(1);
+        LevelRef = Level.Level1;
+        TN.moveToZeroZero();
+    }
+
+    IEnumerator WairForNextLevel2()
+    {
+        yield return new WaitForSeconds(4);
+        PipeGrid.Instance.LoadLevel(2);
+        LevelRef = Level.Level2;
+        TN.moveToZeroZero();
+    }
+
+    IEnumerator WairForNextLevel3()
+    {
+        yield return new WaitForSeconds(4);
+        PipeGrid.Instance.LoadLevel(3);
+        LevelRef = Level.Level3;
+        TN.moveToZeroZero();
     }
 
     public void checkConditions()
