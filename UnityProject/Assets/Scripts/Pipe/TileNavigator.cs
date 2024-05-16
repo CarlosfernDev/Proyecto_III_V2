@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileNavigator : MonoBehaviour
 {
-    [SerializeField] Vector2Int PosSelector;
+    [SerializeField] public Vector2Int PosSelector;
     private Vector2Int addPos;
     private int y;
     private int x;
@@ -212,6 +212,10 @@ public class TileNavigator : MonoBehaviour
         ShowGO.transform.position = pos;
     }
 
+    public void moveToZeroZero()
+    {
+        PosSelector = new Vector2Int(0, 0);
+    }
 
 
 }
