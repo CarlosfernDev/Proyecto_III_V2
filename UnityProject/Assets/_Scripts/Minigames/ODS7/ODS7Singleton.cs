@@ -225,20 +225,22 @@ public class ODS7Singleton : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        int minutosScore = Mathf.FloorToInt(Score / 60);
-        int segundosScore = Mathf.FloorToInt(Score % 60);
+        int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
+        int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
 
-        _ScoreText.ChangeText(segundosScore);
+        _ScoreText.ChangeText(string.Format("{0:00}:{1:00}", minutosScore, segundosScore));
 
-        int minutos = Mathf.FloorToInt(MinigameData.maxPoints / 60);
-        int segundos = Mathf.FloorToInt(MinigameData.maxPoints % 60);
+        int minutos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) / 60);
+        int segundos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) % 60);
 
         _txHighScore.text = "High: " + string.Format("{0:00}:{1:00}", minutos, segundos/*, milisegundos*/);
     }
 
     public override void SaveValue()
     {
-        Score = (int)timer.Value;
+        if (enabledSpawners.Count > 0) Score = -1;
+        else Score = (int)timer.Value;
+
         SaveValue(Score);
     }
 

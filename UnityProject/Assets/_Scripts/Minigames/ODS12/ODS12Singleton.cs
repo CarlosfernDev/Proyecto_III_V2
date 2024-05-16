@@ -153,8 +153,14 @@ public class ODS12Singleton : MinigameParent
     {
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        _ScoreText.ChangeText("Score: " + Score.ToString());
+        _ScoreText.ChangeText("Score: " + Mathf.Clamp(Score, 0, Score).ToString());
 
-        _txHighScore.text = "High: " + MinigameData.maxPoints;
+        _txHighScore.text = "High: " + Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints);
+    }
+
+    public override void SaveValue()
+    {
+        if (Score == 0) Score = -1;
+        SaveValue(Score);
     }
 }
