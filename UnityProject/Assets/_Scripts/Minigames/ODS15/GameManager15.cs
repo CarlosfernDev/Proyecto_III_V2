@@ -244,9 +244,10 @@ public class GameManager15 : MonoBehaviour
         {
             Debug.Log("RespuestaErronea");
             puntuacion -= 1;
+            
             UpdateScore();
             loadNewAnimal();
-
+            CanvasSwap();
 
         }
     }
