@@ -43,7 +43,7 @@ public class ODS15MinigameManager : MinigameParent
 
     public override void SaveValue()
     {
-        ScoreToSave = Score;
+        Score = ScoreToSave;
         if (Score == 0) Score = -1;
         SaveValue(Score);
     }
