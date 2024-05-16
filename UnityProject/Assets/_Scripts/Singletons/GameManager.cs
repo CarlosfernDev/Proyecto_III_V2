@@ -129,7 +129,12 @@ public class GameManager : MonoBehaviour
         int nextState = 0;
         foreach(int value in RelationGameStateMinigame)
         {
-            if (MinigameScripts[value].maxPoints == -1)
+            if ((GameManager.GameState)(nextState + 1) == GameManager.GameState.PostGame)
+            {
+                nextState++;
+                break;
+            }
+                if (MinigameScripts[value].maxPoints == -1)
             {
                 break;
             }
