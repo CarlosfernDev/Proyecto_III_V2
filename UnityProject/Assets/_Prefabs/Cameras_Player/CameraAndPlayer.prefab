@@ -368,6 +368,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5635789261657259236, guid: 8fce482bd6ba08847818643e89c3751e,
         type: 3}
+      propertyPath: _cameraTransform
+      value: 
+      objectReference: {fileID: 4540274145823439896}
+    - target: {fileID: 5635789261657259236, guid: 8fce482bd6ba08847818643e89c3751e,
+        type: 3}
+      propertyPath: refObjetoEquipado
+      value: 
+      objectReference: {fileID: 4698972203346451518}
+    - target: {fileID: 5635789261657259236, guid: 8fce482bd6ba08847818643e89c3751e,
+        type: 3}
       propertyPath: hideText.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -614,6 +624,12 @@ PrefabInstance:
 --- !u!4 &4540274145823439896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 555333878995635336, guid: 4149952d803030a43aae715657827034,
+    type: 3}
+  m_PrefabInstance: {fileID: 4086658769762939024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4698972203346451518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8755173792286911662, guid: 4149952d803030a43aae715657827034,
     type: 3}
   m_PrefabInstance: {fileID: 4086658769762939024}
   m_PrefabAsset: {fileID: 0}

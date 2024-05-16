@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
 
         UpdateStars();
         FirstTime();
-        NextState(8);
     }
 
     private void Update()

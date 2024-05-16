@@ -276,8 +276,10 @@ public class MySceneManager : MonoBehaviour
 
         SceneDictionary.Add(80, "ODS_15");
         SceneDictionary.Add(81, "ODS_15_UISCENE");
+        
+        //SceneDictionary.Add(100, "HUBTESTEO");
+        SceneDictionary.Add(100, "MAINCITY_FINAL");
 
-        SceneDictionary.Add(100, "HUBTESTEO");
         SceneDictionary.Add(101, "TUTORIAL_INTERACCION");
         SceneDictionary.Add(102, "ESCENA FINAL");
         SceneDictionary.Add(103, "Credits");
