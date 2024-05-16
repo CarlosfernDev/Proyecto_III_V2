@@ -12,8 +12,8 @@ public class HubManager : MonoBehaviour
         GameManager.Instance.isPlaying = true;
 
         // GameManager.Instance.state = GameManager.GameState.PostGame;
-        //GameManager.Instance.UpdateState();
-        GameManager.Instance.NextState((int)CustomState);
+        GameManager.Instance.UpdateState();
+        //GameManager.Instance.NextState((int)CustomState);
     }
 
     private void Start()

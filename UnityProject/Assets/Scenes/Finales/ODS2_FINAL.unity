@@ -679,6 +679,21 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4079040102054962370, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}
       propertyPath: m_IsActive
@@ -757,6 +772,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rampa
       objectReference: {fileID: 0}
+    - target: {fileID: 4877785780856059367, guid: 1d4e9913fedb5254fba9c3418f45cad2,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: da82c553347a1804ea1796619075d7b1,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1587,6 +1608,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rampa (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4877785780856059367, guid: 1d4e9913fedb5254fba9c3418f45cad2,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: da82c553347a1804ea1796619075d7b1,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3744,7 +3771,7 @@ PrefabInstance:
     - target: {fileID: 7028171949028573966, guid: 143202c3c9abf304baea67a93650e5c3,
         type: 3}
       propertyPath: IsDeveloping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7028171949028573966, guid: 143202c3c9abf304baea67a93650e5c3,
         type: 3}
