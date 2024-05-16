@@ -6,6 +6,7 @@ public class HubManager : MonoBehaviour
 {
     public static Vector3 TeleportToThisPosition;
     public GameManager.GameState CustomState;
+    public List<GameObject> GPSPositions;
 
     private void Awake()
     {
