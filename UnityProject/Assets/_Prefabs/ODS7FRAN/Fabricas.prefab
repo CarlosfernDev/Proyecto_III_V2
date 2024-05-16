@@ -376,7 +376,10 @@ MonoBehaviour:
   - {fileID: 3910351913230515067}
   - {fileID: 4714525566084160400}
   timeMultiplier: 1
-  cloudSpawnVFX: {fileID: 1503413529694528639}
+  VFXManager: {fileID: 1503413529694528639}
+  cloudSpawnVFX: {fileID: 8188107499332344052}
+  _currentSpawnTime: 0
+  _currentTransformTime: 0
 --- !u!135 &7683953545377013767
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6676,6 +6679,12 @@ VisualEffect:
 --- !u!23 &7945846053889058064 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8313096391439201813, guid: 452dd9ee259b1de4db3f89812677f03d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2097373390711001861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8188107499332344052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7834395968207653873, guid: 452dd9ee259b1de4db3f89812677f03d,
     type: 3}
   m_PrefabInstance: {fileID: 2097373390711001861}
   m_PrefabAsset: {fileID: 0}
