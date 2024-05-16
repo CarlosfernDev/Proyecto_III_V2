@@ -9,6 +9,8 @@ public class AnimalData : ScriptableObject
     public int Comida;
     public int Decoracion;
 
+    public string Name;
     public string AnimalDescription;
     public Sprite imagenAnimal;
+    public GameObject animalGO;
 }

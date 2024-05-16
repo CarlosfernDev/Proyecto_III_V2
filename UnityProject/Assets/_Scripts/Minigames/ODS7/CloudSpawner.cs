@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEditor;
-using UnityEditor.VersionControl;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -163,7 +161,7 @@ public class CloudSpawner : LInteractableParent
             TargetAI.CancelReturn();
             TargetAI = null;
         }
-        ODS7Singleton.Instance.AddScore(100);
+        //ODS7Singleton.Instance.AddScore(100);
         CentralVFX.CallCoroutine();
         ODS7Singleton.Instance.PowerplantDeactivatedUI();
         if (ODS7Singleton.Instance.enabledSpawners.Count <= 0) ODS7Singleton.Instance.OnGameFinish();
@@ -244,12 +242,12 @@ public class CloudSpawner : LInteractableParent
         timeMultiplier = timeMultiplier - 0.25f;
     }
 
-#if (UNITY_EDITOR) 
+/*#if (UNITY_EDITOR) 
     private void OnDrawGizmos()
     {
         var position = _spawnTransform.position;
         Handles.DrawWireDisc(position, Vector3.up, maxSpawnRadius);
         Handles.DrawWireDisc(position, Vector3.up, minSpawnRadius);
     }
-#endif
+#endif*/
 }

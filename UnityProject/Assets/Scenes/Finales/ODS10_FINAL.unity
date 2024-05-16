@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  Selector: {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -347,6 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  Selector: {fileID: 0}
   animationHover: {fileID: 78834663}
 --- !u!65 &78834659
 BoxCollider:
@@ -940,6 +942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  Selector: {fileID: 0}
   animationHover: {fileID: 204538268}
 --- !u!65 &204538264
 BoxCollider:
@@ -1888,6 +1891,21 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2759338210225256735, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4899271510622079301, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}
       propertyPath: m_Name
@@ -2336,6 +2354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  Selector: {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3029,6 +3048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  Selector: {fileID: 0}
   animationHover: {fileID: 1137937304}
 --- !u!114 &1137937304
 MonoBehaviour:
@@ -3915,6 +3935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  Selector: {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4299,6 +4320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  Selector: {fileID: 0}
   animationHover: {fileID: 1698699846}
 --- !u!114 &1698699846
 MonoBehaviour:
@@ -4907,6 +4929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  Selector: {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5132,6 +5155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  Selector: {fileID: 0}
   animationHover: {fileID: 0}
 --- !u!114 &2042568312
 MonoBehaviour:
@@ -5235,6 +5259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  Selector: {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5766,7 +5791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 1
+  IsDeveloping: 0
   MinigameData: {fileID: 11400000, guid: 3e81f5459a3b63243a5f1f6da1c2fdef, type: 2}
   _uiAnimator: {fileID: 7804354392553933013}
   isCountdown: 0

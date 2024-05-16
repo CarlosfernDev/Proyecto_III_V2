@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
     public int[] RelationGameStateMinigame;
-    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Pancarta, PostGame }
+    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, PostGame }
     [HideInInspector] public GameState state = GameState.Puentes;
 
     public ScoreText StarsText;
@@ -75,12 +75,11 @@ public class GameManager : MonoBehaviour
 
         UpdateStars();
         FirstTime();
-        NextState(8);
     }
 
     private void Update()
     {
-        if (!isPlaying || Time.timeScale != 1) 
+        if (!isPlaying || Time.timeScale != 1 || programState == ProgramState.Menu) 
         {
             if (afkHudIsEnable) {
                 afkHudIsEnable = false;
@@ -130,7 +129,12 @@ public class GameManager : MonoBehaviour
         int nextState = 0;
         foreach(int value in RelationGameStateMinigame)
         {
-            if (MinigameScripts[value].maxPoints == -1)
+            if ((GameManager.GameState)(nextState + 1) == GameManager.GameState.PostGame)
+            {
+                nextState++;
+                break;
+            }
+                if (MinigameScripts[value].maxPoints == -1)
             {
                 break;
             }

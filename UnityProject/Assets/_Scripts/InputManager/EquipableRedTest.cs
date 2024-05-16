@@ -12,6 +12,7 @@ using UnityEngine.VFX;
 
 public class EquipableRedTest : MonoBehaviour, Iequipable
 {
+    [SerializeField] private Transform _captureZone;
     [SerializeField] private TestInputs _playerScript;
     [SerializeField] private Transform insideRed;
     [SerializeField] private VisualEffect _AuraVFX;
@@ -49,7 +50,7 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
         
         transform.localRotation = Quaternion.Euler(90, 0, 0);
 
-        Collider[] hitColliders = Physics.OverlapSphere(_playerScript.interactZone.transform.position, 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(_captureZone.transform.position, 1f);
         
         foreach (var item in hitColliders)
         {
@@ -84,7 +85,7 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
         else 
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawSphere(_playerScript.interactZone.transform.position, 1f);
+            Gizmos.DrawSphere(_captureZone.transform.position, 1f);
         }
     }
 #endif

@@ -174,7 +174,7 @@ public class ODS7Singleton : MinigameParent
     public void DeliverCloud()
     {
         anim.SetTrigger("Off");
-        AddScore(25);
+        AddScore(1);
     }
 
     public CloudAI FindNearestActiveCloud(Vector3 factoryPosition)
