@@ -5,8 +5,8 @@ using TMPro;
 
 public class ScoreText : MonoBehaviour
 {
-    [SerializeField] private string Pretext;
-    [SerializeField] private string Preset;
+    [SerializeField] public string Pretext;
+    [SerializeField] public string Preset;
     [SerializeField] private TMP_Text Text;
 
     private void Awake()
