@@ -252,14 +252,17 @@ public class ODS7Singleton : MinigameParent
         {
             _ScoreText.Pretext = null;
             _ScoreText.Preset = null;
-            if (enabledSpawners.Count > 0 && enabledCloudList.Count > 0) {
-                _ScoreText.ChangeText("You missed deactivating factories and hunting the clouds.");
-            } else if (enabledSpawners.Count > 0)
+            if (enabledSpawners.Count > 0 && (enabledCloudList.Count + disabledCloudList.Count > 0)) 
             {
-                _ScoreText.ChangeText("You missed deactivating factories.");
-            } else if (enabledCloudList.Count > 0)
+                _ScoreText.ChangeText("Power plants and clouds remaining");
+            } 
+            else if (enabledSpawners.Count > 0)
             {
-                _ScoreText.ChangeText("You missed deactivating factories.");
+                _ScoreText.ChangeText("You missed some power plants!");
+            } 
+            else if ((enabledCloudList.Count + disabledCloudList.Count) > 0)
+            {
+                _ScoreText.ChangeText("You didn't catch all the pollution!");
             }
         }
         else {
@@ -278,7 +281,7 @@ public class ODS7Singleton : MinigameParent
     public override void SaveValue()
     {
         // CAMBIA ESTO SI TOCAS ALGO DE COMO CONTAR NUBES O FABRICAS
-        if (enabledSpawners.Count > 0 || enabledCloudList.Count > 0) Score = -1;
+        if (enabledSpawners.Count > 0 || ((enabledCloudList.Count + disabledCloudList.Count) > 0)) Score = -1;
         else Score = (int)timer.Value;
 
         SaveValue(Score);
