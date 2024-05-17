@@ -7,12 +7,20 @@ public class HubManager : MonoBehaviour
     public static Vector3 TeleportToThisPosition;
     public GameManager.GameState CustomState;
 
+    public static GameManager.GameState CustomInputState;
+
     public LookAtZAxis ArrowAxis;
     public List<GameObject> GPSPositions;
 
     private void Awake()
     {
         GameManager.Instance.isPlaying = true;
+
+        if(CustomInputState != 0)
+        {
+            CustomState = CustomInputState;
+            CustomInputState = 0;
+        }
 
         if (CustomState != 0)
         {

@@ -70,6 +70,23 @@ public class InputManager : MonoBehaviour
     {
         //En el caso del input Movement, no podemos usar un performed, por que al mantener la tecla no se actualizaria
         //la llamada, es mejor llamarlo cada frame y comprobar si a habido cambios en el vector
+
+        if (MySceneManager.Instance.isLoading) return;
+
+        if(Input.GetKeyDown(KeyCode.F8))
+        {
+            {
+                HubManager.CustomInputState = GameManager.Instance.state - 1;
+                MySceneManager.Instance.NextScene(100, 0, 0, 0);
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.F9))
+        {
+            {
+                HubManager.CustomInputState = GameManager.Instance.state + 1;
+                MySceneManager.Instance.NextScene(100, 0, 0, 0);
+            }
+        }
         
     }
 
@@ -97,7 +114,7 @@ public class InputManager : MonoBehaviour
         var inputChueca = Matrix.MultiplyPoint3x4(new Vector3(vec.x,0f,vec.y));
        
         vec = new Vector2(inputChueca.x, inputChueca.z);
-        movementEvent.Invoke(vec);
+        movementEvent.Invoke(vec); 
 
 
     }
