@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ff8ab0f454ab94e86827b07fee9006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TimerValue: 60
+  TimerValue: 120
   UpdateText:
     m_PersistentCalls:
       m_Calls: []
@@ -868,7 +868,7 @@ PrefabInstance:
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.7700005
+      value: -3.587988
       objectReference: {fileID: 0}
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
@@ -1003,20 +1003,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b09cf1433098434db673d222b2e2e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelTestingW: 10
-  LevelTestingH: 10
+  LevelTestingW: 8
+  LevelTestingH: 8
   _width: 3
-  _height: 3
-  _width2: 6
-  _height2: 6
-  _width3: 9
-  _height3: 9
-  puntosFinales:
-  - {x: 1, y: 1}
-  - {x: 3, y: 3}
-  level1: {fileID: 2133345173410698413, guid: c0d690f4ce0242b4a8946eb60a2fec9e, type: 3}
-  level2: {fileID: 6674146839953843036, guid: 0029f9d766d34224e95b8d13b9a80fa6, type: 3}
-  level3: {fileID: 4892417897694148193, guid: b7a1d00875be43446b7319d24c2be08f, type: 3}
+  _height: 1
+  _width2: 3
+  _height2: 3
+  _width3: 4
+  _height3: 4
+  _width4: 5
+  _height4: 5
+  _width5: 8
+  _height5: 8
+  puntosFinales: []
+  level1: {fileID: 5655780414284159549, guid: d9e2c2cf3a109f743a7fcf6316635dcf, type: 3}
+  level2: {fileID: 7703485689440563517, guid: 7e0baf78149b60e438fa8b10386c774e, type: 3}
+  level3: {fileID: 6639252908902747612, guid: d8833d119f32759418d52567dd6b50eb, type: 3}
+  level4: {fileID: 737767129579349476, guid: 90f6c05af79cd274eb0590e9f7218b1b, type: 3}
+  level5: {fileID: 4001252689349673871, guid: 55116253375b59340a0610783d56a42f, type: 3}
   emptyPipe: {fileID: 647313947606044957, guid: e947b0474d42503439100eca50c1bdf6,
     type: 3}
   PipeParent: {fileID: 1302925893}
@@ -1052,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.75
+      value: 3.9320126
       objectReference: {fileID: 0}
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
@@ -1560,7 +1564,7 @@ Transform:
   m_GameObject: {fileID: 755278611}
   serializedVersion: 2
   m_LocalRotation: {x: 0.64009446, y: 0.6960493, z: 0.30046552, w: 0.12455901}
-  m_LocalPosition: {x: -9.02, y: 0.6600001, z: 3.8999999}
+  m_LocalPosition: {x: -6.837988, y: 0.6600001, z: 3.8999999}
   m_LocalScale: {x: 100.000015, y: 100.000015, z: 100.00004}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1644,7 +1648,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000026053966, y: -0.72362834, z: -0.000000027316212,
     w: 0.69018996}
-  m_LocalPosition: {x: 8.735998, y: 0.61000013, z: 3.5823705}
+  m_LocalPosition: {x: 10.918011, y: 0.61000013, z: 3.5823705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2328,7 +2332,7 @@ PrefabInstance:
     - target: {fileID: 2570287000968098778, guid: 4e4418b8195073f499777bb4e3942e45,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.157988
+      value: 13.34
       objectReference: {fileID: 0}
     - target: {fileID: 2570287000968098778, guid: 4e4418b8195073f499777bb4e3942e45,
         type: 3}
@@ -3051,7 +3055,7 @@ PrefabInstance:
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.42
+      value: 6.6020126
       objectReference: {fileID: 0}
     - target: {fileID: 4207808457157750306, guid: e76df3a5ae0e2be41bb4248f2816612d,
         type: 3}
@@ -3295,9 +3299,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Press <b>Space</b> to place the <b>pipe</b>\n\nPress <b>R</b> to rotate
-    90\xBA the <b>pipe</b>\n\nYour objetive is to <b>connect</b> the <b>Water</b>
-    source to the <b>green</b> points"
+  m_text: "Press <b>Enter</b> to place the <b>pipe</b>.\n\nPress <b>R</b> to rotate
+    90\xBA the <b>pipe</b>.\n\nYour objetive is to <b>connect</b> the <b>Water</b>
+    source to the <b>green</b> points."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9988a46891ae7f34199fe1ddeaf2e61d, type: 2}
   m_sharedMaterial: {fileID: -307589296167458542, guid: 9988a46891ae7f34199fe1ddeaf2e61d,
@@ -3325,7 +3329,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.85
+  m_fontSize: 33.7
   m_fontSizeBase: 33
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3381,74 +3385,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 851727353}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1828157368
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1828157371}
-  - component: {fileID: 1828157370}
-  - component: {fileID: 1828157369}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1828157369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828157368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1828157370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828157368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1828157371
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828157368}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895289132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3543,7 +3479,7 @@ Transform:
   m_GameObject: {fileID: 7716958916918414015}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00000003774895, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.46, y: -4.71, z: 3.11}
+  m_LocalPosition: {x: 1.7220125, y: -4.71, z: 3.11}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3558,7 +3494,7 @@ Transform:
   m_GameObject: {fileID: 2083495712194457753}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000036313082, y: -0.2731836, z: -0.000000010312403, w: 0.9619619}
-  m_LocalPosition: {x: -2.2120223, y: 0.61000013, z: 10.441999}
+  m_LocalPosition: {x: -0.030009747, y: 0.61000013, z: 10.441999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3735,7 +3671,7 @@ Transform:
   m_GameObject: {fileID: 5903999411975081236}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -6.66, y: 1.5000002, z: 37.88}
+  m_LocalPosition: {x: -4.4779873, y: 1.5000002, z: 37.88}
   m_LocalScale: {x: 100, y: 99.999985, z: 99.999985}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3749,7 +3685,6 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 477740667}
   - {fileID: 1242305293}
-  - {fileID: 1828157371}
   - {fileID: 1895289133}
   - {fileID: 1302925894}
   - {fileID: 220734286}
