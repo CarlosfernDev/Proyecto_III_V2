@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isPlaying || Time.timeScale != 1 || programState == ProgramState.Menu) 
+        if (!isPlaying || Time.timeScale != 1 || programState == ProgramState.Menu || MySceneManager.Instance.isLoading == false) 
         {
             if (afkHudIsEnable) {
                 afkHudIsEnable = false;

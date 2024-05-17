@@ -66,7 +66,7 @@ public class SwapBridge : LInteractableParent
         {
             GameObject.Find("Player").GetComponent<TestInputs>().hideTextFunction();
         }
-        
+        GetComponent<BoxCollider>().isTrigger = true;
         StartCoroutine(SwapBridgeCoroutine());
     }
 
@@ -93,7 +93,8 @@ public class SwapBridge : LInteractableParent
         _rendererWood1.material = _BridgeWoodMat;
         _rendererWood2.material = _BridgeWoodMat;
         _rendererWoodMat2.material = _BridgeWoodMat2;
-        GetComponent<BoxCollider>().isTrigger = true;
+        // cambiado
+        //GetComponent<BoxCollider>().isTrigger = true;
     }
 
 

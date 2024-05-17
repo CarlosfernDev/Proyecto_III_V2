@@ -12,6 +12,7 @@ public class ODS15MinigameManager : MinigameParent
     protected override void personalAwake()
     {
         base.personalAwake();
+        GameManager.Instance.programState = GameManager.ProgramState.Menu;
         instance = this;
     }
 
