@@ -243,7 +243,7 @@ public class GameManager15 : MonoBehaviour
         else
         {
             Debug.Log("RespuestaErronea");
-            puntuacion -= 1;
+            
             
             UpdateScore();
             loadNewAnimal();
