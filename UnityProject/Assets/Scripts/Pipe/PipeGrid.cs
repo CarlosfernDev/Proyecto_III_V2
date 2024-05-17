@@ -10,12 +10,16 @@ public class PipeGrid : MonoBehaviour
     [SerializeField] private int _width, _height;
     [SerializeField] private int _width2, _height2;
     [SerializeField] private int _width3, _height3;
+    [SerializeField] private int _width4, _height4;
+    [SerializeField] private int _width5, _height5;
 
     [SerializeField] private Vector2[] puntosFinales;
 
     [SerializeField] private GameObject level1;
     [SerializeField] private GameObject level2;
     [SerializeField] private GameObject level3;
+    [SerializeField] private GameObject level4;
+    [SerializeField] private GameObject level5;
 
 
     private Dictionary<Vector2, Pipe> _pipe;
@@ -180,6 +184,18 @@ public class PipeGrid : MonoBehaviour
 
                 temporalW = _width3;
                 temporalH = _height3;
+                break;
+            case 4:
+                temporalGO = Instantiate(level4);
+
+                temporalW = _width4;
+                temporalH = _height4;
+                break;
+            case 5:
+                temporalGO = Instantiate(level5);
+
+                temporalW = _width5;
+                temporalH = _height5;
                 break;
             default:
                 temporalGO = Instantiate(level1);

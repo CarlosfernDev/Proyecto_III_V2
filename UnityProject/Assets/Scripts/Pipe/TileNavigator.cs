@@ -168,6 +168,7 @@ public class TileNavigator : MonoBehaviour
             PipeGrid.Instance.ReCheckConectionsToWaterSource();
         }
         //InstanciarWaterSource
+        /*
         if (Input.GetKey(KeyCode.Y))
         {
             if (temporalGO == null)
@@ -182,7 +183,7 @@ public class TileNavigator : MonoBehaviour
             Destroy(ShowGO);
             rotYplacement = 0;
             PipeGrid.Instance.ReCheckConectionsToWaterSource();
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.Alpha1))
         {
@@ -190,7 +191,7 @@ public class TileNavigator : MonoBehaviour
             PipeGrid.Instance.ReCheckConectionsToWaterSource();
         }
 
-
+        /*
         if (Input.GetKey(KeyCode.Space))
         {
             if (PipeGrid.Instance.GetPipeAtPosition(PosSelector) != null)
@@ -198,6 +199,7 @@ public class TileNavigator : MonoBehaviour
                 PipeGrid.Instance.BorrarPipe(PosSelector);
             }
         }
+        */
 
     }
 

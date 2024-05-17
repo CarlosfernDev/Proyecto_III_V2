@@ -18,7 +18,7 @@ public class OD6GameManager : MonoBehaviour
     }
     void Start()
     {
-        LoadLevel1();
+       LoadLevel1();
     }
 
     // Update is called once per frame
@@ -39,8 +39,16 @@ public class OD6GameManager : MonoBehaviour
     public void LoadLevel3()
     {
         StartCoroutine(WairForNextLevel3());
+    }
 
+    public void LoadLevel4()
+    {
+        StartCoroutine(WairForNextLevel4());
+    }
 
+    public void LoadLevel5()
+    {
+        StartCoroutine(WairForNextLevel5());
     }
 
     IEnumerator WairForNextLevel1()
@@ -67,6 +75,22 @@ public class OD6GameManager : MonoBehaviour
         TN.moveToZeroZero();
     }
 
+    IEnumerator WairForNextLevel4()
+    {
+        yield return new WaitForSeconds(4);
+        PipeGrid.Instance.LoadLevel(4);
+        LevelRef = Level.Level4;
+        TN.moveToZeroZero();
+    }
+
+    IEnumerator WairForNextLevel5()
+    {
+        yield return new WaitForSeconds(4);
+        PipeGrid.Instance.LoadLevel(5);
+        LevelRef = Level.Level5;
+        TN.moveToZeroZero();
+    }
+
     public void checkConditions()
     {
         Debug.Log("puntCHECK: "+Score);
@@ -77,13 +101,26 @@ public class OD6GameManager : MonoBehaviour
             LoadLevel2();
             
         }
-        if (LevelRef == Level.Level2 && Score == 2)
+        if (LevelRef == Level.Level2 && Score == 1)
         {
             Score = 0;
             LoadLevel3();
         }
-        if (LevelRef == Level.Level3 && Score == 3)
+        if (LevelRef == Level.Level3 && Score == 2)
         {
+            Score = 0;
+            LoadLevel4();
+           
+        }
+        if (LevelRef == Level.Level4 && Score == 3)
+        {
+            Score = 0;
+            LoadLevel5();
+            
+        }
+        if (LevelRef == Level.Level5 && Score == 8)
+        {
+            Score = 0;
             ODS6GameManagerHeredado.instance.youWin = true;
             ODS6GameManagerHeredado.instance.OnGameFinish();
             //LoadLevel1();
@@ -100,5 +137,7 @@ public enum Level
 {
     Level1,
     Level2,
-    Level3
+    Level3,
+    Level4,
+    Level5
 }
