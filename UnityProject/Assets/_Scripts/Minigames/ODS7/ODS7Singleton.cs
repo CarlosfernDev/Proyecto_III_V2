@@ -27,8 +27,9 @@ public class ODS7Singleton : MinigameParent
     public float timeFabricaDestroy;
     public float[] timeCloudRestoration;
     public float timeCloudSpawn;
-    public int maxClouds;
+    public float timeToNewCloudCall;
     public float transformTimeIncrease = 1.5f;
+    public int maxClouds;
 
     private bool _allGeneratorsDisabled;
     private bool _allCloudsCaptured;
@@ -101,7 +102,7 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered += CheckWinLose;
         ODS7Actions.OnFactoryDisabled += CheckWinLose;
         ODS7Actions.OnCloudDelivered += DeliverCloud;
-        //ODS7Actions.OnRequestCloud += RequestReinforcements;
+        ODS7Actions.OnFactoryDisabled += PowerplantDeactivatedUI;
     }
 
     private void OnDisable()
@@ -109,7 +110,7 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered -= CheckWinLose;
         ODS7Actions.OnFactoryDisabled -= CheckWinLose;
         ODS7Actions.OnCloudDelivered -= DeliverCloud;
-        //ODS7Actions.OnRequestCloud -= RequestReinforcements;
+        ODS7Actions.OnFactoryDisabled -= PowerplantDeactivatedUI;
     }
 
     #endregion
@@ -247,10 +248,29 @@ public class ODS7Singleton : MinigameParent
 
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
-        int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
-        int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
+        if (Score == -1)
+        {
+            _ScoreText.Pretext = null;
+            _ScoreText.Preset = null;
+            if (enabledSpawners.Count > 0 && (enabledCloudList.Count + disabledCloudList.Count > 0)) 
+            {
+                _ScoreText.ChangeText("Power plants and clouds remaining");
+            } 
+            else if (enabledSpawners.Count > 0)
+            {
+                _ScoreText.ChangeText("You missed some power plants!");
+            } 
+            else if ((enabledCloudList.Count + disabledCloudList.Count) > 0)
+            {
+                _ScoreText.ChangeText("You didn't catch all the pollution!");
+            }
+        }
+        else {
+            int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
+            int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
 
-        _ScoreText.ChangeText(string.Format("{0:00}:{1:00}", minutosScore, segundosScore));
+            _ScoreText.ChangeText(string.Format("{0:00}:{1:00}", minutosScore, segundosScore));
+        }
 
         int minutos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) / 60);
         int segundos = Mathf.FloorToInt(Mathf.Clamp(MinigameData.maxPoints, 0, MinigameData.maxPoints) % 60);
@@ -260,7 +280,8 @@ public class ODS7Singleton : MinigameParent
 
     public override void SaveValue()
     {
-        if (enabledSpawners.Count > 0) Score = -1;
+        // CAMBIA ESTO SI TOCAS ALGO DE COMO CONTAR NUBES O FABRICAS
+        if (enabledSpawners.Count > 0 || ((enabledCloudList.Count + disabledCloudList.Count) > 0)) Score = -1;
         else Score = (int)timer.Value;
 
         SaveValue(Score);
