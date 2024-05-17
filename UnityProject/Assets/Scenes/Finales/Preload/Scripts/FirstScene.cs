@@ -27,6 +27,8 @@ public class FirstScene : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         //UnityEngine.Rendering.DebugManager.instance.enableRuntimeUI = false;
         _coroutine = StartCoroutine(startingAnimation());
     }
