@@ -254,7 +254,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6171866926163320654}
-  - component: {fileID: 7429596044275852435}
+  - component: {fileID: 3910990515597515015}
   m_Layer: 0
   m_Name: StarsOffset
   m_TagString: Untagged
@@ -278,29 +278,27 @@ Transform:
   - {fileID: 1933330339535893096}
   m_Father: {fileID: 2554388294717790284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7429596044275852435
-MonoBehaviour:
+--- !u!95 &3910990515597515015
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5119501945879243045}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 1645742072409004387}
-  m_PlayOnAwake: 1
-  m_LoopMode: 1
-  m_Method: 0
-  m_Duration: 5
-  m_MaxSpeed: 0.6283297
-  m_EasingMode: 0
-  m_AlignmentMode: 1
-  m_ObjectForwardAxis: 0
-  m_ObjectUpAxis: 1
-  m_StartOffset: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cf0c93cbf33cab441bc3ffe4d96c357b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5557829940065528240
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +663,7 @@ MonoBehaviour:
   LoadTime: 7
   PortalText: Press E to open the portal.
   PlayerPositionOnReturn: {fileID: 561860614394718899}
+  timeReference: 0
 --- !u!1 &7560880452332623735
 GameObject:
   m_ObjectHideFlags: 0
