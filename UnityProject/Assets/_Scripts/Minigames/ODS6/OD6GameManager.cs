@@ -84,7 +84,9 @@ public class OD6GameManager : MonoBehaviour
         }
         if (LevelRef == Level.Level3 && Score == 3)
         {
-            LoadLevel1();
+            ODS6GameManagerHeredado.instance.youWin = true;
+            ODS6GameManagerHeredado.instance.OnGameFinish();
+            //LoadLevel1();
             //LLAMAR A FINALIZAR GAME
             Debug.Log("HAS GANADO");
         }
