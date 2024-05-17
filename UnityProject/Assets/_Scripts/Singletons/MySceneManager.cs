@@ -125,9 +125,9 @@ public class MySceneManager : MonoBehaviour
                     GameManager.Instance.programState = GameManager.ProgramState.Hub;
                     Debug.Log((int)GameManager.Instance.state);
 
-                    MinigamesScriptableObjectScript script = GameManager.Instance.MinigameScripts[GameManager.Instance.RelationGameStateMinigame[5]];
+                    MinigamesScriptableObjectScript script = GameManager.Instance.MinigameScripts[GameManager.Instance.RelationGameStateMinigame[((int)GameManager.GameState.PostGame) - 1]];
 
-                    if (!GameManager.Instance.PostGameEnabled && GameManager.Instance.state == GameManager.GameState.GranjaZoo && script.maxPoints != -1)
+                    if (!GameManager.Instance.PostGameEnabled && GameManager.Instance.state == ((GameManager.GameState.PostGame) - 1) && script.maxPoints >= script.PointsValue[0])
                     {
                         GameManager.Instance.PostGameEnabled = true;
                         GameManager.Instance.isPlaying = false;

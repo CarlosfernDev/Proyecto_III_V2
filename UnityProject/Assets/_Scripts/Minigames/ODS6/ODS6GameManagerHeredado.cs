@@ -7,7 +7,7 @@ public class ODS6GameManagerHeredado : MinigameParent
     public static ODS6GameManagerHeredado instance;
 
 
-    
+
     [SerializeField] public TimerMinigame timer;
     [SerializeField] public bool youWin = false;
 
@@ -21,6 +21,7 @@ public class ODS6GameManagerHeredado : MinigameParent
     protected override void OnGameStart()
     {
         base.OnGameStart();
+        
         timer.SetTimer();
     }
 

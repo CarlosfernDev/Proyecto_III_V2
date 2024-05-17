@@ -27,7 +27,7 @@ public class HubManager : MonoBehaviour
 
         //GameManager.Instance.NextState((int)CustomState);
 
-        if (GPSPositions.Count < (int)GameManager.Instance.state) ArrowAxis.gameObject.SetActive(false);
+        if (GPSPositions.Count - 1 < (int)GameManager.Instance.state) ArrowAxis.gameObject.SetActive(false);
         else if (GPSPositions[(int)GameManager.Instance.state] == null) ArrowAxis.gameObject.SetActive(false);
         else ArrowAxis.TargetTransform = GPSPositions[(int)GameManager.Instance.state].transform;
 
