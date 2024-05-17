@@ -253,7 +253,7 @@ public class MySceneManager : MonoBehaviour
 
         SceneDictionary.Add(10, "ODS2_FINAL");
 
-        SceneDictionary.Add(20, "ODS6_FINAL");
+        SceneDictionary.Add(20, "EscenaODSALEX");
 
         SceneDictionary.Add(30, "ODS7_FINAL");
 
