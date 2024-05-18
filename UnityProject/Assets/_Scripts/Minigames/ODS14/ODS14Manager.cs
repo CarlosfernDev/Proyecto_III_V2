@@ -11,13 +11,15 @@ public class ODS14Manager : MinigameParent
     public TimerMinigame timer;
     public LivesManager playerLives;
     public TMP_Text scoreText;
+    
+    public List<GameObject> _floatingGarbage;
+    private FloatingGarbage[] _startingGarbage;
 
     public UnityEvent reduceLife;
     public UnityEvent garbageHit;
     
     private int _currentLives;
     [SerializeField] private int _garbageLeft;
-    private List<GameObject> _floatingGarbage;
 
     public float extraTime = 5f;
     
@@ -37,7 +39,7 @@ public class ODS14Manager : MinigameParent
         _currentLives = playerLives.playerLivesSprites.Length;
         
         reduceLife.AddListener(DecreaseLives);
-        garbageHit.AddListener(GarbageHit);
+        //garbageHit.AddListener(GarbageHit());
     }
     
     protected override void OnGameStart()
@@ -61,8 +63,12 @@ public class ODS14Manager : MinigameParent
         playerLives.updateLives.Invoke();
     }
 
-    private void GarbageHit()
+    public void GarbageHit(FloatingGarbage hitGarbage)
     {
+        if (_floatingGarbage.Contains(hitGarbage.transform.parent.gameObject))
+        {
+            _floatingGarbage.Remove(hitGarbage.transform.parent.gameObject);
+        }
         _garbageLeft--;
         timer.AddTime(extraTime);
         if (_garbageLeft <= 0)
@@ -85,7 +91,12 @@ public class ODS14Manager : MinigameParent
 
     private void InitializeGarbageLeft()
     {
-        _garbageLeft = FindObjectsOfType<FloatingGarbage>().Length;
+        _startingGarbage = FindObjectsOfType<FloatingGarbage>();
+        foreach (var garbage in _startingGarbage)
+        {
+            _floatingGarbage.Add(garbage.transform.parent.gameObject);
+        }
+        _garbageLeft = _floatingGarbage.Count;
         scoreText.text = _garbageLeft.ToString();
     }
 
