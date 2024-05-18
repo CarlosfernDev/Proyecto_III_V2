@@ -227,9 +227,16 @@ public class Pipe : MonoBehaviour
 
     public void ActivateNewMats()
     {
-        var Renderer = visualGO.GetComponent<Renderer>();
-        Renderer.material = WaterMat;
-        
+        if (visualGO != null)
+        {
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = WaterMat;
+            }
+            
+        }
+
     }
 
     public void DesactivateWater()
@@ -238,15 +245,28 @@ public class Pipe : MonoBehaviour
         {
             return;
         }
-        var Renderer = visualGO.GetComponent<Renderer>();
-        Renderer.material = ShitMat;
+        if (visualGO != null)
+        {
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = ShitMat;
+            }
+        }
+        
 
         RunningWater = false;
     }
     public void ActivateWater()
     {
-        var Renderer = visualGO.GetComponent<Renderer>();
-        Renderer.material = WaterMat;
+        if (visualGO != null)
+        {
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = WaterMat;
+            }
+        }
 
 
         RunningWater = true;

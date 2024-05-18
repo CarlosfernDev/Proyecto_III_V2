@@ -18,7 +18,7 @@ public class OD6GameManager : MonoBehaviour
     }
     void Start()
     {
-      // LoadLevel1();
+       LoadLevel1();
     }
 
     // Update is called once per frame
@@ -56,7 +56,7 @@ public class OD6GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         PipeGrid.Instance.LoadLevel(1);
         LevelRef = Level.Level1;
-        TN.moveToZeroZero();
+        TN.ResetPosZeroZero();
     }
 
     IEnumerator WairForNextLevel2()
@@ -64,7 +64,7 @@ public class OD6GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         PipeGrid.Instance.LoadLevel(2);
         LevelRef = Level.Level2;
-        TN.moveToZeroZero();
+        TN.ResetPosZeroZero();
     }
 
     IEnumerator WairForNextLevel3()
@@ -72,7 +72,7 @@ public class OD6GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         PipeGrid.Instance.LoadLevel(3);
         LevelRef = Level.Level3;
-        TN.moveToZeroZero();
+        TN.ResetPosZeroZero();
     }
 
     IEnumerator WairForNextLevel4()
@@ -80,7 +80,7 @@ public class OD6GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         PipeGrid.Instance.LoadLevel(4);
         LevelRef = Level.Level4;
-        TN.moveToZeroZero();
+        TN.ResetPosZeroZero();
     }
 
     IEnumerator WairForNextLevel5()
@@ -88,7 +88,7 @@ public class OD6GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         PipeGrid.Instance.LoadLevel(5);
         LevelRef = Level.Level5;
-        TN.moveToZeroZero();
+        TN.ResetPosZeroZero();
     }
 
     public void checkConditions()
