@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -20,8 +21,8 @@ public class ODS7Singleton : MinigameParent
 
     [Header("Fabricas Variables")] public List<CloudSpawner> spawnersDisablingList;
     public List<CloudSpawner> enabledSpawners;
-    public List<CloudAI> enabledCloudList;
-    public List<CloudAI> disabledCloudList;
+    public List<CloudAI> activeClouds;
+    public List<CloudAI> inactiveClouds;
     public GameObject CloudPrefab;
 
     [HideInInspector] public EquipableRedTest _playerNet;
@@ -41,13 +42,15 @@ public class ODS7Singleton : MinigameParent
     public int ChanceBase;
     private float TimeTryReference;
 
-    [Header("Punto Ecologico")] public float AddTime;
+    [Header("Punto Ecologico")] 
+    public float AddTime;
 
     [Header("UI Elements")]
     public Image[] generatorStatusSprites;
     public Animator generatorStatusAnim;
     public Sprite activatedGenerator;
     public Sprite deactivatedGenerator;
+    public TMP_Text cloudCount; 
 
     public Transform EnemyEmptyParent;
 
@@ -60,7 +63,7 @@ public class ODS7Singleton : MinigameParent
     protected override void personalAwake()
     {
         base.personalAwake();
-        enabledCloudList = new List<CloudAI>();
+        activeClouds = new List<CloudAI>();
         spawnersDisablingList = new List<CloudSpawner>();
         enabledSpawners = new List<CloudSpawner>();
         Instance = this;
@@ -105,7 +108,9 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered += CheckWinLose;
         ODS7Actions.OnFactoryDisabled += CheckWinLose;
         ODS7Actions.OnCloudDelivered += DeliverCloud;
+        ODS7Actions.OnCloudDelivered += UpdateCloudAmount;
         ODS7Actions.OnFactoryDisabled += PowerplantDeactivatedUI;
+        ODS7Actions.OnCloudSpawned += UpdateCloudAmount;
     }
 
     private void OnDisable()
@@ -113,7 +118,9 @@ public class ODS7Singleton : MinigameParent
         ODS7Actions.OnCloudDelivered -= CheckWinLose;
         ODS7Actions.OnFactoryDisabled -= CheckWinLose;
         ODS7Actions.OnCloudDelivered -= DeliverCloud;
+        ODS7Actions.OnCloudDelivered -= UpdateCloudAmount;
         ODS7Actions.OnFactoryDisabled -= PowerplantDeactivatedUI;
+        ODS7Actions.OnCloudSpawned -= UpdateCloudAmount;
     }
 
     #endregion
@@ -135,6 +142,11 @@ public class ODS7Singleton : MinigameParent
         generatorStatusAnim.SetTrigger("Animate");
     }
 
+    private void UpdateCloudAmount()
+    {
+        cloudCount.text = (activeClouds.Count + inactiveClouds.Count).ToString();
+    }
+
     #endregion
 
     #region Cloud Functions
@@ -145,7 +157,7 @@ public class ODS7Singleton : MinigameParent
             return;
 
         if (UnityEngine.Random.Range(0, ChanceBase) != 1 || spawnersDisablingList.Count == 0 ||
-            enabledCloudList.Count == 0)
+            activeClouds.Count == 0)
         {
             TimeTryReference = Time.time;
             return;
@@ -153,7 +165,7 @@ public class ODS7Singleton : MinigameParent
 
         CloudSpawner targetPowerplant =
             spawnersDisablingList[UnityEngine.Random.Range(0, spawnersDisablingList.Count + 1)];
-        CloudAI objectiveCloud = enabledCloudList[UnityEngine.Random.Range(0, enabledCloudList.Count + 1)];
+        CloudAI objectiveCloud = activeClouds[UnityEngine.Random.Range(0, activeClouds.Count + 1)];
 
         if (targetPowerplant.TargetAI != null || objectiveCloud.targetCloudSpawner != null)
             return;
@@ -166,9 +178,9 @@ public class ODS7Singleton : MinigameParent
 
     public void DisableCloud(CloudAI cloudToDisable)
     {
-        if (!enabledCloudList.Contains(cloudToDisable)) return;
-        enabledCloudList.Remove(cloudToDisable);
-        disabledCloudList.Add(cloudToDisable);
+        if (!activeClouds.Contains(cloudToDisable)) return;
+        activeClouds.Remove(cloudToDisable);
+        inactiveClouds.Add(cloudToDisable);
         _gpsAnimator.SetTrigger("On");
     }
 
@@ -182,14 +194,14 @@ public class ODS7Singleton : MinigameParent
         if (cloudToDestroy.targetCloudSpawner)
             cloudToDestroy.targetCloudSpawner.TargetAI = null;
 
-        if (enabledCloudList.Contains(cloudToDestroy))
+        if (activeClouds.Contains(cloudToDestroy))
         {
-            enabledCloudList.Remove(cloudToDestroy);
+            activeClouds.Remove(cloudToDestroy);
             Destroy(cloudToDestroy.BaseObject);
         }
         else
         {
-            disabledCloudList.Remove(cloudToDestroy);
+            inactiveClouds.Remove(cloudToDestroy);
             Destroy(cloudToDestroy.BaseObject);
         }
     }
@@ -212,7 +224,7 @@ public class ODS7Singleton : MinigameParent
         CloudAI firstClosest = null;
         float closestDistSqr = Mathf.Infinity;
 
-        foreach (CloudAI cloud in enabledCloudList)
+        foreach (CloudAI cloud in activeClouds)
         {
             Vector3 cloudPosition = cloud.transform.position;
             Vector3 directionToCloud = cloudPosition - factoryPosition;
@@ -259,7 +271,7 @@ public class ODS7Singleton : MinigameParent
         {
             _ScoreText.Pretext = null;
             _ScoreText.Preset = null;
-            if (enabledSpawners.Count > 0 && (enabledCloudList.Count + disabledCloudList.Count > 0))
+            if (enabledSpawners.Count > 0 && (activeClouds.Count + inactiveClouds.Count > 0))
             {
                 _ScoreText.ChangeText("Power plants and clouds remaining");
             }
@@ -267,7 +279,7 @@ public class ODS7Singleton : MinigameParent
             {
                 _ScoreText.ChangeText("You missed some power plants!");
             }
-            else if ((enabledCloudList.Count + disabledCloudList.Count) > 0)
+            else if ((activeClouds.Count + inactiveClouds.Count) > 0)
             {
                 _ScoreText.ChangeText("You didn't catch all the pollution!");
             }
@@ -289,7 +301,7 @@ public class ODS7Singleton : MinigameParent
     public override void SaveValue()
     {
         // CAMBIA ESTO SI TOCAS ALGO DE COMO CONTAR NUBES O FABRICAS
-        if (enabledSpawners.Count > 0 || ((enabledCloudList.Count + disabledCloudList.Count) > 0)) Score = -1;
+        if (enabledSpawners.Count > 0 || ((activeClouds.Count + inactiveClouds.Count) > 0)) Score = -1;
         else Score = (int)timer.Value;
 
         SaveValue(Score);
@@ -298,7 +310,7 @@ public class ODS7Singleton : MinigameParent
     private void CheckWinLose()
     {
         if (enabledSpawners.Count <= 0) _allGeneratorsDisabled = true;
-        if (enabledCloudList.Count + disabledCloudList.Count <= 0) _allCloudsCaptured = true;
+        if (activeClouds.Count + inactiveClouds.Count <= 0) _allCloudsCaptured = true;
         if (_allGeneratorsDisabled && _allCloudsCaptured) OnGameFinish();
     }
 

@@ -7,5 +7,6 @@ public static class ODS7Actions
 {
     public static Action OnCloudDelivered;
     public static Action OnFactoryDisabled;
+    public static Action OnCloudSpawned;
     public static Action<CloudSpawner> OnRequestCloud;
 }
