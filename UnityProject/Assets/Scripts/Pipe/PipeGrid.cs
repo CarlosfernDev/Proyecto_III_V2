@@ -85,7 +85,7 @@ public class PipeGrid : MonoBehaviour
         }
         else
         {
-            Debug.Log("Tile no accesible");
+           // Debug.Log("Tile no accesible");
             return null;
         }
     }

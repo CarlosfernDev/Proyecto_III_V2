@@ -60,7 +60,7 @@ public class TileNavigator : MonoBehaviour
         contador = contador + Time.deltaTime;
         
 
-        x = 0; y = 0;
+        
         if (addPos.magnitude != 0)
         {
             if (movementCooldown > contador) { return; }
@@ -84,28 +84,40 @@ public class TileNavigator : MonoBehaviour
 
     public void CheckInput(Vector2 vec)
     {
-
+        x = 0; y = 0;
         var Matrix = Matrix4x4.Rotate(Quaternion.Euler(0, -45f, 0));
         var inputChueca = Matrix.MultiplyPoint3x4(new Vector3(vec.x, 0f, vec.y));
+        //Debug.Log(vec);
 
-        if (inputChueca.x>0)
+        if (inputChueca.x>+0.80f)
         {
-            inputChueca.x = 1;
+            x = 1;
         }
-        if (inputChueca.x < 0)
+        else if(inputChueca.x < -0.80f)
         {
-            inputChueca.x = -1;
+            Debug.Log(inputChueca.x);
+            x = -1;
         }
-        if (inputChueca.z > 0)
+        else
         {
-            inputChueca.z = 1;
+            x = 0;
         }
-        if (inputChueca.z < 0)
+
+        if (inputChueca.z > +0.80f)
         {
-            inputChueca.z = -1;
+            y = 1;
         }
-        addPos = new Vector2Int((int)inputChueca.x, (int)inputChueca.z);
-        
+        else if (inputChueca.z < -0.80f)
+        {
+            Debug.Log(inputChueca.x);
+            y = -1;
+        }
+        else
+        {
+            y = 0;
+        }
+        addPos = new Vector2Int(x, y);
+        //Debug.Log(addPos);
 
 
 
