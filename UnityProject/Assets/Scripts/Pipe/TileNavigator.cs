@@ -11,6 +11,8 @@ public class TileNavigator : MonoBehaviour
     [SerializeField] float movementCooldown;
     private float contador;
 
+    private int ContPieza = 0;
+
     [SerializeField] GameObject Tpipe;
     [SerializeField] GameObject Pluspipe;
     [SerializeField] GameObject Straightpipe;
@@ -46,6 +48,8 @@ public class TileNavigator : MonoBehaviour
             }
         }
         CheckBuildKey();
+        CheckRotationKey();
+        CheckPlaceKey();
         UpdateTestObjectPos();
     }
 
@@ -60,6 +64,15 @@ public class TileNavigator : MonoBehaviour
         return new Vector2Int(x,y);
     }
 
+
+    public void aumentarContadorPieza()
+    {
+        ContPieza += 1;
+        if (ContPieza>=3)
+        {
+            ContPieza = 0;
+        }
+    }
     public void CheckBuildKey()
     {
         if (!PipeGrid.Instance.GetPipeAtPosition(PosSelector))
@@ -71,7 +84,61 @@ public class TileNavigator : MonoBehaviour
         Vector3 pos = PipeGrid.Instance.GetPipeAtPosition(PosSelector).transform.position;
         pos = new Vector3(pos.x, pos.y + 1, pos.z);
 
+        switch (ContPieza)
+        {
+            case 0:
+                temporalGO = Tpipe;
 
+                if (ShowGO != Tpipe)
+                {
+                    if (ShowGO != null)
+                    {
+                        Destroy(ShowGO.gameObject);
+                        ShowGO = Instantiate(Tpipe, pos, Quaternion.identity);
+                    }
+                    else
+                    {
+                        ShowGO = Instantiate(Tpipe, pos, Quaternion.identity);
+                    }
+                }
+                break;
+            case 1:
+                temporalGO = Pluspipe;
+
+                if (ShowGO != Pluspipe)
+                {
+                    if (ShowGO != null)
+                    {
+                        Destroy(ShowGO.gameObject);
+                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.identity);
+                    }
+                    else
+                    {
+                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.identity);
+                    }
+                }
+                break;
+            case 2:
+                temporalGO = Straightpipe;
+
+                if (ShowGO != Straightpipe)
+                {
+                    if (ShowGO != null)
+                    {
+                        Destroy(ShowGO.gameObject);
+                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.identity);
+                    }
+                    else
+                    {
+                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.identity);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
+        /*
         if (Input.GetKey(KeyCode.Z))
         {
             temporalGO = Tpipe;
@@ -87,10 +154,6 @@ public class TileNavigator : MonoBehaviour
                 {
                     ShowGO = Instantiate(Tpipe, pos, Quaternion.identity);
                 }
-            }
-            else
-            {
-                
             }
             
         }
@@ -135,8 +198,11 @@ public class TileNavigator : MonoBehaviour
 
         }
 
+        */
+
 
         //Rotar Visual GO
+        /*
         if (Input.GetKeyDown(KeyCode.R))
         { 
             if (ShowGO != null)
@@ -151,8 +217,10 @@ public class TileNavigator : MonoBehaviour
                 ShowGO.transform.eulerAngles = new Vector3(0, rotYplacement, 0);
             }
         }
+        */
 
         //Enter Contruir Temporal Pipe
+        /*
         if (Input.GetKey(KeyCode.Return))
         {
             if (temporalGO == null)
@@ -167,6 +235,7 @@ public class TileNavigator : MonoBehaviour
             rotYplacement = 0;
             PipeGrid.Instance.ReCheckConectionsToWaterSource();
         }
+        */
         //InstanciarWaterSource
         /*
         if (Input.GetKey(KeyCode.Y))
@@ -202,6 +271,37 @@ public class TileNavigator : MonoBehaviour
         */
 
     }
+
+    public void CheckRotationKey()
+    {
+        if (ShowGO != null)
+        {
+
+            rotYplacement += 90;
+            if (rotYplacement == 360)
+            {
+                rotYplacement = 0;
+            }
+
+            ShowGO.transform.eulerAngles = new Vector3(0, rotYplacement, 0);
+        }
+    }
+
+    public void CheckPlaceKey()
+    {
+        if (temporalGO == null)
+        {
+            return;
+        }
+        var tempoGO2 = PipeGrid.Instance.GetPipeAtPosition(PosSelector);
+        tempoGO2.InstantiateVisualGO(temporalGO, (int)rotYplacement);
+        tempoGO2.DesactivateWater();
+        temporalGO = null;
+        Destroy(ShowGO);
+        rotYplacement = 0;
+        PipeGrid.Instance.ReCheckConectionsToWaterSource();
+    }
+
 
     public void ResetPosZeroZero()
     {
