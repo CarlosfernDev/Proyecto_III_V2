@@ -143,11 +143,11 @@ public class TileNavigator : MonoBehaviour
                     if (ShowGO != null)
                     {
                         Destroy(ShowGO.gameObject);
-                        ShowGO = Instantiate(Tpipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Tpipe, pos, Quaternion.Euler(0,rotYplacement,0));
                     }
                     else
                     {
-                        ShowGO = Instantiate(Tpipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Tpipe, pos, Quaternion.Euler(0, rotYplacement, 0));
                     }
                 }
                 break;
@@ -159,11 +159,11 @@ public class TileNavigator : MonoBehaviour
                     if (ShowGO != null)
                     {
                         Destroy(ShowGO.gameObject);
-                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.Euler(0, rotYplacement, 0));
                     }
                     else
                     {
-                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Pluspipe, pos, Quaternion.Euler(0, rotYplacement, 0));
                     }
                 }
                 break;
@@ -175,11 +175,11 @@ public class TileNavigator : MonoBehaviour
                     if (ShowGO != null)
                     {
                         Destroy(ShowGO.gameObject);
-                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.Euler(0, rotYplacement, 0));
                     }
                     else
                     {
-                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.identity);
+                        ShowGO = Instantiate(Straightpipe, pos, Quaternion.Euler(0, rotYplacement, 0));
                     }
                 }
                 break;
@@ -347,7 +347,7 @@ public class TileNavigator : MonoBehaviour
         tempoGO2.DesactivateWater();
         temporalGO = null;
         Destroy(ShowGO);
-        rotYplacement = 0;
+        //rotYplacement = 0;
         PipeGrid.Instance.ReCheckConectionsToWaterSource();
         CheckBuildKey();
     }
