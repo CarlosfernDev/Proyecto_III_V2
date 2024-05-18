@@ -12,6 +12,8 @@ public class CloudSpawner : LInteractableParent
 {
     public enum factoryState { Wait, Spawning, Transforming, Disable, Resetting }
     public factoryState myFactoryState = factoryState.Wait;
+
+    public Transform centerPoint;
     
     [Header("Spawn Variables")]
     [SerializeField] private Transform _spawnTransform;
@@ -109,12 +111,12 @@ public class CloudSpawner : LInteractableParent
 
     private void OnEnable()
     {
-        ODS7Actions.OnFactoryDisabled += ResetWrenches;
+        ODS7Actions.OnSpawnerDisabled += ResetWrenches;
     }
 
     private void OnDisable()
     {
-        ODS7Actions.OnFactoryDisabled -= ResetWrenches;
+        ODS7Actions.OnSpawnerDisabled -= ResetWrenches;
     }
 
     #endregion
@@ -328,7 +330,7 @@ public class CloudSpawner : LInteractableParent
         }
         timeMultiplier = 1f;
         VFXManager.GetComponent<CentralVFX>().CallCoroutine();
-        ODS7Actions.OnFactoryDisabled();
+        ODS7Actions.OnSpawnerDisabled();
     }
 
     public void RestoreFactory()

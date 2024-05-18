@@ -11,39 +11,39 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TimerMinigame))]
 public class ODS7Singleton : MinigameParent
 {
+    public static ODS7Singleton Instance;
+    
     public Timer _txTime;
 
     public Animator _gpsAnimator;
 
-    public static ODS7Singleton Instance;
-
     public TimerMinigame timer;
 
-    [Header("Fabricas Variables")] public List<CloudSpawner> spawnersDisablingList;
+    [Header("Player Variables")]
+    public TestInputs player;
+    public EquipableRedTest playerNet;
+
+    [Header("Spawner Variables")] 
+    public List<CloudSpawner> spawnersDisablingList;
     public List<CloudSpawner> enabledSpawners;
-    public List<CloudAI> activeClouds;
-    public List<CloudAI> inactiveClouds;
     public GameObject CloudPrefab;
-
-    [HideInInspector] public EquipableRedTest _playerNet;
-
+    
     public float timeFabricaDestroy;
-    public float[] timeCloudRestoration;
     public float timeCloudSpawn;
     public float timeToNewCloudCall;
     public float transformTimeIncrease = 1.5f;
+
+    [Header("Cloud Variables")]
+    public List<CloudAI> activeClouds;
+    public List<CloudAI> inactiveClouds;
+    public Transform EnemyEmptyParent;
     public int maxClouds;
 
     private bool _allGeneratorsDisabled;
     private bool _allCloudsCaptured;
 
-    [Header("Factory Disabled")]
-    public float tryintervalFix;
-    public int ChanceBase;
-    private float TimeTryReference;
-
-    [Header("Punto Ecologico")] 
-    public float AddTime;
+    [Header("Rewards")] 
+    public float bonusTime;
 
     [Header("UI Elements")]
     public Image[] generatorStatusSprites;
@@ -52,9 +52,8 @@ public class ODS7Singleton : MinigameParent
     public Sprite deactivatedGenerator;
     public TMP_Text cloudCount; 
 
-    public Transform EnemyEmptyParent;
 
-    [Header("Bocadillos")]
+    [Header("UI Bubbles")]
     public Animator anim;
     public AnimatorOverrideController animatorBocadillo;
 
@@ -73,7 +72,8 @@ public class ODS7Singleton : MinigameParent
     {
         GameManager.Instance.playerScript.DisablePlayer();
         base.personalStart();
-        _playerNet = FindObjectOfType<EquipableRedTest>();
+        playerNet = FindObjectOfType<EquipableRedTest>();
+        player = GameManager.Instance.playerScript;
         timer.PreSetTimmer();
     }
 
@@ -82,7 +82,6 @@ public class ODS7Singleton : MinigameParent
         GameManager.Instance.playerScript.sloopyMovement = true;
         base.OnGameStart();
         timer.SetTimer();
-        TimeTryReference = Time.time;
     }
 
     public override void OnGameFinish()
@@ -105,21 +104,17 @@ public class ODS7Singleton : MinigameParent
 
     private void OnEnable()
     {
-        ODS7Actions.OnCloudDelivered += CheckWinLose;
-        ODS7Actions.OnFactoryDisabled += CheckWinLose;
+        ODS7Actions.OnSpawnerDisabled += CheckWinLose;
         ODS7Actions.OnCloudDelivered += DeliverCloud;
-        ODS7Actions.OnCloudDelivered += UpdateCloudAmount;
-        ODS7Actions.OnFactoryDisabled += PowerplantDeactivatedUI;
+        ODS7Actions.OnSpawnerDisabled += SpawnerDisabled;
         ODS7Actions.OnCloudSpawned += UpdateCloudAmount;
     }
 
     private void OnDisable()
     {
-        ODS7Actions.OnCloudDelivered -= CheckWinLose;
-        ODS7Actions.OnFactoryDisabled -= CheckWinLose;
+        ODS7Actions.OnSpawnerDisabled -= CheckWinLose;
         ODS7Actions.OnCloudDelivered -= DeliverCloud;
-        ODS7Actions.OnCloudDelivered -= UpdateCloudAmount;
-        ODS7Actions.OnFactoryDisabled -= PowerplantDeactivatedUI;
+        ODS7Actions.OnSpawnerDisabled -= SpawnerDisabled;
         ODS7Actions.OnCloudSpawned -= UpdateCloudAmount;
     }
 
@@ -127,7 +122,7 @@ public class ODS7Singleton : MinigameParent
 
     #region UI Functions
 
-    public void PowerplantDeactivatedUI()
+    public void UpdateSpawnerUI()
     {
         for (int i = 0; i < generatorStatusSprites.Length; i++)
         {
@@ -150,31 +145,6 @@ public class ODS7Singleton : MinigameParent
     #endregion
 
     #region Cloud Functions
-
-    private void CloudRepairCheck()
-    {
-        if (Time.time - TimeTryReference < tryintervalFix)
-            return;
-
-        if (UnityEngine.Random.Range(0, ChanceBase) != 1 || spawnersDisablingList.Count == 0 ||
-            activeClouds.Count == 0)
-        {
-            TimeTryReference = Time.time;
-            return;
-        }
-
-        CloudSpawner targetPowerplant =
-            spawnersDisablingList[UnityEngine.Random.Range(0, spawnersDisablingList.Count + 1)];
-        CloudAI objectiveCloud = activeClouds[UnityEngine.Random.Range(0, activeClouds.Count + 1)];
-
-        if (targetPowerplant.TargetAI != null || objectiveCloud.targetCloudSpawner != null)
-            return;
-
-        targetPowerplant.TargetAI = objectiveCloud;
-        objectiveCloud.targetCloudSpawner = targetPowerplant;
-
-        objectiveCloud.ReturnToBase(targetPowerplant.transform);
-    }
 
     public void DisableCloud(CloudAI cloudToDisable)
     {
@@ -208,7 +178,7 @@ public class ODS7Singleton : MinigameParent
 
     public void CaptureCloud()
     {
-        if (!_playerNet.isCloudCaptured) return;
+        if (!playerNet.isCloudCaptured) return;
         anim.runtimeAnimatorController = animatorBocadillo;
         anim.SetTrigger("On");
     }
@@ -216,7 +186,10 @@ public class ODS7Singleton : MinigameParent
     public void DeliverCloud()
     {
         anim.SetTrigger("Off");
-        AddScore(1);
+        _gpsAnimator.SetTrigger("Off");
+        player.BoostVelocidad(10f, 20f, 0.9f, 5f);
+        UpdateCloudAmount();
+        CheckWinLose();
     }
 
     private CloudAI FindNearestActiveCloud(Vector3 factoryPosition)
@@ -241,30 +214,35 @@ public class ODS7Singleton : MinigameParent
 
     #endregion
 
-    #region Powerplant Functions
+    #region Spawner Functions
 
     public void RequestReinforcements(CloudSpawner affectedSpawner)
     {
         if (affectedSpawner.TargetAI != null) return;
 
-        CloudAI cloudCandidate = FindNearestActiveCloud(affectedSpawner.transform.position);
+        Transform point = affectedSpawner.centerPoint;
+        CloudAI cloudCandidate = FindNearestActiveCloud(point.position);
 
         if (cloudCandidate.targetCloudSpawner != null) return;
 
         affectedSpawner.TargetAI = cloudCandidate;
         cloudCandidate.targetCloudSpawner = affectedSpawner;
-        affectedSpawner.TargetAI.ReturnToBase(affectedSpawner.transform);
+        affectedSpawner.TargetAI.ReturnToBase(point);
+    }
+
+    private void SpawnerDisabled()
+    {
+        timer.AddTime(bonusTime);
+        UpdateSpawnerUI();
+        CheckWinLose();
     }
 
     #endregion
 
-    #region Score Setting Functions
+    #region Score Functions
 
     public override void SetResult()
     {
-        Debug.Log("Se hace tranquilo");
-        Debug.Log(Score);
-
         RankImage.sprite = RankData.timerImageArray[MinigameData.CheckPointsState(Score)].sprite;
 
         if (Score == -1)
