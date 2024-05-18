@@ -32,6 +32,9 @@ public class PuntoEcologicoODS7 : LInteractableParent
 
             ODS7Singleton.Instance.DestroyCloud(ai);
 
+            //Fixear visuales
+            Unhover();
+
             redScript.cloudCaptured = null;
             redScript.isCloudCaptured = false;
       
@@ -42,6 +45,7 @@ public class PuntoEcologicoODS7 : LInteractableParent
             // Bufos
             script.BoostVelocidad(10f, 20f, 0.9f, 5f);
             ODS7Singleton.Instance.timer.AddTime(ODS7Singleton.Instance.AddTime);
+
         }
     }
 

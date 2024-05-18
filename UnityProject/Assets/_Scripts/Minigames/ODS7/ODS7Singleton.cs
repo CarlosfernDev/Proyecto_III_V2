@@ -24,7 +24,7 @@ public class ODS7Singleton : MinigameParent
     public List<CloudAI> disabledCloudList;
     public GameObject CloudPrefab;
 
-    [HideInInspector]public EquipableRedTest _playerNet;
+    [HideInInspector] public EquipableRedTest _playerNet;
 
     public float timeFabricaDestroy;
     public float[] timeCloudRestoration;
@@ -43,14 +43,15 @@ public class ODS7Singleton : MinigameParent
 
     [Header("Punto Ecologico")] public float AddTime;
 
-    [Header("UI Elements")] 
+    [Header("UI Elements")]
     public Image[] generatorStatusSprites;
+    public Animator generatorStatusAnim;
     public Sprite activatedGenerator;
     public Sprite deactivatedGenerator;
 
     public Transform EnemyEmptyParent;
 
-    [Header("Bocadillos")] 
+    [Header("Bocadillos")]
     public Animator anim;
     public AnimatorOverrideController animatorBocadillo;
 
@@ -93,7 +94,7 @@ public class ODS7Singleton : MinigameParent
 
     #region Main Methods
 
-    private void Update() {}
+    private void Update() { }
 
     #endregion
 
@@ -129,6 +130,9 @@ public class ODS7Singleton : MinigameParent
                 break;
             }
         }
+
+        generatorStatusAnim.SetInteger("LifeValue", Mathf.Abs(enabledSpawners.Count - 2));
+        generatorStatusAnim.SetTrigger("Animate");
     }
 
     #endregion
@@ -174,7 +178,7 @@ public class ODS7Singleton : MinigameParent
         {
             cloudToDestroy.ResetMovement();
         }
-        
+
         if (cloudToDestroy.targetCloudSpawner)
             cloudToDestroy.targetCloudSpawner.TargetAI = null;
 
@@ -230,18 +234,18 @@ public class ODS7Singleton : MinigameParent
     public void RequestReinforcements(CloudSpawner affectedSpawner)
     {
         if (affectedSpawner.TargetAI != null) return;
-        
+
         CloudAI cloudCandidate = FindNearestActiveCloud(affectedSpawner.transform.position);
-        
+
         if (cloudCandidate.targetCloudSpawner != null) return;
-        
+
         affectedSpawner.TargetAI = cloudCandidate;
         cloudCandidate.targetCloudSpawner = affectedSpawner;
         affectedSpawner.TargetAI.ReturnToBase(affectedSpawner.transform);
     }
 
     #endregion
-    
+
     #region Score Setting Functions
 
     public override void SetResult()
@@ -255,20 +259,21 @@ public class ODS7Singleton : MinigameParent
         {
             _ScoreText.Pretext = null;
             _ScoreText.Preset = null;
-            if (enabledSpawners.Count > 0 && (enabledCloudList.Count + disabledCloudList.Count > 0)) 
+            if (enabledSpawners.Count > 0 && (enabledCloudList.Count + disabledCloudList.Count > 0))
             {
                 _ScoreText.ChangeText("Power plants and clouds remaining");
-            } 
+            }
             else if (enabledSpawners.Count > 0)
             {
                 _ScoreText.ChangeText("You missed some power plants!");
-            } 
+            }
             else if ((enabledCloudList.Count + disabledCloudList.Count) > 0)
             {
                 _ScoreText.ChangeText("You didn't catch all the pollution!");
             }
         }
-        else {
+        else
+        {
             int minutosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) / 60);
             int segundosScore = Mathf.FloorToInt(Mathf.Clamp(Score, 0, Score) % 60);
 
