@@ -227,11 +227,16 @@ public class Pipe : MonoBehaviour
 
     public void ActivateNewMats()
     {
-        var Renderers = GetComponentsInChildren<Renderer>();
-        foreach (var item in Renderers)
+        if (visualGO != null)
         {
-            item.material = WaterMat;
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = WaterMat;
+            }
+            
         }
+
     }
 
     public void DesactivateWater()
@@ -240,23 +245,30 @@ public class Pipe : MonoBehaviour
         {
             return;
         }
-        var Renderers = GetComponentsInChildren<Renderer>();
-        foreach (var item in Renderers)
+        if (visualGO != null)
         {
-            item.material = ShitMat;
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = ShitMat;
+            }
         }
         
+
         RunningWater = false;
     }
     public void ActivateWater()
     {
-        var Renderers = GetComponentsInChildren<Renderer>();
-        foreach (var item in Renderers)
+        if (visualGO != null)
         {
-            item.material = WaterMat;
+            var Renderer = visualGO.GetComponentsInChildren<Renderer>();
+            foreach (var item in Renderer)
+            {
+                item.material = WaterMat;
+            }
         }
 
-        
+
         RunningWater = true;
         CheckConections();
         if (Puntuado == false)

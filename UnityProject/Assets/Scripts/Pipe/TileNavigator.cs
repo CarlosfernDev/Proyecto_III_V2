@@ -203,7 +203,7 @@ public class TileNavigator : MonoBehaviour
 
     }
 
-    void ResetPosZeroZero()
+    public void ResetPosZeroZero()
     {
         PosSelector = new Vector2Int(0, 0);
         PipeGrid.Instance.DesactivarSeleciones();
