@@ -309,7 +309,7 @@ public class MinigameParent : MonoBehaviour
     public void UpdateScore()
     {
         if (OnScoreUpdate != null)
-            OnScoreUpdate.Invoke(Score);
+            OnScoreUpdate.Invoke(Mathf.Clamp(Score, 0, Score));
     }
 
     #endregion

@@ -8,6 +8,9 @@ public class StarPortal : MonoBehaviour
     public StarScriptableObject starsprite;
     public MinigamesScriptableObjectScript MinigameData;
 
+    public Vector3 ScaleStar;
+    public Color DisableColor;
+
     public Image Star1;
     public Image Star2;
 
@@ -18,19 +21,32 @@ public class StarPortal : MonoBehaviour
         switch (MinigameData.CheckPointsState(MinigameData.maxPoints))
         {
             case 0:
-                Star1.sprite = starsprite.Off;
-                Star2.sprite = starsprite.Off;
+                DisableStar(Star1);
+                DisableStar(Star2);
                 break;
 
             case 1:
+                EnableStar(Star1);
+                DisableStar(Star2);
                 Star1.sprite = starsprite.On;
-                Star2.sprite = starsprite.Off;
                 break;
 
             case 2:
-                Star1.sprite = starsprite.On;
-                Star2.sprite = starsprite.On;
+                EnableStar(Star1);
+                EnableStar(Star2);
                 break;
         }
+    }
+
+    private void DisableStar(Image Star)
+    {
+        Star.sprite = starsprite.Off;
+        Star.color = DisableColor;
+        Star.transform.localScale = ScaleStar;
+    }
+
+    private void EnableStar(Image Star)
+    {
+        Star.sprite = starsprite.On;
     }
 }

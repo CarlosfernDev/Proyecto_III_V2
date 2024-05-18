@@ -17,7 +17,8 @@ public class PuntoEcologicoODS7 : LInteractableParent
     public override void Interact()
     {
         base.Interact();
-        
+       
+
         if (!script.isEquipado)
         {
             return;
@@ -35,10 +36,24 @@ public class PuntoEcologicoODS7 : LInteractableParent
             redScript.isCloudCaptured = false;
       
             ODS7Actions.OnCloudDelivered();
-            
+
+            ODS7Singleton.Instance._gpsAnimator.SetTrigger("Off");
+
             // Bufos
             script.BoostVelocidad(10f, 20f, 0.9f, 5f);
             ODS7Singleton.Instance.timer.AddTime(ODS7Singleton.Instance.AddTime);
         }
+    }
+
+    public override void Hover()
+    {
+        if (!script.isEquipado && redScript.cloudCaptured == null) return;
+        base.Hover();
+    }
+
+    public override void Unhover()
+    {
+        if (!script.isEquipado && redScript.cloudCaptured == null) return;
+        base.Unhover();
     }
 }

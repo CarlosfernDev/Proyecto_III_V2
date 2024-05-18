@@ -13,7 +13,9 @@ using Vector3 = UnityEngine.Vector3;
 
 public class CloudAI : MonoBehaviour
 {
-    
+    public GameObject BaseObject;
+    public EnableInputViewONTRIGGER ButtonVisualScript;
+
     [SerializeField] private float _range = 10f;
     [SerializeField] private float _speed = 3f;
     [SerializeField] private float _returnSpeed = 6f;
@@ -52,6 +54,8 @@ public class CloudAI : MonoBehaviour
         isCaptured = true;
         _agent.isStopped = true;
         _agent.ResetPath();
+        ButtonVisualScript.CollisionEnable = false;
+        ButtonVisualScript.CloseAnimation();
     }
     
     bool RandomPoint(Vector3 center, float range, out Vector3 result)

@@ -11,9 +11,13 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField] private bool FollowRotation = false;
     [SerializeField] private bool FollowScale = false;
 
+    public bool AxisX = true;
+    public bool AxisY = true;
+    public bool AxisZ = true;
+
     private void FixedUpdate()
     {
-        if(FollowPosition)  _transform.position = _playerTransform.position;
+        if(FollowPosition)  _transform.position = new Vector3(_playerTransform.position.x * (AxisX ? 1 : 0), _playerTransform.position.y * (AxisY ? 1 : 0), _playerTransform.position.z * (AxisZ ? 1 : 0));
 
         if (FollowRotation) _transform.rotation = _playerTransform.rotation;
 

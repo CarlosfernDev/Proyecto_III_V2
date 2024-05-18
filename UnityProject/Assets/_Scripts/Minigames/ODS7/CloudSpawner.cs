@@ -220,7 +220,7 @@ public class CloudSpawner : LInteractableParent
 
         Cloud.transform.parent = ODS7Singleton.Instance.EnemyEmptyParent;
 
-        ODS7Singleton.Instance.enabledCloudList.Add(Cloud.GetComponent<CloudAI>());
+        ODS7Singleton.Instance.enabledCloudList.Add(Cloud.GetComponentInChildren<CloudAI>());
         _spawnTimeRef = Time.time;
         _isSpawnPointSet = false;
         _spawnOffset = RandomRoundOffset();

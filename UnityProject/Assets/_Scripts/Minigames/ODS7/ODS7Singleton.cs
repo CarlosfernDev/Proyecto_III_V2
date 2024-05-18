@@ -12,6 +12,8 @@ public class ODS7Singleton : MinigameParent
 {
     public Timer _txTime;
 
+    public Animator _gpsAnimator;
+
     public static ODS7Singleton Instance;
 
     public TimerMinigame timer;
@@ -163,6 +165,7 @@ public class ODS7Singleton : MinigameParent
         if (!enabledCloudList.Contains(cloudToDisable)) return;
         enabledCloudList.Remove(cloudToDisable);
         disabledCloudList.Add(cloudToDisable);
+        _gpsAnimator.SetTrigger("On");
     }
 
     public void DestroyCloud(CloudAI cloudToDestroy)
@@ -178,12 +181,12 @@ public class ODS7Singleton : MinigameParent
         if (enabledCloudList.Contains(cloudToDestroy))
         {
             enabledCloudList.Remove(cloudToDestroy);
-            Destroy(cloudToDestroy.gameObject);
+            Destroy(cloudToDestroy.BaseObject);
         }
         else
         {
             disabledCloudList.Remove(cloudToDestroy);
-            Destroy(cloudToDestroy.gameObject);
+            Destroy(cloudToDestroy.BaseObject);
         }
     }
 
