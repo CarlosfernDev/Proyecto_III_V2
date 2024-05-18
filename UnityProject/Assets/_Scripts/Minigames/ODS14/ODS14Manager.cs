@@ -103,8 +103,8 @@ public class ODS14Manager : MinigameParent
 
     private void DecreaseLives()
     {
+        lifeanimation.SetInteger(("LifeValue"), Mathf.Abs(_currentLives - 4));
         _currentLives--;
-        lifeanimation.SetInteger(("LifeValue"), Mathf.Abs(_currentLives - 3));
         lifeanimation.SetTrigger("Animate");
         if (_currentLives <= 0)
         {
