@@ -44464,10 +44464,15 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8017976015116815472, guid: caf713cdd46824447b9782e980c6986f,
+    - target: {fileID: 7429391997638359056, guid: caf713cdd46824447b9782e980c6986f,
         type: 3}
-      propertyPath: rotationSpeed
-      value: 90000
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7429391997638359056, guid: caf713cdd46824447b9782e980c6986f,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8459489257471589769, guid: caf713cdd46824447b9782e980c6986f,
         type: 3}
