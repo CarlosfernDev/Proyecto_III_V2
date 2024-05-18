@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 1
+  IsDeveloping: 0
   MinigameData: {fileID: 11400000, guid: 85c8388ca71007940a1556193a78c0d9, type: 2}
   _uiAnimator: {fileID: 56204039}
   isCountdown: 1
@@ -2782,7 +2782,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "*Press <b>R</b> to rotate 90\xBA the <b>pipe</b>.\n\n*Press <b>E</b> to
-    place the <b>pipe</b>.\n\n*Connect the <b>water</b> source to the <b>green points</b>
+    place the <b>pipe</b>.\n\n*Connect the <b>WATER</b> to the <b>GREEN POINTS</b>
     using pipes."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9988a46891ae7f34199fe1ddeaf2e61d, type: 2}
@@ -2811,15 +2811,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52
-  m_fontSizeBase: 33
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 4096
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
