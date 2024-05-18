@@ -21,15 +21,44 @@ public class TileNavigator : MonoBehaviour
     float rotYplacement = 0;
 
 
+    private void OnEnable()
+    {
+        try
+        {
+            InputManager.Instance.movementEvent.AddListener(CheckInput);
+            InputManager.Instance.interactEvent.AddListener(CheckPlaceKey);
+            InputManager.Instance.equipableEvent.AddListener(aumentarContadorPieza);
+            InputManager.Instance.AlexRotateEvent.AddListener(CheckRotationKey);
+        }
+        catch (System.Exception e)
+        {
+            Debug.Log(e.ToString());
+            Debug.LogWarning("No se pudo asignar los eventos, probablemente te faltara un InputManager");
+        }
+    }
+    private void OnDisable()
+    {
+        InputManager.Instance.movementEvent.RemoveListener(CheckInput);
+        InputManager.Instance.interactEvent.RemoveListener(CheckPlaceKey);
+        InputManager.Instance.equipableEvent.RemoveListener(aumentarContadorPieza);
+        InputManager.Instance.AlexRotateEvent.RemoveListener(CheckRotationKey);
+    }
+
+
+
+
+
+
+
     private void Start()
     {
-        
+        CheckBuildKey();
     }
     void Update()
     {
         
         contador = contador + Time.deltaTime;
-        addPos = CheckInput();
+        
 
         x = 0; y = 0;
         if (addPos.magnitude != 0)
@@ -47,21 +76,39 @@ public class TileNavigator : MonoBehaviour
                 PosSelector = PosSelector - addPos;
             }
         }
-        CheckBuildKey();
-        CheckRotationKey();
-        CheckPlaceKey();
+        //CheckBuildKey();
+        //CheckRotationKey();
+        //CheckPlaceKey();
         UpdateTestObjectPos();
     }
 
-    public Vector2Int CheckInput()
+    public void CheckInput(Vector2 vec)
     {
-        
-        if (Input.GetKey(KeyCode.W)) { y = +1; }
-        if (Input.GetKey(KeyCode.S)) { y = -1; }
-        if (Input.GetKey(KeyCode.A)) { x = -1; }
-        if (Input.GetKey(KeyCode.D)) { x = +1; }
 
-        return new Vector2Int(x,y);
+        var Matrix = Matrix4x4.Rotate(Quaternion.Euler(0, -45f, 0));
+        var inputChueca = Matrix.MultiplyPoint3x4(new Vector3(vec.x, 0f, vec.y));
+
+        if (inputChueca.x>0)
+        {
+            inputChueca.x = 1;
+        }
+        if (inputChueca.x < 0)
+        {
+            inputChueca.x = -1;
+        }
+        if (inputChueca.z > 0)
+        {
+            inputChueca.z = 1;
+        }
+        if (inputChueca.z < 0)
+        {
+            inputChueca.z = -1;
+        }
+        addPos = new Vector2Int((int)inputChueca.x, (int)inputChueca.z);
+        
+
+
+
     }
 
 
@@ -72,14 +119,16 @@ public class TileNavigator : MonoBehaviour
         {
             ContPieza = 0;
         }
+        CheckBuildKey();
     }
     public void CheckBuildKey()
     {
+        Debug.Log("CargoPieza");
+
         if (!PipeGrid.Instance.GetPipeAtPosition(PosSelector))
         {
             return;
         }
-
         //Vector Donde se Construye la Pipe
         Vector3 pos = PipeGrid.Instance.GetPipeAtPosition(PosSelector).transform.position;
         pos = new Vector3(pos.x, pos.y + 1, pos.z);
@@ -300,6 +349,7 @@ public class TileNavigator : MonoBehaviour
         Destroy(ShowGO);
         rotYplacement = 0;
         PipeGrid.Instance.ReCheckConectionsToWaterSource();
+        CheckBuildKey();
     }
 
 

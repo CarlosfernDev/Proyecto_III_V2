@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] public UnityEvent interactEvent;
     [SerializeField] public UnityEvent equipableEvent;
     [SerializeField] public UnityEvent anyKeyEvent;
+    [SerializeField] public UnityEvent AlexRotateEvent;
     [SerializeField] public UnityEvent<Vector2> movementEvent;
 
     //Modificacion de la clase event para poder pasar en las llamadas vector2
@@ -42,6 +43,7 @@ public class InputManager : MonoBehaviour
         interactEvent = new UnityEvent();
         equipableEvent = new UnityEvent();
         anyKeyEvent = new UnityEvent();
+        AlexRotateEvent = new UnityEvent();
         movementEvent = new UnityEvent<Vector2>();
 
 
@@ -50,12 +52,16 @@ public class InputManager : MonoBehaviour
         playerInputs.ActionMap1.Interact.performed += Interact_performed;
         playerInputs.ActionMap1.UsarEquipable.performed += UsarEquipable_performed;
         playerInputs.ActionMap1.AnyKey.performed += AnyKey_performed;
+        playerInputs.ActionMap1.RotarPiezaAlex.performed += RotarPiezaAlex_performed;
     }
 
     void Start()
     {
     }
-
+    private void RotarPiezaAlex_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        AlexRotateEvent.Invoke();
+    }
     private void AnyKey_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         anyKeyEvent.Invoke();

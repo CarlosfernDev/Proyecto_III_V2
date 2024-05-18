@@ -18,7 +18,7 @@ public class OD6GameManager : MonoBehaviour
     }
     void Start()
     {
-       LoadLevel1();
+      // LoadLevel1();
     }
 
     // Update is called once per frame
