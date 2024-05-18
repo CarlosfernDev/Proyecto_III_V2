@@ -12,6 +12,8 @@ public class CloudSpawner : LInteractableParent
 {
     public enum factoryState { Wait, Spawning, Transforming, Disable, Resetting }
     public factoryState myFactoryState = factoryState.Wait;
+
+    public Transform centerPoint;
     
     [Header("Spawn Variables")]
     [SerializeField] private Transform _spawnTransform;
@@ -109,12 +111,12 @@ public class CloudSpawner : LInteractableParent
 
     private void OnEnable()
     {
-        ODS7Actions.OnFactoryDisabled += ResetWrenches;
+        ODS7Actions.OnSpawnerDisabled += ResetWrenches;
     }
 
     private void OnDisable()
     {
-        ODS7Actions.OnFactoryDisabled -= ResetWrenches;
+        ODS7Actions.OnSpawnerDisabled -= ResetWrenches;
     }
 
     #endregion
@@ -146,7 +148,7 @@ public class CloudSpawner : LInteractableParent
             return; 
         } 
 
-        if (TargetAI == null && ODS7Singleton.Instance.enabledCloudList.Count > 0)
+        if (TargetAI == null && ODS7Singleton.Instance.activeClouds.Count > 0)
         {
             ODS7Singleton.Instance.RequestReinforcements(this);
             _nextSummonTimeRef = 0;
@@ -192,7 +194,7 @@ public class CloudSpawner : LInteractableParent
         if (myFactoryState != factoryState.Spawning)
             return false;
 
-        if (ODS7Singleton.Instance.maxClouds <= ODS7Singleton.Instance.enabledCloudList.Count)
+        if (ODS7Singleton.Instance.maxClouds <= ODS7Singleton.Instance.activeClouds.Count)
         {
             _currentSpawnTime = 0;
             _spawnTimeRef = Time.time;
@@ -220,7 +222,8 @@ public class CloudSpawner : LInteractableParent
 
         Cloud.transform.parent = ODS7Singleton.Instance.EnemyEmptyParent;
 
-        ODS7Singleton.Instance.enabledCloudList.Add(Cloud.GetComponentInChildren<CloudAI>());
+        ODS7Singleton.Instance.activeClouds.Add(Cloud.GetComponentInChildren<CloudAI>());
+        ODS7Actions.OnCloudSpawned();
         _spawnTimeRef = Time.time;
         _isSpawnPointSet = false;
         _spawnOffset = RandomRoundOffset();
@@ -327,7 +330,7 @@ public class CloudSpawner : LInteractableParent
         }
         timeMultiplier = 1f;
         VFXManager.GetComponent<CentralVFX>().CallCoroutine();
-        ODS7Actions.OnFactoryDisabled();
+        ODS7Actions.OnSpawnerDisabled();
     }
 
     public void RestoreFactory()

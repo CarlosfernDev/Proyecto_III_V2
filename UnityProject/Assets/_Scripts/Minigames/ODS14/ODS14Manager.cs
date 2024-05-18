@@ -17,6 +17,7 @@ public class ODS14Manager : MinigameParent
 
     public UnityEvent reduceLife;
     public UnityEvent garbageHit;
+    public Animator lifeanimation;
     
     private int _currentLives;
     [SerializeField] private int _garbageLeft;
@@ -103,6 +104,8 @@ public class ODS14Manager : MinigameParent
     private void DecreaseLives()
     {
         _currentLives--;
+        lifeanimation.SetInteger(("LifeValue"), Mathf.Abs(_currentLives - 3));
+        lifeanimation.SetTrigger("Animate");
         if (_currentLives <= 0)
         {
             _currentLives = 0;

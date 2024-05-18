@@ -10,7 +10,7 @@ public class PuntoEcologicoODS7 : LInteractableParent
 
     private void Start()
     {
-        script = GameObject.Find("Player").GetComponent<TestInputs>();
+        script = GameManager.Instance.playerScript;
         redScript = FindObjectOfType<EquipableRedTest>();
     }
 
@@ -25,12 +25,14 @@ public class PuntoEcologicoODS7 : LInteractableParent
         }
         if (redScript.cloudCaptured != null)
         {
-            //Llamar funcion de puntuacion?
             redScript.cloudCaptured.transform.parent = null;
 
             CloudAI ai = redScript.cloudCaptured.gameObject.GetComponent<CloudAI>();
 
             ODS7Singleton.Instance.DestroyCloud(ai);
+
+            //Fixear visuales
+            Unhover();
 
             redScript.cloudCaptured = null;
             redScript.isCloudCaptured = false;
@@ -38,22 +40,20 @@ public class PuntoEcologicoODS7 : LInteractableParent
             ODS7Actions.OnCloudDelivered();
 
             ODS7Singleton.Instance._gpsAnimator.SetTrigger("Off");
-
-            // Bufos
-            script.BoostVelocidad(10f, 20f, 0.9f, 5f);
-            ODS7Singleton.Instance.timer.AddTime(ODS7Singleton.Instance.AddTime);
+            /*script.BoostVelocidad(10f, 20f, 0.9f, 5f);
+            ODS7Singleton.Instance.timer.AddTime(ODS7Singleton.Instance.AddTime);*/
         }
     }
 
     public override void Hover()
     {
-        if (!ODS7Singleton.Instance._playerNet.isCloudCaptured) return;
+        if (!ODS7Singleton.Instance.playerNet.isCloudCaptured) return;
         base.Hover();
     }
 
     public override void Unhover()
     {
-        if (!ODS7Singleton.Instance._playerNet.isCloudCaptured) return;
+        if (!ODS7Singleton.Instance.playerNet.isCloudCaptured) return;
         base.Unhover();
     }
 }
