@@ -131,7 +131,7 @@ public class ODS7Singleton : MinigameParent
             }
         }
 
-        generatorStatusAnim.SetInteger("LifeValue", Mathf.Abs(enabledSpawners.Count - 2));
+        generatorStatusAnim.SetInteger("LifeValue", Mathf.Abs(enabledSpawners.Count));
         generatorStatusAnim.SetTrigger("Animate");
     }
 
