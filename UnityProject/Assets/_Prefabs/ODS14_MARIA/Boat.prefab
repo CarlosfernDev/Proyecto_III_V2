@@ -94,6 +94,37 @@ Transform:
   - {fileID: 2528188398438018441}
   m_Father: {fileID: 780407918610820890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &723216910647839642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3097027919843592776}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3097027919843592776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723216910647839642}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.44, z: 3.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 780407918610820890}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1113122036404333319
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +263,7 @@ GameObject:
   - component: {fileID: 76984625753389358}
   - component: {fileID: 5631364026759966554}
   - component: {fileID: 8242907720269384845}
+  - component: {fileID: 5495578029128222739}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -256,6 +288,7 @@ Transform:
   - {fileID: 6122748529491500040}
   - {fileID: 8108601983224666698}
   - {fileID: 8182244000822935478}
+  - {fileID: 3097027919843592776}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8059490291393822010
@@ -364,6 +397,20 @@ MonoBehaviour:
   waterDrag: 0.8
   waterAngularDrag: 3.5
   floaterCount: 0
+--- !u!114 &5495578029128222739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2479703910860426269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc17fe2e3d13ad4393ee12aba9e46aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerPoint: {fileID: 3097027919843592776}
+  indicatorArrow: {fileID: 0}
 --- !u!1 &3181721499635765158
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class BoatCollisionManager : MonoBehaviour
     {
         if (other.collider.transform.parent.TryGetComponent(out FloatingGarbage garbage))
         {
-            ODS14Manager.Instance.garbageHit.Invoke();
+            ODS14Manager.Instance.GarbageHit(garbage);
             Destroy(other.transform.root.gameObject);
         }
         else if (other.gameObject.CompareTag("fish"))
