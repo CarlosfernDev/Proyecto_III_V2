@@ -47,13 +47,13 @@ public class PuntoEcologicoODS7 : LInteractableParent
 
     public override void Hover()
     {
-        if (!script.isEquipado && redScript.cloudCaptured == null) return;
+        if (!ODS7Singleton.Instance._playerNet.isCloudCaptured) return;
         base.Hover();
     }
 
     public override void Unhover()
     {
-        if (!script.isEquipado && redScript.cloudCaptured == null) return;
+        if (!ODS7Singleton.Instance._playerNet.isCloudCaptured) return;
         base.Unhover();
     }
 }

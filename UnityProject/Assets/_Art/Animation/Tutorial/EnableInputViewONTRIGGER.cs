@@ -9,7 +9,9 @@ public class EnableInputViewONTRIGGER : EnableInputView
     {
         if (!CollisionEnable) return;
 
-        if(other.tag == "Player")
+        // Cambiar en otra build
+        if (ODS7Singleton.Instance._playerNet.isCloudCaptured) return; 
+        if (other.tag == "Player")
         {
             StartAnimation();
         }
@@ -18,6 +20,9 @@ public class EnableInputViewONTRIGGER : EnableInputView
     private void OnTriggerExit(Collider other)
     {
         if (!CollisionEnable) return;
+
+        // Cambiar en otra build
+        if (ODS7Singleton.Instance._playerNet.isCloudCaptured) return;
         if (other.tag == "Player")
         {
             CloseAnimation();

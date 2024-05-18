@@ -24,7 +24,7 @@ public class ODS7Singleton : MinigameParent
     public List<CloudAI> disabledCloudList;
     public GameObject CloudPrefab;
 
-    private EquipableRedTest _playerNet;
+    [HideInInspector]public EquipableRedTest _playerNet;
 
     public float timeFabricaDestroy;
     public float[] timeCloudRestoration;
