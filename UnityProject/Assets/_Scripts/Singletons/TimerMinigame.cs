@@ -14,6 +14,7 @@ public class TimerMinigame : MonoBehaviour
 
     public float ExtraTime;
     private float TimeReference;
+    private float FirstTimeReference;
     private bool isCountdown = false;
 
     [HideInInspector]public float Value;
@@ -71,6 +72,7 @@ public class TimerMinigame : MonoBehaviour
     public void SetTimer()
     {
         TimeReference = Time.time;
+        FirstTimeReference = TimeReference;
         isCountdown = true;
         OnTimerStart?.Invoke();
     }
@@ -87,7 +89,8 @@ public class TimerMinigame : MonoBehaviour
 
     public void ResumeTimer()
     {
-        TimeReference = Time.time;
+        TimeReference = Time.time + (TimeReference - FirstTimeReference);
+        FirstTimeReference = Time.time;
         isCountdown = true;
     }
 
