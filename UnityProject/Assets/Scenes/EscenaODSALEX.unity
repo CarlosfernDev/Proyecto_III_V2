@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &56204037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +680,11 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8755173792286911662, guid: 4149952d803030a43aae715657827034, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6682488342072361475, guid: 4149952d803030a43aae715657827034,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1942572104}
   m_SourcePrefab: {fileID: 100100000, guid: 4149952d803030a43aae715657827034, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -2180,12 +2184,12 @@ PrefabInstance:
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
@@ -2910,6 +2914,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7733e81d3656e34cb2a431c46f5f28f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1942572102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6682488342072361475, guid: 4149952d803030a43aae715657827034,
+    type: 3}
+  m_PrefabInstance: {fileID: 378124366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1942572104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942572102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aca992a587db254b84256a45ddc4897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 2
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  blackScreenDuration: 1
 --- !u!23 &570528060538474828
 MeshRenderer:
   m_ObjectHideFlags: 0
