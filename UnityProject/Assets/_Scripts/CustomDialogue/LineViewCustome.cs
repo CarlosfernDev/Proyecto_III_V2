@@ -8,6 +8,7 @@ using System;
 public class LineViewCustome : LineView
 {
     private float TimeReference;
+    public Action OnComplete;
     public override void UserRequestedViewAdvancement()
     {
         if (Time.time - TimeReference < 0.4f) return;
@@ -18,5 +19,11 @@ public class LineViewCustome : LineView
     {
         TimeReference = Time.time;
     }
-    
+
+    public override void DialogueComplete()
+    {
+        OnComplete?.Invoke();
+        base.DialogueComplete();
+    }
+
 }
