@@ -22,11 +22,17 @@ public class ODS12Singleton : MinigameParent
     public Transform playerPickupTransform;
     
     public float currentGarbSpawnTime;
+    public float CintaSpeed;
     public int maxGarbage = 10;
     public int currentGarbage = 0;
     public int scoreAdd = 1;
     public int scoreRemove = 1;
     public float timePenalty = 20;
+    [Header("TimeStamps")]
+    [SerializeField] private float stage1Speed;
+    [SerializeField] private float stage2Speed;
+    [SerializeField] private float stage3Speed;
+    [SerializeField] private float stage4Speed;
 
     [SerializeField] private float stage1Percentage;
     [SerializeField] private float stage2Percentage;
@@ -105,10 +111,12 @@ public class ODS12Singleton : MinigameParent
         switch (currentStage)
         {
             case (gameStage.Stage1):
+                CintaSpeed = stage1Speed;
                 currentGarbSpawnTime = stage1GarbSpawnTime;
                 break;
 
             case (gameStage.Stage2):
+                CintaSpeed = stage2Speed;
                 currentGarbSpawnTime = stage2GarbSpawnTime;
 
                 // Cambiar fue una implementacion rapida :p
@@ -116,10 +124,12 @@ public class ODS12Singleton : MinigameParent
                 break;
 
             case (gameStage.Stage3):
+                CintaSpeed = stage3Speed;
                 currentGarbSpawnTime = stage3GarbSpawnTime;
                 break;
 
             case (gameStage.Stage4):
+                CintaSpeed = stage4Speed;
                 currentGarbSpawnTime = stage4GarbSpawnTime;
                 break;
         }
