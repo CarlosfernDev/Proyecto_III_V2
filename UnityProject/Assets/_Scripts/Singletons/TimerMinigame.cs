@@ -72,7 +72,7 @@ public class TimerMinigame : MonoBehaviour
     public void SetTimer()
     {
         TimeReference = Time.time;
-        FirstTimeReference = TimeReference;
+        FirstTimeReference = Time.time;
         isCountdown = true;
         OnTimerStart?.Invoke();
     }
@@ -90,7 +90,7 @@ public class TimerMinigame : MonoBehaviour
     public void ResumeTimer()
     {
         TimeReference = Time.time + (TimeReference - FirstTimeReference);
-        FirstTimeReference = Time.time;
+        FirstTimeReference = TimeReference;
         isCountdown = true;
     }
 
