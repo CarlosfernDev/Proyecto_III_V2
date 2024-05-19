@@ -88,7 +88,7 @@ public class TimerMinigame : MonoBehaviour
     public void ResumeTimer()
     {
         TimeReference = Time.time;
-        isCountdown = false;
+        isCountdown = true;
     }
 
     public void AddTime(float value)
