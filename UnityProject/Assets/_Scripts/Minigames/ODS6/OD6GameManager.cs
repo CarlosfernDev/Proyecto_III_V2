@@ -9,6 +9,7 @@ public class OD6GameManager : MonoBehaviour
     public static OD6GameManager Instance;
     public int Score;
     public TileNavigator TN;
+    [SerializeField] TimerMinigame TM;
 
     // Start is called before the first frame update
     void Awake()
@@ -63,8 +64,11 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel2()
     {
+        
         AlexCameraFade.Instance.FadeOut();
-        yield return new WaitForSeconds(1.5f);
+        TM.PauseTimer();
+        yield return new WaitForSeconds(5f);
+        TM.ResumeTimer();
         AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(2);
         LevelRef = Level.Level2;
