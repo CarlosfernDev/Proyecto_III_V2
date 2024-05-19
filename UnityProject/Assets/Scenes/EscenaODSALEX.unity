@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &56204037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 0
+  IsDeveloping: 1
   MinigameData: {fileID: 11400000, guid: 85c8388ca71007940a1556193a78c0d9, type: 2}
   _uiAnimator: {fileID: 56204039}
   isCountdown: 1
@@ -1583,12 +1583,12 @@ PrefabInstance:
     - target: {fileID: 2268557531532091812, guid: a27e06ede3081a446909dab4f79306bc,
         type: 3}
       propertyPath: m_text
-      value: Press <b>SPACE</b> to change the selected pipe
+      value: Press <b>SPACE</b> to <b>change</b> the selected <b>pipe</b>.
       objectReference: {fileID: 0}
     - target: {fileID: 2268557531532091812, guid: a27e06ede3081a446909dab4f79306bc,
         type: 3}
       propertyPath: m_fontSize
-      value: 52
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 2268557531532091812, guid: a27e06ede3081a446909dab4f79306bc,
         type: 3}
@@ -1639,7 +1639,7 @@ PrefabInstance:
     - target: {fileID: 2268557531532091812, guid: a27e06ede3081a446909dab4f79306bc,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 52
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 2268557531532091812, guid: a27e06ede3081a446909dab4f79306bc,
         type: 3}
@@ -2180,12 +2180,12 @@ PrefabInstance:
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1741336623062887854, guid: 1cc09513ae24cfc40bbfcf634c14b373,
         type: 3}
@@ -2781,9 +2781,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "*Press <b>R</b> to rotate 90\xBA the <b>pipe</b>.\n\n*Press <b>E</b> to
-    place the <b>pipe</b>.\n\n*Connect the <b>WATER</b> to the <b>GREEN POINTS</b>
-    using pipes."
+  m_text: "*Press <b>R</b> to <b>rotate</b> 90\xBA the <b>pipe</b>.\n\n*Press <b>E</b>
+    to <b>place</b> the <b>pipe</b>.\n\n*<b>Connect </b>the <b><color=\"blue\">WATER</color></b>
+    to the <b><color=\"green\">GREEN POINTS</color></b> using <b>pipes</b>."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9988a46891ae7f34199fe1ddeaf2e61d, type: 2}
   m_sharedMaterial: {fileID: -307589296167458542, guid: 9988a46891ae7f34199fe1ddeaf2e61d,
@@ -2811,8 +2811,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
