@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public ProgramState programState = ProgramState.Menu;
 
     public int[] RelationGameStateMinigame;
-    [HideInInspector] public enum GameState { Puentes, Aire, Reciclaje, Mar, GranjaPlantas, GranjaZoo, Potibilizadora, PostGame }
+    [HideInInspector] public enum GameState { Puentes, Reciclaje, GranjaPlantas, Mar,  GranjaZoo, Energia, Potibilizadora, PostGame }
     [HideInInspector] public GameState state = GameState.Puentes;
 
     public ScoreText StarsText;
