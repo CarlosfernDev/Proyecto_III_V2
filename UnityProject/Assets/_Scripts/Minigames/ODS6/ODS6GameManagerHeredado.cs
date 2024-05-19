@@ -22,6 +22,7 @@ public class ODS6GameManagerHeredado : MinigameParent
     {
         base.OnGameStart();
         timer.SetTimer();
+        OD6GameManager.Instance.LoadLevel1();
     }
 
 
