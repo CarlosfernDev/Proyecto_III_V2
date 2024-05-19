@@ -19,7 +19,7 @@ public class OD6GameManager : MonoBehaviour
     }
     void Start()
     {
-      LoadLevel1();
+      //LoadLevel1();
     }
 
     // Update is called once per frame
@@ -56,7 +56,7 @@ public class OD6GameManager : MonoBehaviour
     IEnumerator WairForNextLevel1()
     {
         
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSeconds(0.1f);
         PipeGrid.Instance.LoadLevel(1);
         LevelRef = Level.Level1;
         TN.ResetPosZeroZero();
