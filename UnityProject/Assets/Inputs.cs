@@ -64,6 +64,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""RotarPiezaAlex"",
+                    ""type"": ""Button"",
+                    ""id"": ""3285cfa3-068d-4c1f-9791-04117293f3eb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""AnyKey"",
                     ""type"": ""Button"",
                     ""id"": ""0d2c8bf2-9ff2-484e-a61f-65aca09fd531"",
@@ -269,6 +278,28 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""83a61c6f-ff70-4cbe-ba3e-9f874ed21504"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""RotarPiezaAlex"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73533439-fbeb-4541-864f-586c39aa186c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""RotarPiezaAlex"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -530,6 +561,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_ActionMap1_Interact = m_ActionMap1.FindAction("Interact", throwIfNotFound: true);
         m_ActionMap1_Pausa = m_ActionMap1.FindAction("Pausa", throwIfNotFound: true);
         m_ActionMap1_UsarEquipable = m_ActionMap1.FindAction("UsarEquipable", throwIfNotFound: true);
+        m_ActionMap1_RotarPiezaAlex = m_ActionMap1.FindAction("RotarPiezaAlex", throwIfNotFound: true);
         m_ActionMap1_AnyKey = m_ActionMap1.FindAction("AnyKey", throwIfNotFound: true);
         // BoatMap
         m_BoatMap = asset.FindActionMap("BoatMap", throwIfNotFound: true);
@@ -600,6 +632,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_ActionMap1_Interact;
     private readonly InputAction m_ActionMap1_Pausa;
     private readonly InputAction m_ActionMap1_UsarEquipable;
+    private readonly InputAction m_ActionMap1_RotarPiezaAlex;
     private readonly InputAction m_ActionMap1_AnyKey;
     public struct ActionMap1Actions
     {
@@ -609,6 +642,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_ActionMap1_Interact;
         public InputAction @Pausa => m_Wrapper.m_ActionMap1_Pausa;
         public InputAction @UsarEquipable => m_Wrapper.m_ActionMap1_UsarEquipable;
+        public InputAction @RotarPiezaAlex => m_Wrapper.m_ActionMap1_RotarPiezaAlex;
         public InputAction @AnyKey => m_Wrapper.m_ActionMap1_AnyKey;
         public InputActionMap Get() { return m_Wrapper.m_ActionMap1; }
         public void Enable() { Get().Enable(); }
@@ -631,6 +665,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @UsarEquipable.started += instance.OnUsarEquipable;
             @UsarEquipable.performed += instance.OnUsarEquipable;
             @UsarEquipable.canceled += instance.OnUsarEquipable;
+            @RotarPiezaAlex.started += instance.OnRotarPiezaAlex;
+            @RotarPiezaAlex.performed += instance.OnRotarPiezaAlex;
+            @RotarPiezaAlex.canceled += instance.OnRotarPiezaAlex;
             @AnyKey.started += instance.OnAnyKey;
             @AnyKey.performed += instance.OnAnyKey;
             @AnyKey.canceled += instance.OnAnyKey;
@@ -650,6 +687,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @UsarEquipable.started -= instance.OnUsarEquipable;
             @UsarEquipable.performed -= instance.OnUsarEquipable;
             @UsarEquipable.canceled -= instance.OnUsarEquipable;
+            @RotarPiezaAlex.started -= instance.OnRotarPiezaAlex;
+            @RotarPiezaAlex.performed -= instance.OnRotarPiezaAlex;
+            @RotarPiezaAlex.canceled -= instance.OnRotarPiezaAlex;
             @AnyKey.started -= instance.OnAnyKey;
             @AnyKey.performed -= instance.OnAnyKey;
             @AnyKey.canceled -= instance.OnAnyKey;
@@ -748,6 +788,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnPausa(InputAction.CallbackContext context);
         void OnUsarEquipable(InputAction.CallbackContext context);
+        void OnRotarPiezaAlex(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);
     }
     public interface IBoatMapActions

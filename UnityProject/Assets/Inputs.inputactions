@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RotarPiezaAlex",
+                    "type": "Button",
+                    "id": "3285cfa3-068d-4c1f-9791-04117293f3eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "AnyKey",
                     "type": "Button",
                     "id": "0d2c8bf2-9ff2-484e-a61f-65aca09fd531",
@@ -247,6 +256,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "AnyKey",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83a61c6f-ff70-4cbe-ba3e-9f874ed21504",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "RotarPiezaAlex",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "73533439-fbeb-4541-864f-586c39aa186c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "RotarPiezaAlex",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

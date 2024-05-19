@@ -18,7 +18,7 @@ public class OD6GameManager : MonoBehaviour
     }
     void Start()
     {
-       LoadLevel1();
+      LoadLevel1();
     }
 
     // Update is called once per frame
@@ -30,6 +30,7 @@ public class OD6GameManager : MonoBehaviour
     public void LoadLevel1()
     {
         StartCoroutine(WairForNextLevel1());
+       
     }
     public void LoadLevel2()
     {
@@ -53,7 +54,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel1()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5.5f);
         PipeGrid.Instance.LoadLevel(1);
         LevelRef = Level.Level1;
         TN.ResetPosZeroZero();
@@ -61,7 +62,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel2()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
         PipeGrid.Instance.LoadLevel(2);
         LevelRef = Level.Level2;
         TN.ResetPosZeroZero();
@@ -69,7 +70,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel3()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
         PipeGrid.Instance.LoadLevel(3);
         LevelRef = Level.Level3;
         TN.ResetPosZeroZero();
@@ -77,7 +78,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel4()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
         PipeGrid.Instance.LoadLevel(4);
         LevelRef = Level.Level4;
         TN.ResetPosZeroZero();
@@ -85,7 +86,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel5()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(0.5f);
         PipeGrid.Instance.LoadLevel(5);
         LevelRef = Level.Level5;
         TN.ResetPosZeroZero();
@@ -112,13 +113,13 @@ public class OD6GameManager : MonoBehaviour
             LoadLevel4();
            
         }
-        if (LevelRef == Level.Level4 && Score == 3)
+        if (LevelRef == Level.Level4 && Score == 5)
         {
             Score = 0;
             LoadLevel5();
             
         }
-        if (LevelRef == Level.Level5 && Score == 8)
+        if (LevelRef == Level.Level5 && Score == 6)
         {
             Score = 0;
             ODS6GameManagerHeredado.instance.youWin = true;
