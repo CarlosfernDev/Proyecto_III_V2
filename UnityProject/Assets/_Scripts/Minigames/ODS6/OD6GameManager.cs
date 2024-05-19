@@ -66,9 +66,7 @@ public class OD6GameManager : MonoBehaviour
     {
         
         AlexCameraFade.Instance.FadeOut();
-        TM.PauseTimer();
-        yield return new WaitForSeconds(5f);
-        TM.ResumeTimer();
+        yield return new WaitForSeconds(1.5f);
         AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(2);
         LevelRef = Level.Level2;
