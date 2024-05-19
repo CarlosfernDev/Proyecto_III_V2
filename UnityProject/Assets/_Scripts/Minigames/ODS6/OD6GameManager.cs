@@ -65,9 +65,8 @@ public class OD6GameManager : MonoBehaviour
     IEnumerator WairForNextLevel2()
     {
         
-        AlexCameraFade.Instance.FadeOut();
+        
         yield return new WaitForSeconds(1.5f);
-        AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(2);
         LevelRef = Level.Level2;
         TN.ResetPosZeroZero();
@@ -75,9 +74,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel3()
     {
-        AlexCameraFade.Instance.FadeOut();
         yield return new WaitForSeconds(1.5f);
-        AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(3);
         LevelRef = Level.Level3;
         TN.ResetPosZeroZero();
@@ -85,9 +82,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel4()
     {
-        AlexCameraFade.Instance.FadeOut();
         yield return new WaitForSeconds(1.5f);
-        AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(4);
         LevelRef = Level.Level4;
         TN.ResetPosZeroZero();
@@ -95,9 +90,7 @@ public class OD6GameManager : MonoBehaviour
 
     IEnumerator WairForNextLevel5()
     {
-        AlexCameraFade.Instance.FadeOut();
         yield return new WaitForSeconds(1.5f);
-        AlexCameraFade.Instance.FadeIn();
         PipeGrid.Instance.LoadLevel(5);
         LevelRef = Level.Level5;
         TN.ResetPosZeroZero();
