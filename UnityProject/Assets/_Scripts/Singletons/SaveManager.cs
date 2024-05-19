@@ -257,7 +257,7 @@ public class SaveManager : MonoBehaviour
 public class SavePlayerData {
     public string name = "Fred";
     public int coins = 0;
-    public GameManager.GameState SaveState = GameManager.GameState.Aire;
+    public GameManager.GameState SaveState = GameManager.GameState.Energia;
     public SaveItemsEquiped PlayerItems = null;
 }
 
