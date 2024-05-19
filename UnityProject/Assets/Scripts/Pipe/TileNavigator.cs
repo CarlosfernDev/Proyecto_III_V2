@@ -384,6 +384,7 @@ public class TileNavigator : MonoBehaviour
         PosSelector = new Vector2Int(0, 0);
         PipeGrid.Instance.DesactivarSeleciones();
         PipeGrid.Instance.GetPipeAtPosition(new Vector2(0, 0)).selectedTile();
+        CheckBuildKey();
     }
     void UpdateTestObjectPos()
     {

@@ -21,10 +21,14 @@ public class ODS6GameManagerHeredado : MinigameParent
     protected override void OnGameStart()
     {
         base.OnGameStart();
-        
         timer.SetTimer();
     }
 
+
+    public void ActivateTimer()
+    {
+        timer.SetTimer();
+    }
     public void EnseñarPantallaFinal()
     {
         OnGameFinish();
