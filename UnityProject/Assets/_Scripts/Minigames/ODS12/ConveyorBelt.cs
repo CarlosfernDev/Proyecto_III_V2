@@ -52,7 +52,7 @@ public class ConveyorBelt : MonoBehaviour
 
             if (!garbage.isCentered)
             {
-                Vector3 iniMovement = speed * perpDirection * Time.deltaTime;
+                Vector3 iniMovement = ODS12Singleton.Instance.CintaSpeed * perpDirection * Time.deltaTime;
                 beltRb.MovePosition(beltRb.transform.position + iniMovement);
 
                 if (DistanceInXZ(beltRb.transform.position, this.transform.position) > 0.05f) return;
@@ -93,7 +93,7 @@ public class ConveyorBelt : MonoBehaviour
 
     private void MoveOnBelt(Rigidbody rb)
     {
-        Vector3 movement = speed * transform.forward * Time.deltaTime;
+        Vector3 movement = ODS12Singleton.Instance.CintaSpeed * transform.forward * Time.deltaTime;
         rb.MovePosition(rb.gameObject.transform.position + movement);
     }
 

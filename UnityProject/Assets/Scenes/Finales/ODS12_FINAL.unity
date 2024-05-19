@@ -11507,7 +11507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 0
+  IsDeveloping: 1
   MinigameData: {fileID: 11400000, guid: 0af5b41839f941242b01ef67073400dd, type: 2}
   _uiAnimator: {fileID: 1640327506}
   isCountdown: 1
@@ -11548,18 +11548,23 @@ MonoBehaviour:
       m_Calls: []
   playerPickupTransform: {fileID: 926836890}
   currentGarbSpawnTime: 5
-  maxGarbage: 22
+  CintaSpeed: 1
+  maxGarbage: 50
   currentGarbage: 0
   scoreAdd: 1
   scoreRemove: 1
-  timePenalty: 20
+  timePenalty: 0
+  stage1Speed: 3.5
+  stage2Speed: 1
+  stage3Speed: 2
+  stage4Speed: 2.5
   stage1Percentage: 50
   stage2Percentage: 35
   stage3Percentage: 15
   stage1GarbSpawnTime: 5
-  stage2GarbSpawnTime: 3
-  stage3GarbSpawnTime: 2
-  stage4GarbSpawnTime: 1
+  stage2GarbSpawnTime: 2
+  stage3GarbSpawnTime: 1
+  stage4GarbSpawnTime: 0.7
   _timeStamps:
   - 112
   - 75

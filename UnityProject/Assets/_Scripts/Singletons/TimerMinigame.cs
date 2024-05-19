@@ -85,6 +85,12 @@ public class TimerMinigame : MonoBehaviour
         isCountdown = false;
     }
 
+    public void ResumeTimer()
+    {
+        TimeReference = Time.time;
+        isCountdown = false;
+    }
+
     public void AddTime(float value)
     {
         ExtraTime += value;
