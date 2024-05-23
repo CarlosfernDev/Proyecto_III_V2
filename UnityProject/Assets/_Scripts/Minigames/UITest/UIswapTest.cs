@@ -12,6 +12,7 @@ public class UIswapTest : MonoBehaviour
     
     void OnEnable()
     {
+        checkEnum(InputManager.Instance.LastInputName);
         try
         {
             InputManager.Instance.ChangeUIto.AddListener(checkEnum);
@@ -42,32 +43,28 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
-                        Sren.sprite = KeyBoardImage.Movement;
+                        
                         break;
                     }
                 case UItype.Interact:
                     {
-                        Sren.sprite = KeyBoardImage.Interact;
+                        
                         break;
                     }
                 case UItype.Pausa:
                     {
-                        Sren.sprite = KeyBoardImage.Pausa;
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
-                        Sren.sprite = KeyBoardImage.UsarEquipable;
                         break;
                     }
                 case UItype.RotarPieza:
                     {
-                        Sren.sprite = KeyBoardImage.RotarPieza;
                         break;
                     }
                 case UItype.AnyKey:
                     {
-                        Sren.sprite = KeyBoardImage.AnyKey;
                         break;
                     }
                 default:
@@ -83,32 +80,26 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
-                        Sren.sprite = GamepadImage.Movement;
                         break;
                     }
                 case UItype.Interact:
                     {
-                        Sren.sprite = GamepadImage.Interact;
                         break;
                     }
                 case UItype.Pausa:
                     {
-                        Sren.sprite = GamepadImage.Pausa;
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
-                        Sren.sprite = GamepadImage.UsarEquipable;
                         break;
                     }
                 case UItype.RotarPieza:
                     {
-                        Sren.sprite = GamepadImage.RotarPieza;
                         break;
                     }
                 case UItype.AnyKey:
                     {
-                        Sren.sprite = GamepadImage.AnyKey;
                         break;
                     }
                 default:
