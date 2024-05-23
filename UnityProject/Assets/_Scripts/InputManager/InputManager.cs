@@ -17,6 +17,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] public UnityEvent AlexRotateEvent;
     [SerializeField] public UnityEvent<Vector2> movementEvent;
 
+    [SerializeField] public UnityEvent<string> ChangeUIto;
+
+    [SerializeField] private string LastInputName;
     //Modificacion de la clase event para poder pasar en las llamadas vector2
     [System.Serializable]
     public class MyVector2Event : UnityEvent<Vector2>
@@ -46,6 +49,8 @@ public class InputManager : MonoBehaviour
         AlexRotateEvent = new UnityEvent();
         movementEvent = new UnityEvent<Vector2>();
 
+        ChangeUIto = new UnityEvent<string>();
+
 
         playerInputs.ActionMap1.Enable();
         playerInputs.ActionMap1.Pausa.performed += pauseEvent_performed;
@@ -64,6 +69,17 @@ public class InputManager : MonoBehaviour
     }
     private void AnyKey_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
+       
+        if (obj.control.device.name.Contains("Gamepad"))
+        {
+            
+            ChangeUIto.Invoke("Gamepad");
+        }
+        if (obj.control.device.name.Contains("Keyboard"))
+        {
+            
+            ChangeUIto.Invoke("Keyboard");
+        }     
         anyKeyEvent.Invoke();
     }
 
@@ -74,9 +90,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
+        DetectarUltimoInputDevice();
         //En el caso del input Movement, no podemos usar un performed, por que al mantener la tecla no se actualizaria
         //la llamada, es mejor llamarlo cada frame y comprobar si a habido cambios en el vector
-
+        return;
         if (MySceneManager.Instance.isLoading) return;
 
         if(Input.GetKeyDown(KeyCode.F8))
@@ -103,6 +120,7 @@ public class InputManager : MonoBehaviour
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         interactEvent.Invoke();
+        
     }
 
     private void pauseEvent_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -120,9 +138,15 @@ public class InputManager : MonoBehaviour
         var inputChueca = Matrix.MultiplyPoint3x4(new Vector3(vec.x,0f,vec.y));
        
         vec = new Vector2(inputChueca.x, inputChueca.z);
-        movementEvent.Invoke(vec); 
+        movementEvent.Invoke(vec);
 
 
+
+    }
+
+    private void DetectarUltimoInputDevice()
+    {
+        
     }
 
    
