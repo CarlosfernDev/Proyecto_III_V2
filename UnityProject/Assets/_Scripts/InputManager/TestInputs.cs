@@ -120,7 +120,7 @@ public class TestInputs : MonoBehaviour
     public void MeMuevo(Vector2 vec)
     {
         
-        if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+      //REMOVE COMMENT  if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
 
         if (IgnoreInput) vec = Vector2.zero;
 
