@@ -160,6 +160,7 @@ public class SaveManager : MonoBehaviour
         GameManager.Instance.playerName = savePlayerData.name;
         GameManager.Instance.playerCoins = savePlayerData.coins;
         GameManager.Instance.state = savePlayerData.SaveState;
+        UnlockablesManager.instance.ItemSaved = savePlayerData.PlayerItems;
 
         for (int i = 0; i > GameManager.Instance.MinigameScripts.Length; i++)
         {

@@ -19,6 +19,7 @@ public class UnlockablesManager : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+        DontDestroyOnLoad(this);
 
         ItemSaved = new SaveItemsEquiped();
     }
