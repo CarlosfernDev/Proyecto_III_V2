@@ -6,6 +6,7 @@ public class UnlockablesManager : MonoBehaviour
 {
     public static UnlockablesManager instance;
 
+    public UnlockableNotification Notificator;
     public List<HatScriptable> hatScripts;
     public List<CapeScriptable> capeScripts;
     public List<PetScriptable> petScripts;

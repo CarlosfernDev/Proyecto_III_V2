@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class UnlockableNotification : MonoBehaviour
 {
-    public static UnlockableNotification Instance;
     public List<SUnlockable> Unlockables;
 
     public Animator _NotificationAnimator;
@@ -24,14 +23,17 @@ public class UnlockableNotification : MonoBehaviour
 
     public void AddNotification(int id)
     {
-        Debug.Log("Join1");
-        notificationQueue.Enqueue(Unlockables[id]);
-        Debug.Log("Join2");
+        Debug.Log("Esta la id del logro " + id);
+        AddNotification(Unlockables[id]);
+    }
+
+    public void AddNotification(SUnlockable value)
+    {
+        notificationQueue.Enqueue(value);
         if (!CheckingQueue)
         {
             StartCoroutine(DisplayNotificacions());
         }
-
     }
 
     IEnumerator DisplayNotificacions()
@@ -44,7 +46,7 @@ public class UnlockableNotification : MonoBehaviour
             _sprite.sprite = ActualUnlockable.UnlockableImageOn;
             _NotificationAnimator.SetTrigger("ActiveNotification");
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(0.1f);
 
             while (true)
             {
