@@ -102,6 +102,7 @@ public class SaveManager : MonoBehaviour
         CreateDirectory();
         SaveAllMinigameData();
         SaveAllPancarta();
+        SavePlayerData();
         LoadSaveFileSetUp();
     }
 
@@ -122,6 +123,8 @@ public class SaveManager : MonoBehaviour
 
         if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);
         if (InputManager.Instance != null) Destroy(InputManager.Instance.gameObject);
+        if (AudioManager.Instance != null) Destroy(AudioManager.Instance.gameObject);
+        if (UnlockablesManager.instance != null) Destroy(UnlockablesManager.instance.gameObject);
 
         if (IsDirectoryExist())
         {

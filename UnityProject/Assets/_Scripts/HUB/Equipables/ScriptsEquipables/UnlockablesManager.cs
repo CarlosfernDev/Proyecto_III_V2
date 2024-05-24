@@ -97,7 +97,14 @@ public class UnlockablesManager : MonoBehaviour
 
     public void LoadPet(CharacterUnlockablesEquipment Character, int ID)
     {
-        GameObject.Instantiate(petScripts[ID].PetPrefab, Character.PetTransform);
+        if (petScripts[ID].PetPrefab != null)
+        {
+            GameObject pet = GameObject.Instantiate(petScripts[ID].PetPrefab, Character.PetTransform);
+            if(Character.PetParent != null) pet.transform.parent = Character.PetParent;
+            Character.PetObject = pet;
+
+            pet.GetComponent<AnimalAnimation>().Follow = Character.FollowLimb;
+        }
         if (Character.PetObject != null) Destroy(Character.PetObject);
     }
     #endregion

@@ -17,6 +17,8 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
 
     [Header("Pet")]
     public Transform PetTransform;
+    public Transform PetParent;
+    public Transform FollowLimb;
     [HideInInspector] public GameObject PetObject;
 
     private void OnEnable()
@@ -37,6 +39,8 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
         {
             //UnlockablesManager.instance.LoadHat(this, 2);
             UnlockablesManager.instance.SaveHat(2);
+            UnlockablesManager.instance.SaveCape(1);
+            UnlockablesManager.instance.SavePet(1);
         }
     }
 }
