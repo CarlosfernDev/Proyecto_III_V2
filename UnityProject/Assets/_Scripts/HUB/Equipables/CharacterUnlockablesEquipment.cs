@@ -10,13 +10,14 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
     public Transform HatPosition;
     public SkinnedMeshRenderer FaceMaterial;
     public Material FaceDefaultMaterial;
+    [HideInInspector] public GameObject HatObject;
 
     [Header("Cape")]
     public Material CapeMaterial;
 
     [Header("Pet")]
     public Transform PetTransform;
-
+    [HideInInspector] public GameObject PetObject;
 
     private void OnEnable()
     {
@@ -34,7 +35,7 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            UnlockablesManager.instance.LoadHat(this, 1);
+            UnlockablesManager.instance.LoadHat(this, 2);
         }
     }
 }

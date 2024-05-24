@@ -396,6 +396,7 @@ MonoBehaviour:
   hatScripts:
   - {fileID: 11400000, guid: b25418908c7f19a4eb01f4622b81e19b, type: 2}
   - {fileID: 11400000, guid: 96744e8d2bbda1d40aef2bd2cfb37d31, type: 2}
+  - {fileID: 11400000, guid: 83c8eb05a624d7c4187aa84982ba3fad, type: 2}
   capeScripts: []
   petScripts: []
   ItemSaved:
@@ -1528,6 +1529,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2554388294717790284, guid: 55c44e89cf07a0b43a611805004e43e2,
     type: 3}
   m_PrefabInstance: {fileID: 626756789}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &662574687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9207520891523245042, guid: caf713cdd46824447b9782e980c6986f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1618427839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &841302856
 GameObject:
@@ -2859,6 +2866,11 @@ PrefabInstance:
       propertyPath: TextoInteractChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 558226896}
+    - target: {fileID: 8336525140612249317, guid: caf713cdd46824447b9782e980c6986f,
+        type: 3}
+      propertyPath: HatPosition
+      value: 
+      objectReference: {fileID: 662574687}
     - target: {fileID: 8336525140612249317, guid: caf713cdd46824447b9782e980c6986f,
         type: 3}
       propertyPath: HatDefaultObject.Array.size

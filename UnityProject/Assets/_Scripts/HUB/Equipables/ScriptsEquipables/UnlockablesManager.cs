@@ -14,6 +14,7 @@ public class UnlockablesManager : MonoBehaviour
 
     public List<CharacterUnlockablesEquipment> ListCharacters;
 
+
     private void Awake()
     {
         if (instance != null) Destroy(gameObject);
@@ -73,7 +74,11 @@ public class UnlockablesManager : MonoBehaviour
         if (scriptable.HeadMaterial != null) Character.FaceMaterial.material = scriptable.HeadMaterial;
         else Character.FaceMaterial.material = Character.FaceDefaultMaterial;
 
-        if(scriptable.HatPrefab != null) GameObject.Instantiate(scriptable.HatPrefab, Character.HatPosition);
+        if (scriptable.HatPrefab != null) {
+            if (Character.HatObject != null) Destroy(Character.HatObject);
+           GameObject Hat = GameObject.Instantiate(scriptable.HatPrefab, Character.HatPosition);
+            Hat.transform.parent = Character.HatPosition;
+        }
     }
     #endregion
 
@@ -92,6 +97,7 @@ public class UnlockablesManager : MonoBehaviour
     public void LoadPet(CharacterUnlockablesEquipment Character, int ID)
     {
         GameObject.Instantiate(petScripts[ID].PetPrefab, Character.PetTransform);
+        if (Character.PetObject != null) Destroy(Character.PetObject);
     }
     #endregion
 }
