@@ -93,7 +93,6 @@ public class InputManager : MonoBehaviour
         DetectarUltimoInputDevice();
         //En el caso del input Movement, no podemos usar un performed, por que al mantener la tecla no se actualizaria
         //la llamada, es mejor llamarlo cada frame y comprobar si a habido cambios en el vector
-        return;
         if (MySceneManager.Instance.isLoading) return;
 
         if(Input.GetKeyDown(KeyCode.F8))
