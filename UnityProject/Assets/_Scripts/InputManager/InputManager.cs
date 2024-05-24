@@ -120,7 +120,6 @@ public class InputManager : MonoBehaviour
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         interactEvent.Invoke();
-        
     }
 
     private void pauseEvent_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
