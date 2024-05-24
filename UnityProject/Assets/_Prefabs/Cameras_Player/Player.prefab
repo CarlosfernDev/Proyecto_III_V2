@@ -66,11 +66,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6059010995022122269}
   - component: {fileID: 5635789261657259236}
-  - component: {fileID: 2979255115768792301}
   - component: {fileID: 7690361768158032854}
   - component: {fileID: 3908599392757828048}
   - component: {fileID: 5073668256770050180}
   - component: {fileID: 1131805702497401580}
+  - component: {fileID: 5963473715099797105}
   - component: {fileID: 1704965528137531678}
   m_Layer: 14
   m_Name: Player
@@ -160,41 +160,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2979255115768792301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195366115382933531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcdd604a328c4ab296f048eb7b3a925, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 0}
-  useFadeEffect: 1
-  fadeInTime: 0.25
-  fadeOutTime: 0.05
-  lineText: {fileID: 0}
-  showCharacterNameInLineView: 1
-  characterNameText: {fileID: 0}
-  characterNameContainer: {fileID: 0}
-  useTypewriterEffect: 0
-  onCharacterTyped:
-    m_PersistentCalls:
-      m_Calls: []
-  onPauseStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onPauseEnded:
-    m_PersistentCalls:
-      m_Calls: []
-  typewriterEffectSpeed: 0
-  continueButton: {fileID: 0}
-  holdTime: 1
-  autoAdvance: 0
-  palette: {fileID: 0}
 --- !u!136 &7690361768158032854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -279,6 +244,28 @@ MonoBehaviour:
   _anim: {fileID: 4042706702583563077}
   minimalSpeed: 3
   maximalSpeed: 7
+--- !u!114 &5963473715099797105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195366115382933531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f396106d77728084eb4f517c96c6c064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HatDefaultObject:
+  - {fileID: 366439444762159662}
+  - {fileID: 5759968292215975842}
+  - {fileID: 7281638701442970724}
+  - {fileID: 5759968292215975842}
+  HatPosition: {fileID: 0}
+  FaceMaterial: {fileID: 4563685838873459487}
+  FaceDefaultMaterial: {fileID: 2100000, guid: 88e88f643c7adc54da902bb8678737b7, type: 2}
+  CapeMaterial: {fileID: 2100000, guid: d7f4baf2448b2b04aa751d369597a446, type: 2}
+  PetTransform: {fileID: 0}
 --- !u!114 &1704965528137531678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,6 +1160,30 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4042706702583563077}
   m_SourcePrefab: {fileID: 100100000, guid: ed294797cb4f41543ac857c24e0040f7, type: 3}
+--- !u!1 &366439444762159662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8699652204047898494, guid: ed294797cb4f41543ac857c24e0040f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9056322333085891920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4563685838873459487 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4396642182433536433, guid: ed294797cb4f41543ac857c24e0040f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9056322333085891920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5759968292215975842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3621177263641236210, guid: ed294797cb4f41543ac857c24e0040f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9056322333085891920}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7281638701442970724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7448084085991552716, guid: ed294797cb4f41543ac857c24e0040f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 9056322333085891920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8174012416163069953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed294797cb4f41543ac857c24e0040f7,

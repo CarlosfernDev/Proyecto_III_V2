@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 98436139}
   - component: {fileID: 98436140}
   - component: {fileID: 98436141}
+  - component: {fileID: 98436142}
   m_Layer: 0
   m_Name: UnlockablesSystem
   m_TagString: Untagged
@@ -380,6 +381,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &98436142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98436138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce56df216c62fb4498658037c566372, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hatScripts:
+  - {fileID: 11400000, guid: b25418908c7f19a4eb01f4622b81e19b, type: 2}
+  - {fileID: 11400000, guid: 96744e8d2bbda1d40aef2bd2cfb37d31, type: 2}
+  capeScripts: []
+  petScripts: []
+  ItemSaved:
+    Item1: 0
+    Item2: 0
+    Item3: 0
+  ListCharacters: []
 --- !u!1 &157417422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1379,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b831ce34385eb904f836d48dba6980e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &611293203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6529017777545563438, guid: caf713cdd46824447b9782e980c6986f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1618427839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &626756789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2078,6 +2107,10 @@ MonoBehaviour:
   movementEvent:
     m_PersistentCalls:
       m_Calls: []
+  ChangeUIto:
+    m_PersistentCalls:
+      m_Calls: []
+  LastInputName: 
 --- !u!4 &1252226818
 Transform:
   m_ObjectHideFlags: 0
@@ -2801,6 +2834,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6323765605872871020, guid: caf713cdd46824447b9782e980c6986f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7330108564647630538, guid: caf713cdd46824447b9782e980c6986f,
         type: 3}
       propertyPath: m_TagString
@@ -2821,6 +2859,16 @@ PrefabInstance:
       propertyPath: TextoInteractChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 558226896}
+    - target: {fileID: 8336525140612249317, guid: caf713cdd46824447b9782e980c6986f,
+        type: 3}
+      propertyPath: HatDefaultObject.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8336525140612249317, guid: caf713cdd46824447b9782e980c6986f,
+        type: 3}
+      propertyPath: HatDefaultObject.Array.data[4]
+      value: 
+      objectReference: {fileID: 611293203}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
