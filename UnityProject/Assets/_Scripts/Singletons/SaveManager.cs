@@ -97,6 +97,34 @@ public class SaveManager : MonoBehaviour
         SaveSaveString(Json);
     }
 
+    public static void SaveAllUnlockable()
+    {
+        SaveUnlockable[] save = new SaveUnlockable[UnlockablesManager.instance.Notificator.Unlockables.Count];
+        int idlenght = -1;
+        int idLenghtUsable = 0;
+        foreach (SUnlockable lockable in UnlockablesManager.instance.Notificator.Unlockables)
+        {
+            idlenght++;
+            Debug.Log("Estoy revisando el logro: " + idlenght);
+            if (!lockable.IsUnlocked) continue;
+
+            SaveUnlockable newUnlockable = new SaveUnlockable();
+
+            newUnlockable.ID = idlenght;
+
+            save[idLenghtUsable] = newUnlockable;
+            idLenghtUsable++;
+        }
+        Debug.Log("Termine de revisarlo todo");
+        saveState.SaveUnlockable = save;
+
+        saveState.Work = true;
+
+        string Json = JsonUtility.ToJson(saveState);
+        SaveSaveString(Json);
+        Debug.Log("Lo escribi todo");
+    }
+
     public static void ResetGame()
     {
         CreateDirectory();
@@ -119,6 +147,11 @@ public class SaveManager : MonoBehaviour
         foreach (MinigamesScriptableObjectScript minigame in GameManager.Instance.MinigameScripts)
         {
             minigame.maxPoints = -1;
+        }
+
+        foreach (SUnlockable lockable in UnlockablesManager.instance.Notificator.Unlockables)
+        {
+            lockable.IsUnlocked = false;
         }
 
         if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);
@@ -183,6 +216,11 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.PancartaData.Length; i++)
         {
             GameManager.Instance.PancartaData[i].Score = saveState.SavePancarta[i].MaxPoints;
+        }
+
+        foreach (SaveUnlockable saveUnl in saveState.SaveUnlockable)
+        {
+            UnlockablesManager.instance.Notificator.Unlockables[saveUnl.ID].IsUnlocked = true;
         }
     }
 

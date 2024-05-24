@@ -29,6 +29,10 @@ public class UnlockableNotification : MonoBehaviour
 
     public void AddNotification(SUnlockable value)
     {
+        if (value.IsUnlocked) return;
+        value.IsUnlocked = true;
+        SaveManager.SaveAllUnlockable();
+
         notificationQueue.Enqueue(value);
         if (!CheckingQueue)
         {
