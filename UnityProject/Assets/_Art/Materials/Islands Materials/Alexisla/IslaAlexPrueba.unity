@@ -530,6 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975837155}
   - component: {fileID: 975837154}
+  - component: {fileID: 975837156}
   m_Layer: 0
   m_Name: UIObject
   m_TagString: Untagged
@@ -550,9 +551,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selecImage: 0
-  Sren: {fileID: 1038028017}
   KeyBoardImage: {fileID: 11400000, guid: ffab6973f8e063e4d98330de0dfe0902, type: 2}
   GamepadImage: {fileID: 11400000, guid: efa2aae016520234dae62ad492dff5e0, type: 2}
+  AnimatorUI: {fileID: 1038028018}
 --- !u!4 &975837155
 Transform:
   m_ObjectHideFlags: 0
@@ -563,13 +564,27 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1038028016}
   - {fileID: 971866426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975837156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975837153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc664991b5fc474cbb793e8fc052e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showButtonAnimator: {fileID: 1038028018}
+  pop: 0
 --- !u!1 &1038028015
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +595,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038028016}
   - component: {fileID: 1038028017}
+  - component: {fileID: 1038028018}
   m_Layer: 0
   m_Name: Pos
   m_TagString: Untagged
@@ -597,7 +613,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 975837155}
@@ -643,17 +659,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 3f8f8fa086429ef4fb7a752c60b56830, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 13.85, y: 12.36}
+  m_Size: {x: 9.89, y: 9.34}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1038028018
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038028015}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 9da3b8458e25c7c41b9f858613b37265, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1258407412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5495110054629187290, guid: caf713cdd46824447b9782e980c6986f,
