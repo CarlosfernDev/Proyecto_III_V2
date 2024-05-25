@@ -76,11 +76,13 @@ public class UnlockablesManager : MonoBehaviour
         if (scriptable.HeadMaterial != null) Character.FaceMaterial.material = scriptable.HeadMaterial;
         else Character.FaceMaterial.material = Character.FaceDefaultMaterial;
 
+        if (Character.HatObject != null) Destroy(Character.HatObject);
         if (scriptable.HatPrefab != null) {
-            if (Character.HatObject != null) Destroy(Character.HatObject);
            GameObject Hat = GameObject.Instantiate(scriptable.HatPrefab, Character.HatPosition);
             Hat.transform.parent = Character.HatPosition;
+            Character.HatObject = Hat;
         }
+
     }
     #endregion
 
