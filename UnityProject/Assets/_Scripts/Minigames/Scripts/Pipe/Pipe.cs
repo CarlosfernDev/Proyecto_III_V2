@@ -32,9 +32,9 @@ public class Pipe : MonoBehaviour
             ActiveConections = new Vector2[] { new Vector2(+1, 0), new Vector2(0, +1), new Vector2(0, -1),new Vector2(-1,0)};
         }
         
-         waterVFX = Resources.Load<VisualEffect>("Assets/Prefab/V2Pipes/AlexWaterVfx");
         
     }
+
 
     public virtual void selectedTile()
     {
@@ -276,13 +276,21 @@ public class Pipe : MonoBehaviour
             }
         }
 
-
-        RunningWater = true;
-        if (waterVFX != null)
+        if (!RunningWater)
         {
-            Debug.Log("PLAY VFX");
-            waterVFX.Play();
+            
+            waterVFX = Resources.Load<VisualEffect>("AlexWaterVfx");
+            if (waterVFX != null)
+            {
+                var coso = Instantiate(waterVFX, transform);
+                coso.transform.position = transform.position;
+                coso.Play();
+                Destroy(coso, 1f);
+            }
         }
+        RunningWater = true;
+       
+
         CheckConections();
         if (Puntuado == false)
         {
