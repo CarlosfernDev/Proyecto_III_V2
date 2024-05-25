@@ -106,7 +106,12 @@ public class UnlockablesManager : MonoBehaviour
             if(Character.PetParent != null) pet.transform.parent = Character.PetParent;
             Character.PetObject = pet;
 
-            pet.GetComponent<AnimalAnimation>().Follow = Character.FollowLimb;
+            AnimalAnimation animalscript = pet.GetComponent<AnimalAnimation>();
+            animalscript.Follow = Character.FollowLimb;
+            if (!Character.WantToFollow) { 
+                animalscript.speedFollow = 0;
+                animalscript.distanceBack = 0;
+            }
         }
         
     }
