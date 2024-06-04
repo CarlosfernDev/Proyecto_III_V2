@@ -42,28 +42,32 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
-                        
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Movement.Animator; 
                         break;
                     }
                 case UItype.Interact:
                     {
-                        
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Interact.Animator;
                         break;
                     }
                 case UItype.Pausa:
                     {
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Pausa.Animator;
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.UsarEquipable.Animator;
                         break;
                     }
                 case UItype.RotarPieza:
                     {
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.RotarPieza.Animator;
                         break;
                     }
                 case UItype.AnyKey:
                     {
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.AnyKey.Animator; 
                         break;
                     }
                 default:
@@ -89,18 +93,26 @@ public class UIswapTest : MonoBehaviour
                     }
                 case UItype.Pausa:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Pausa.Animator;
+
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.UsarEquipable.Animator;
+
                         break;
                     }
                 case UItype.RotarPieza:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.RotarPieza.Animator;
+
                         break;
                     }
                 case UItype.AnyKey:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.AnyKey.Animator;
+
                         break;
                     }
                 default:
