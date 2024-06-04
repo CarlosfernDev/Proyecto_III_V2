@@ -6,10 +6,9 @@ using UnityEngine.UI;
 public class UIswapTest : MonoBehaviour
 {
     [SerializeField] private UItype selecImage;
-    [SerializeField] private SpriteRenderer Sren;
     [SerializeField] private ScriptableUI KeyBoardImage;
     [SerializeField] private ScriptableUI GamepadImage;
-    
+    [SerializeField] private Animator AnimatorUI;
     void OnEnable()
     {
         checkEnum(InputManager.Instance.LastInputName);
@@ -80,10 +79,12 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Movement.Animator;
                         break;
                     }
                 case UItype.Interact:
                     {
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Interact.Animator;
                         break;
                     }
                 case UItype.Pausa:
