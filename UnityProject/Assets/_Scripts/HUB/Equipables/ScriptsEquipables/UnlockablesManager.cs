@@ -6,6 +6,7 @@ public class UnlockablesManager : MonoBehaviour
 {
     public static UnlockablesManager instance;
 
+    public UnlockableNotification Notificator;
     public List<HatScriptable> hatScripts;
     public List<CapeScriptable> capeScripts;
     public List<PetScriptable> petScripts;
@@ -19,6 +20,7 @@ public class UnlockablesManager : MonoBehaviour
     {
         if (instance != null) Destroy(gameObject);
         instance = this;
+        DontDestroyOnLoad(this);
 
         ItemSaved = new SaveItemsEquiped();
     }
@@ -36,7 +38,7 @@ public class UnlockablesManager : MonoBehaviour
     public void SaveCape(int ID)
     {
         ItemSaved.Item2 = ID;
-        SaveManager.SavePlayerData();
+        if (!Application.isEditor) SaveManager.SavePlayerData();
 
         foreach(CharacterUnlockablesEquipment character in ListCharacters)
         {
@@ -54,7 +56,7 @@ public class UnlockablesManager : MonoBehaviour
     public void SaveHat(int ID)
     {
         ItemSaved.Item1 = ID;
-        SaveManager.SavePlayerData();
+        if (!Application.isEditor) SaveManager.SavePlayerData();
 
         foreach (CharacterUnlockablesEquipment character in ListCharacters)
         {
@@ -74,11 +76,13 @@ public class UnlockablesManager : MonoBehaviour
         if (scriptable.HeadMaterial != null) Character.FaceMaterial.material = scriptable.HeadMaterial;
         else Character.FaceMaterial.material = Character.FaceDefaultMaterial;
 
+        if (Character.HatObject != null) Destroy(Character.HatObject);
         if (scriptable.HatPrefab != null) {
-            if (Character.HatObject != null) Destroy(Character.HatObject);
            GameObject Hat = GameObject.Instantiate(scriptable.HatPrefab, Character.HatPosition);
             Hat.transform.parent = Character.HatPosition;
+            Character.HatObject = Hat;
         }
+
     }
     #endregion
 
@@ -86,7 +90,7 @@ public class UnlockablesManager : MonoBehaviour
     public void SavePet(int ID)
     {
         ItemSaved.Item3 = ID;
-        SaveManager.SavePlayerData();
+        if (!Application.isEditor) SaveManager.SavePlayerData();
 
         foreach (CharacterUnlockablesEquipment character in ListCharacters)
         {
@@ -96,8 +100,22 @@ public class UnlockablesManager : MonoBehaviour
 
     public void LoadPet(CharacterUnlockablesEquipment Character, int ID)
     {
-        GameObject.Instantiate(petScripts[ID].PetPrefab, Character.PetTransform);
         if (Character.PetObject != null) Destroy(Character.PetObject);
+        if (petScripts[ID].PetPrefab != null)
+        {
+            Debug.Log("Entro");
+            GameObject pet = GameObject.Instantiate(petScripts[ID].PetPrefab, Character.PetTransform);
+            if(Character.PetParent != null) pet.transform.parent = Character.PetParent;
+            Character.PetObject = pet;
+
+            AnimalAnimation animalscript = pet.GetComponent<AnimalAnimation>();
+            animalscript.Follow = Character.FollowLimb;
+            if (!Character.WantToFollow) { 
+                animalscript.speedFollow = 0;
+                animalscript.distanceBack = 0;
+            }
+        }
+        
     }
     #endregion
 }

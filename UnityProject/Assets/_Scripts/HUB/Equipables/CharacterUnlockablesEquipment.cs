@@ -17,12 +17,15 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
 
     [Header("Pet")]
     public Transform PetTransform;
+    public Transform PetParent;
+    public Transform FollowLimb;
+    public bool WantToFollow;
     [HideInInspector] public GameObject PetObject;
 
     private void OnEnable()
     {
         UnlockablesManager.instance.ListCharacters.Add(this);
-
+        UnlockablesManager.instance.LoadFromSave(this);
 
     }
 
@@ -35,7 +38,10 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
-            UnlockablesManager.instance.LoadHat(this, 2);
+            //UnlockablesManager.instance.LoadHat(this, 2);
+            UnlockablesManager.instance.SaveHat(2);
+            UnlockablesManager.instance.SaveCape(1);
+            UnlockablesManager.instance.SavePet(1);
         }
     }
 }

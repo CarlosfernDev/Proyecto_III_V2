@@ -12,7 +12,10 @@ public class AnimalAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Follow != null) return;
+
+        if (UnlockablesManager.instance == null)
+            Debug.LogError("Te falta designar a que tiene que seguir la Pet de forma manual o poner un UnlockableManager");
     }
 
     // Update is called once per frame
