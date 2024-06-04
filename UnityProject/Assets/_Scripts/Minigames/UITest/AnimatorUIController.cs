@@ -8,7 +8,8 @@ public class AnimatorUIController : MonoBehaviour
     [SerializeField] private bool pop = false;
     void Start()
     {
-        
+        PopIn();
+        PopOut();
     }
 
     // Update is called once per frame

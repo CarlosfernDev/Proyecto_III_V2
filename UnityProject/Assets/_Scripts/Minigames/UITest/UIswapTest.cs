@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class UIswapTest : MonoBehaviour
 {
-    [SerializeField] private UItype selecImage;
+    [SerializeField] public UItype selecImage;
     [SerializeField] private ScriptableUI KeyBoardImage;
     [SerializeField] private ScriptableUI GamepadImage;
     [SerializeField] private Animator AnimatorUI;
     void OnEnable()
     {
+        transform.localScale = new Vector3(1, 1, 1);
         checkEnum(InputManager.Instance.LastInputName);
         try
         {
@@ -125,7 +126,7 @@ public class UIswapTest : MonoBehaviour
     }
 }
 
-enum UItype
+public enum UItype
 {
     Movement,
     Interact,
