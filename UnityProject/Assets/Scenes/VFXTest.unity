@@ -978,6 +978,56 @@ Transform:
   - {fileID: 381141936}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1353021141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353021143}
+  - component: {fileID: 1353021142}
+  m_Layer: 0
+  m_Name: TestShaderCapa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1353021142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353021141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3afdcd1885906c41b552a21a95ffa32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _material: {fileID: 2100000, guid: d7f4baf2448b2b04aa751d369597a446, type: 2}
+  _baseTexture: {fileID: 2800000, guid: f70093f62139a4149bd3ed113b5fd1ba, type: 3}
+  _newTexture: {fileID: 2800000, guid: 09f3c397150131644aa8cc213c860e45, type: 3}
+  _baseColor: {r: 1, g: 0.7879015, b: 0, a: 0}
+  _newColor: {r: 0, g: 0.54997826, b: 1, a: 0}
+  _isChanged: 0
+--- !u!4 &1353021143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353021141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 52.31586, y: 48.75027, z: -49.285675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1406494684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1301,3 +1351,4 @@ SceneRoots:
   - {fileID: 1406494684}
   - {fileID: 2079379240}
   - {fileID: 7044737431432004293}
+  - {fileID: 1353021143}

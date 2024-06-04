@@ -100,12 +100,13 @@ public class SwapBridge : LInteractableParent
 
     public override void Hover()
     {
-        if (Selector != null && CambioPuente == false) Selector.SetActive(true);
+        if (GameManagerSergio.Instance.checkMaterial() < costMaterial) return;
+        if (Selector != null && CambioPuente == false) base.Hover();
     }
 
     public override void Unhover()
     {
-        if (Selector != null && CambioPuente == false) Selector.SetActive(false);
+        if (Selector != null && CambioPuente == false) base.Unhover();
     }
 
     public void desactivarSelector()

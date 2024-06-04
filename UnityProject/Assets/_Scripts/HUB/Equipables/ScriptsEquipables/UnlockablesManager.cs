@@ -76,11 +76,13 @@ public class UnlockablesManager : MonoBehaviour
         if (scriptable.HeadMaterial != null) Character.FaceMaterial.material = scriptable.HeadMaterial;
         else Character.FaceMaterial.material = Character.FaceDefaultMaterial;
 
+        if (Character.HatObject != null) Destroy(Character.HatObject);
         if (scriptable.HatPrefab != null) {
-            if (Character.HatObject != null) Destroy(Character.HatObject);
            GameObject Hat = GameObject.Instantiate(scriptable.HatPrefab, Character.HatPosition);
             Hat.transform.parent = Character.HatPosition;
+            Character.HatObject = Hat;
         }
+
     }
     #endregion
 
@@ -106,7 +108,12 @@ public class UnlockablesManager : MonoBehaviour
             if(Character.PetParent != null) pet.transform.parent = Character.PetParent;
             Character.PetObject = pet;
 
-            pet.GetComponent<AnimalAnimation>().Follow = Character.FollowLimb;
+            AnimalAnimation animalscript = pet.GetComponent<AnimalAnimation>();
+            animalscript.Follow = Character.FollowLimb;
+            if (!Character.WantToFollow) { 
+                animalscript.speedFollow = 0;
+                animalscript.distanceBack = 0;
+            }
         }
         
     }

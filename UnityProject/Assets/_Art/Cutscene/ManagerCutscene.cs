@@ -11,10 +11,12 @@ public class ManagerCutscene : MonoBehaviour
     public Animator _anim;
     public List<AnimatorOverrideController> AnimatorScene;
 
+    public DialogueAdvanceInput InputsDialogue;
+
     public void EnableGame()
     {
         DialogueRunner.StartDialogue("Start");
-
+        InputsDialogue.enabled = true;
         if (GameManager.Instance != null) GameManager.Instance.eventSystem.SetSelectedGameObject(_button);
         if(InputManager.Instance != null) InputManager.Instance.pauseEvent.AddListener(FinishScene);
         if (MySceneManager.Instance != null) MySceneManager.Instance.OnLoadFinish -= EnableGame;

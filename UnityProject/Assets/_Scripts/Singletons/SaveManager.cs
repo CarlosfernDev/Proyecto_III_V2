@@ -127,6 +127,7 @@ public class SaveManager : MonoBehaviour
 
     public static void ResetGame()
     {
+        saveState.SaveUnlockable = null;
         CreateDirectory();
         SaveAllMinigameData();
         SaveAllPancarta();
