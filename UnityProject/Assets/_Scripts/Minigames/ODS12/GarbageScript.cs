@@ -67,6 +67,8 @@ public class GarbageScript : LInteractableParent
         base.Interact();
         GameManager.Instance.playerScript.isEquipado = true;
 
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("GrabSound");
+
         // Se soluciona el bug donde la icnta da momento al jugador cuando agarras el objeto  
         Collider.enabled = false;
         _rb.useGravity = false;

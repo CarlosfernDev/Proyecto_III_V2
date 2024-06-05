@@ -9,6 +9,9 @@ public class AnimatorPapeleraTutorial : MonoBehaviour
     private bool IsOpen;
     public VisualEffect Effect;
 
+    public AudioSource OpenTrash;
+    public AudioSource CloseTrash;
+
 
     private void OnTriggerStay(Collider other)
     {
@@ -18,14 +21,13 @@ public class AnimatorPapeleraTutorial : MonoBehaviour
         {
             IsOpen = false;
             _anim.SetBool("IsOpen", IsOpen);
-
             _anim.SetTrigger("TriggerActionOpen");
         }
         if (GameManager.Instance.playerScript.refObjetoEquipado != null && !IsOpen)
         {
             IsOpen = true;
             _anim.SetBool("IsOpen", IsOpen);
-
+            OpenTrash.Play();
             _anim.SetTrigger("TriggerActionOpen");
         }
     }
@@ -38,6 +40,7 @@ public class AnimatorPapeleraTutorial : MonoBehaviour
         {
             IsOpen = false;
             _anim.SetBool("IsOpen", IsOpen);
+            CloseTrash.Play();
 
             _anim.SetTrigger("TriggerActionOpen");
         }

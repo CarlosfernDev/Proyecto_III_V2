@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1417,6 +1417,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1646815825}
   m_SourcePrefab: {fileID: 100100000, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+--- !u!114 &1196015972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1017940826995483333, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3286547148253719695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2730945677966504d8a679af7fa4a7bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1214916673 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5557407904606929828, guid: e59d091c5d0b4214b8652bca7eca2d2f,
@@ -1432,7 +1444,7 @@ AudioSource:
   m_GameObject: {fileID: 1214916673}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7930402631886506645, guid: c36448cfe2653da4d86279caee00d998,
+  OutputAudioMixerGroup: {fileID: -6672884251442340233, guid: c36448cfe2653da4d86279caee00d998,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
@@ -2109,6 +2121,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
         type: 3}
+      propertyPath: sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
+        type: 3}
       propertyPath: Music.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 62fafa032f997ea4eab8875bff8d9ae1, type: 3}
@@ -2122,6 +2139,26 @@ PrefabInstance:
       propertyPath: Music.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: 77f52f0c93c35894897c109ffe869277, type: 3}
+    - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
+        type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 22bb6b0dd22d89c428b7a0abf540b477, type: 3}
+    - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
+        type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: GrabSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
+        type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210243519588282771, guid: e59d091c5d0b4214b8652bca7eca2d2f,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2218,6 +2255,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2915170519561686566, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: TextSettings.Array.data[0].ValueAction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1196015972}
+    - target: {fileID: 2915170519561686566, guid: 81650adbd4436f34aa22a2de95e8a2e3,
+        type: 3}
+      propertyPath: TextSettings.Array.data[0].ValueAction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetVolumeEffect
       objectReference: {fileID: 0}
     - target: {fileID: 4899271510622079301, guid: 81650adbd4436f34aa22a2de95e8a2e3,
         type: 3}

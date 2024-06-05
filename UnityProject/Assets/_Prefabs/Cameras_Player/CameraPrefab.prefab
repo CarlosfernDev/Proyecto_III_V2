@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4968757468476318861}
   - component: {fileID: 3504833347068288721}
-  - component: {fileID: 8715194745838233901}
   - component: {fileID: 1395373693161905175}
   - component: {fileID: 8174686263937568346}
   - component: {fileID: 2715381078537234751}
@@ -151,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 6682488342072361475}
   serializedVersion: 2
   m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
-  m_LocalPosition: {x: -45.448883, y: 24.320004, z: 109.68449}
+  m_LocalPosition: {x: -6.1237245, y: 6.6100006, z: -6.1237245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,7 +166,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.54158, b: 0.5471698, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -208,14 +207,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &8715194745838233901
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682488342072361475}
-  m_Enabled: 1
 --- !u!114 &1395373693161905175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +230,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

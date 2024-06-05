@@ -56,6 +56,10 @@ public class ODS12Singleton : MinigameParent
     public Animator _anim;
     public List<AnimatorOverrideController> AnimatorsBocadillo;
 
+    public AudioSource _TrashInteract;
+    public AudioSource CloseAudio;
+    public AudioSource OpenAudio;
+
     protected override void personalAwake()
     {
         Instance = this;

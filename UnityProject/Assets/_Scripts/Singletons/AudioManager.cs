@@ -142,7 +142,7 @@ public class Sound
 {
     public string name;
 
-    public int AudioOutput;
+    //public int AudioOutput;
 
     public AudioClip clip;
 

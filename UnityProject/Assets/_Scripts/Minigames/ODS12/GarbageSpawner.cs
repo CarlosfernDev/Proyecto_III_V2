@@ -23,6 +23,8 @@ public class GarbageSpawner : MonoBehaviour
 
     private bool _canSpawn;
 
+    public AudioSource SpawnSound;
+
     private void Awake()
     {
         
@@ -84,6 +86,9 @@ public class GarbageSpawner : MonoBehaviour
         int garbageType = UnityEngine.Random.Range(0, 3);
         Vector3 spawnPosition = garbageSpawnTransform.position;
         _spawnVFX.Play();
+
+        SpawnSound.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        SpawnSound.Play();
 
         switch (garbageType)
         {
