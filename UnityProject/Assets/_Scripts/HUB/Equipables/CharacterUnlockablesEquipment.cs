@@ -19,6 +19,7 @@ public class CharacterUnlockablesEquipment : MonoBehaviour
     public Transform PetTransform;
     public Transform PetParent;
     public Transform FollowLimb;
+    public bool WantToFollow;
     [HideInInspector] public GameObject PetObject;
 
     private void OnEnable()

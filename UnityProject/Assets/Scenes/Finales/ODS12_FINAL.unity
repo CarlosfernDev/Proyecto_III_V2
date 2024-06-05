@@ -173,6 +173,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 2033741579}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 3
 --- !u!65 &28785184
 BoxCollider:
@@ -295,6 +297,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 1824882517}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 3
 --- !u!65 &58849264
 BoxCollider:
@@ -2814,6 +2818,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 71554119}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 3
 --- !u!1 &349049734
 GameObject:
@@ -8834,6 +8840,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 772640052}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 2
 --- !u!65 &1261555524
 BoxCollider:
@@ -9213,6 +9221,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 532195179}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 1
 --- !u!65 &1303761088
 BoxCollider:
@@ -10354,6 +10364,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 1591287095}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 1
 --- !u!65 &1433071893
 BoxCollider:
@@ -11667,7 +11679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notes: 
-  IsDeveloping: 0
+  IsDeveloping: 1
   MinigameData: {fileID: 11400000, guid: 0af5b41839f941242b01ef67073400dd, type: 2}
   _uiAnimator: {fileID: 1640327506}
   isCountdown: 1
@@ -12141,6 +12153,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 1848418938}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 2
 --- !u!65 &1679031079
 BoxCollider:
@@ -13798,6 +13812,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 1032178440}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 2
 --- !u!65 &1895687821
 BoxCollider:
@@ -15629,6 +15645,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ChangeUIto:
+    m_PersistentCalls:
+      m_Calls: []
+  LastInputName: 
 --- !u!4 &2088834705
 Transform:
   m_ObjectHideFlags: 0
@@ -25884,6 +25904,8 @@ MonoBehaviour:
   _TextoInteraccion: 
   _isInteractable: 1
   Selector: {fileID: 2032930291}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   thisCollectorType: 1
 --- !u!65 &8473625342907661880
 BoxCollider:
