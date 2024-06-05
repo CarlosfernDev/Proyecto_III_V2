@@ -24,15 +24,7 @@ public class AnimatorUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            PopIn();
-        }
-
-        if (Input.GetKey(KeyCode.T))
-        {
-            PopOut();
-        }
+  
     }
 
     void PlayIdle()
