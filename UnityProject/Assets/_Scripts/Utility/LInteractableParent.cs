@@ -30,9 +30,12 @@ public class LInteractableParent : MonoBehaviour, Iinteractable
 
     public virtual void Hover()
     {
+       
+
         if (Selector != null) Selector.SetActive(true);
         if (ButtonPrompt != null) 
         {
+           
             if (!checkInput1Time)
             {
                 checkInputType();
@@ -48,6 +51,7 @@ public class LInteractableParent : MonoBehaviour, Iinteractable
         if (Selector != null) Selector.SetActive(false);
         if (ButtonPrompt != null) 
         {
+            
             ButtonPrompt.GetComponent<AnimatorUIController>().PopOut();
 
         }

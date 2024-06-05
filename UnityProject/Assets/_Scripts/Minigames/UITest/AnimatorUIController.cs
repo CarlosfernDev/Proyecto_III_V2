@@ -6,10 +6,19 @@ public class AnimatorUIController : MonoBehaviour
 {
     [SerializeField] private Animator showButtonAnimator;
     [SerializeField] private bool pop = false;
+    [SerializeField] private bool estoyactivo = false;
     void Start()
     {
-        PopIn();
-        PopOut();
+        if (estoyactivo)
+        {
+            PopIn();
+            PopOut();
+        }
+        else
+        {
+            PopIn();
+        }
+       
     }
 
     // Update is called once per frame
