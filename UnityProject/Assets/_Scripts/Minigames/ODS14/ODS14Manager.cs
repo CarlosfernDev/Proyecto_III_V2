@@ -139,10 +139,16 @@ public class ODS14Manager : MinigameParent
 
     public override void SaveValue()
     {
-        if (_garbageLeft != 0)
+        if (_garbageLeft >= (_startingGarbage.Length / 2))
         {
             SaveValue(-1);
             Score = -1;
+            return;
+        }
+        else if (_garbageLeft < (_startingGarbage.Length / 2))
+        {
+            SaveValue(0);
+            Score = 0;
             return;
         }
         Score = (int)timer.Value;
