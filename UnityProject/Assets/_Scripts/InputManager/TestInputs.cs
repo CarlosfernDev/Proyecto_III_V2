@@ -127,8 +127,8 @@ public class TestInputs : MonoBehaviour
     }
     public void MeMuevo(Vector2 vec)
     {
-        
-      //REMOVE COMMENT  if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
+       // Alex pon un GameManger y deja de comentar la linea que siempre se me olvida de quitarla y esto rompe partes criticas del juego.
+      if (GameManager.Instance.isDialogueActive || (MySceneManager.Instance != null ? MySceneManager.Instance.isLoading : false) || (GameManager.Instance != null ? GameManager.Instance.isPaused : false)) return;
 
         if (IgnoreInput) vec = Vector2.zero;
 
