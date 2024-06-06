@@ -14,6 +14,7 @@ public class GameManager15 : MonoBehaviour
 
     public Jurado scoreUI;
     private int puntuacion = 0;
+    public GameObject NEWUISCORE;
     public GameObject puntuacionUI;
     //PosObjetosHabitat
     public Transform posComida;
@@ -226,6 +227,7 @@ public class GameManager15 : MonoBehaviour
             DecoracionActiva = -1;
             ComidaActiva = -1;
             HabitatActivo = -1;
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("NewLevel");
             if (puntuacion >= 5)
             {
                 
@@ -242,6 +244,8 @@ public class GameManager15 : MonoBehaviour
         }
         else
         {
+           
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("Error");
             Debug.Log("RespuestaErronea");
             
             
@@ -250,6 +254,7 @@ public class GameManager15 : MonoBehaviour
             CanvasSwap();
 
         }
+
     }
 
     
@@ -311,10 +316,12 @@ public class GameManager15 : MonoBehaviour
 
     public void UpdateScore()
     {
+
         if (puntuacion<0)
         {
             puntuacion = 0;
         }
+        NEWUISCORE.GetComponent<TextMeshProUGUI>().text = puntuacion + "/5";
         if (puntuacion<5)
         {
             scoreUI.ShowScore(puntuacion);
