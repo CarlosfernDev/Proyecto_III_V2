@@ -48,6 +48,7 @@ public class LInteractableParent : MonoBehaviour, Iinteractable
 
     public virtual void Unhover()
     {
+
         if (Selector != null) Selector.SetActive(false);
         if (ButtonPrompt != null) 
         {

@@ -108,23 +108,31 @@ public class OD6GameManager : MonoBehaviour
         }
         if (LevelRef == Level.Level2 && Score == 1)
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("Water");
+
             Score = 0;
             LoadLevel3();
         }
         if (LevelRef == Level.Level3 && Score == 2)
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("Water");
+
             Score = 0;
             LoadLevel4();
            
         }
         if (LevelRef == Level.Level4 && Score == 5)
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("Water");
+
             Score = 0;
             LoadLevel5();
             
         }
         if (LevelRef == Level.Level5 && Score == 6)
         {
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("Water");
+
             Score = 0;
             ODS6GameManagerHeredado.instance.youWin = true;
             ODS6GameManagerHeredado.instance.OnGameFinish();
