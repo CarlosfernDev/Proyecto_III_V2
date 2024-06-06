@@ -5372,6 +5372,7 @@ GameObject:
   - component: {fileID: 5950224052949248124}
   - component: {fileID: 8809652862091916848}
   - component: {fileID: 5861877087684304816}
+  - component: {fileID: 1898960211380691394}
   m_Layer: 1
   m_Name: farmminigame2
   m_TagString: Untagged
@@ -5478,6 +5479,104 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 4996483470372680373}
+  waterAudio: {fileID: 1898960211380691394}
+--- !u!82 &1898960211380691394
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301736423989823913}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -4683930480568490163, guid: c36448cfe2653da4d86279caee00d998,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 1e1f19c0cf470084396156cd001e659d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.052
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 7.7
+  MaxDistance: 11.13
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.763
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6314395803084412563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5688,7 +5787,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 0
+  checkInput1Time: 0
   Selector: {fileID: 2572643912194639540}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   GranjasRender:
   - {fileID: 3671786977779499478}
   - {fileID: 383400263411697523}
