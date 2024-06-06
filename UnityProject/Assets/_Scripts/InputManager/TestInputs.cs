@@ -301,6 +301,7 @@ public class TestInputs : MonoBehaviour
         {
             //Llamo a la funcion que deben implementar todos los objetos equipables.
             refObjetoEquipado.GetComponent<Iequipable>().UseEquipment();
+            refObjetoInteract = null;
         }
         else
         {
