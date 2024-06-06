@@ -510,7 +510,7 @@ MonoBehaviour:
   _isInteractable: 1
   checkInput1Time: 0
   Selector: {fileID: 6068123399177473966}
-  ButtonPrompt: {fileID: 0}
+  ButtonPrompt: {fileID: 6459119293633435458}
   WhatInput: 0
   costMaterial: 5
   _transitionDuration: 1.2
@@ -559,6 +559,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 618213718056994188}
     m_Modifications:
+    - target: {fileID: 4389989778002440475, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
+        type: 3}
+      propertyPath: selecImage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5347476848351785749, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -609,6 +614,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6903121610453121776, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
+        type: 3}
+      propertyPath: estoyactivo
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8793295347619253610, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
         type: 3}
       propertyPath: m_Name
@@ -619,6 +629,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6, type: 3}
+--- !u!1 &6459119293633435458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8793295347619253610, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2570263740458228264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7610349573142636861 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5347476848351785749, guid: 3a40e3b6feb3e414b8b62ad99ff11fd6,
