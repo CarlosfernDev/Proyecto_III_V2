@@ -80,6 +80,7 @@ public class GarbageScript : LInteractableParent
         _rb.angularVelocity = Vector3.zero;
 
         PickableVFX.gameObject.SetActive(false);
+        ButtonPrompt.gameObject.SetActive(false);
 
         isCentered = false;
         SetInteractFalse();
