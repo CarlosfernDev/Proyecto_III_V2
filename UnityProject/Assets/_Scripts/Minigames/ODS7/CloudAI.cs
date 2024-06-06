@@ -11,7 +11,7 @@ using Yarn.Unity;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
-public class CloudAI : MonoBehaviour
+public class CloudAI : LInteractableParent
 {
     public GameObject BaseObject;
     public EnableInputViewONTRIGGER ButtonVisualScript;
