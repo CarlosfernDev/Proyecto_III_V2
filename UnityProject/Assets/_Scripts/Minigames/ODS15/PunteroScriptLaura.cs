@@ -109,7 +109,7 @@ public class PunteroScriptLaura: MonoBehaviour
             if (hit.transform.gameObject.TryGetComponent<Iinteractable>(out Iinteractable inter))
             {
                 inter.Interact();
-                if (AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
+                if (AudioManager.Instance != null) AudioManager.Instance.Play("ClickSound");
             }
         }
        

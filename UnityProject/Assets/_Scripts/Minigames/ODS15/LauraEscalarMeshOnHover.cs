@@ -36,7 +36,7 @@ public class LauraEscalarMeshOnHover : SelectionInteractableParent
 
     public override void UnHover()
     {
-        if (AudioManager.Instance != null) AudioManager.Instance.Play("ScaleDown");
+       // if (AudioManager.Instance != null) AudioManager.Instance.Play("ScaleDown");
         if (scaleupcor != null)
         {
             StopCoroutine(scaleupcor);
