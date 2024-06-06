@@ -141,6 +141,8 @@ public class TileNavigator : MonoBehaviour
 
     public void aumentarContadorPieza()
     {
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("ScaleUp");
+
         ContPieza += 1;
         if (ContPieza>=3)
         {
@@ -349,6 +351,8 @@ public class TileNavigator : MonoBehaviour
 
     public void CheckRotationKey()
     {
+        
+
         if (ShowGO != null)
         {
 
@@ -359,6 +363,7 @@ public class TileNavigator : MonoBehaviour
             }
 
             ShowGO.transform.eulerAngles = new Vector3(0, rotYplacement, 0);
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("ScaleDown");
         }
     }
 
@@ -368,6 +373,8 @@ public class TileNavigator : MonoBehaviour
         {
             return;
         }
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("PlaceObject");
+
         var tempoGO2 = PipeGrid.Instance.GetPipeAtPosition(PosSelector);
         tempoGO2.InstantiateVisualGO(temporalGO, (int)rotYplacement);
         tempoGO2.DesactivateWater();
