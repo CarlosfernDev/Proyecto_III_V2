@@ -43,6 +43,7 @@ public class SwapBridge : LInteractableParent
         if (GameManagerSergio.Instance.checkMaterial() >= costMaterial)
         {
             Debug.Log("Pago para construir puente");
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
             GameManagerSergio.Instance.minusMaterial(costMaterial);
             Swap();
 

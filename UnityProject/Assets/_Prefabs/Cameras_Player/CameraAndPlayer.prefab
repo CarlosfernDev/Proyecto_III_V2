@@ -359,8 +359,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1195366115382933531, guid: 8fce482bd6ba08847818643e89c3751e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1601770243877303655}
   m_SourcePrefab: {fileID: 100100000, guid: 8fce482bd6ba08847818643e89c3751e, type: 3}
+--- !u!1 &3595281987014314127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1195366115382933531, guid: 8fce482bd6ba08847818643e89c3751e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2410493208139755668}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1601770243877303655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595281987014314127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026ed4c0e27094a48b1bb55166e9e03e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7991214677615899156}
+  _playerTransform: {fileID: 8459489257471589769}
+  FollowPosition: 1
+  FollowRotation: 0
+  FollowScale: 0
+  AxisX: 1
+  AxisY: 1
+  AxisZ: 1
 --- !u!4 &8459489257471589769 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6059010995022122269, guid: 8fce482bd6ba08847818643e89c3751e,
@@ -430,6 +460,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4968757468476318861, guid: 4149952d803030a43aae715657827034,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968757468476318861, guid: 4149952d803030a43aae715657827034,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.123724
+      objectReference: {fileID: 0}
     - target: {fileID: 6871788319893053192, guid: 4149952d803030a43aae715657827034,
         type: 3}
       propertyPath: m_Follow
@@ -443,6 +483,12 @@ PrefabInstance:
 --- !u!4 &4540274145823439896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 555333878995635336, guid: 4149952d803030a43aae715657827034,
+    type: 3}
+  m_PrefabInstance: {fileID: 4086658769762939024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7991214677615899156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6219687788893864580, guid: 4149952d803030a43aae715657827034,
     type: 3}
   m_PrefabInstance: {fileID: 4086658769762939024}
   m_PrefabAsset: {fileID: 0}

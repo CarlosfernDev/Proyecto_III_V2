@@ -14,7 +14,7 @@ public class VegetalCollector : LInteractableParent
         if (!GameManager.Instance.playerScript.isEquipado) { return; }
 
         if (!GameManager.Instance.playerScript.refObjetoEquipado.TryGetComponent<Vegetal>(out Vegetal script)) return;
-
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("GrabSound");
         base.Interact();
 
         ODS2Singleton.Instance.AddScore(ODS2Singleton.Instance.ScoreCollectingDone);

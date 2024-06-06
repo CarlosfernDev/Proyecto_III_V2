@@ -36,6 +36,7 @@ public class BasuraTutorial : LInteractableParent
         if (AudioManager.Instance != null) AudioManager.Instance.Play("GrabSound");
 
         PickableVFX.gameObject.SetActive(false);
+        ButtonPrompt.gameObject.SetActive(false);
 
         isCentered = false;
         SetInteractFalse();

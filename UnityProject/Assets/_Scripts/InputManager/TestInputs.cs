@@ -73,6 +73,14 @@ public class TestInputs : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.playerScript = null;
+        }
+    }
+
     private void OnEnable()
     {
         try
