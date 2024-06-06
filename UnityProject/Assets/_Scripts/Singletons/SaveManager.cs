@@ -26,7 +26,7 @@ public class SaveManager : MonoBehaviour
     {
         savePlayerData.name = GameManager.Instance.playerName;
         savePlayerData.coins = GameManager.Instance.playerCoins;
-        savePlayerData.PlayerItems = UnlockablesManager.instance.ItemSaved;
+        if(UnlockablesManager.instance != null) savePlayerData.PlayerItems = UnlockablesManager.instance.ItemSaved;
         savePlayerData.SaveState = GameManager.Instance.state;
 
         saveState.SavePlayerData = savePlayerData;
@@ -99,7 +99,9 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveAllUnlockable()
     {
-        SaveUnlockable[] save = new SaveUnlockable[UnlockablesManager.instance.Notificator.Unlockables.Count];
+        if (UnlockablesManager.instance == null) return;
+
+            SaveUnlockable[] save = new SaveUnlockable[UnlockablesManager.instance.Notificator.Unlockables.Count];
         int idlenght = -1;
         int idLenghtUsable = 0;
         foreach (SUnlockable lockable in UnlockablesManager.instance.Notificator.Unlockables)
@@ -197,7 +199,7 @@ public class SaveManager : MonoBehaviour
         GameManager.Instance.playerName = savePlayerData.name;
         GameManager.Instance.playerCoins = savePlayerData.coins;
         GameManager.Instance.state = savePlayerData.SaveState;
-        UnlockablesManager.instance.ItemSaved = savePlayerData.PlayerItems;
+        if(UnlockablesManager.instance != null) UnlockablesManager.instance.ItemSaved = savePlayerData.PlayerItems;
 
         for (int i = 0; i > GameManager.Instance.MinigameScripts.Length; i++)
         {
@@ -219,9 +221,12 @@ public class SaveManager : MonoBehaviour
             GameManager.Instance.PancartaData[i].Score = saveState.SavePancarta[i].MaxPoints;
         }
 
-        foreach (SaveUnlockable saveUnl in saveState.SaveUnlockable)
+        if (UnlockablesManager.instance != null)
         {
-            UnlockablesManager.instance.Notificator.Unlockables[saveUnl.ID].IsUnlocked = true;
+            foreach (SaveUnlockable saveUnl in saveState.SaveUnlockable)
+            {
+                UnlockablesManager.instance.Notificator.Unlockables[saveUnl.ID].IsUnlocked = true;
+            }
         }
     }
 
