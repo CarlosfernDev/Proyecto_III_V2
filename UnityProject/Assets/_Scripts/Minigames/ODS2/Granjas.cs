@@ -128,6 +128,7 @@ public class Granjas : LInteractableParent
         {
             case FarmState.Recolect:
             {
+                    if (AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
                     GameObject go = GameObject.Find("Player");
                     if(go.GetComponent<TestInputs>().isEquipado == true) 
                     {
