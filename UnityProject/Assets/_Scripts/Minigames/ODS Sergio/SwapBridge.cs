@@ -69,6 +69,7 @@ public class SwapBridge : LInteractableParent
         }
         GetComponent<BoxCollider>().isTrigger = true;
         StartCoroutine(SwapBridgeCoroutine());
+        base.Unhover();
     }
 
     private IEnumerator SwapBridgeCoroutine()
