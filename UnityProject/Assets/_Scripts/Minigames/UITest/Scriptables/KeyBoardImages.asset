@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875fc6742d97b264e9ec6e4b813ab0fc, type: 3}
   m_Name: KeyBoardImages
   m_EditorClassIdentifier: 
-  Movement: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
-  Interact: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
-  Pausa: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
-  UsarEquipable: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
-  RotarPieza: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
-  AnyKey: {fileID: 21300000, guid: 8bd0a32c7af39e04d8f746d4543f6c82, type: 3}
+  Movement:
+    SinPulsar: {fileID: 21300000, guid: 84fbdb05de7cc82498975fd92614cbc6, type: 3}
+    Pulsado: {fileID: 21300000, guid: c721aa5739d27fd43b8060f12b3c840e, type: 3}
+    Animator: {fileID: 22100000, guid: ec266878353150246a8b31ffe496f95f, type: 2}
+  Interact:
+    SinPulsar: {fileID: 21300000, guid: dab45b656c8b79f43a3e627c6547581a, type: 3}
+    Pulsado: {fileID: 21300000, guid: 8baa563004825c9499c6e44ee25584c2, type: 3}
+    Animator: {fileID: 22100000, guid: 7a93f8e49f4dc6a449a7c5aa57ba4e2c, type: 2}
+  Pausa:
+    SinPulsar: {fileID: 0}
+    Pulsado: {fileID: 0}
+    Animator: {fileID: 0}
+  UsarEquipable:
+    SinPulsar: {fileID: 21300000, guid: 9df682db0e8f6b142940ac69ccc08e9f, type: 3}
+    Pulsado: {fileID: 21300000, guid: 1fe83e9b029c50f469ab726b92d200be, type: 3}
+    Animator: {fileID: 22100000, guid: 362dfcc9ceb9aa24abe09e29b3b40229, type: 2}
+  RotarPieza:
+    SinPulsar: {fileID: 21300000, guid: 864cfd932ef23214c8511dbb961b6475, type: 3}
+    Pulsado: {fileID: 21300000, guid: c33dbff0a4bacc5438154d0393d68500, type: 3}
+    Animator: {fileID: 22100000, guid: a5e3d261d886d364f80f7a486e1fd83c, type: 2}
+  AnyKey:
+    SinPulsar: {fileID: 21300000, guid: c721aa5739d27fd43b8060f12b3c840e, type: 3}
+    Pulsado: {fileID: 21300000, guid: 1fe83e9b029c50f469ab726b92d200be, type: 3}
+    Animator: {fileID: 0}

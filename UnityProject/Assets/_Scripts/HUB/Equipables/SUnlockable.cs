@@ -11,5 +11,5 @@ public class SUnlockable : ScriptableObject
     public Sprite UnlockableImageOn;
     public Sprite UnlockableImageOff;
 
-
+    public bool IsUnlocked;
 }

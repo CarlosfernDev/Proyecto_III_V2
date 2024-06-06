@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
+
 
 public class Pipe : MonoBehaviour
 {
@@ -16,8 +18,11 @@ public class Pipe : MonoBehaviour
 
     [SerializeField] public Material WaterMat;
     [SerializeField] public Material ShitMat;
+    
+    [SerializeField] private VisualEffect waterVFX;
 
-   
+
+
 
     public virtual void Init(int x, int y)
     {
@@ -26,7 +31,10 @@ public class Pipe : MonoBehaviour
             Debug.Log("ASIGNO NUEVOS VECTORES");
             ActiveConections = new Vector2[] { new Vector2(+1, 0), new Vector2(0, +1), new Vector2(0, -1),new Vector2(-1,0)};
         }
+        
+        
     }
+
 
     public virtual void selectedTile()
     {
@@ -268,8 +276,21 @@ public class Pipe : MonoBehaviour
             }
         }
 
-
+        if (!RunningWater)
+        {
+            
+            waterVFX = Resources.Load<VisualEffect>("AlexWaterVfx");
+            if (waterVFX != null)
+            {
+                var coso = Instantiate(waterVFX, transform);
+                coso.transform.position = transform.position;
+                coso.Play();
+                Destroy(coso, 1f);
+            }
+        }
         RunningWater = true;
+       
+
         CheckConections();
         if (Puntuado == false)
         {

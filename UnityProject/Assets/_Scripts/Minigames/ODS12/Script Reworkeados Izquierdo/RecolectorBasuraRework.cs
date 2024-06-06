@@ -40,6 +40,9 @@ public class RecolectorBasuraRework : LInteractableParent
         GameManager.Instance.playerScript.isEquipado = false;
         Unhover();
         ODS12Singleton.Instance.DropItem();
+
+        ODS12Singleton.Instance._TrashInteract.pitch = Random.Range(0.9f,1.1f);
+        ODS12Singleton.Instance._TrashInteract.Play();
     }
 
     public override void Hover()

@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] public UnityEvent<string> ChangeUIto;
 
-    [SerializeField] private string LastInputName;
+    [SerializeField] public string LastInputName;
     //Modificacion de la clase event para poder pasar en las llamadas vector2
     [System.Serializable]
     public class MyVector2Event : UnityEvent<Vector2>
@@ -70,14 +70,14 @@ public class InputManager : MonoBehaviour
     private void AnyKey_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
        
-        if (obj.control.device.name.Contains("Gamepad"))
+        if (obj.control.device.name.Contains("Gamepad") && LastInputName != "Gamepad")
         {
-            
+            LastInputName = "Gamepad";
             ChangeUIto.Invoke("Gamepad");
         }
-        if (obj.control.device.name.Contains("Keyboard"))
+        if (obj.control.device.name.Contains("Keyboard") && LastInputName != "Keyboard")
         {
-            
+            LastInputName = "Keyboard";
             ChangeUIto.Invoke("Keyboard");
         }     
         anyKeyEvent.Invoke();
@@ -93,7 +93,6 @@ public class InputManager : MonoBehaviour
         DetectarUltimoInputDevice();
         //En el caso del input Movement, no podemos usar un performed, por que al mantener la tecla no se actualizaria
         //la llamada, es mejor llamarlo cada frame y comprobar si a habido cambios en el vector
-        return;
         if (MySceneManager.Instance.isLoading) return;
 
         if(Input.GetKeyDown(KeyCode.F8))
@@ -120,7 +119,6 @@ public class InputManager : MonoBehaviour
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         interactEvent.Invoke();
-        
     }
 
     private void pauseEvent_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

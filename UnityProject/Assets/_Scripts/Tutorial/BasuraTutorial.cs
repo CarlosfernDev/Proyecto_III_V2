@@ -33,7 +33,10 @@ public class BasuraTutorial : LInteractableParent
         base.Interact();
         GameManager.Instance.playerScript.isEquipado = true;
 
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("GrabSound");
+
         PickableVFX.gameObject.SetActive(false);
+        ButtonPrompt.gameObject.SetActive(false);
 
         isCentered = false;
         SetInteractFalse();

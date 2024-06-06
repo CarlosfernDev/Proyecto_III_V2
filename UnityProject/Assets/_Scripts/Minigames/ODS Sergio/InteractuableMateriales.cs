@@ -8,6 +8,9 @@ public class InteractuableMateriales : LInteractableParent
     {
         
         GameManagerSergio.Instance.addMaterial(1);
+
+        if(AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
+
         GameObject.Find("Player").GetComponent<TestInputs>().refObjetoInteract = null;
 
         Destroy(this.gameObject);

@@ -19,6 +19,7 @@ public class Vegetal : MonoBehaviour, Iequipable
             return;
         }
         GameManager.Instance.playerScript.isEquipado = true;
+        if (AudioManager.Instance != null) AudioManager.Instance.Play("GrabSound");
         GameManager.Instance.playerScript.refObjetoEquipado = transform.gameObject;
 
         transform.position = GameManager.Instance.playerScript.positionEquipable.transform.position;

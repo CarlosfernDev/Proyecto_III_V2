@@ -248,6 +248,9 @@ public class MinigameParent : MonoBehaviour
 
         ResultCanvas.SetActive(true);
         SetResult();
+
+        if(UnlockablesManager.instance != null) if (MinigameData.CheckPointsState(Score) >= 2) UnlockablesManager.instance.Notificator.AddNotification(MinigameData.ID);
+
         ResoultAnimator.SetTrigger("EnterAnimation");
 
         while (ResoultAnimator.GetCurrentAnimatorStateInfo(0).IsName("0"))

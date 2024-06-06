@@ -43,6 +43,7 @@ public class SwapBridge : LInteractableParent
         if (GameManagerSergio.Instance.checkMaterial() >= costMaterial)
         {
             Debug.Log("Pago para construir puente");
+            if (AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
             GameManagerSergio.Instance.minusMaterial(costMaterial);
             Swap();
 
@@ -100,12 +101,13 @@ public class SwapBridge : LInteractableParent
 
     public override void Hover()
     {
-        if (Selector != null && CambioPuente == false) Selector.SetActive(true);
+        if (GameManagerSergio.Instance.checkMaterial() < costMaterial) return;
+        if (Selector != null && CambioPuente == false) base.Hover();
     }
 
     public override void Unhover()
     {
-        if (Selector != null && CambioPuente == false) Selector.SetActive(false);
+        if (Selector != null && CambioPuente == false) base.Unhover();
     }
 
     public void desactivarSelector()

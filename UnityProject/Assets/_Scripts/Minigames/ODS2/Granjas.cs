@@ -140,6 +140,7 @@ public class Granjas : LInteractableParent
             }
             case FarmState.WaitingWater:
                 {
+                    if (AudioManager.Instance != null) AudioManager.Instance.Play("BobFish");
                     Vector3 VectorPlayer = GameManager.Instance.playerScript.transform.position;
                     Vector3 targetPoint = new Vector3(VectorPlayer.x, transform.position.y, VectorPlayer.z) - transform.position;
                     Quaternion targetRotation = Quaternion.LookRotation(targetPoint, Vector3.up);

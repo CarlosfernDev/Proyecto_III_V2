@@ -36,7 +36,7 @@ public class AnimatorsPapelera : MonoBehaviour
         {
             IsOpen = true;
             _anim.SetBool("IsOpen", IsOpen);
-
+            ODS12Singleton.Instance.OpenAudio.Play();
             _anim.SetTrigger("TriggerActionOpen");
         }
     }
@@ -49,7 +49,7 @@ public class AnimatorsPapelera : MonoBehaviour
         {
             IsOpen = false;
             _anim.SetBool("IsOpen", IsOpen);
-
+            ODS12Singleton.Instance.CloseAudio.Play();
             _anim.SetTrigger("TriggerActionOpen");
         }
     }

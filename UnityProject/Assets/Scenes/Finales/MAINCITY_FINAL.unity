@@ -2043,7 +2043,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1253356011}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: FranTexto2
 --- !u!23 &102285110
 MeshRenderer:
@@ -6358,7 +6361,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 204438208}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: CarlosTexto1
 --- !u!23 &305794208
 MeshRenderer:
@@ -8764,7 +8770,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 344784886}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: IanTexto2
 --- !u!23 &535874405
 MeshRenderer:
@@ -10271,7 +10280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1531973713}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: MariaTexto2
 --- !u!23 &600608673
 MeshRenderer:
@@ -11023,7 +11035,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1423176520}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: BoixTexto1
 --- !u!23 &663505181
 MeshRenderer:
@@ -16574,7 +16589,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1423176520}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: BoixTexto2
 --- !u!23 &1018845602
 MeshRenderer:
@@ -18855,7 +18873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55587cf3414c37a47bc46fb7998d28d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableState: 6
+  EnableState: 5
   WantToDisable: 1
   GameObjectAffected: {fileID: 573368312}
 --- !u!114 &1208182979
@@ -18870,7 +18888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55587cf3414c37a47bc46fb7998d28d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableState: 6
+  EnableState: 5
   WantToDisable: 0
   GameObjectAffected: {fileID: 1800079423}
 --- !u!1001 &1212009231
@@ -19165,6 +19183,10 @@ MonoBehaviour:
   movementEvent:
     m_PersistentCalls:
       m_Calls: []
+  ChangeUIto:
+    m_PersistentCalls:
+      m_Calls: []
+  LastInputName: 
 --- !u!4 &1252226818
 Transform:
   m_ObjectHideFlags: 0
@@ -23155,7 +23177,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1081952180}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: LauraTexto1
 --- !u!23 &1514571790
 MeshRenderer:
@@ -24948,7 +24973,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 204438208}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: CarlosTexto2
 --- !u!23 &1698134020
 MeshRenderer:
@@ -27004,7 +27032,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1253356011}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: FranTexto1
 --- !u!23 &1775003135
 MeshRenderer:
@@ -27872,7 +27903,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 344784886}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: IanTexto1
 --- !u!23 &1827728450
 MeshRenderer:
@@ -28177,7 +28211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1964919958}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: SergioTexto1
 --- !u!23 &1868531360
 MeshRenderer:
@@ -28699,7 +28736,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1081952180}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: LauraTexto2
 --- !u!23 &1881934180
 MeshRenderer:
@@ -30296,7 +30336,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1964919958}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: SergioTexto2
 --- !u!23 &1997514776
 MeshRenderer:
@@ -30825,7 +30868,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _TextoInteraccion: 
   _isInteractable: 1
+  checkInput1Time: 0
   Selector: {fileID: 1531973713}
+  ButtonPrompt: {fileID: 0}
+  WhatInput: 0
   _targetDialogueNode: MariaTexto1
 --- !u!23 &2026228009
 MeshRenderer:

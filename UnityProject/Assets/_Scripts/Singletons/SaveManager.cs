@@ -24,11 +24,9 @@ public class SaveManager : MonoBehaviour
 
     public static void SavePlayerData()
     {
-        SaveItemsEquiped saveItemsEquiped = new SaveItemsEquiped();
-
         savePlayerData.name = GameManager.Instance.playerName;
         savePlayerData.coins = GameManager.Instance.playerCoins;
-        savePlayerData.PlayerItems = saveItemsEquiped;
+        if(UnlockablesManager.instance != null) savePlayerData.PlayerItems = UnlockablesManager.instance.ItemSaved;
         savePlayerData.SaveState = GameManager.Instance.state;
 
         saveState.SavePlayerData = savePlayerData;
@@ -99,11 +97,43 @@ public class SaveManager : MonoBehaviour
         SaveSaveString(Json);
     }
 
+    public static void SaveAllUnlockable()
+    {
+        if (UnlockablesManager.instance == null) return;
+
+            SaveUnlockable[] save = new SaveUnlockable[UnlockablesManager.instance.Notificator.Unlockables.Count];
+        int idlenght = -1;
+        int idLenghtUsable = 0;
+        foreach (SUnlockable lockable in UnlockablesManager.instance.Notificator.Unlockables)
+        {
+            idlenght++;
+            Debug.Log("Estoy revisando el logro: " + idlenght);
+            if (!lockable.IsUnlocked) continue;
+
+            SaveUnlockable newUnlockable = new SaveUnlockable();
+
+            newUnlockable.ID = idlenght;
+
+            save[idLenghtUsable] = newUnlockable;
+            idLenghtUsable++;
+        }
+        Debug.Log("Termine de revisarlo todo");
+        saveState.SaveUnlockable = save;
+
+        saveState.Work = true;
+
+        string Json = JsonUtility.ToJson(saveState);
+        SaveSaveString(Json);
+        Debug.Log("Lo escribi todo");
+    }
+
     public static void ResetGame()
     {
+        saveState.SaveUnlockable = null;
         CreateDirectory();
         SaveAllMinigameData();
         SaveAllPancarta();
+        SavePlayerData();
         LoadSaveFileSetUp();
     }
 
@@ -122,8 +152,15 @@ public class SaveManager : MonoBehaviour
             minigame.maxPoints = -1;
         }
 
+        foreach (SUnlockable lockable in UnlockablesManager.instance.Notificator.Unlockables)
+        {
+            lockable.IsUnlocked = false;
+        }
+
         if (GameManager.Instance != null) Destroy(GameManager.Instance.gameObject);
         if (InputManager.Instance != null) Destroy(InputManager.Instance.gameObject);
+        if (AudioManager.Instance != null) Destroy(AudioManager.Instance.gameObject);
+        if (UnlockablesManager.instance != null) Destroy(UnlockablesManager.instance.gameObject);
 
         if (IsDirectoryExist())
         {
@@ -162,6 +199,7 @@ public class SaveManager : MonoBehaviour
         GameManager.Instance.playerName = savePlayerData.name;
         GameManager.Instance.playerCoins = savePlayerData.coins;
         GameManager.Instance.state = savePlayerData.SaveState;
+        if(UnlockablesManager.instance != null) UnlockablesManager.instance.ItemSaved = savePlayerData.PlayerItems;
 
         for (int i = 0; i > GameManager.Instance.MinigameScripts.Length; i++)
         {
@@ -181,6 +219,14 @@ public class SaveManager : MonoBehaviour
         for (int i = 0; i < GameManager.Instance.PancartaData.Length; i++)
         {
             GameManager.Instance.PancartaData[i].Score = saveState.SavePancarta[i].MaxPoints;
+        }
+
+        if (UnlockablesManager.instance != null)
+        {
+            foreach (SaveUnlockable saveUnl in saveState.SaveUnlockable)
+            {
+                UnlockablesManager.instance.Notificator.Unlockables[saveUnl.ID].IsUnlocked = true;
+            }
         }
     }
 

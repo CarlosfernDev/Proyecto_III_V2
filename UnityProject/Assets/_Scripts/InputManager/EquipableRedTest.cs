@@ -60,9 +60,11 @@ public class EquipableRedTest : MonoBehaviour, Iequipable
             {
                 if (isCloudCaptured == false)
                 {
+                    cloudScript.SetInteractFalse();
                     isCloudCaptured = true;
                     cloudScript.CloudCaptured();
                     cloudCaptured = cloudScript.gameObject;
+                    cloudScript.Unhover();
                     ODS7Singleton.Instance.DisableCloud(cloudScript);
                     ODS7Singleton.Instance.CaptureCloud();
                     cloudScript.gameObject.SetActive(false);

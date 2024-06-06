@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class UIswapTest : MonoBehaviour
 {
-    [SerializeField] private UItype selecImage;
-    [SerializeField] private SpriteRenderer Sren;
+    [SerializeField] public UItype selecImage;
     [SerializeField] private ScriptableUI KeyBoardImage;
     [SerializeField] private ScriptableUI GamepadImage;
-    
+    [SerializeField] private Animator AnimatorUI;
     void OnEnable()
     {
+        transform.localScale = new Vector3(1, 1, 1);
+        checkEnum(InputManager.Instance.LastInputName);
         try
         {
             InputManager.Instance.ChangeUIto.AddListener(checkEnum);
@@ -42,32 +43,32 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
-                        Sren.sprite = KeyBoardImage.Movement;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Movement.Animator; 
                         break;
                     }
                 case UItype.Interact:
                     {
-                        Sren.sprite = KeyBoardImage.Interact;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Interact.Animator;
                         break;
                     }
                 case UItype.Pausa:
                     {
-                        Sren.sprite = KeyBoardImage.Pausa;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.Pausa.Animator;
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
-                        Sren.sprite = KeyBoardImage.UsarEquipable;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.UsarEquipable.Animator;
                         break;
                     }
                 case UItype.RotarPieza:
                     {
-                        Sren.sprite = KeyBoardImage.RotarPieza;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.RotarPieza.Animator;
                         break;
                     }
                 case UItype.AnyKey:
                     {
-                        Sren.sprite = KeyBoardImage.AnyKey;
+                        AnimatorUI.runtimeAnimatorController = KeyBoardImage.AnyKey.Animator; 
                         break;
                     }
                 default:
@@ -83,32 +84,36 @@ public class UIswapTest : MonoBehaviour
             {
                 case UItype.Movement:
                     {
-                        Sren.sprite = GamepadImage.Movement;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Movement.Animator;
                         break;
                     }
                 case UItype.Interact:
                     {
-                        Sren.sprite = GamepadImage.Interact;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Interact.Animator;
                         break;
                     }
                 case UItype.Pausa:
                     {
-                        Sren.sprite = GamepadImage.Pausa;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.Pausa.Animator;
+
                         break;
                     }
                 case UItype.UsarEquipable:
                     {
-                        Sren.sprite = GamepadImage.UsarEquipable;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.UsarEquipable.Animator;
+
                         break;
                     }
                 case UItype.RotarPieza:
                     {
-                        Sren.sprite = GamepadImage.RotarPieza;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.RotarPieza.Animator;
+
                         break;
                     }
                 case UItype.AnyKey:
                     {
-                        Sren.sprite = GamepadImage.AnyKey;
+                        AnimatorUI.runtimeAnimatorController = GamepadImage.AnyKey.Animator;
+
                         break;
                     }
                 default:
@@ -121,7 +126,7 @@ public class UIswapTest : MonoBehaviour
     }
 }
 
-enum UItype
+public enum UItype
 {
     Movement,
     Interact,
